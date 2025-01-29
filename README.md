@@ -1,5 +1,5 @@
 # NLX - Natural Language Platform
-![splash image](img/splash.jpg "splash image")
+![splash image](https://raw.githubusercontent.com/XIXUM/nlx/master/img/splash.jpg "splash image")
 
 this software, (which is currently in prototype state) represents an extendable platform for all kinds of natural language processing. Core of this software builds a DSL generated with the XText Framework. This DSL can turn text of natural language documents into a DAG tree of the document content. It creates a Tree from:
 
@@ -44,4 +44,9 @@ You can import a demo project to see the tool in operation. [Link & Documentatio
 Go to Releases: [DOWNLOAD](https://github.com/XIXUM/nlx/releases)
 
 ---
-![Poster](img/Preview.jpg "Poster Image")
+![Poster](https://raw.githubusercontent.com/XIXUM/nlx/master/img/Preview.jpg "Poster Image")
+
+
+## Previews
+
+see some more images of the GUI:
