@@ -51,9 +51,9 @@ Go to Releases: [DOWNLOAD](https://github.com/XIXUM/nlx/releases)
 
 see some more images of the GUI:
 
-![Poster](https://raw.githubusercontent.com/XIXUM/nlx/master/img/Screenshot 2024-10-22 092821.JPG "preview of the gui 01")
+![Poster](https://raw.githubusercontent.com/XIXUM/nlx/master/img/gui_preview1.JPG "preview of the gui 01") img/Screenshot%202024-10-22%20092821.JPG
 
-![Poster](https://raw.githubusercontent.com/XIXUM/nlx/master/img/Screenshot 2024-10-22 093122.JPG "preview of the GUI 02")
+![Poster](https://raw.githubusercontent.com/XIXUM/nlx/master/img/grammat_trainer_gui01.JPG "preview of the GUI 02")
 
 here are some plotted graphs of the model:
 
