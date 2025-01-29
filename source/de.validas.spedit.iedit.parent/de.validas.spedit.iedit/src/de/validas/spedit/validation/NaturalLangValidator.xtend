@@ -11,9 +11,6 @@ import de.validas.spedit.naturalLang.NaturalLangPackage
 import de.validas.spedit.naturalLang.Sentence
 import de.validas.spedit.naturalLang.SubSentence
 import de.validas.spedit.naturalLang.Word
-import de.validas.spedit.validation.semantics.ImplicitRulesOnDict
-import de.validas.utils.data.types.XPair
-import java.util.List
 import org.eclipse.emf.common.util.BasicEList
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
@@ -33,26 +30,14 @@ import static de.validas.spedit.constants.NaturalLangConstants._TYPO
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class NaturalLangValidator extends AbstractNaturalLangValidator {
-	/**
-	 * idetifiers for Annotations
-	 */
-//	public static val TYPO = 'Typography'
-//	public static val INVALID_NAME = 'invalidName'
-//	public static val TRAIN_DICT = 'trainDictionary'
-	
-	//TODO: To be externalized
-//	val _CAPITALIZE_NAME = "Word should start with a capital"
-//	val _TRAIN_TYPE = "Word type for \"%s\" \nnot trained"
-//	val _MATCH_PATTERN = "[a-zA-ZäöüÄÖÜêÊéÉèÈóÓòÒûÛôÔ]+"
+
 	
 	@Inject
 	IDictionaryAccess dictAcc;
 	
 	@Inject
 	protected IBuildLogger buildLogger;
-	protected ImplicitRulesOnDict semantics
-	
-	//protected static Logger LOGGER = Logger.getLogger(NaturalLangValidator);
+	//protected ImplicitRulesOnDict semantics
 	
 	//TODO: consider @Inject 
 	protected LogUtils logUtil = new LogUtils(buildLogger);
@@ -60,13 +45,11 @@ class NaturalLangValidator extends AbstractNaturalLangValidator {
 // TODO: to be replaced by preferences Entry
 	boolean val_CAPITALIZE_PREF_ON = true;
 	boolean val_DICT_PREF_ON = true
-	boolean pref_IMPLICIT_SEMANTICS = false
 
 	@Check
 	def checkWordIsInDict(Elements element) {
 		if (val_DICT_PREF_ON) {
 			//TODO: try to find Marker to Position before accessing the dictionary
-			var path = EmfFormatter.objPath(element)
 			if (element instanceof Word) {
 				if (!dictAcc.isConnected())
 					return;
@@ -90,7 +73,6 @@ class NaturalLangValidator extends AbstractNaturalLangValidator {
 			if (elList.isEmpty) return;
 			var sentence = ssentence.eContainer as Sentence;
 			if (!sentence.subsentence.get(0).equals(ssentence)) return;
-			// val EList<New_Line> elements = ssentence.elements
 			var el0 = ssentence.elements.get(0) as EObject;
 			if (el0 instanceof Word)
 				if (!Character.isUpperCase(el0.word.get(0).charAt(0))) {
@@ -100,26 +82,4 @@ class NaturalLangValidator extends AbstractNaturalLangValidator {
 			logUtil.logAccess("Validate", 1, "Typography Disabled");
 		}
 	}
-
-	/**
-	 * does start implicit checks with a rule database to improve Dictionary
-	 */
-	@Check
-	def semanticChecksSentence(Sentence sentence) {
-		if (pref_IMPLICIT_SEMANTICS) {
-			init_implRuleSet()
-			var fullChain = semantics.generateChain(sentence)
-			if (semantics.checkAllWordsTrained(fullChain)) {
-				semantics.implicitRuleOnSentence(sentence, fullChain)
-			}
-		} else {
-			logUtil.logAccess("Validate", 1, "Implicit grammar rule checker: disabled!");
-		}
-	}
-
-	def init_implRuleSet() {
-		if (semantics === null && buildLogger !== null)
-			semantics = new ImplicitRulesOnDict(dictAcc, buildLogger)
-	}	
-	
 }

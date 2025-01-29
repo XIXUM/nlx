@@ -14,8 +14,6 @@ public interface IPanelsAccessor {
 
 	IItem getToken(int i);
 
-	boolean hasComboBox(int index);
-
 	String getCssClass(int index);
 
 }

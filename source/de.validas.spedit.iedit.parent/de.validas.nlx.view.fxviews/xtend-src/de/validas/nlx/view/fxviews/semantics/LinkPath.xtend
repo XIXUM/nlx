@@ -24,6 +24,7 @@ import javafx.scene.shape.VLineTo
 import static de.validas.nlx.view.fxviews.semantics.constants.FxViewConstants.*
 import static de.validas.nlx.view.fxviews.semantics.constants.LinkConstants.*
 import javafx.application.Platform
+import de.validas.nlx.view.fxviews.control.IContextMenu
 
 class LinkPath implements IJavaFxObj{
 	
@@ -36,12 +37,14 @@ class LinkPath implements IJavaFxObj{
 	FXMLLoader loader
 	
 	protected IDragController dragController
+	
+	IContextMenu contextmenu
 
-	Collection<MenuItem> menuItems
+	
 	
 	
 	//TODO: cache Link Koordinates if calculated once...
-	new(ILink parent, Collection<MenuItem> menuItems){
+	new(ILink parent, IContextMenu menu){
 		this.resource = getClass().getResource(FXML_LINK_PATH_FILE)
 		this.loader = new FXMLLoader(this.resource) 
 		loader.setClassLoader(parent.canvas.fxClassLoader); 
@@ -49,7 +52,7 @@ class LinkPath implements IJavaFxObj{
 		//this.parent.setLinkPath(this)
 		this.dragController = parent.dragController
 		this.linkPane = canvasController.linkPane
-		this.menuItems = menuItems
+		this.contextmenu = menu
 	}
 	
 	override getCanvasController() {
@@ -74,7 +77,7 @@ class LinkPath implements IJavaFxObj{
 				this.shape = loader.load();
 				this.controller = loader.getController() as ILinkController;
 				controller.addDragController(dragController);
-				controller.setSontextMenu(createContextMenu())
+				controller.setContextMenu(contextmenu?.create)
 				controller.setParent(this);
 		 		var style = this.parent.style.classes
 		 		if (style !== null){
@@ -107,16 +110,6 @@ class LinkPath implements IJavaFxObj{
 	def assignToCanvas(Runnable flagDraw) {
 		linkPane.getChildren().add(shape);
 		flagDraw.run
-	}
-	
-	def createContextMenu() {
-		//TODO: 03.11.21 generate menue items dynamically in the future
-		
-		var contextMenu = new ContextMenu();
-    	if (menuItems!== null && !menuItems.empty){
-	    	contextMenu.getItems().addAll(menuItems);
-	        contextMenu    
-	    }
 	}
 	
 	def adjustPath(Point2D startPoint, Point2D endPoint, ObservableList<PathElement> elements) {

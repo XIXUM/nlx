@@ -18,5 +18,4 @@ public class EMFPanelAccessor extends AbstractPanelAccessor {
 	public EMFPanelAccessor(IDictionaryAccess dictAccess) {
 		this.dictAccess = dictAccess;
 	}
-
 }

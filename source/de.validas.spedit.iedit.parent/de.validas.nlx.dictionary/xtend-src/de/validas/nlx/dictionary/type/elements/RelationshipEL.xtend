@@ -28,8 +28,8 @@ class RelationshipEL extends NetworkEL implements IRelationshipEL{
 	
 	def static IRelationshipEL create(INodeEL start, INodeEL end, Relationship rel){
 		var instance = new RelationshipEL(start, end, rel)
-		instance.getStart().addRel(instance)
-		instance.getEnd().addRel(instance)
+		instance.getStart()?.addRel(instance)
+		instance.getEnd()?.addRel(instance)
 		instance
 	}
 	

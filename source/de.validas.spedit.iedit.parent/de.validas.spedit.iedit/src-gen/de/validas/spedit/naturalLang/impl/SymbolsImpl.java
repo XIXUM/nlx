@@ -167,7 +167,7 @@ public class SymbolsImpl extends ElementsImpl implements Symbols
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (symbol: ");
     result.append(symbol);
     result.append(')');

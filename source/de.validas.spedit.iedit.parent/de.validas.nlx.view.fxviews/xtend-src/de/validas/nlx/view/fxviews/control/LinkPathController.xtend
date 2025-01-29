@@ -22,6 +22,7 @@ import javafx.scene.input.ContextMenuEvent
 import javafx.scene.Node
 import de.validas.nlx.view.fxviews.semantics.util.LinkUtils
 import de.validas.nlx.view.fxviews.semantics.LinkStyle
+import de.validas.nlx.view.fxviews.access.IItem
 
 class LinkPathController extends AbstractLinkController {
 	@FXML // ResourceBundle that was given to the FXMLLoader
@@ -32,6 +33,8 @@ class LinkPathController extends AbstractLinkController {
 	Path path;
 	
 	ContextMenu cm
+	
+	IContextMenu menuHandler
 	
 	// Value injected by FXMLLoader	
 
@@ -131,7 +134,7 @@ class LinkPathController extends AbstractLinkController {
 						second = LinkUtils.findNextAdjacentPanel(source.parent as ILink, false)
 					}
 					var delta = second.index - first.index
-					if (delta == 1)
+					if (delta === 1 || (delta === 2 && (first.successor as ILinkObj).token instanceof SmallItem))
 						hoverMode.apply(event)
 				}
 			}
@@ -177,6 +180,7 @@ class LinkPathController extends AbstractLinkController {
 	@FXML
 	def void onContextMenu(ContextMenuEvent event) {
 		var win = (event.source as Node).scene.window
+		menuHandler.menuDelegate.apply(menuHandler.menuItems)
 		cm.show(win, win.x + event.sceneX, win.y + event.sceneY)
 	}
 
@@ -190,8 +194,9 @@ class LinkPathController extends AbstractLinkController {
 		path
 	}
 	
-	override setSontextMenu(ContextMenu menu) {
-		this.cm = menu
+	override setContextMenu(IContextMenu menu) {
+		this.menuHandler = menu
+		this.cm = menu?.menu
 	}
 	
 }

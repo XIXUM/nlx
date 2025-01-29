@@ -5,6 +5,7 @@ import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
@@ -55,7 +56,7 @@ public class NlxOutlineWithEditorLinker extends OutlineWithEditorLinker {
 						if (part instanceof XtextEditor) {
 							IPropertySheetPage page = ((NaturalLangEditor)part).getPropertySheetPage();
 								page.selectionChanged((IWorkbenchPart) part, sel);
-							ISemanticViewSelector trainerPage = ((NaturalLangEditor)part).getSemanticViewSelector();
+								ISelectionListener trainerPage = ((NaturalLangEditor)part).getSemanticViewSelector();
 								trainerPage.selectionChanged((IWorkbenchPart) part, sel);
 						}
 						// else:? what if part is not Editor???

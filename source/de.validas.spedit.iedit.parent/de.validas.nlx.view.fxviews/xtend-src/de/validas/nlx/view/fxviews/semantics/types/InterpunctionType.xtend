@@ -5,9 +5,8 @@ import de.validas.nlx.dictionary.DictItem
 import de.validas.nlx.dictionary.IDictionaryAccess
 import de.validas.nlx.dictionary.type.ITypeAttributes
 import de.validas.nlx.view.fxviews.access.IJavaFxObj
-import de.validas.nlx.view.fxviews.access.ItemType
+import de.validas.nlx.dictionary.grammar.types.ItemType
 import de.validas.nlx.view.fxviews.access.elements.TerminalItem
-import de.validas.nlx.view.fxviews.access.elements.TokenPosition
 import de.validas.nlx.view.fxviews.control.SmallPanelObjController
 import de.validas.nlx.view.fxviews.semantics.ILinkObj
 import de.validas.nlx.view.fxviews.semantics.ILinkable
@@ -35,9 +34,13 @@ import static de.validas.nlx.view.fxviews.semantics.constants.SubClassType.INTER
 import static de.validas.nlx.constants.Neo4jConstants._N
 import static de.validas.nlx.constants.Neo4jConstants._L
 import static de.validas.nlx.constants.Neo4jConstants._L2
+import static de.validas.nlx.constants.Neo4jConstants._LL
 import static de.validas.nlx.constants.Neo4jConstants._NAME
 import static de.validas.nlx.constants.Neo4jConstants._A
 import static de.validas.nlx.constants.Neo4jConstants._B
+import static de.validas.nlx.constants.Neo4jConstants._C
+import static de.validas.nlx.constants.Neo4jConstants._CLASS
+import static de.validas.nlx.constants.Neo4jConstants._OF_CLASS
 import static de.validas.nlx.dictionary.constants.DictionaryConstants._AT
 import static de.validas.nlx.dictionary.constants.DictionaryConstants._POSITION
 import static de.validas.nlx.dictionary.constants.DictionaryConstants._OF_TYPE
@@ -46,8 +49,11 @@ import static de.validas.nlx.dictionary.constants.DictionaryConstants._CHAR
 import de.validas.nlx.ai.util.NodeUtil
 import de.validas.nlx.ai.neo4j.Neo4jAccess.Action
 import de.validas.nlx.ai.util.Arrow
+import de.validas.nlx.dictionary.grammar.rules.ImplicitRulesOnDict
+import de.validas.nlx.dictionary.grammar.token.IGrammarInterpunction
+import de.validas.nlx.constants.TokenPosition
 
-class InterpunctionType extends AbstractLinkType {
+class InterpunctionType extends AbstractLinkType implements IGrammarInterpunction {
 	
 	//TODO: variate between classic interpuction and separator
 	
@@ -96,6 +102,8 @@ RETURN *'''
 			if (result === null || result.empty){
 				query ='''MERGE («_N»:«_INTERPUNCTION» {«_NAME»:"«this.cathegory»"«IF this.type!== null», «_TYPE»:"«this.type»"«ENDIF»})
 MERGE («_A»:«_POSITION» {«_NAME»:"«((_parent as ILinkObj).token as TerminalItem).position.name»"})
+MERGE («_C»:«_CLASS» {«_NAME»:"«_INTERPUNCTION»"})
+MERGE («_N»)«new Arrow(_LL,_OF_CLASS,Direction.RIGHT).generate»(«_C»)
 MERGE («_N»)«new Arrow(_L,_AT,Direction.RIGHT).generate»(«_A»)
 «				IF this.type!== null»
 MERGE («_B»:«_CHAR» {«_NAME»:"«this.type»"})
@@ -116,7 +124,7 @@ RETURN *'''
 		new XPair<String, ITypeAttributes>(type, null);
 	}
 	
-	def getCathegory(){
+	override getCathegory(){
 		cathegory
 	}
 	
@@ -139,86 +147,11 @@ RETURN *'''
 		}
 	}
 	
-	def clearAttribBox(Direction dir){
-		var control = ((parent as IJavaFxObj).controller as SmallPanelObjController)
-		control.getAttribVBox(dir).children.clear
-	}
-	
-	def getNode(){
+	override getNode(){
 		node
 	}
-
 	
-	def createAttributes(ITypeAttributes dbAttrs) { //TODO: 05.04.22 redundant move in superclass
-
-		//var dbAttrs = element.getTypeAttributes()
-		var attrs = dbAttrs?.attrs as List<?> ?: #[]
-		var control = ((parent as IJavaFxObj).controller as SmallPanelObjController)
-
-		if (attrs === null) {
-			return
-		}
-
-		for (dir: #[Direction.IN, Direction.OUT]){
-			if (!Platform.isFxApplicationThread)
-				Platform.runLater([|
-					clearAttribBox(dir)         //TODO: this should call also atribute creation otherwhise conflicts with below's new creation
-				])
-			else
-				clearAttribBox(dir)
-		}
-		for (attr : attrs) {
-			if (attr instanceof Relationship){
-				var end = attr.endNodeId
-				var start = attr.startNodeId
-				var source = dbAttrs.source.get(0) //can only contain entity 1
-				var targets = dbAttrs.target
-
-				var VBox attribCtrl
-				//var long dest_id
-				var TitledPane accordion
-				var Pair<Long ,Direction> directions
-				var type = attr.get(_TYPE)
-				var els = newArrayList
-				
-				//dest_id = end
-				if (type!== null) {
-					if (type instanceof ListValue) 
-						els.addAll(type.asList)
-					else
-						els.add(type.asString)
-					
-					for (el : els) { 
-						if (el.equals(Direction.IN.name)){
-							directions = end -> Direction.IN
-						}else if (source.id.equals(end)){
-								directions = start -> Direction.IN
-						} else {
-							directions = end -> Direction.OUT
-						}
-										
-						if (directions.key !==  source.id){
-							attribCtrl = control.getAttribVBox(directions.value)
-							accordion = control.getAccordion(directions.value)
-							if (!accordion.visible)
-								accordion.visible = true
-		
-							for (target : targets){
-									if (target.id.equals(directions.key)){
-										if (parent instanceof ILinkObj){
-											AttribUtils.createAttrEntry(attribCtrl, source, target, attr)
-										}
-									}
-								}
-								
-						}
-					}
-				}
-			}
-		}
-	}
-	
-	override postProcess(ILinkObj precessor, List<ITypeAttributes> attribs) {
+	override postProcess(ILinkObj precessor, List<ITypeAttributes> attribs, ImplicitRulesOnDict grammar) {
 		var token = (parent as ILinkObj).token
 		
 		if (type!== null){			// check links per type - not globally
@@ -226,6 +159,8 @@ RETURN *'''
 				var intAttribs = new ArrayList<ITypeAttributes>(attribs)
 				intAttribs.add(attrs)
 				var pT = precessor.token
+				if (pT.internalType?.typeInfo === null)
+					return
 				var pos = (token as TerminalItem).getPosition()
 				switch (pos){
 					case TokenPosition.INTERMEDIATE:	{

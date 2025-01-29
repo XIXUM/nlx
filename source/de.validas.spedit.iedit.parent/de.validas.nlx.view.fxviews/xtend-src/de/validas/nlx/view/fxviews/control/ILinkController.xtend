@@ -9,6 +9,6 @@ interface ILinkController{
 	
 	def void addDragController(IDragController controller)
 	
-	def void setSontextMenu(ContextMenu menu)
+	def void setContextMenu(IContextMenu menu)
 	
 }

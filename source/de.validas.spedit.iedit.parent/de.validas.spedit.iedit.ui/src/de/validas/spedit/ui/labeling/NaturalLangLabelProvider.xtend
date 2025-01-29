@@ -72,9 +72,9 @@ class NaturalLangLabelProvider extends DefaultEObjectLabelProvider {
 			Unit: {	
 				var String value = IterableExtensions.join(element.value, "");
 				styledText.append(value);
-				if (!element.unit.empty)
+				if (!element.unit?.empty)
 					styledText.append(" | ")
-					styledText.append(element.unit)
+					styledText.append(element.unit ?: String.join(" ", element.value))
 			}
 //			ShortCut: {
 //				element.shortcut

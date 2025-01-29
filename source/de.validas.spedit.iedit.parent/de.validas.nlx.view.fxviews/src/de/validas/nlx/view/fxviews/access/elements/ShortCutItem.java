@@ -5,17 +5,21 @@ package de.validas.nlx.view.fxviews.access.elements;
 
 import static de.validas.nlx.dictionary.constants.NodeConstants._WORD;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 
 import de.validas.nlx.dictionary.DictItem;
 import de.validas.nlx.dictionary.IDictionaryAccess;
+import de.validas.nlx.dictionary.grammar.rules.ImplicitRulesOnDict;
 import de.validas.nlx.dictionary.type.ITypeAttributes;
 import de.validas.nlx.dictionary.type.ITypeHierarchy;
+import de.validas.nlx.dictionary.type.ITypeInfo;
 import de.validas.nlx.view.fxviews.access.IItem;
 import de.validas.nlx.view.fxviews.access.IJavaFxObj;
-import de.validas.nlx.view.fxviews.control.IObjController;
 import de.validas.nlx.view.fxviews.semantics.ILink;
 import de.validas.nlx.view.fxviews.semantics.ILinkObj;
 import de.validas.nlx.view.fxviews.semantics.ILinkType;
@@ -23,10 +27,10 @@ import de.validas.nlx.view.fxviews.semantics.ILinkable;
 import de.validas.nlx.view.fxviews.semantics.types.LiteralType;
 import de.validas.nlx.view.fxviews.semantics.types.TypeElement;
 import de.validas.nlx.view.fxviews.semantics.types.WordType;
-import de.validas.nlx.dictionary.type.ITypeInfo;
 import de.validas.nlx.view.fxviews.visual.NodePanel;
 import de.validas.spedit.naturalLang.EString;
 import de.validas.spedit.naturalLang.ShortCut;
+import de.validas.utils.data.lists.IAppendable;
 import de.validas.utils.data.types.XPair;
 import javafx.scene.Node;
 
@@ -50,19 +54,6 @@ public class ShortCutItem extends TypedItem { // TODO differentiate Items by der
 
 		if (el instanceof ShortCut)
 			this.name = ((EString) ((ShortCut) el).getShortcut()).getShortcut();
-	}
-
-	/**
-	 * Public Factory of Class
-	 * 
-	 * @param el
-	 * @param dictAccess
-	 * @return
-	 */
-	public static IItem create(ShortCut el, IDictionaryAccess dictAccess) {
-		ShortCutItem item = new ShortCutItem((EObject) el, dictAccess);
-		item.loadDictionary();
-		return item;
 	}
 
 	/**
@@ -124,11 +115,6 @@ public class ShortCutItem extends TypedItem { // TODO differentiate Items by der
 	}
 
 	@Override
-	public boolean hasComboBox() {
-		return true;
-	}
-
-	@Override
 	public String getCssClass() {
 		return CSS_CLASS;
 	}
@@ -138,7 +124,7 @@ public class ShortCutItem extends TypedItem { // TODO differentiate Items by der
 	 */
 	@Override
 	public Node instantiateTypes() {
-		IObjController controller = (IObjController) parent.getController();
+		// IObjController controller = (IObjController) parent.getController();
 		if (type instanceof LiteralType) {
 			return ((LiteralType)type).getRoot();
 		} else 
@@ -173,10 +159,16 @@ public class ShortCutItem extends TypedItem { // TODO differentiate Items by der
 	 * @see de.validas.nlx.view.fxviews.access.elements.BasicItem#postProcess()
 	 */
 	@Override
-	public void postProcess(ILinkObj precessor, List<ITypeAttributes> attribs) {
+	public void postProcess(ImplicitRulesOnDict grammar) {
 		//ILinkType intType = getInternalType(); 
-		if (type != null)
-			type.postProcess(precessor, attribs);
+		super.postProcess(grammar);
+		if (type != null) {
+			IAppendable precessor = getPrecessor();
+			if (precessor != null) {
+				List<ITypeAttributes> attribs = new ArrayList<>();
+				type.postProcess((ILinkObj) ((IItem)precessor).getParent(), attribs, grammar);
+			}
+		}
 	}
 	
 	@Override
@@ -190,13 +182,29 @@ public class ShortCutItem extends TypedItem { // TODO differentiate Items by der
 	
 	@Override
 	public org.neo4j.driver.v1.types.Node getBaseNode() {
-		return type.getTypeInfo().getBase();
+		ITypeInfo info = type.getTypeInfo();
+		if (info != null)
+			return type.getTypeInfo().getBase();
+		return null;
 	}
 	
 	@Override
 	public DictItem generateTokenInfo() {
 		// TODO Auto-generated method stub
 		return new DictItem(name, getInternalType().getName(), getInternalType().getBaseType().getKey(), generateID());
+	}
+	
+	/**
+	 * Public Factory of Class
+	 * 
+	 * @param el
+	 * @param dictAccess
+	 * @return
+	 */
+	public static Collection<IItem> create(ShortCut el, IDictionaryAccess dictAccess) {
+		ShortCutItem item = new ShortCutItem((EObject) el, dictAccess);
+		item.loadDictionary();
+		return  new ArrayList<IItem>(Collections.singletonList(item));
 	}
 
 

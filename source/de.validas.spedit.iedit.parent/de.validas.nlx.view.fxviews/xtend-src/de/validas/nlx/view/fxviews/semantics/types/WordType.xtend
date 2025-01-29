@@ -1,41 +1,33 @@
 package de.validas.nlx.view.fxviews.semantics.types
 
-import de.validas.nlx.constants.Direction
+import de.validas.nlx.dictionary.DictItem
 import de.validas.nlx.dictionary.IDictionaryAccess
+import de.validas.nlx.dictionary.grammar.rules.ImplicitRulesOnDict
 import de.validas.nlx.dictionary.type.ITypeAttributes
+import de.validas.nlx.dictionary.type.ITypeInfo
 import de.validas.nlx.dictionary.type.NoneTypeAttributes
-import de.validas.nlx.view.fxviews.access.IJavaFxObj
-import de.validas.nlx.view.fxviews.control.PanelObjExtController
 import de.validas.nlx.view.fxviews.control.TypeControlElController
 import de.validas.nlx.view.fxviews.semantics.ILink
 import de.validas.nlx.view.fxviews.semantics.ILinkObj
 import de.validas.nlx.view.fxviews.semantics.ILinkable
-import de.validas.nlx.view.fxviews.semantics.util.AttribUtils
+import de.validas.utils.data.lists.LinkedList
 import de.validas.utils.data.types.XPair
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.List
 import javafx.application.Platform
-import javafx.scene.control.TitledPane
 import javafx.scene.layout.Pane
 import javafx.scene.layout.VBox
-import org.neo4j.driver.v1.types.Relationship
 
 import static de.validas.nlx.dictionary.constants.NodeConstants._NONE
-import static de.validas.nlx.dictionary.constants.NodeConstants._TYPE
 import static de.validas.nlx.dictionary.constants.NodeConstants._WORD
 import static de.validas.nlx.view.fxviews.semantics.constants.FxViewConstants.FXML_TYPE_CONTROL_FILE
-import org.neo4j.driver.internal.value.ListValue
-import de.validas.nlx.dictionary.DictItem
-import de.validas.nlx.view.fxviews.access.IItem
-import de.validas.nlx.dictionary.type.ITypeInfo
-import de.validas.nlx.dictionary.type.WordTypeInfo
 
 class WordType extends LiteralType {
 
 	protected var ITypeInfo typeInfo //Grammar Data
 	protected Pane group
-	protected List<TypeElement> elements //GUI Data
+	protected LinkedList<TypeElement> elements //GUI Data
 
 
 	int selection = 0
@@ -47,7 +39,7 @@ class WordType extends LiteralType {
 	new(ITypeInfo typeInfo, ILinkable parent, IDictionaryAccess dictAccess) {
 		super(_WORD,parent) //TODO: 24.01.22 maybe set Name to token name
 		this.typeInfo = typeInfo
-		this.elements = newArrayList()
+		this.elements = new LinkedList()
 		this.dictAccess = dictAccess
 	}
 
@@ -61,8 +53,9 @@ class WordType extends LiteralType {
 			if (res!== null){
 				typeInfo = res
 				generate
-			} else
-				newType
+			} 
+//			else
+//				newType
 
 		} else
 			return null
@@ -88,7 +81,7 @@ class WordType extends LiteralType {
 
 	protected def Pane generate() {
 		group = new VBox
-		if (typeInfo.types !== null)
+		if (typeInfo?.types !== null)
 			for (type : typeInfo.types){
 				addType(type, false)
 			}
@@ -107,9 +100,26 @@ class WordType extends LiteralType {
 				group.getChildren.add(el.root)
 		elements.add(el)
 	}
+	
+	override removeType(TypeElement element) {
+		group.getChildren.remove(element.root)
+		if (!Platform.isFxApplicationThread)
+			Platform.runLater([|
+				elements.remove(element)
+				])
+		else
+			elements.remove(element)
+		val numEls = elements.size()
+		if (selection >= numEls && numEls > 0)
+			selection = numEls - 1
+		else 
+			selection = 0
+		update
+	}
 
 	override newType() {
 		addType(new XPair<String, ITypeAttributes>(_NONE, new NoneTypeAttributes), true);
+		update
 	}
 
 	override setSelection(int selection) {
@@ -119,87 +129,29 @@ class WordType extends LiteralType {
 		}
 	}
 
-	protected def update() {
-		for (el : elements){
-			if (selection != el.index){
-				(el.controller as TypeControlElController).sphere.visible = false
-			} else {
-				(el.controller as TypeControlElController).sphere.visible = true
-				createAttributes(el)
-			}
-		}
-	}
-	def clearAttribBox(Direction dir){
-		var control = ((parent as IJavaFxObj).controller as PanelObjExtController)
-		control.getAttribVBox(dir).children.clear
-	}
-
-	
-	def createAttributes(TypeElement element) {
-
-		var dbAttrs = element.getTypeAttributes()
-		var attrs = dbAttrs.attrs as List<?> ?: #[]
-		var control = ((parent as IJavaFxObj).controller as PanelObjExtController)
-
-		if (attrs === null) {
-			return
-		}
-
-		for (dir: #[Direction.IN, Direction.OUT]){
+	override update() {
+		val visibilityDelegate = [TypeControlElController ctr, boolean vis | 
 			if (!Platform.isFxApplicationThread)
 				Platform.runLater([|
-					clearAttribBox(dir)
+					ctr.sphere.visible = vis
 				])
 			else
-				clearAttribBox(dir)
-		}
-		for (attr : attrs) {
-			if (attr instanceof Relationship){
-				var end = attr.endNodeId
-				var start = attr.startNodeId
-				var source = dbAttrs.source.get(0) //can only contain entity 1
-				var targets = dbAttrs.target
-
-				var VBox attribCtrl
-				//var long dest_id
-				var TitledPane accordion
-				var Pair<Long ,Direction> directions
-				var type = attr.get(_TYPE)
-				var els = newArrayList
-				
-				//dest_id = end
-				if (type!== null) {
-					if (type instanceof ListValue) 
-						els.addAll(type.asList)
-					else
-						els.add(type.asString)
-					
-					for (el : els) { 
-						if (el.equals(Direction.IN.name)){
-							directions = end -> Direction.IN
-						}else if (source.id.equals(end)){
-								directions = start -> Direction.IN
-						} else {
-							directions = end -> Direction.OUT
-						}
-										
-						if (directions.key !==  source.id){
-							attribCtrl = control.getAttribVBox(directions.value)
-							accordion = control.getAccordion(directions.value)
-							if (!accordion.visible)
-								accordion.visible = true
-		
-							for (target : targets){
-									if (target.id.equals(directions.key)){
-										if (parent instanceof ILinkObj){
-											AttribUtils.createAttrEntry(attribCtrl, source, target, attr)
-										}
-									}
-								}
-								
-						}
-					}
-				}
+				ctr.sphere.visible = vis
+		]
+		for (el : elements){
+			if (selection != el.index){
+				visibilityDelegate.apply((el.controller as TypeControlElController), false)
+			} else {
+				visibilityDelegate.apply((el.controller as TypeControlElController), true)
+				createAttributes(el.getTypeAttributes)
+			}
+			var visibility = false
+			if (elements.size > 1){
+				visibility = true 
+			} else 
+				visibility = false				
+			for (ctrl : elements){ // concurrent modification?
+				ctrl.deleteVisible = visibility 
 			}
 		}
 	}
@@ -222,7 +174,7 @@ class WordType extends LiteralType {
 
 	override List<ILink> getSelectedLink() {
 		if (selection<elements.size){
-			elements.get(selection).links
+			elements.get(selection).links.values.toList
 		}
 	}
 
@@ -250,10 +202,12 @@ class WordType extends LiteralType {
 		}
 	}
 
-	override postProcess(ILinkObj precessor, List<ITypeAttributes> attribs) {
+	override postProcess(ILinkObj precessor, List<ITypeAttributes> attribs, ImplicitRulesOnDict grammar) {
 		var token = (parent as ILinkObj).token
 		dictAccess.processPrefix(token.name.toLowerCase, attribs)
 		dictAccess.processSuffix(token.name.toLowerCase, attribs)
+		
+		//grammar.solve((parent as ILinkObj).token)
 
 //		if(links !== null){
 		for (type : elements){ //TODO: make lambda funct with map
@@ -262,12 +216,14 @@ class WordType extends LiteralType {
 					var intAttribs = new ArrayList<ITypeAttributes>(attribs)
 					intAttribs.add(type.typeAttributes)
 					var pT = precessor.token 
-					dictAccess.addSuccessor(pT.generateTokenInfo,   //TODO:11.04.2022 inconsistent Interface
-						new DictItem(token.label, token.internalType.name, type.name, token.generateID), #{type.name}, intAttribs
-					)
-					val HashMap<String, ITypeAttributes> map = newHashMap
-					dictAccess.getLinkTypes(token.name, _WORD, true).types.forall[ v | map.put(v.key, v.value) true]
-					updateTypes(map)
+					if (pT.internalType.typeInfo !== null){
+						dictAccess.addSuccessor(pT.generateTokenInfo,   //TODO:11.04.2022 inconsistent Interface
+							new DictItem(token.label, token.internalType.name, type.name, type.typeAttributes.baseNode.id), #{type.name}, intAttribs
+						)
+						val HashMap<String, ITypeAttributes> map = newHashMap
+						dictAccess.getLinkTypes(token.name, _WORD, true).types.forall[ v | map.put(v.key, v.value) true]
+						updateTypes(map)
+					}
 				}
 			}
 		}

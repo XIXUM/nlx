@@ -26,8 +26,6 @@ import de.validas.nlx.ai.util.NodeUtil
 import de.validas.nlx.constants.Direction
 import de.validas.nlx.dictionary.IDictionaryAccess
 import de.validas.nlx.dictionary.type.ITypeAttributes
-import de.validas.nlx.dictionary.type.InterpunctionTypeAttribute
-import de.validas.nlx.view.fxviews.access.WordPanelAccessor
 import de.validas.nlx.view.fxviews.access.elements.ContainerItem
 import de.validas.nlx.view.fxviews.access.elements.KommaItem
 import de.validas.nlx.view.fxviews.access.elements.SeparatorItem
@@ -37,30 +35,31 @@ import de.validas.nlx.view.fxviews.cache.CachedLink
 import de.validas.nlx.view.fxviews.cache.CachedNode
 import de.validas.nlx.view.fxviews.cache.ICacheObj
 import de.validas.nlx.view.fxviews.cache.INodeCacheManager
+import de.validas.nlx.view.fxviews.semantics.types.ICardinalLinkable
 import de.validas.nlx.view.fxviews.semantics.util.LinkUtils
 import de.validas.nlx.view.fxviews.visual.IPanel
 import de.validas.spedit.presets.NlxDictConstants
 import de.validas.utils.data.types.XPair
 import java.util.HashMap
 import java.util.List
+import java.util.Map
 import java.util.Set
 import java.util.stream.Collectors
 import org.neo4j.driver.v1.Record
 import org.neo4j.driver.v1.types.Node
 import static de.validas.nlx.constants.Neo4jConstants.*
 import static de.validas.nlx.dictionary.constants.DictionaryConstants._EXCLUDES
-import static de.validas.nlx.dictionary.constants.NodeConstants._TYPE
-import static de.validas.nlx.dictionary.constants.NodeConstants._WORD
-import static de.validas.nlx.dictionary.constants.NodeConstants._WORD_CLASS
+import static de.validas.nlx.dictionary.constants.DictionaryConstants._REDUNDANCE
+import static de.validas.nlx.dictionary.constants.DictionaryConstants._REDUNDANT
 import static de.validas.nlx.dictionary.constants.NodeConstants.GRAMMAR_CLUSTER_
 import static de.validas.nlx.dictionary.constants.NodeConstants.GRAMMAR_LINK_
 import static de.validas.nlx.dictionary.constants.NodeConstants._OF_CLASS
+import static de.validas.nlx.dictionary.constants.NodeConstants._TYPE
+import static de.validas.nlx.dictionary.constants.NodeConstants._WORD
+import static de.validas.nlx.dictionary.constants.NodeConstants._WORD_CLASS
 import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants.*
-import java.util.Map
-import de.validas.nlx.view.fxviews.semantics.types.ICardinalLinkable
-import java.util.ArrayList
-import de.validas.nlx.view.fxviews.semantics.types.InterpunctionType
-import org.neo4j.driver.v1.Records
+import static de.validas.nlx.dictionary.constants.DictionaryConstants._FORWARD
+import de.validas.nlx.dictionary.grammar.rules.ImplicitRulesOnDict
 
 /**
  * LinkProcessor solves the the semantics in the panelChain. it communicates with the database 
@@ -90,7 +89,7 @@ class LinkProcessor {
 	 * resolves the Grammar tree for the sentence 
 	 */
 	def List<XPair<ILinkable, Boolean>> evaluateNext(ILinkable source) {
-		//TODO: 03.06.2022 Test why evaluateNext returns semantic Links with same ID twice
+		// TODO: 03.06.2022 Test why evaluateNext returns semantic Links with same ID twice
 		var attributes = newHashMap
 		var boolean resolved = false;
 		var Set<XPair<ILinkable, Boolean>> destinations = null;
@@ -140,8 +139,14 @@ class LinkProcessor {
 			// links.forEach[k,v | v.forall[l| LinkUtils.traceRoot(l as ILinkable)]]
 				for (root : LinkUtils.traceAllRoots(internalSuccessor as ILinkable, 0, false)) {
 					var overlap = LinkUtils.findNextAdjacentPanel(root.value, false)
+					var rLinkable = root.value
+					var rlinks = rLinkable.link
 					if (overlap.index >= internalSuccessor.index) // TODO: 14.03.22 recurse up as long links overlap
-						destinations.addAllExcl(evaluateNext(root.value))
+						if (rlinks == null || rlinks.empty){
+							destinations.addAllExcl(evaluateNext(rLinkable))
+						} else {
+							destinations.addExcl(new XPair<ILinkable, Boolean>(rLinkable, false))
+						}
 				}
 			} else
 				destinations.addAllExcl(evaluateNext(internalSuccessor as ILinkable))
@@ -164,44 +169,44 @@ class LinkProcessor {
 		}
 		#[new XPair(internalSource, false)]
 	}
-	
+
 	/**
 	 * Extension Method, avoid double subentries in Set 
 	 */
-	def void addExcl(Set<XPair<ILinkable, Boolean>> set, XPair<ILinkable, Boolean> pair){
+	def void addExcl(Set<XPair<ILinkable, Boolean>> set, XPair<ILinkable, Boolean> pair) {
 		var found = false;
-		for (el : set){
+		for (el : set) {
 			if (el.key == pair.key)
 				found = true
 		}
 		if (!found)
 			set.add(pair);
 	}
-	
+
 	/**
 	 * Extension Method, avoid double subentries in Set from List
 	 */
-	def void addAllExcl(Set<XPair<ILinkable, Boolean>> set, List<XPair<ILinkable, Boolean>> pairs){
-		for (pair : pairs){
+	def void addAllExcl(Set<XPair<ILinkable, Boolean>> set, List<XPair<ILinkable, Boolean>> pairs) {
+		for (pair : pairs) {
 			set.addExcl(pair)
 		}
-		
 	}
 
 	/**
 	 * make postprocess
 	 */
-	def postProcess(ILinkObj linkable) {
+	def postProcess(ILinkObj linkable,  ImplicitRulesOnDict grammar) {
 		var successor = linkable.successor as ILinkObj
 		// TODO: 09.08.21 only postprocess if word has no attributes (followed by)
 		if (linkable.getTypes !== null && !linkable.getTypes.empty) {
-			var token = successor?.token  //TODO: 13.04.22 actually postprocess should not be resolved in the sucessor
+			var token = linkable.token 
 			if (token !== null) {
-				var List<ITypeAttributes> attribs = newArrayList()
-				if (token !== null)
-					token.postProcess(linkable, attribs)
-				else
-					linkable.token.postProcess(null, attribs) // last token in chain has no successor
+				
+				try {
+						token.postProcess(grammar)
+				} catch (Exception e) {
+					e.printStackTrace
+				}
 			}
 		}
 	}
@@ -230,9 +235,12 @@ MATCH («_SOURCE»)-[:«GRAMMAR_LINK_» {«_TYPE»:"«_FIRST»"}]-(«_LINK»:«G
 CALL apoc.when(«_SOURCE»<>«_TARGET», 
  "MATCH («_LINK») WHERE NOT ((«_LINK»)<-[:«GRAMMAR_LINK_»  {«_TYPE»:'«_FIRST»'}]-(«_TARGET»)) RETURN «_LINK»", "MATCH («_LINK») RETURN «_LINK»", {«_LINK»:«_LINK», «_TARGET»:«_TARGET», «_SOURCE»:«_SOURCE»}) YIELD «_VALUE»
 WITH «_VALUE».«_LINK» AS «_LINK», «_SOURCE» AS «_SOURCE», «_TARGET» AS «_TARGET»
+OPTIONAL MATCH («_SOURCE»)-[«_START»:«_FORWARD»]->(«_LINK»)
+OPTIONAL MATCH («_TARGET»)-[«_END»:«_FORWARD»]->(«_LINK»)
 OPTIONAL MATCH «_P» = («_LINK»)«new Arrow(_E,_EXCLUDES,null,null,null,true,true, Direction.RIGHT).generate»(«_A»)
-OPTIONAL MATCH («_A»)«new Arrow(_L, null, Direction.RIGHT).generate»(«_B») WHERE NOT type(«_L») = "«_EXCLUDES»"
-RETURN «_SOURCE», «_LINK», «_TARGET», «_A», «_P», COLLECT ({«_LK»:{«_LI»: ID(«_L»), «_LL»:type(«_L»), «_LA»:«_L»}, «_ND»:{«_NI»: ID(«_B»), «_NL»:labels(«_B»), «_NA»: «_B»}}) as «_ATTR»'''
+OPTIONAL MATCH («_A»)«new Arrow(null,null,Direction.RIGHT).generate»(«_R»:«_REDUNDANCE»)
+OPTIONAL MATCH («_A»)«new Arrow(_L, null, Direction.RIGHT).generate»(«_B») WHERE NOT (type(«_L») = "«_EXCLUDES»" OR type(«_L») = "«_REDUNDANT»")
+RETURN «_SOURCE», «_LINK», «_TARGET», «_A», «_P», «_R», COLLECT ({«_LK»:{«_LI»: ID(«_L»), «_LL»:type(«_L»), «_LA»:«_L»}, «_ND»:{«_NI»: ID(«_B»), «_NL»:labels(«_B»), «_NA»: «_B»}}) as «_ATTR», «_START», «_END»'''
 			var List<Record> result = dictAccess.dbAccessor.runCodeRecords(query, Action.READ)
 			if (useCache) addToCache(result, first, second, attrs)
 			return recordToLink(result, first, second, attributes, _LINK)
@@ -331,22 +339,25 @@ RETURN «_SOURCE», «_LINK», «_TARGET», «_A», «_P», COLLECT ({«_LK»:{�
 
 	def List<XPair<ILinkable, Boolean>> createLink(ILinkable first, ILinkable second, Intermediate intermediate) {
 		if (useCache) removeFromCache(first, second)
-		var types = #{_FIRST -> LinkUtils.getLinkHigherType(first).key, _SECOND -> LinkUtils.getLinkHigherType(second).key}
+		
+		val types = #{_FIRST -> LinkUtils.getLinkHigherType(first).key, _SECOND -> LinkUtils.getLinkHigherType(second).key} //type names
+		val typeIDs = #{_FIRST -> first.type.value.baseNode.id, _SECOND -> second.type.value.baseNode.id} // type id's
 		val Pair<CharSequence, Intermediate> firstQ = generateQuery(first, _SOURCE, types.get(_FIRST), true)
 		val Pair<CharSequence, Intermediate> secondQ = generateQuery(second, _TARGET, types.get(_SECOND), false)
 		if (firstQ === null || secondQ === null)
 			return null
-		// TODO: assign Crammar Node to Subclass
-		var attributes = newHashMap
+		// TODO: assign Grammar Node to Subclass
+		val attributes = newHashMap
 		if (intermediate !== null) attributes.put(_MID, intermediate)
 		if (firstQ.value !== null) attributes.put(_OUT_BOX, firstQ.value)
 		if (secondQ.value !== null) attributes.put(_IN_BOX, secondQ.value)
-		var attrs = generateLinkType(attributes)
-		var nonAttr = newArrayList(allGrammarAttrs)
+		val attrs = generateLinkType(attributes)
+		val nonAttr = newArrayList(allGrammarAttrs)
 		nonAttr.removeAll(attributes.keySet)
-		var node = grammarExistOrCreate('''«IF first instanceof ILink
+		val additionalQuery = '''MATCH («_S»)-[«_L1»:«GRAMMAR_LINK_» {«_TYPE»:"«_FIRST»"}]->(«_NODE»)<-[«_L2»:«GRAMMAR_LINK_» {«_TYPE»:"«_SECOND»"}]-(«_T») WHERE (ID(«_S») =«typeIDs.get(_FIRST)» AND ID(«_T»)=«typeIDs.get(_SECOND)»)'''
+		val node = grammarExistOrCreate('''«IF first instanceof ILink
 				»(«types.get(_FIRST)»)«ELSE»«types.get(_FIRST)»«ENDIF»«ARROW_»«IF second instanceof ILink
-				»(«types.get(_SECOND)»)«ELSE»«types.get(_SECOND)»«ENDIF»''', attrs, _NODE, nonAttr, true)
+				»(«types.get(_SECOND)»)«ELSE»«types.get(_SECOND)»«ENDIF»''', attrs, _NODE, nonAttr, additionalQuery, true)
 		if (node === null)
 			return null
 		// TODO: replace with code generator
@@ -384,33 +395,38 @@ RETURN «_SOURCE», «_TARGET», «_LINK»'''
 		if (records !== null && !records.isEmpty) {
 			if (records.get(0) === null)
 				return null
-			
 			var recMap = new HashMap<Long, List<Record>>();
 			for (rec : records) {
 				var link = rec.get(_LINK).asNode()
-				if (link != null){
+				if (link !== null) {
 					var map = recMap.get(link.id)
-					if (map == null){
+					if (map === null) {
 						map = newArrayList()
 						recMap.put(link.id, map)
 					}
-					map.add(rec)	
+					map.add(rec)
 				}
 			}
 			for (id : recMap.keySet) {
 				semanticLinker.makeLink(first, second, intermediate, recMap.get(id));
-
-				for (link : first.link) {
+				val List<ILink> allLinks = newArrayList 
+				switch(first){
+					ILinkObj:{
+						first.links.values.forEach[e | allLinks.addAll(e)]  //TODO: 05.12.22 this may be the reason of redundancy. only ONE type is required here
+					}
+					ILink:{
+						allLinks.addAll(first.links)
+					}
+				}
+				for (link : allLinks) {
 					if (result === null)
 						result = newArrayList
-
-					var value = evaluateNext(link) //and resolve higher below
-					if (value !== null && !value.empty){
+					var value = evaluateNext(link) // and resolve higher below
+					if (value !== null && !value.empty) {
 						result.addAll(value)
 					}
 					var selfLink = new XPair(link as ILinkable, false)
-					
-					if (!result.map[e | e.key].contains(selfLink.key))  // doulbe check. should not be neccesary on sets
+					if (!result.map[e|e.key].contains(selfLink.key)) // double check. should not be necessary on sets
 						result.add(selfLink) // add current
 				}
 			}
@@ -424,22 +440,9 @@ RETURN «_SOURCE», «_TARGET», «_LINK»'''
 				var inner = linkable.allInnerLinks ?: #[]
 				if (inner !== null && !inner.empty) {
 					var innerFirst = inner.get(0)
-					if ((linkable.token as ContainerItem).panelsAccessor instanceof WordPanelAccessor) {
-						var label = ''
-						if (innerFirst instanceof ILink)
-							label = GRAMMAR_CLUSTER_
-						else if (innerFirst instanceof ILinkObj) { // TODO: 12.05.21 should not be possible with multible words in container!!
-							label = _WORD
-						} else
-							return null
-						return new Pair<CharSequence, Intermediate>('''MATCH («varName»:«label») WHERE «FOR innerL : inner SEPARATOR ' OR '»ID(«varName») = «((innerL as ILink).linkInfo.getRecord(_LINK) as Node).id»«ENDFOR»''',
-							new Intermediate(linkable))
-					} else {
-						var Node family = NodeUtil.nodeExistOrCreate(dictAccess.dbAccessor, '''«varName»:«PARAGRAPH_»{«_NAME»:"«PLAIN_»"}''', varName, #[], false)
-						var Node node = NodeUtil.nodeExistOrCreate(dictAccess.dbAccessor, '''«varName»:«SENTENCE_CLASS_»{«_NAME»:"«linkable.linkType.name»"}''', varName, #[], false)
-						NodeUtil.connectionExistOrCreate(dictAccess.dbAccessor, family, new Arrow(_LINK, _OF_CLASS, Direction.LEFT), node)
-						new Pair<CharSequence, Intermediate>('''MATCH («varName»:«SENTENCE_CLASS_») WHERE ID(«varName») = «node.id»''', new Intermediate(linkable))
-					}
+					createSentenceQuery(linkable, varName)
+				} else if (linkable.length(false) == 1) {
+					createSentenceQuery(linkable, varName)
 				} else
 					null
 			}
@@ -454,7 +457,8 @@ RETURN «_SOURCE», «_TARGET», «_LINK»'''
 				new Pair<CharSequence, Intermediate>('''MATCH («varName»:«GRAMMAR_CLUSTER_») WHERE ID(«varName») = «((linkable as ILink).linkInfo.getRecord(_LINK) as Node).id»''', null)
 			}
 			ICardinalLinkable: {
-				return generateQuery(linkable.start.value, varName, null, allowCardinal) // TODO: 17.03.22 Should look for WordClass instead of Word. But works anyway provisionally 
+				// new Pair<CharSequence, Intermediate>('''MATCH («varName»: «_WORD_CLASS» {«_NAME»:"«linkable.baseType.name»"})''', null)
+				generateQuery(linkable.baseType, varName, null, allowCardinal) // TODO: 17.03.22 Should look for WordClass instead of Word. But works anyway provisionally 
 			}
 			default: {
 				null
@@ -462,8 +466,15 @@ RETURN «_SOURCE», «_TARGET», «_LINK»'''
 		}
 	}
 
-	protected def Node grammarExistOrCreate(String nodeName, String attrs, String varName, List<String> exclude, boolean fail) {
-		var subQuery = '''«varName»:«GRAMMAR_CLUSTER_»{«_NAME»:"«nodeName»" «IF (attrs!== null && attrs.length > 0)», «attrs»«ENDIF»}'''
-		NodeUtil.nodeExistOrCreate(dictAccess.dbAccessor, subQuery, varName, exclude, fail);
+	def createSentenceQuery(ILinkContainer linkable, String varName) {
+		var Node family = NodeUtil.nodeExistOrCreate(dictAccess.dbAccessor, '''«varName»:«PARAGRAPH_»{«_NAME»:"«PLAIN_»"}''', varName, #[], false)
+		var Node node = NodeUtil.nodeExistOrCreate(dictAccess.dbAccessor, '''«varName»:«SENTENCE_CLASS_»{«_NAME»:"«linkable.linkType.name»"}''', varName, #[], false)
+		NodeUtil.connectionExistOrCreate(dictAccess.dbAccessor, family, new Arrow(_LINK, _OF_CLASS, Direction.LEFT), node)
+		new Pair<CharSequence, Intermediate>('''MATCH («varName»:«SENTENCE_CLASS_») WHERE ID(«varName») = «node.id»''', new Intermediate(linkable))
+	}
+
+	protected def Node grammarExistOrCreate(String nodeName, String attrs, String varName, List<String> exclude, String optionalQuery, boolean fail) {
+		var subQuery = '''«varName»:«GRAMMAR_CLUSTER_» {«_NAME»:"«nodeName»" «IF (attrs!== null && attrs.length > 0)», «attrs»«ENDIF»}''' 
+		NodeUtil.nodeExistOrCreate(dictAccess.dbAccessor, subQuery, varName, exclude, optionalQuery, fail);
 	}
 }

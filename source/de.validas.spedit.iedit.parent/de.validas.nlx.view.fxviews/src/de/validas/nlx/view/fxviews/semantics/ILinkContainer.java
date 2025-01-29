@@ -19,5 +19,5 @@ public interface ILinkContainer extends ILinkObj {
 	public List<ILinkable> getInnerLink();
 	public IPanelContainer getParent();
 	List<ILinkable> getAllInnerLinks();
-	
+	public abstract int length(boolean terminals);
 }

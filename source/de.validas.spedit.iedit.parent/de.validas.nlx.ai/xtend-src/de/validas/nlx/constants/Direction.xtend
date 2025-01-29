@@ -10,5 +10,7 @@ enum Direction {
 	DIAGONAL,
 	IN,
 	OUT,
+	START,
+	END,
 	ALL
 }

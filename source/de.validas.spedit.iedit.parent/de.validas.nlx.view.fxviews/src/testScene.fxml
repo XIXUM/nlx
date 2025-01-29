@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <MenuButton layoutX="299.0" layoutY="86.0" mnemonicParsing="false" text="MenuButton">
+                    <items>
+                        <CheckMenuItem mnemonicParsing="false" text="Unspecified Action" />
+                        <CheckMenuItem mnemonicParsing="false" text="Unspecified Action" />
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                  </MenuButton>
+                  <ComboBox layoutX="43.0" layoutY="86.0" prefWidth="150.0" />
+               </children>
+            </AnchorPane>
+            <Separator>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </Separator>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <PerspectiveCamera />
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+      <ParallelCamera translateY="40.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+         <rotationAxis>
+            <Point3D x="10.0" y="3.0" z="10.0" />
+         </rotationAxis>
+      </ParallelCamera>
+      <PointLight color="CHARTREUSE" lightOn="true" translateZ="-500.0" />
+      <Sphere layoutX="111.0" layoutY="191.0" radius="20.0" />
+      <StackPane prefHeight="150.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>

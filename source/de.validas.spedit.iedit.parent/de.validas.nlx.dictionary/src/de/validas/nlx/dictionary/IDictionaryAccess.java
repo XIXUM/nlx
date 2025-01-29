@@ -1,20 +1,19 @@
 package de.validas.nlx.dictionary;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.xtext.builder.debug.IBuildLogger;
 import org.neo4j.driver.v1.Record;
+import org.neo4j.driver.v1.types.Node;
 
 import de.validas.nlx.ai.IDbAccess;
+import de.validas.nlx.constants.Direction;
 import de.validas.nlx.dictionary.type.ITypeAttributes;
 import de.validas.nlx.dictionary.type.ITypeHierarchy;
-import de.validas.nlx.dictionary.type.TypeAttributes;
 import de.validas.nlx.dictionary.type.ITypeInfo;
+import de.validas.nlx.dictionary.type.TypeAttributes;
 import de.validas.utils.data.types.XPair;
-
-import java.util.Set;
-import org.neo4j.driver.v1.types.Node;
 
 public interface IDictionaryAccess {
 	
@@ -40,7 +39,9 @@ public interface IDictionaryAccess {
 
 	public abstract TypeAttributes addTypeToWord(String word, String type);
 
-	public abstract void replaceTypeForWord(String word, String oldType, String newType);
+	public abstract TypeAttributes replaceTypeForWord(String word, String oldType, String newType);
+	
+	public abstract void deleteTypeToWord(String word, String oldType);
 
 	public abstract void addSuccessor(DictItem source, DictItem target, Set<String> strings); 
 	
@@ -56,6 +57,8 @@ public interface IDictionaryAccess {
 	
 	public abstract List<Record> disableNode(Node node, ITypeAttributes start, ITypeAttributes end, int cardinality, XPair<String, ITypeAttributes> attrs);
 
+	public abstract List<Record> defineForwardType(Record record, Direction dir);
 
+	
 
 }

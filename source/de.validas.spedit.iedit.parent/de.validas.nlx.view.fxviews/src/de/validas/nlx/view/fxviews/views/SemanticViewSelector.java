@@ -39,6 +39,8 @@ import de.validas.spedit.naturalLang.SentenceChain;
 import de.validas.spedit.presets.NlxDictConstants;
 import de.validas.utils.data.types.XPair;
 
+import static de.validas.nlx.view.fxviews.semantics.constants.FxViewConstants.NLX_BACKGROUND_THREAD;
+
 /**
  * @author schaller
  * manages the selection from the text editor to trigger the node spawning
@@ -68,9 +70,9 @@ public class SemanticViewSelector implements ISemanticViewSelector, IAdaptable, 
 	public void selectionChanged(IWorkbenchPart part, ISelection sel) {
 		if (sel instanceof IStructuredSelection) {
 			// TODO: 11.02.22 check if this is necessary to force viwer assignment 
-			IWorkbenchPart foundView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("de.validas.nlx.view.fxviews.views.SemanticFxViewPart");
+			//IWorkbenchPart foundView = 
 			if (viewer == null)
-				viewer = foundView;
+				viewer = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("de.validas.nlx.view.fxviews.views.SemanticFxViewPart");
 			
 			if (viewer != null) {
 				
@@ -103,8 +105,9 @@ public class SemanticViewSelector implements ISemanticViewSelector, IAdaptable, 
 					});
 					Thread bgThread = ((ISemanticTrainViewPart)viewer).getBackgroundThread();
 					if (bgThread == null || bgThread.getState() == Thread.State.TERMINATED) {
+						//TODO: 03.07.2022 check why thread cannot be restarted here
 						bgThread = new Thread(task);
-						bgThread.setName("NLX BackgroundThread");
+						bgThread.setName(NLX_BACKGROUND_THREAD);
 						bgThread.setDaemon(true);
 						bgThread.start();
 						((ISemanticTrainViewPart)viewer).setBackgroundThread(bgThread);

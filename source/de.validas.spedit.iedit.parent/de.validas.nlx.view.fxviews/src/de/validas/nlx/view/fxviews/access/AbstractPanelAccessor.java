@@ -5,6 +5,7 @@ package de.validas.nlx.view.fxviews.access;
 
 import java.util.ArrayList;
 import java.util.List;
+import de.validas.utils.data.lists.LinkedList;
 
 /**
  * @author schaller
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public abstract class AbstractPanelAccessor implements IPanelsAccessor {
 	
-	protected List<IItem> tokenChain = new ArrayList<>();
+	protected LinkedList<IItem> tokenChain = new LinkedList<>();
 
 	/**
 	 * 
@@ -33,13 +34,6 @@ public abstract class AbstractPanelAccessor implements IPanelsAccessor {
 		if (index < tokenChain.size()) 
 			return tokenChain.get(index);
 		return null;
-	}
-
-	@Override
-	public boolean hasComboBox(int index) {
-		if (index < tokenChain.size()) 
-			return tokenChain.get(index).hasComboBox();
-		return false;
 	}
 
 	@Override

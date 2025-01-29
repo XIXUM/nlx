@@ -41,11 +41,7 @@ Export-Package: de.validas.spedit,
  de.validas.spedit.scoping,
  de.validas.spedit.serializer,
  de.validas.spedit.services,
- de.validas.spedit.validation,
- de.validas.spedit.validation.semantics,
- de.validas.spedit.validation.semantics.bool,
- de.validas.spedit.validation.semantics.predicates,
- de.validas.spedit.validation.semantics.token
+ de.validas.spedit.validation
 Import-Package: org.apache.log4j
 Bundle-ClassPath: lib/commons-collections4-4.0.jar,
  .

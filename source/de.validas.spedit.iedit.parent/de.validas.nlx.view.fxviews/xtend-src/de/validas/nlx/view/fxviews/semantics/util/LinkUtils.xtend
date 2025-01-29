@@ -1,8 +1,6 @@
 package de.validas.nlx.view.fxviews.semantics.util
 
 import de.validas.nlx.dictionary.type.ITypeAttributes
-import de.validas.nlx.view.fxviews.access.WordPanelAccessor
-import de.validas.nlx.view.fxviews.access.elements.ContainerItem
 import de.validas.nlx.view.fxviews.access.elements.ShortCutItem
 import de.validas.nlx.view.fxviews.access.elements.SmallItem
 import de.validas.nlx.view.fxviews.semantics.ILink
@@ -22,6 +20,9 @@ import javafx.geometry.Bounds
 import javafx.geometry.Point2D
 
 import static de.validas.nlx.view.fxviews.semantics.constants.LinkConstants.LINK_HEIGHT
+import java.util.ArrayList
+import java.util.Arrays
+import de.validas.nlx.dictionary.grammar.types.IGrammarType
 
 class LinkUtils {
 	/**
@@ -37,47 +38,41 @@ class LinkUtils {
 			else
 				return results
 		} else {
-			return null;
+			return null
 		}
 	}
 
 	def static List<XPair<Integer, ILinkable>> traceAllRoots(ILinkable sourceLink, int depth, boolean bidirect) { // find highest rule
-		if (sourceLink !== null && sourceLink instanceof ILinkable) {
-			var Map<String, List<ILink>> parents = newHashMap()
+		if (sourceLink !== null) {
+			val List<ILink> parents = newArrayList()
 			if (sourceLink instanceof NodePanel) {
-				parents = sourceLink.getLinks()
+				sourceLink.getLinks()?.values.forEach[l | parents.addAll(l)]
 			} else {
-				var links = sourceLink.getLink()
-				if (links !== null && !links.isEmpty)
-					parents = newHashMap(links.get(0).name -> links)
+				parents.addAll(sourceLink.getLink())
 			}
-			if (parents !== null && !parents.empty) {
-				var result = newArrayList()
-				for (key : parents.keySet) {
-					for (link : parents.get(key)) {
-						var l = if (link.level > depth) link.level else depth + 1
-						var trace = traceAllRoots(link, l, bidirect)
-						if (trace !== null)
-							for (el : trace){
-								if (el.value.lowerBound >= sourceLink.lowerBound || bidirect) // recurse only into links that are right of sourcelink
-									result.add(el)
-							}
-					}
+			var result = newArrayList()
+			if (parents !== null && !parents.empty) { // nullcheck obsolete
+				for (link : parents) {
+					var l = if (link.level > depth) link.level else depth + 1
+					var trace = traceAllRoots(link, l, bidirect)
+					if (trace !== null)
+						for (el : trace){
+							if (el.value.lowerBound >= sourceLink.lowerBound || bidirect) // recurse only into links that are right of sourcelink
+								result.add(el)
+						}
 				}
-				if (!result.empty)
-					return result
 			}
-			return newArrayList(new XPair<Integer, ILinkable>(depth, sourceLink))
-		} else {
-			return null;
-		}
+			result.add(new XPair<Integer, ILinkable>(depth, sourceLink))
+			return result
+		} 
+		return null
 	}
 
 	def static autoRoute(ILinkObj startNode) {
-		var eol = false;
+		var eol = false
 		var ILinkObj next = startNode
 		while (!eol) {
-			var result = doRoute(next);
+			var result = doRoute(next)
 			if (result !== null) {
 				next = next.successor as ILinkObj
 				while (next !== null && next.token instanceof SmallItem) {
@@ -89,24 +84,43 @@ class LinkUtils {
 		}
 	}
 
+	/**
+	 * selects highest level root
+	 */
 	private def static doRoute(ILinkable link) {
-		var root = LinkUtils.traceAllRoots(link, 0, true);
-		var max = 0;
-		var XPair<Integer, ILinkable> result = null;
+		val root = LinkUtils.traceAllRoots(link, 0, true)
+		var max = 0
+		var maxSpan = 0
+		var XPair<Integer, ILinkable> result = null
 		var i = 0
-		var selection = -1;
+		var selection = -1
 		for (el : root ?: #[]) {
-			var el_link = el.value
-			var key = traceLeaves(el_link, 0) // el.getKey();
+			val el_link = el.value
+			val key = traceLeaves(el_link, 0)
 			if (el_link instanceof ILink) {
-				var maxLevel = el_link.maxLevel
+				val maxLevel = el_link.maxLevel
+				val span = el_link.higherBound - el_link.lowerBound
 				if (maxLevel == 0 || maxLevel >= key )
-					if (key > max && !isDisabled(el)) {
-						max = key;
-						result = el;
-						selection = i
-					} else if (result === null) {
-						result = el;
+					if (key < max || isDisabled(el)) {
+						if (result === null)
+							result = el
+					} else {
+						if(key > max){ 	// if not ambiguous decide by level
+							max = key
+							maxSpan = span
+							result = el
+							selection = i
+						} else if(key === max){ // if level i ambiguous decide by span
+							if (span > maxSpan){
+								max = key
+								maxSpan = span
+								result = el
+								selection = i
+							}
+						}
+					}
+					if (result === null) {
+						
 					}
 			}
 			i++
@@ -118,7 +132,7 @@ class LinkUtils {
 					if (i === selection) {
 						selectRoute(el.value, null, max)
 					} else {
-						deselectRoute(el.value, max)
+						//deselectRoute(el.value, max)
 					}
 			}
 		}
@@ -148,6 +162,10 @@ class LinkUtils {
 		return level + 1
 	}
 
+
+	/**
+	 * deselect links recursively
+	 */
 	def static void selectRoute(ILinkable linkable, String typeName, int max) {
 		if (linkable instanceof ILinkObj) { 
 			var token = linkable.token
@@ -162,10 +180,12 @@ class LinkUtils {
 		}
 	}
 
+	/**
+	 * deselect links recursively
+	 */
 	def static void deselectRoute(ILinkable linkable, int max) {
 		if (linkable instanceof ILink) {
 			linkable.maxLevel = max
-			// linkable.style = LinkStyle.CLEAR
 			linkable.style.replaceStyle(LinkStyle.LINK, LinkStyle.LOW_LINK)
 			deselectRoute(linkable.endLink.value,  max)
 			deselectRoute(linkable.startLink.value,  max)
@@ -187,13 +207,15 @@ class LinkUtils {
 	}
 	
 	def static Point2D linkToLinkCalculation(ILink link, boolean automatic) {
-		var startLink = link.getStartLink();
-		var endLink = link.getEndLink();
+		if (link === null)
+			return null
+		var startLink = link.getStartLink()
+		var endLink = link.getEndLink()
 
-		var startPoint = recursiveLinkToPoint(startLink, link, false); // TODO: might be obsolete if method gets point
+		var startPoint = recursiveLinkToPoint(startLink, link, false) // TODO: might be obsolete if method gets point
 																		// from parent
-		var endPoint = recursiveLinkToPoint(endLink, link, false);
-		return calculateLinkOffset(startPoint, endPoint);
+		var endPoint = recursiveLinkToPoint(endLink, link, false)
+		return calculateLinkOffset(startPoint, endPoint)
 	}
 	
 	/**
@@ -203,7 +225,7 @@ class LinkUtils {
 	 */
 	def static Point2D calculateLinkOffset(Point2D startPoint, Point2D endPoint) {
 		if (startPoint === null || endPoint === null)
-			return null;
+			return null
 		var ey = endPoint.getY()
 		var sy = startPoint.getY()
 		var double y = 0
@@ -211,23 +233,22 @@ class LinkUtils {
 			y = ey
 		else
 			y = sy
-		return new Point2D((endPoint.getX() + startPoint.getX()) / 2, y + LINK_HEIGHT);
+		return new Point2D((endPoint.getX() + startPoint.getX()) / 2, y + LINK_HEIGHT)
 	}
 	
 	def static Point2D recursiveLinkToPoint(XPair<String,ILinkable> link, ILink parent, boolean automatic) {
+		if (link === null)
+			return null
 		var linkObj = link.getValue()
 		switch (linkObj){
 			ContainerPanel: {
-				var typesAll = (linkObj as ContainerPanel).getInnerLink()
-				if (!((linkObj.token as ContainerItem).panelsAccessor instanceof WordPanelAccessor)) {
-					if (typesAll !== null && !typesAll.empty)
-						return midPointFromRoot(linkObj)
-				} else {
-					for (ILinkable type : typesAll?:#[]) 
-						if (type.getName().equals(link.getKey()))
-							return midPointFromRoot(linkObj)	
-				}
-				return null
+				// makes no sense:
+//				var typesAll = (linkObj as ContainerPanel).getInnerLink()
+//				for (ILinkable type : typesAll?:#[]) 
+//					if (type.getName().equals(link.getKey()))
+//						return midPointFromRoot(linkObj)	
+				
+				return  midPointFromRoot(linkObj)
 			} 
 			default: 
 				return innerRecursionResolveLink(linkObj, parent, automatic)
@@ -238,15 +259,17 @@ class LinkUtils {
 		var root = opposite.root
 		if (root !== null){
 			var Bounds endBounds = root.boundsInParent
-			return new Point2D((endBounds.minX + endBounds.maxX) / 2, endBounds.maxY);
+			return new Point2D((endBounds.minX + endBounds.maxX) / 2, endBounds.maxY)
 		} else 
-			return new Point2D(0,0);
+			return new Point2D(0,0)
 	}
 	
 	def static innerRecursionResolveLink(ILinkable linkObj, ILink parent,  boolean automatic){
+		if (linkObj == null)
+			return null
 		switch (linkObj){
 			IPanel: {
-				var types = linkObj.getLink();
+				var types = linkObj.getLink()
 				if (types !== null && !types.isEmpty())  // TODO: 17.09.21 may be optimized to better find out if link matches object
 					for (ILink type : types) {
 						if (type.equals(parent) || parent === null)
@@ -260,16 +283,10 @@ class LinkUtils {
 	}
 	
 	def static getLinkHigherType(ILinkable linkable) { // consider to move Method in ILinkable
-		var ILinkType type = null
+		var IGrammarType type = null
 		switch linkable {
 			ContainerPanel:{
-				if ((linkable.token as ContainerItem).panelsAccessor instanceof WordPanelAccessor){
-					for(inner : linkable.innerLink ?: #[]) {
-						if (type === null)
-							type = inner.linkType	
-					}
-				} else 
-					type = linkable.linkType
+				type = linkable.linkType
 			}
 			default: {
 				type = linkable.linkType
@@ -292,17 +309,44 @@ class LinkUtils {
 	def static calculateBounds(XPair<String, ILinkable> start, XPair<String, ILinkable> end) {
 		var high = 0 
 		var low = 0
-		val startV = start.getValue();
-		val endV = end.getValue();
+		val startV = start.getValue()
+		val endV = end.getValue()
 		
 		if (startV.getLowerBound()<endV.getHigherBound()) {
-			low = startV.getLowerBound();
-			high = endV.getHigherBound();
+			low = startV.getLowerBound()
+			high = endV.getHigherBound()
 		} else {
-			low = endV.getLowerBound();
-			high = startV.getHigherBound();
+			low = endV.getLowerBound()
+			high = startV.getHigherBound()
 		}
 		return low -> high
+	}
+	
+	def static addStyle(LinkStyle style, LinkStyle newStyle) {
+		if (style === null){
+			return LinkStyle.create(newStyle)
+		} else {
+			style.add(newStyle)
+		}
+		return style	
+	}
+	
+	/**
+	 * @param start
+	 * @param endPanel
+	 * @return
+	 */
+	def static calculateLevel(ILinkable start, ILinkable endPanel) {
+		var level = 0
+		//TODO: 18.08.22 better use Math.max
+		for (ILinkable linkable : Arrays.asList(start, endPanel)) { // gather highest link hierarchy
+			if (linkable instanceof ILink) {
+				var l = linkable.getLevel()
+				if(l > level)
+					level = l
+			}
+		}
+		level
 	}
 	
 }

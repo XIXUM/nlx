@@ -32,8 +32,9 @@ class NaturalLangConstants extends AbstractConstantClass {
 	public static val _SUB_CHAPTER 				= getString("_SUB_CHAPTER")				// = "Sub Chapter"
 	public static val _MAIN_CHAPTER 			= getString("_MAIN_CHAPTER")			// = "Main Chapter"
 	public static val _DASH  					= getString("_DASH")					// = "-"
-	public static val _NOTE                     = getString("_NOTE")					// = "Note"
-	public static val _EXAMPLE                  = getString("_EXAMPLE")					// = "Example"
+	public static val _NOTE                     = getString("_NOTE")					// = "note"
+	public static val _EXAMPLE                  = getString("_EXAMPLE")					// = "example"
+	public static val _SOURCE  	                = getString("_SOURCE")					// = "source"
 	
 	public static val _INTERNAL_REF_NODE		= getString("_INTERNAL_REF_NODE")		//"Internal Reference Node"
 	

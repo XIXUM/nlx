@@ -321,7 +321,7 @@ public class BracketSentenceImpl extends BracketsImpl implements BracketSentence
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (open: ");
     result.append(open);
     result.append(", separator: ");

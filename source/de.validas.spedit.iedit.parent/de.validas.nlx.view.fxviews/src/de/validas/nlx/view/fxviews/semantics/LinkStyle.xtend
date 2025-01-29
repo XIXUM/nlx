@@ -9,7 +9,10 @@ import static de.validas.nlx.view.fxviews.semantics.constants.FxViewConstants._L
 import static de.validas.nlx.view.fxviews.semantics.constants.FxViewConstants._DISABLED
 import static de.validas.nlx.view.fxviews.semantics.constants.FxViewConstants._LINK
 import static de.validas.nlx.view.fxviews.semantics.constants.FxViewConstants._DASHED
+import static de.validas.nlx.view.fxviews.semantics.constants.FxViewConstants._FORWARD_LINK
 import java.util.ArrayList
+import javafx.scene.paint.Color
+import java.util.Set
 
 class LinkStyle {
 	/**
@@ -21,11 +24,20 @@ class LinkStyle {
 	public static final LinkStyle DISABLED = new LinkStyle(#[_DISABLED])
 	public static final LinkStyle LOW_LINK = new LinkStyle(#[_LOW_LINK])
 	public static final LinkStyle DASHED = new LinkStyle(#[_DASHED])
+	public static final LinkStyle FORWARD_LINK = new LinkStyle(#[_FORWARD_LINK])
 	
-	protected List<String> styleClasses
+	protected Set<String> styleClasses
+	protected Color color
+	
+	private new (List<String> styleClasses, Color color){
+		this.styleClasses = newHashSet
+		if (styleClasses !== null) 
+			this.styleClasses.addAll(styleClasses)
+		this.color = color
+	}
 	
 	private new (List<String> styleClasses){
-		this.styleClasses = styleClasses
+		this(styleClasses, null)
 	}
 	
 	def getClasses(){
@@ -35,8 +47,7 @@ class LinkStyle {
 	def add(LinkStyle style) {
 		var cls = new ArrayList(style.classes)
 		cls.addAll(0, styleClasses)
-		//styleClasses.addAll(cls)
-		styleClasses = cls
+		styleClasses = cls.toSet
 	}
 	
 	def replaceStyle(LinkStyle oldStyle, LinkStyle newStyle) {
@@ -44,7 +55,7 @@ class LinkStyle {
 		if (styleClasses.containsAll(olcls)){
 			var cls = new ArrayList(styleClasses)
 			cls.removeAll(olcls)
-			styleClasses = cls
+			styleClasses = cls.toSet
 			add(newStyle)
 		}
 	}

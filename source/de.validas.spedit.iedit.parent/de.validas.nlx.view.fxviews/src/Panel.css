@@ -19,13 +19,17 @@
    -fx-stroke: #000000; 
 }
 
+.forwardLink {
+   -fx-stroke: #2266FF; 
+}
+
 .link:hover {
    -fx-stroke: #00C0F0;
    -fx-stroke-width: 4; 
 }
 
 .lowLink {
-   -fx-stroke: #B0B0B0; 
+   -fx-opacity: 0.3; 
 }
 
 .disabled {
@@ -107,4 +111,12 @@
 
 .plusIcon:hover {
     -fx-fill: #50A0FF ;
+}
+
+.minusIcon {
+   -fx-fill: #FFFFFF00; 
+}
+
+.minusIcon:hover {
+    -fx-fill: #FFA050 ;
 }

@@ -1,10 +1,9 @@
 package de.validas.nlx.view.fxviews.semantics
 
-import de.validas.spedit.naturalLang.AllElements
+import de.validas.nlx.view.fxviews.semantics.types.InterpunctionType
 import de.validas.spedit.naturalLang.BracketSentence
 import de.validas.spedit.naturalLang.ExtBracketSentence
 import de.validas.spedit.naturalLang.impl.WordImpl
-import de.validas.nlx.view.fxviews.semantics.types.InterpunctionType
 import org.eclipse.emf.ecore.EObject
 
 class Intermediate {
@@ -28,10 +27,10 @@ class Intermediate {
 		} 
 		if (container !== null) { // this control structure looks odd but has a reason
 			switch el: container.token.element {
-				WordImpl:{
+				WordImpl:{			//TDOD: 22.12.22: deprecated with flat chain (only bracket sentences are supported)
 					return null
 				}
-				ExtBracketSentence,
+				ExtBracketSentence,  
 				BracketSentence:{
 					value = el.eClass.name
 				}

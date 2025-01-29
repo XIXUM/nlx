@@ -10,14 +10,17 @@ import java.util.Collections;
 import java.util.List;
 
 import de.validas.nlx.dictionary.DictItem;
+import de.validas.nlx.dictionary.grammar.rules.ImplicitRulesOnDict;
 import de.validas.nlx.dictionary.type.ITypeAttributes;
 import de.validas.nlx.dictionary.type.ITypeHierarchy;
+import de.validas.nlx.view.fxviews.access.elements.AbstractItem;
 import de.validas.nlx.view.fxviews.semantics.ILink;
 import de.validas.nlx.view.fxviews.semantics.ILinkObj;
 import de.validas.nlx.view.fxviews.semantics.ILinkType;
 import de.validas.nlx.view.fxviews.semantics.types.LiteralType;
 import de.validas.nlx.view.fxviews.visual.NodePanel;
 import de.validas.spedit.naturalLang.AllElements;
+import de.validas.utils.data.lists.LinkedList;
 import de.validas.utils.data.types.XPair;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.Node;
@@ -30,7 +33,7 @@ public class ListPanelAccessor extends AbstractPanelAccessor {
 
 	
 
-	public class Item implements IItem {
+	public class Item extends AbstractItem {
 		protected String name;
 		protected List<String> items;
 		protected int selection;
@@ -51,13 +54,6 @@ public class ListPanelAccessor extends AbstractPanelAccessor {
 					setSelection(newItem);
 				}
 			};
-		}
-
-		/**
-		 * @return the name
-		 */
-		public String getName() {
-			return name;
 		}
 
 		/**
@@ -101,11 +97,6 @@ public class ListPanelAccessor extends AbstractPanelAccessor {
 
 		public void setSelectionChangedListener(ChangeListener<? super String> listener) {
 			this.listener = listener;
-		}
-
-		@Override
-		public boolean hasComboBox() {
-			return true;
 		}
 
 		@Override
@@ -160,7 +151,7 @@ public class ListPanelAccessor extends AbstractPanelAccessor {
 		}
 
 		@Override
-		public void postProcess(ILinkObj precessor, List<ITypeAttributes> attribs) {
+		public void postProcess(ImplicitRulesOnDict grammar) {
 			// method stub
 			
 		}
@@ -192,6 +183,12 @@ public class ListPanelAccessor extends AbstractPanelAccessor {
 			return name;
 		}
 
+		@Override
+		public String getName() {
+			// TODO Auto-generated method stub
+			return name;
+		}
+
 	}
 
 	/**
@@ -200,7 +197,7 @@ public class ListPanelAccessor extends AbstractPanelAccessor {
 	 * 
 	 */
 	public ListPanelAccessor(List<String> items, List<String> list) {
-		tokenChain = new ArrayList<>();
+		tokenChain = new LinkedList<>();
 
 		for (String token : list) {
 			tokenChain.add(new Item(token, items, 0));

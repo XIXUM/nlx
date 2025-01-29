@@ -5,6 +5,10 @@ package de.validas.nlx.view.fxviews.access.elements;
 
 import static de.validas.nlx.dictionary.constants.DictionaryConstants._IT_WORD;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import de.validas.nlx.view.fxviews.access.IItem;
@@ -32,14 +36,8 @@ public class ItWordItem extends BasicItem {
 		}
 	}
 
-	public static IItem create(ItWord el) {
-		return new ItWordItem(el);
-	}
-	
-
-	@Override
-	public boolean hasComboBox() {
-		return false;
+	public static Collection<IItem> create(ItWord el) {
+		return new ArrayList<IItem>(Collections.singletonList(new ItWordItem(el)));
 	}
 
 	@Override

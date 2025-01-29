@@ -37,6 +37,10 @@ class LinkInfo implements ILinkInfo {
 		record
 	}
 	
+	override getRecordMap() {
+		return #[record];
+	}
+	
 	
 	
 }

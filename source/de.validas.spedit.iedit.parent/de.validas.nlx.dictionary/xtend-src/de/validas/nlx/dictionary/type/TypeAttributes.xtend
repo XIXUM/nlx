@@ -83,6 +83,11 @@ class TypeAttributes implements ITypeAttributes {
 
 	}
 	
+	//TODO: 07.08.22 add active capability
+	//override isActive() {
+	// ... current pattern set as active. color Attribute green or so.
+	//}
+	
 	override getBaseNode() {
 		baseNode
 	}

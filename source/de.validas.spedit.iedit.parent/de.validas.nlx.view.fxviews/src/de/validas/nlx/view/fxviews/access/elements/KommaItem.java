@@ -3,21 +3,18 @@
  */
 package de.validas.nlx.view.fxviews.access.elements;
 
-import static de.validas.nlx.view.fxviews.access.ItemType.KOMMA;
-import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._KOMMA;
+import static de.validas.nlx.dictionary.grammar.types.ItemType.KOMMA;
 
 import java.util.Collections;
 import java.util.List;
 
+import de.validas.nlx.constants.TokenPosition;
 import de.validas.nlx.dictionary.IDictionaryAccess;
-import de.validas.nlx.dictionary.type.ITypeAttributes;
 import de.validas.nlx.dictionary.type.ITypeHierarchy;
 import de.validas.nlx.view.fxviews.access.IItem;
-import de.validas.nlx.view.fxviews.semantics.ILinkObj;
 import de.validas.nlx.view.fxviews.semantics.types.InterpunctionType;
 import de.validas.spedit.naturalLang.Elements;
-import javafx.scene.Node;
-
+			  
 /**
  * @author schaller
  *

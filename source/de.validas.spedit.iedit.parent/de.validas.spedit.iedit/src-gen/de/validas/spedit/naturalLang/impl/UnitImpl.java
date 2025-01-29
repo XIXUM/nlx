@@ -447,7 +447,7 @@ public class UnitImpl extends NoNElementX2Impl implements Unit
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (value: ");
     result.append(value);
     result.append(", signature: ");

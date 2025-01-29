@@ -15,11 +15,10 @@ import de.validas.nlx.constants.Direction
 import de.validas.nlx.dictionary.constants.AttributeSet
 import org.neo4j.driver.v1.types.Node
 
-class CardinalType implements ICardinalLinkable {
+class CardinalType extends AbstractGrammarType implements ICardinalLinkable {
 	
 	XPair<String, ILinkable> start
 	XPair<String, ILinkable> end
-	ILinkable parent
 	ITypeAttributes attribs
 	Integer lower
 	Integer higher
@@ -37,7 +36,7 @@ class CardinalType implements ICardinalLinkable {
 		this.lower = pair.getKey();
 		this.higher = pair.getValue();
 		this.name = start.key     //'''«start.key»+'''   //plus indicates cardinality >= 1
-		cardinality = start.value.cardinality + 1  //TODO: 14.03.2022 count cardinality
+		cardinality = Math.max(start.value.cardinality, end.value.cardinality) + 1  //TODO: 14.03.2022 count cardinality
 
 		var baseN = (attribs as LinkTypeAttribute).getParent(AttributeSet.START).baseNode
 
@@ -51,14 +50,6 @@ class CardinalType implements ICardinalLinkable {
 	
 	override getHigherBound() {
 		higher
-	}
-	
-	override getLink() {
-		null
-	}
-	
-	override getLinkType() {
-		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 	override getLowerBound() {
@@ -90,9 +81,11 @@ class CardinalType implements ICardinalLinkable {
 	}
 	
 	override getBaseType(){
-		if((parent as ILink).hasCardinalType)
-			((parent as ILink).cardinalType as ICardinalLinkable).baseType
-		start.value
+		var higher = (parent as ILink).startLink.value
+		if (higher instanceof ILink && (higher as ILink).hasCardinalType)
+			((higher as ILink).cardinalType as ICardinalLinkable).baseType
+		else
+			start.value
 	}
 	
 	override getStart(){

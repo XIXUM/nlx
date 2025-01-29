@@ -1,16 +1,16 @@
 package de.validas.nlx.ai.util
 
 import de.validas.nlx.constants.Direction
+import java.io.Serializable
 import java.util.Map
-import com.google.common.collect.ComputationException
 
 class Arrow {
 	
 	String varName
 	String classT
 	Direction direction
-	Map<String, String> attribs
-	boolean quotes
+	Map<String, Serializable> attribs
+	//boolean quotes
 	boolean usePath
 	String min
 	String max
@@ -19,11 +19,26 @@ class Arrow {
 		this(varName, classT, null, true, direction)
 	}
 	
-	new(String varName, String classT, Map<String, String> attribs, boolean useQuotes, Direction direction) {
-		this(varName, classT, attribs, null, null, false, useQuotes, direction)
+	new(String varName, String classT, Map<String, Serializable> attribs, Direction direction) {
+		this(varName, classT, attribs, null, null, false, direction)
 	}
 	
-	new(String varName, String classT, Map<String, String> attribs, String min, String max, boolean usePath, boolean useQuotes, Direction direction) {
+	
+	/**
+	 * @Deprecated
+	 * deprecated interface because useQuotes is determined dynamically
+	 */
+	@Deprecated
+	new(String varName, String classT, Map<String, Serializable> attribs, boolean useQuotes, Direction direction) {
+		this(varName, classT, attribs, null, null, false, direction)
+	}
+	
+	@Deprecated
+	new(String varName, String classT, Map<String, Serializable> attribs, String min, String max, boolean usePath, boolean useQuotes, Direction direction) {
+		this(varName, classT, attribs, min, max, usePath, direction)
+	}
+	
+	new(String varName, String classT, Map<String, Serializable> attribs, String min, String max, boolean usePath, Direction direction) {
 		this.varName = varName
 		this.classT = classT
 		this.direction = direction
@@ -32,7 +47,7 @@ class Arrow {
 		this.max = max
 //		if (min !== null && max == null)
 //			throw new ComputationException(new Throwable("if 'min' specified, then 'max' is required"))  //TODO: convert into constant
-		this.quotes = useQuotes
+		//this.quotes = useQuotes
 		this.usePath = usePath
 	}
 	
@@ -64,7 +79,7 @@ class Arrow {
 		ENDIF» «
 		IF(attribs!== null && !attribs.empty)»{«
 			FOR attr: attribs.keySet SEPARATOR ", "»«attr»:«
-				IF quotes»"«attribs.get(attr)»"«
+				IF requirequotes(attribs.get(attr))»"«attribs.get(attr)»"«
 				ELSE»«attribs.get(attr)»«ENDIF»«
 			ENDFOR»}«
 		ENDIF»«
@@ -79,6 +94,20 @@ class Arrow {
 		ELSE
 			»-«
 		ENDIF»'''
+	}
+	
+	def requirequotes(Serializable attr) {
+		switch(attr){
+			Number:{
+				false
+			}
+			CharSequence:{
+				!attr.chars.anyMatch(x | x.equals('"'))
+			}
+			default:{
+				true
+			}
+		}
 	}
 	
 }

@@ -5,12 +5,15 @@ package de.validas.nlx.view.fxviews.access.elements;
 
 import static de.validas.nlx.dictionary.constants.DictionaryConstants._UNIT;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import de.validas.nlx.dictionary.DictItem;
+import de.validas.nlx.dictionary.grammar.rules.ImplicitRulesOnDict;
 import de.validas.nlx.dictionary.type.ITypeAttributes;
 import de.validas.nlx.dictionary.type.ITypeHierarchy;
 import de.validas.nlx.view.fxviews.access.IItem;
@@ -24,7 +27,7 @@ import javafx.scene.Node;
  * @author schaller
  *
  */
-public class UnitItem extends AbstractItem implements IItem {
+public class UnitItem extends AbstractItem {
 
 	String value; 
 	/**
@@ -50,21 +53,6 @@ public class UnitItem extends AbstractItem implements IItem {
 	public String getLabel() {
 		return value;
 	}
-	
-	/**
-	 * Factory Method for Class UnitItem
-	 * @param el
-	 * @return
-	 */
-	public static IItem create(Unit el) {
-		
-		return new UnitItem(el);
-	}
-
-	@Override
-	public boolean hasComboBox() {
-		return false;
-	}
 
 	@Override
 	public String getCssClass() {
@@ -83,11 +71,11 @@ public class UnitItem extends AbstractItem implements IItem {
 		return Collections.EMPTY_LIST;
 	}
 
-	@Override
-	public void postProcess(ILinkObj precessor, List<ITypeAttributes> attribs) {
-		// stub
-		
-	}
+//	@Override
+//	public void postProcess(ImplicitRulesOnDict grammar) {
+//		// stub
+//		
+//	}
 
 	@Override
 	public List<XPair<String, ITypeAttributes>> getTypes() {
@@ -109,8 +97,13 @@ public class UnitItem extends AbstractItem implements IItem {
 	}
 	
 	
-//	public long generateID()
-//	{
-//		return -1;
-//	}
+	/**
+	 * Factory Method for Class UnitItem
+	 * @param el
+	 * @return
+	 */
+	public static Collection<IItem> create(Unit el) {
+		
+		return new ArrayList<IItem>(Collections.singletonList(new UnitItem(el)));
+	}
 }

@@ -27,11 +27,17 @@ import javafx.scene.control.ComboBox
 
 import static de.validas.nlx.dictionary.constants.NodeConstants._NONE
 import static de.validas.nlx.view.fxviews.semantics.constants.FxViewConstants._CIRCLE_BUTTON
+import static de.validas.nlx.view.fxviews.semantics.constants.FxViewConstants._DELETE_BUTTON
+import de.validas.utils.data.lists.LinkedList
+import de.validas.utils.data.lists.IAppendable
+import de.validas.utils.data.lists.AbstractAppendable
+import javafx.application.Platform
 
-class TypeElement implements IJavaFxObj, ITypeElement {
+class TypeElement extends AbstractAppendable implements IJavaFxObj, ITypeElement {
 	protected String typeName
 	protected ITypeAttributes typeAttributes
 	LiteralType parent
+	protected LinkedList<? extends IAppendable> container
 	Node root
 	IElmController controller;
 	IDragController dragController;
@@ -55,6 +61,9 @@ class TypeElement implements IJavaFxObj, ITypeElement {
 		}
 	]
 	
+	Procedure2<IJavaFxObj, Event> deleteButton = [parent, event |
+		deleteTypeInDict(typeName)
+	]
 	
 	
 
@@ -82,6 +91,7 @@ class TypeElement implements IJavaFxObj, ITypeElement {
 			controller = loader.getController();
 			if (controller instanceof TypeControlElController) {
 				controller.secondRow.managedProperty.bind(controller.secondRow.visibleProperty)
+				controller.deleteContainer.managedProperty.bind(controller.deleteContainer.visibleProperty)
 				var items = new ArrayList((parent?.getParent as ILinkObj)?.token?.wordTypes ?: #[])
 				if (withNone)
 					items.add(0, new NoneTypeHierarchy())
@@ -91,7 +101,12 @@ class TypeElement implements IJavaFxObj, ITypeElement {
 				} else {
 					controller.sphere.visible = true
 				}
+				if (parent.typeEls.size()<1)
+					controller.deleteContainer.visible = false
+				else 	
+					controller.deleteContainer.visible = true
 				controller.addListener(_CIRCLE_BUTTON, plusButton);
+				controller.addListener(_DELETE_BUTTON, deleteButton);
 			}
 			controller.addDragController(dragController);
 			controller.setParent(this);
@@ -104,7 +119,7 @@ class TypeElement implements IJavaFxObj, ITypeElement {
 	def addItems(List<ITypeHierarchy> types) {
 		if (controller instanceof TypeControlElController) {
 			var combo = controller.mainCombo
-			if (typeName !== null) {
+			if (typeName !== null) {  // Second level WordType deprecated
 				combo.items += types.map[t|t.type]
 				combo.value = typeName
 
@@ -113,26 +128,69 @@ class TypeElement implements IJavaFxObj, ITypeElement {
 
 			setSelectionChangedListener(controller.mainCombo, [Object obs, String oldValue, String newValue | 
 						if (newValue !== null)
-							typeName = newValue
 							if (oldValue.equals(_NONE)){
 								addTypeToDict(newValue) 
+							} else if (alreadyExist(newValue)) { // Each type can only exist once delete old if another already existing type chosen
+								deleteTypeInDict(oldValue)
 							} else {
 								replaceTypeInDict(oldValue, newValue)
 							}
+							typeName = newValue
 					]);
 					
 		}
 	}
 	
+	def setDeleteVisible(boolean visibility){
+		if (controller instanceof TypeControlElController)
+			if (!Platform.isFxApplicationThread)
+				Platform.runLater([| 
+					controller.deleteContainer.visible = visibility	
+				])
+			else
+				controller.deleteContainer.visible = visibility
+	}
+	
+	
+	
+	def alreadyExist(String string) {
+		if (parent instanceof WordType){ //TODO: 06.12.22 extend for other types in the future
+			val keys = parent.allTypes.map[e | e.name]
+			return keys.contains(string)
+		}
+		false
+	}
+	
+	def deleteTypeInDict(String type) {
+		var name = ((parent.parent as ILinkObj).token as ShortCutItem).name
+		if (!type.equals(_NONE))
+			dictAccess.deleteTypeToWord(name, type)
+
+		removeLinks
+			
+		parent.removeType(this) 
+	}
+	
+	def removeLinks() {
+		var removes = newArrayList
+		for (key :links.keySet)
+			if (links.get(key).detach(parent.parent))
+				removes.add(key) // register deletions
+		//avoid concurrent mod
+		for (e : removes)
+			links.remove(e)
+	}
+	
 	def replaceTypeInDict(String oldType, String newType) {
 		var name = ((parent.parent as ILinkObj).token as ShortCutItem).name
-		dictAccess.replaceTypeForWord(name, oldType, newType)
+		typeAttributes  = dictAccess.replaceTypeForWord(name, oldType, newType)
+		removeLinks
 	}
 	
 	def addTypeToDict(String type) {
 		var name = ((parent.parent as ILinkObj).token as ShortCutItem).name
 		typeAttributes  = dictAccess.addTypeToWord(name, type)
-		//dictAccess.addTypeToWord(name, type)
+
 		//TODO: 11.08.21 - launch linkProcssor for new Type here 
 	}
 
@@ -140,9 +198,6 @@ class TypeElement implements IJavaFxObj, ITypeElement {
 		root
 	}
 	
-	def getIndex() {
-		index
-	}
 
 	override getParent() {
 		parent
@@ -164,6 +219,9 @@ class TypeElement implements IJavaFxObj, ITypeElement {
 		typeName
 	}
 	
+	/**
+	 * @Deprecated: use getName()
+	 */
 	@Deprecated
 	def getBaseType(){
 		typeName
@@ -188,7 +246,7 @@ class TypeElement implements IJavaFxObj, ITypeElement {
 	}
 	
 	def getLinks(){
-		this.links.values().toList	
+		this.links
 	}
 	
 	def getLink(String name){
@@ -220,4 +278,21 @@ class TypeElement implements IJavaFxObj, ITypeElement {
 		typeAttributes = attrs
 	}
 	
+	override LinkedList<? extends IAppendable> getContainer() {
+		return container;
+	}
+
+	override <E extends IAppendable> void setContainer(LinkedList<E> linkedList) {
+		this.container = linkedList;
+	}
+
+	override int getIndex() {
+		// TODO Auto-generated method stub
+		return index;
+	}
+
+	override void setIndex(int i) {
+		this.index = i;
+		
+	}
 }

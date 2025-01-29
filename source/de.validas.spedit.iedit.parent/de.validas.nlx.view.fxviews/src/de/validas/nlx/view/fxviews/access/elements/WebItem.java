@@ -6,6 +6,10 @@ package de.validas.nlx.view.fxviews.access.elements;
 import static de.validas.nlx.view.fxviews.semantics.constants.WebTypeConstants._EMAIL;
 import static de.validas.nlx.view.fxviews.semantics.constants.WebTypeConstants._URL;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import de.validas.nlx.view.fxviews.access.IItem;
@@ -18,7 +22,7 @@ import de.validas.spedit.naturalLang.UrlAdress;
  * @author schaller
  *
  */
-public class WebItem extends BasicItem implements IItem {
+public class WebItem extends BasicItem {
 
 	/**
 	 * @param el
@@ -34,8 +38,8 @@ public class WebItem extends BasicItem implements IItem {
 		}
 	}
 
-	public static IItem create(NoNElement el) {
-		return new WebItem(el);
+	public static Collection<IItem> create(NoNElement el) {
+		return new ArrayList<IItem>(Collections.singletonList(new WebItem(el)));
 	}
 
 }

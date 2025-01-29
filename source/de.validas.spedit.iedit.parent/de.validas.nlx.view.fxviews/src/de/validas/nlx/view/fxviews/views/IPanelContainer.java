@@ -5,6 +5,7 @@ package de.validas.nlx.view.fxviews.views;
 
 import java.util.List;
 
+import de.validas.nlx.dictionary.grammar.rules.ImplicitRulesOnDict;
 import de.validas.nlx.view.fxviews.control.ICanvasController;
 import de.validas.nlx.view.fxviews.control.IController;
 import de.validas.nlx.view.fxviews.semantics.ILink;
@@ -36,5 +37,7 @@ public interface IPanelContainer {
 	void addLinkBuffer(ILink semanticLink);
 
 	boolean isPostprocess();
+	
+	//ImplicitRulesOnDict getImplicitGrammar();
 
 }

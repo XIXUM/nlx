@@ -3,6 +3,10 @@
  */
 package de.validas.nlx.view.fxviews.access.elements;
 
+import static de.validas.nlx.constants.Neo4jConstants._LINK;
+import static de.validas.nlx.constants.Neo4jConstants._MID;
+import static de.validas.nlx.dictionary.constants.NodeConstants._T_YPE;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,26 +18,24 @@ import org.neo4j.driver.v1.types.Node;
 
 import de.validas.nlx.dictionary.DictItem;
 import de.validas.nlx.dictionary.IDictionaryAccess;
+import de.validas.nlx.dictionary.grammar.rules.ImplicitRulesOnDict;
 import de.validas.nlx.dictionary.type.ITypeAttributes;
 import de.validas.nlx.view.fxviews.access.EObjectPanelAccessor;
 import de.validas.nlx.view.fxviews.access.IItem;
 import de.validas.nlx.view.fxviews.access.IPanelsAccessor;
-import de.validas.nlx.view.fxviews.access.WordPanelAccessor;
 import de.validas.nlx.view.fxviews.semantics.ILink;
+import de.validas.nlx.view.fxviews.semantics.ILinkContainer;
 import de.validas.nlx.view.fxviews.semantics.ILinkInfo;
 import de.validas.nlx.view.fxviews.semantics.ILinkObj;
 import de.validas.nlx.view.fxviews.semantics.ILinkType;
 import de.validas.nlx.view.fxviews.semantics.ILinkable;
 import de.validas.nlx.view.fxviews.semantics.types.CompoundType;
+import de.validas.nlx.view.fxviews.views.IPanelContainer;
 import de.validas.nlx.view.fxviews.views.SemanticViewSelector;
 import de.validas.nlx.view.fxviews.visual.ContainerPanel;
 import de.validas.spedit.naturalLang.AllElements;
 import de.validas.spedit.naturalLang.BracketSentence;
-import de.validas.spedit.naturalLang.Word;
-
-import static de.validas.nlx.constants.Neo4jConstants._LINK;
-import static de.validas.nlx.constants.Neo4jConstants._MID;
-import static de.validas.nlx.dictionary.constants.NodeConstants._T_YPE;
+import de.validas.utils.data.lists.IAppendable;
 
 /**
  * @author schaller
@@ -59,9 +61,10 @@ public class ContainerItem extends TypedItem {
 		if (el instanceof BracketSentence) {
 			
 			panelsAccessor = new EObjectPanelAccessor(SemanticViewSelector.createSentenceContext(((BracketSentence)el).getBrackedSentences()), dictAccess);
-		} else if (el instanceof Word) {
-			panelsAccessor = new WordPanelAccessor((Word) el, dictAccess);
-		}
+		} 
+//		else if (el instanceof Word) {  //became irreevant
+//			panelsAccessor = new WordPanelAccessor((Word) el, dictAccess);
+//		}
 	}
 
 	/**
@@ -69,14 +72,6 @@ public class ContainerItem extends TypedItem {
 	 */
 	public IPanelsAccessor getPanelsAccessor() {
 		return panelsAccessor;
-	}
-
-	/* (non-Javadoc)
-	 * @see de.validas.nlx.view.fxviews.access.IItem#hasComboBox()
-	 */
-	@Override
-	public boolean hasComboBox() {
-		return false;
 	}
 
 	/* (non-Javadoc)
@@ -153,20 +148,25 @@ public class ContainerItem extends TypedItem {
 				//String midType = node.get(_MID +_T_YPE).asString(); 
 				return new DictItem(getLabel(), getInternalType().getName(), primaryInner.getName(), node.id());
 			}
+		} else if (((ILinkContainer)parent).length(false) == 1) {
+			IItem token = ((IPanelContainer)parent).getPanelChain().get(1).getToken();
+			return token.generateTokenInfo();
 		}
 		return null;
 	}
 
 
 	@Override
-	public void postProcess(ILinkObj precessor, List<ITypeAttributes> attribs) {
+	public void postProcess(ImplicitRulesOnDict grammar) {
 		// TODO: 07.04.22 require postProcess
+		// TODO: 29.08.22 implement implicit rules
+		List<ITypeAttributes> attribs = new ArrayList<>();
 		IItem token = ((ILinkObj) parent).getToken();
-		
+		IAppendable precessor = getPrecessor();
 		if (type != null){			// check links per type - not globally
 			if (precessor != null){
 				ArrayList<ITypeAttributes> intAttribs = new ArrayList<ITypeAttributes>(attribs);
-				IItem pT = precessor.getToken();
+				IItem pT = (IItem) precessor;
 				
 				Set<String> types = Collections.singleton(element.eClass().getName()); //Word
 				List<ILinkable> inner = ((ContainerPanel)token.getParent()).getInnerLink();

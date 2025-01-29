@@ -1,6 +1,8 @@
 package de.validas.spedit.ui.constants
 
 class EditorUiConstants extends AbstractConstantClass {
+	
+	public static val INFO_ANNOTATION_TYPE 						= getString("INFO_ANNOTATION_TYPE")						// de.validas.spedit.ui.NaturalLang.Annotation
 
 	public static val _UI_EDITOR_SAVEAS_OVERWRITE_TITLE 		= getString("_UI_EDITOR_SAVEAS_OVERWRITE_TITLE")   		// Save As
 	public static val _UI_Editor_saveAs_overwrite_message 		= getString("_UI_Editor_saveAs_overwrite_message")		// {0} already exists.\nDo you want to replace it?

@@ -95,7 +95,6 @@ public class NlxAnnotationWithQuickFixesHover extends AnnotationWithQuickFixesHo
 		
 		public final Position position;
 		public final ITextViewer viewer;
-		// DIFF: not part of AbstractAnnotationHover (1)
 		public final HashMap<Annotation,ICompletionProposal[]> annotationWproposal;
 		
 		/**
@@ -128,8 +127,6 @@ public class NlxAnnotationWithQuickFixesHover extends AnnotationWithQuickFixesHo
 			}
 			this.position= position;
 			this.viewer= textViewer;
-
-			//Assert.isNotNull(proposals);
 		}
 
 		public NlxAnnotationInfo(List<Annotation> annotations, Position position, ITextViewer textViewer,
@@ -150,7 +147,6 @@ public class NlxAnnotationWithQuickFixesHover extends AnnotationWithQuickFixesHo
 		 * @return the proposals or an empty array
 		 */
 		public ICompletionProposal[] getCompletionProposals(Annotation annotation) {
-			// DIFF: return proposals directly, no subclassing (1)
 			return annotationWproposal.get(annotation);
 		}
 
@@ -161,9 +157,6 @@ public class NlxAnnotationWithQuickFixesHover extends AnnotationWithQuickFixesHo
 		 * @param infoControl the information control
 		 */
 		public void fillToolBar(ToolBarManager manager, IInformationControl infoControl) {
-			// DIFF: disabled as configuration is not supported yet (2)
-//			ConfigureAnnotationsAction configureAnnotationsAction= new ConfigureAnnotationsAction(annotation, infoControl);
-//			manager.add(configureAnnotationsAction);
 		}
 	}
 	
@@ -216,7 +209,7 @@ public class NlxAnnotationWithQuickFixesHover extends AnnotationWithQuickFixesHo
 		 */
 		@Override
 		public void setInformation(String information) {
-			//replaced by IInformationControlExtension2#setInput
+
 		}
 		
 		@SuppressWarnings("unchecked")
@@ -389,10 +382,8 @@ public class NlxAnnotationWithQuickFixesHover extends AnnotationWithQuickFixesHo
 			quickFixLabel.setLayoutData(layoutData);
 			String text;
 			if (proposals.length == 1) {
-				// DIFF: replaced JavaHoverMessages with XtextUIMessages (4)
 				text= XtextUIMessages.AnnotationWithQuickFixesHover_message_singleQuickFix;
 			} else {
-				// DIFF: replaced JavaHoverMessages with XtextUIMessages (4)
 				text= MessageFormat.format(XtextUIMessages.AnnotationWithQuickFixesHover_message_multipleQuickFix, new Object[] { String.valueOf(proposals.length) });
 			}
 			quickFixLabel.setText(text);
@@ -417,16 +408,8 @@ public class NlxAnnotationWithQuickFixesHover extends AnnotationWithQuickFixesHo
 			
 			List<Link> list= new ArrayList<Link>();
 			for (int i= 0; i < proposals.length; i++) {
-				list.add(createCompletionProposalLink(composite, info, proposals[i], 1));// Original link for single fix, hence pass 1 for count
+				list.add(createCompletionProposalLink(composite, info, proposals[i], 1));
 
-				// DIFF: outcommented, no support of FixCorrectionProposal and ICleanUp (5)
-//				if (proposals[i] instanceof FixCorrectionProposal) {
-//					FixCorrectionProposal proposal= (FixCorrectionProposal)proposals[i];
-//					int count= proposal.computeNumberOfFixesForCleanUp(proposal.getCleanUp());
-//					if (count > 1) {
-//						list.add(createCompletionProposalLink(composite, proposals[i], count));
-//					}
-//				}
 			}
 			final Link[] links= list.toArray(new Link[list.size()]);
 
@@ -510,12 +493,11 @@ public class NlxAnnotationWithQuickFixesHover extends AnnotationWithQuickFixesHo
 		 * @param count
 		 * @return
 		 */
-		//TODO: proposals not separated per AnnotationInfo
 		private Link createCompletionProposalLink(Composite parent, IAnnotationInfo info, final ICompletionProposal proposal, int count) {
 			final boolean isMultiFix= count > 1;
 			if (isMultiFix) {
-				new Label(parent, SWT.NONE); // spacer to fill image cell
-				parent= new Composite(parent, SWT.NONE); // indented composite for multi-fix
+				new Label(parent, SWT.NONE);
+				parent= new Composite(parent, SWT.NONE); 
 				GridLayout layout= new GridLayout(2, false);
 				layout.marginWidth= 0;
 				layout.marginHeight= 0;
@@ -524,7 +506,7 @@ public class NlxAnnotationWithQuickFixesHover extends AnnotationWithQuickFixesHo
 			
 			Label proposalImage= new Label(parent, SWT.NONE);
 			proposalImage.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false));
-			Image image= /*isMultiFix ? JavaPluginImages.get(JavaPluginImages.IMG_CORRECTION_MULTI_FIX) : */proposal.getImage();
+			Image image = proposal.getImage();
 			if (image != null) {
 				proposalImage.setImage(image);
 
@@ -552,16 +534,16 @@ public class NlxAnnotationWithQuickFixesHover extends AnnotationWithQuickFixesHo
 			GridData layoutData= new GridData(SWT.BEGINNING, SWT.CENTER, false, false);
 			String linkText;
 			String description;
-			//String space;
+
 			if (isMultiFix) {
-				// DIFF: XtextUIMessages (4)
+
 				linkText= MessageFormat.format(XtextUIMessages.AnnotationWithQuickFixesHover_message_multipleQuickFix, new Object[] { String.valueOf(count) });
 				description = new String();
-				//space = new String();
+
 			} else {
 				linkText = proposal.getDisplayString();
 				description = proposal.getAdditionalProposalInfo();
-				//space = StringUtils.repeat(" ", Math.max(0, 20 - linkText.length()));
+
 			}
 			proposalLink.setText(MessageFormat.format("<a>{0}</a>   {1}", linkText, description)); //$NON-NLS-1$
 			proposalLink.setLayoutData(layoutData);
@@ -577,7 +559,6 @@ public class NlxAnnotationWithQuickFixesHover extends AnnotationWithQuickFixesHo
 		}
 
 		private void apply(ICompletionProposal p, ITextViewer viewer, int offset, boolean isMultiFix) {
-			//Focus needs to be in the text viewer, otherwise linked mode does not work
 			dispose();
 
 			IRewriteTarget target= null;
@@ -649,8 +630,6 @@ public class NlxAnnotationWithQuickFixesHover extends AnnotationWithQuickFixesHo
 
 		@Override
 		public IInformationControl doCreateInformationControl(Shell parent) {
-			// DIFF: do not show toolbar in hover, no configuration supported (2)
-			// return new AnnotationInformationControl(parent, new ToolBarManager(SWT.FLAT));
 			return new NlxAnnotationInformationControl(parent, true);
 		}
 	}
@@ -660,7 +639,7 @@ public class NlxAnnotationWithQuickFixesHover extends AnnotationWithQuickFixesHo
 	protected Region getHoverRegionInternal(final int lineNumber, final int offset) {
 		nlxRecentAnnotationInfo = null;
 		List<Annotation> annotations = getAnnotations(lineNumber, offset);
-		//TODO: fix this 
+		
 		for (Annotation annotation : sortBySeverity(annotations)) {
 			Position position = sourceViewer.getAnnotationModel().getPosition(annotation);
 			if (position != null) {
@@ -688,7 +667,6 @@ public class NlxAnnotationWithQuickFixesHover extends AnnotationWithQuickFixesHo
 		Position position = getAnnotationModel().getPosition(annotations.get(0));
 		if (annotations.get(0).getText() != null && position != null) {
 			final QuickAssistInvocationContext invocationContext = new QuickAssistInvocationContext(sourceViewer, position.getOffset(), position.getLength(), true);
-			//TODO: sort proposals by Marker
 			NlxCompletionProposalRunnable runnable = new NlxCompletionProposalRunnable(invocationContext);
 
 			Display.getDefault().syncExec(runnable);

@@ -3,29 +3,48 @@
  */
 package de.validas.nlx.view.fxviews.access;
 
-import java.util.Collections;
+import static de.validas.nlx.dictionary.grammar.types.ItemType.BRACKETCLOSE;
+import static de.validas.nlx.dictionary.grammar.types.ItemType.BRACKETOPEN;
+import static de.validas.nlx.dictionary.grammar.types.ItemType.COLON;
+import static de.validas.nlx.dictionary.grammar.types.ItemType.EXCLAMATION_M;
+import static de.validas.nlx.dictionary.grammar.types.ItemType.FULLSTOP;
+import static de.validas.nlx.dictionary.grammar.types.ItemType.NEWLINE;
+import static de.validas.nlx.dictionary.grammar.types.ItemType.QUESTION_M;
+import static de.validas.nlx.dictionary.grammar.types.ItemType.SEMICOLON;
+import static de.validas.nlx.dictionary.grammar.types.ItemType.START;
+import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._BRACKETCLOSE;
+import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._BRACKETOPEN;
+import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._COLON;
+import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._EXCLAMATION_M;
+import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._EXX_BR_CLOSE;
+import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._EXX_BR_OPEN;
+import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._EX_BR_CLOSE;
+import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._EX_BR_OPEN;
+import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._FULL_STOP;
+import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._QUESTION_M;
+import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._SEMI_COLON;
+import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._START;
+
 import java.util.HashMap;
 import java.util.List;
 
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
+import de.validas.nlx.constants.TokenPosition;
 import de.validas.nlx.dictionary.IDictionaryAccess;
+import de.validas.nlx.dictionary.grammar.types.ItemType;
 import de.validas.nlx.view.fxviews.access.elements.BasicItem;
 import de.validas.nlx.view.fxviews.access.elements.ContainerItem;
-import de.validas.nlx.view.fxviews.access.elements.FullStopItem;
 import de.validas.nlx.view.fxviews.access.elements.ItWordItem;
 import de.validas.nlx.view.fxviews.access.elements.KommaItem;
 import de.validas.nlx.view.fxviews.access.elements.QuoteItem;
 import de.validas.nlx.view.fxviews.access.elements.ShortCutItem;
 import de.validas.nlx.view.fxviews.access.elements.TerminalItem;
-import de.validas.nlx.view.fxviews.access.elements.TokenPosition;
 import de.validas.nlx.view.fxviews.access.elements.UnitItem;
 import de.validas.nlx.view.fxviews.access.elements.WebItem;
 import de.validas.nlx.view.fxviews.access.elements.WordItem;
 import de.validas.nlx.view.fxviews.semantics.ILinkType;
-import de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants;
 import de.validas.nlx.view.fxviews.semantics.types.InterpunctionType;
 import de.validas.spedit.naturalLang.AllElements;
 import de.validas.spedit.naturalLang.BracketSentence;
@@ -44,33 +63,6 @@ import de.validas.spedit.naturalLang.UrlAdress;
 import de.validas.spedit.naturalLang.Word;
 import de.validas.spedit.naturalLang.WordShort;
 import de.validas.utils.data.types.XPair;
-
-import static de.validas.nlx.view.fxviews.access.ItemType.START;
-import static de.validas.nlx.view.fxviews.access.ItemType.NEWLINE;
-import static de.validas.nlx.view.fxviews.access.ItemType.FULLSTOP;
-import static de.validas.nlx.view.fxviews.access.ItemType.BRACKEDOPEN;
-import static de.validas.nlx.view.fxviews.access.ItemType.BRACKEDCLOSE;
-import static de.validas.nlx.view.fxviews.access.ItemType.KOMMA;
-import static de.validas.nlx.view.fxviews.access.ItemType.COLON;
-import static de.validas.nlx.view.fxviews.access.ItemType.SEMICOLON;
-import static de.validas.nlx.view.fxviews.access.ItemType.QUESTION_M;
-import static de.validas.nlx.view.fxviews.access.ItemType.EXCLAMATION_M;
-import static de.validas.nlx.view.fxviews.access.ItemType.FULLSTOP;
-import static de.validas.nlx.view.fxviews.access.ItemType.SEPARATOR;
-import static de.validas.nlx.view.fxviews.access.ItemType.SPECIAL;
-import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._START;
-import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._FULL_STOP;
-import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._BRACKEDOPEN;
-import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._BRACKEDCLOSE;
-import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._EX_BR_OPEN;
-import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._EX_BR_CLOSE;
-import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._EXX_BR_OPEN;
-import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._EXX_BR_CLOSE;
-import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._KOMMA;
-import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._COLON;
-import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._SEMI_COLON;
-import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._QUESTION_M;
-import static de.validas.nlx.view.fxviews.semantics.constants.GrammarConstants._EXCLAMATION_M;
 
 /**
  * @author schaller
@@ -96,13 +88,13 @@ public class EObjectPanelAccessor extends EMFPanelAccessor {
 		put(_QUESTION_M, QUESTION_M);
 		put(_EXCLAMATION_M, EXCLAMATION_M);
 		
-		put(_BRACKEDOPEN, BRACKEDOPEN);
-		put(_EX_BR_OPEN, BRACKEDOPEN);
-		put(_EXX_BR_OPEN, BRACKEDOPEN);
+		put(_BRACKETOPEN, BRACKETOPEN);
+		put(_EX_BR_OPEN, BRACKETOPEN);
+		put(_EXX_BR_OPEN, BRACKETOPEN);
 		
-		put(_BRACKEDCLOSE, BRACKEDCLOSE);
-		put(_EX_BR_CLOSE, BRACKEDCLOSE);
-		put(_EXX_BR_CLOSE, BRACKEDCLOSE);
+		put(_BRACKETCLOSE, BRACKETCLOSE);
+		put(_EX_BR_CLOSE, BRACKETCLOSE);
+		put(_EXX_BR_CLOSE, BRACKETCLOSE);
 	}};
 
 	/**
@@ -130,19 +122,19 @@ public class EObjectPanelAccessor extends EMFPanelAccessor {
 					
 				} else {
 					if (el instanceof Word || el instanceof WordShort) 
-						tokenChain.add(WordItem.create((WordShort) el, dictAccess));
+						tokenChain.addAll(WordItem.create((WordShort) el, dictAccess)); //TODO: 14.12.22 try to use annotated access via reflection instead
 					else if (el instanceof Unit )
-						tokenChain.add(UnitItem.create((Unit) el));
+						tokenChain.addAll(UnitItem.create((Unit) el));
 					else if (el instanceof ItWord)
-						tokenChain.add(ItWordItem.create((ItWord)el));
+						tokenChain.addAll(ItWordItem.create((ItWord)el));
 					else if (el instanceof ShortCut)
-						tokenChain.add(ShortCutItem.create((ShortCut)el, dictAccess));
+						tokenChain.addAll(ShortCutItem.create((ShortCut)el, dictAccess));
 					else if (el instanceof MailAdress || el instanceof UrlAdress)
-						tokenChain.add(WebItem.create((NoNElement)el));
+						tokenChain.addAll(WebItem.create((NoNElement)el));
 					else if (el instanceof Quote)
-						tokenChain.add(QuoteItem.create((Quote)el));
+						tokenChain.addAll(QuoteItem.create((Quote)el));
 					else if (el.getNl() == null)
-						tokenChain.add(BasicItem.create((AllElements)el));
+						tokenChain.addAll(BasicItem.create((AllElements)el));
 					//TODO: 29.03.22 introduce new line Element later
 				}
 			}
@@ -187,15 +179,13 @@ public class EObjectPanelAccessor extends EMFPanelAccessor {
 				List<EObject> subSentences = ((Sentence) fSentence).getSubsentence();
 				
 				boolean firstElement = true;
-				//TODO: 24.03.22 Add Start item with attributes
 				//TODO: support Colon Full stop as Well
-				
-				
+								
 				for (EObject subs : subSentences) {
 					if (!firstElement)
 						tokenChain.add(KommaItem.create(dictAccess));
 					firstElement = false;
-					createElements((EList<Elements>)(Object)((SubSentence) subs).getElements());
+					createElements((EList)((SubSentence) subs).getElements());
 				}
 				//TODO: 24.03.22 Add Item with attributes
 				

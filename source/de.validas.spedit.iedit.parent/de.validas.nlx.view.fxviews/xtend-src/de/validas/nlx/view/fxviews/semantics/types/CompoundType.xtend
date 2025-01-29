@@ -25,10 +25,12 @@ class CompoundType extends LiteralType {
 						return types.get(0)
 				} else {
 					var chain = (_parent as ContainerPanel).panelChain
-					if (chain.size() < 3){   //single token plus terminal
-						return (chain.get(0)as ILinkObj).type
+					if (chain.size() <= 3){   //single token plus terminal
+						return (chain.get(1)as ILinkObj).type
 					}
 				}
+			} else if ((_parent as ContainerPanel).length(false) == 1){
+				return (_parent as ContainerPanel).panelChain.get(1).type
 			}
 		}
 		null	

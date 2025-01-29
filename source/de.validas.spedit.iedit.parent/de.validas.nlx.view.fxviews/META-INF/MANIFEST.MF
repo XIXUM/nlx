@@ -16,10 +16,13 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro,
  de.validas.nlx.ai,
- org.eclipse.xtext.builder
+ org.eclipse.xtext.builder,
+ org.eclipse.emf.common,
+ de.validas.nlx.dictionary.grammar
 Import-Package: org.apache.log4j;version="1.2.15"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: de.validas.nlx.view.fxviews
 Bundle-ActivationPolicy: lazy
 Export-Package: de.validas.nlx.view.fxviews.cache,
  de.validas.nlx.view.fxviews.views
+Bundle-Vendor: felixschaller.com

@@ -20,7 +20,8 @@
 
 package de.validas.nlx.view.fxviews.views;
 
-import static de.validas.nlx.dictionary.constants.NodeConstants._DICTIONARY;
+//import static de.validas.nlx.dictionary.constants.NodeConstants._DICTIONARY;
+import static de.validas.nlx.constants.Neo4jConstants._CLASS;
 import static de.validas.nlx.dictionary.constants.NodeConstants._WORD_CLASS;
 import static de.validas.nlx.view.fxviews.semantics.constants.FxViewConstants.FXML_DESCR_FILE;
 import static de.validas.nlx.view.fxviews.semantics.constants.FxViewConstants.NLX_BACKGROUND_THREAD;
@@ -34,6 +35,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.core.runtime.Adapters;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.fx.ui.workbench3.FXViewPart;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.widgets.Composite;
@@ -45,11 +48,13 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.internal.WorkbenchPlugin;
+import org.eclipse.xtext.builder.debug.IBuildLogger;
 
 import com.google.inject.Inject;
 
 import de.validas.nlx.constants.Direction;
 import de.validas.nlx.dictionary.IDictionaryAccess;
+import de.validas.nlx.dictionary.grammar.rules.ImplicitRulesOnDict;
 import de.validas.nlx.dictionary.type.ITypeHierarchy;
 import de.validas.nlx.dictionary.util.LogUtils;
 import de.validas.nlx.view.fxviews.access.IItem;
@@ -79,6 +84,7 @@ import de.validas.nlx.view.fxviews.visual.NodePanel;
 import de.validas.nlx.view.fxviews.visual.NodePanelFactory;
 import de.validas.utils.data.lists.IAppendable;
 import de.validas.utils.data.lists.LinkedList;
+import de.validas.utils.data.types.XPair;
 import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
@@ -125,11 +131,18 @@ public class SemanticFxViewPart extends FXViewPart
 	protected NodePanelFactory nodePanelFactory;
 	protected List<ITypeHierarchy> typeHierarchy;
 	private boolean changed = true;
+	// for access on the Background thread
 	private String bgThreadName = NLX_BACKGROUND_THREAD;
+	
+	// #Options
+	boolean postprocess = true;
 
-	// @Inject  TODO: inject does not work here, because this class has no dependency to to the UI module
+	// grammar implicit grammar rule solver
+	protected ImplicitRulesOnDict grammar;
+	
 	protected INodeCacheManager cacheManager;
-	private List<ILink> linkBuffer;
+	// stores all links in a buffer for UI handling
+	protected List<ILink> linkBuffer;
 	
 	protected UpdateTask<Boolean> createPanelsTask = new UpdateTask<Boolean>(bgThreadName); 
 	private Thread backgroundThread;
@@ -175,7 +188,7 @@ public class SemanticFxViewPart extends FXViewPart
 	    				synchronized(lock) {
 	    					lock.wait();
 	    				}
-					} catch (InterruptedException e) {
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
 	    		}
@@ -202,8 +215,7 @@ public class SemanticFxViewPart extends FXViewPart
 	    
 	};
 	
-	// #Options
-	boolean postprocess = true;
+
 	
 	/**
 	 * @return the postprocess
@@ -283,8 +295,6 @@ public class SemanticFxViewPart extends FXViewPart
 			SemanticFxViewPart.this.partVisible(partRef.getPart(false));
 		}
 	};
-
-	
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -408,15 +418,15 @@ public class SemanticFxViewPart extends FXViewPart
 			if (panelChain.get(0) instanceof ILinkable) {
 				try {
 					processor.evaluateNext((ILinkable)panelChain.get(0));
-					updateMSG.update(80, "postprocess Grammar...", null);
+					updateMSG.update(80, "select best Route...", null);
 					
-					for (ILinkObj panel : panelChain)
-						if (postprocess) processor.postProcess(panel);
-					ILinkObj start = panelChain.get(0);
-					while (start.getToken() instanceof SmallItem)
-						start = (ILinkObj) start.getSuccessor();
-					if (start != null)
-						LinkUtils.autoRoute(start);
+					selectBestRoute();
+					
+					updateMSG.update(90, "postprocess Grammar...", null);
+					startPostProcess();
+					
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -432,6 +442,29 @@ public class SemanticFxViewPart extends FXViewPart
 				}
 		});
 		
+	}
+
+
+	/**
+	 * post process panel context
+	 */
+	protected void startPostProcess() {
+		for (ILinkObj panel : panelChain)
+			if (postprocess) {
+				processor.postProcess(panel, grammar);
+			}
+	}
+
+
+	/**
+	 * select the best route to determine word type in context
+	 */
+	protected void selectBestRoute() {
+		ILinkObj start = panelChain.get(0);
+		while (start != null && start.getToken() instanceof SmallItem)
+			start = (ILinkObj) start.getSuccessor();
+		if (start != null)
+			LinkUtils.autoRoute(start);
 	}
 
 	/**
@@ -492,6 +525,14 @@ public class SemanticFxViewPart extends FXViewPart
 	public IDictionaryAccess getDictAccess() {
 		return dictAccess;
 	}
+	
+	/**
+	 * @return 
+	 * @return the implicit grammar solver
+	 */
+	public ImplicitRulesOnDict getImplicitGrammar() {
+		return grammar;
+	}
 
 	@Override
 	public void partActivated(IWorkbenchPart part) {
@@ -500,10 +541,11 @@ public class SemanticFxViewPart extends FXViewPart
 			selectionController.addViewer(this);
 			dictAccess = selectionController.getDictAccess();
 			if (dictAccess != null) {
+				IBuildLogger buildLogger = dictAccess.getLogger();
 				if (logUtil == null)
-					logUtil = new LogUtils(dictAccess.getLogger());
-				//TODO: cache once
-				typeHierarchy = dictAccess.resolveTypeHierarchy(_DICTIONARY, _WORD_CLASS);
+					logUtil = new LogUtils();
+				grammar = new ImplicitRulesOnDict(dictAccess, buildLogger);
+				typeHierarchy = dictAccess.resolveTypeHierarchy(_CLASS, _WORD_CLASS);
 			}
 			processor = new LinkProcessor(dictAccess, semanticLinker, cacheManager); //TODO: consider singleton instance
 		}

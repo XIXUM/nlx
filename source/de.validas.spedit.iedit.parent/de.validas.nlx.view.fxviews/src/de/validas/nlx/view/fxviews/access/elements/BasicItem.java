@@ -7,12 +7,16 @@ import static de.validas.nlx.dictionary.constants.DictionaryConstants._IGNORED_T
 import static de.validas.nlx.dictionary.constants.DictionaryConstants._QUOTE;
 import static de.validas.nlx.dictionary.constants.DictionaryConstants._SYMBOLS;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 
 import de.validas.nlx.dictionary.DictItem;
+import de.validas.nlx.dictionary.grammar.rules.ImplicitRulesOnDict;
+import de.validas.nlx.dictionary.grammar.token.IGrammarLiteral;
 import de.validas.nlx.dictionary.type.ITypeAttributes;
 import de.validas.nlx.dictionary.type.ITypeHierarchy;
 import de.validas.nlx.view.fxviews.access.IItem;
@@ -73,15 +77,6 @@ public class BasicItem extends AbstractItem {
 		return name;
 	}
 
-	public static IItem create(AllElements el) {
-		return new BasicItem(el);
-	}
-
-	@Override
-	public boolean hasComboBox() {
-		return false;
-	}
-
 	@Override
 	public String getCssClass() {
 		return null; 
@@ -114,9 +109,8 @@ public class BasicItem extends AbstractItem {
 	}
 
 	@Override
-	public void postProcess(ILinkObj precessor, List<ITypeAttributes> attribs) {
-		// TODO Auto-generated method stub
-		
+	public void postProcess(ImplicitRulesOnDict grammar) {
+		super.postProcess(grammar);
 	}
 
 	@Override
@@ -137,6 +131,10 @@ public class BasicItem extends AbstractItem {
 	@Override
 	public String getLabel() {
 		return name;
+	}
+	
+	public static Collection<IItem> create(AllElements el) {
+		return new ArrayList<IItem>(Collections.singletonList(new BasicItem(el)));
 	}
 
 }

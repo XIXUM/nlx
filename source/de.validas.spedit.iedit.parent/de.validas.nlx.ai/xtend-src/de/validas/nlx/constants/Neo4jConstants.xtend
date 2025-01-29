@@ -16,7 +16,8 @@ class Neo4jConstants {
 	public static val _SOURCE 			= getString("_SOURCE");				//"source"
 	public static val _ATTR_NAME 		= getString("_ATTR_NAME");			//"name";
 	public static val _ID 				= getString("_ID");					//"ID";
-	public static val _VALUE 			= getString("_VALUE");				//value
+	public static val _VALUE 			= getString("_VALUE");				// value
+	public static val _TOKEN 			= getString("_TOKEN");				// token 
 	
 	public static val ARROW_ 			= getString("ARROW_");				//"->"
 	public static val FIRST_ 			= getString("FIRST_");				//"first"
@@ -25,10 +26,16 @@ class Neo4jConstants {
 	public static val START_ 			= getString("START_");				//"start"
 	public static val END_ 				= getString("END_");				//"end"
 	
+	public static val _CLASS			= getString("_CLASS")				// Class
+	public static val _OF_CLASS			= getString("_OF_CLASS")			// ofClass
+	public static val _SUBCLASS_OF		= getString("_SUBCLASS_OF")			// subClassOf 
+	        			
 	public static val _LINK2 			= getString("_LINK2");				//"link2"
 	public static val _NODE2 			= getString("_NODE2");				//"node2"
 	public static val _A 				= getString("_A");					//"a" 
 	public static val _B 				= getString("_B");					//"b"
+	public static val _C 				= getString("_C");					//"c"
+	public static val _D 				= getString("_D");					//"d"
 	public static val _E 				= getString("_E");					//"e"
 	public static val _F				= getString("_F");					// f
 	public static val _G				= getString("_G");					// g
@@ -41,7 +48,9 @@ class Neo4jConstants {
 	public static val _S 				= getString("_S");					//"s"
 	public static val _SC				= getString("_SC");					//"sc"
 	public static val _L	 			= getString("_L");					//"l";
+	public static val _L1 				= getString("_L1");					//"l1"
 	public static val _L2 				= getString("_L2");					//"l2"
+	public static val _L3 				= getString("_L3");					//"l3"
 	public static val _N	 			= getString("_N");					//"n";
 	public static val _N2 				= getString("_N2");					//"n2"
 	public static val _R 				= getString("_R");					//"r"

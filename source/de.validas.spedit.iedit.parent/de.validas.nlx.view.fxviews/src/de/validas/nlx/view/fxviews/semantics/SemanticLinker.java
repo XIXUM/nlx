@@ -16,6 +16,7 @@ import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.Value;
 import org.neo4j.driver.v1.types.Node;
 
+import de.validas.nlx.view.fxviews.semantics.util.LinkUtils;
 import de.validas.utils.data.types.XPair;
 import javafx.application.Platform;
 
@@ -49,35 +50,33 @@ public class SemanticLinker {
 	}
 
 	public ILink makeLink(ILinkable start, ILinkable endPanel,  Map<? extends String, ? extends Object> intermed, List<Record> recMap) {
-		if (start == null || endPanel == null) return null;
-		System.out.printf("\n[SemanticLinker]: create Link %1$s \t Start: %2$s  End: %3$s", recMap.get(0).get(_LINK).asNode().get("name"), start.getName(), endPanel.getName());
-		//expect recMap cannot be null or empty here
-		String startType = recMap.get(0).get(_SOURCE).asNode().get(_NAME).asString();
-		String endType = recMap.get(0).get(_TARGET).asNode().get(_NAME).asString();
-		int level = 0;
-		for (ILinkable linkable : Arrays.asList(start, endPanel)) { // gather highest link hierarchy
-			if (linkable instanceof ILink) {
-				int l = ((ILink)linkable).getLevel();
-				if(l > level)
-					level = l;
+		try {
+			if (start == null || endPanel == null) return null;
+			System.out.printf("\n[SemanticLinker]: create Link %1$s \t Start: %2$s  End: %3$s", recMap.get(0).get(_LINK).asNode().get("name"), start.getName(), endPanel.getName());
+			//expect recMap cannot be null or empty here
+			String startType = recMap.get(0).get(_SOURCE).asNode().get(_NAME).asString();
+			String endType = recMap.get(0).get(_TARGET).asNode().get(_NAME).asString();
+			int level = LinkUtils.calculateLevel(start, endPanel);
+			ILinkInfo linkInfo = null;
+			if (recMap.size() > 1) {
+				linkInfo = new PathLinkInfo(recMap);
+			} else {
+				linkInfo = new LinkInfo(recMap.get(0));
 			}
+			
+			ILink link = 
+					new SemanticLink(new XPair<String, ILinkable>(startType,start), 
+					                      new XPair<String, ILinkable>(endType, endPanel), intermed, 
+					                      linkInfo, level+1); 
+			if (listener != null)
+				Platform.runLater(()->{
+					listener.update();
+				});
+			return link;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
-		ILinkInfo linkInfo = null;
-		if (recMap.size() > 1) {
-			linkInfo = new PathLinkInfo(recMap);
-		} else {
-			linkInfo = new LinkInfo(recMap.get(0));
-		}
-		
-		ILink link = 
-				new SemanticLink(new XPair<String, ILinkable>(startType,start), 
-				                      new XPair<String, ILinkable>(endType, endPanel), intermed, 
-				                      linkInfo, level+1); 
-		if (listener != null)
-			Platform.runLater(()->{
-				listener.update();
-			});
-		return link;
 	}
 
 	public void setListener(IListener linkListener) {

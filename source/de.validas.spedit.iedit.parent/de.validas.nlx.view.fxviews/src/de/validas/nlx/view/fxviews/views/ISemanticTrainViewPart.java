@@ -9,6 +9,7 @@ import org.eclipse.ui.IViewPart;
 
 import de.validas.nlx.constants.Direction;
 import de.validas.nlx.dictionary.IDictionaryAccess;
+import de.validas.nlx.dictionary.grammar.rules.ImplicitRulesOnDict;
 import de.validas.nlx.dictionary.type.ITypeHierarchy;
 import de.validas.nlx.view.fxviews.access.IPanelsAccessor;
 import de.validas.nlx.view.fxviews.cache.INodeCacheManager;
@@ -58,5 +59,7 @@ public interface ISemanticTrainViewPart extends IViewPart{
 	public void setBackgroundThread(Thread bgThread);
 	
 	public String getBgThreadName();
+
+	public ImplicitRulesOnDict getImplicitGrammar();
 
 }

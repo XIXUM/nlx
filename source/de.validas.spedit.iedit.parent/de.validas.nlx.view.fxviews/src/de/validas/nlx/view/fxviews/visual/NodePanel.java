@@ -13,6 +13,7 @@ import java.util.Map;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 import de.validas.nlx.constants.Direction;
+import de.validas.nlx.dictionary.grammar.types.IGrammarType;
 import de.validas.nlx.dictionary.type.ITypeAttributes;
 import de.validas.nlx.view.fxviews.access.IItem;
 import de.validas.nlx.view.fxviews.access.IJavaFxObj;
@@ -152,7 +153,7 @@ public class NodePanel extends AbstractAppendable implements ILinkObj, IAppendab
 				}
 			}
 			setName(token.getName());
-			if (controller instanceof SmallPanelObjController) {
+			if (controller instanceof SmallPanelObjController) { //TODO 10.07.22 this instance check is obsolete
 				Node child = token.instantiateTypes();
 				if (child != null)
 					if (Platform.isFxApplicationThread())
@@ -219,7 +220,7 @@ public class NodePanel extends AbstractAppendable implements ILinkObj, IAppendab
 
 	@Override
 	public List<ILink> getLink() {
-		ILinkType intType = token.getInternalType();
+		ILinkType intType = (ILinkType) token.getInternalType();
 		if (intType != null)
 			return intType.getSelectedLink();
 		return null;
@@ -227,7 +228,7 @@ public class NodePanel extends AbstractAppendable implements ILinkObj, IAppendab
 	
 	@Override
 	public Map<String, List<ILink>> getLinks() {
-		ILinkType internal = token.getInternalType();
+		ILinkType internal = (ILinkType) token.getInternalType();
 		if (internal != null) {
 			return internal.getLinks();
 		} else {
@@ -241,7 +242,7 @@ public class NodePanel extends AbstractAppendable implements ILinkObj, IAppendab
 	}
 
 	@Override
-	public ILinkType getLinkType() {
+	public IGrammarType getLinkType() {
 		return token.getInternalType();
 	}
 
@@ -282,7 +283,7 @@ public class NodePanel extends AbstractAppendable implements ILinkObj, IAppendab
 
 	@Override
 	public XPair<String, ITypeAttributes> getType() {
-		return token.getInternalType().getBaseType();
+		return ((ILinkType)token.getInternalType()).getBaseType();
 	}
 
 	@Override

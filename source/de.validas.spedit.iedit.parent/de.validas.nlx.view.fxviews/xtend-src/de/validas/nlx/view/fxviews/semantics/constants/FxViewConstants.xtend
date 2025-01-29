@@ -15,16 +15,21 @@ class FxViewConstants extends AbstractConstantClass {
 	
 	public static val _CIRCLE_BUTTON			= getString("_CIRCLE_BUTTON") 			// "CircleButton";	
 	public static val _MOUSE_PRESSED			= getString("_MOUSE_PRESSED")
+	public static val _DELETE_BUTTON			= getString("_DELETE_BUTTON")
 	
 	public static val _LINK						= getString("_LINK")
 	public static val _LOW_LINK					= getString("_LOW_LINK")
 	public static val _DISABLED					= getString("_DISABLED")
 	public static val _DASHED					= getString("_DASHED")					// Dashed
+	public static val _FORWARD_LINK				= getString("_FORWARD_LINK")			// forwardLink
 	
 	// Menu Items
 	
 	public static val _MENU_DELETE 				= getString("_MENU_DELETE")  			// "delete"
 	public static val _MENU_UNDO 				= getString("_MENU_UNDO")  				// "undo"
+	public static val _MENU_FORWARD_LEFT		= getString("_MENU_FORWARD_LEFT")		// "forward type left"
+	public static val _MENU_FORWARD_RIGHT		= getString("_MENU_FORWARD_RIGHT")		// "forward type right"
 	
+	public static val _REGEX_ALPHA_CAPITAL		= getString("_REGEX_ALPHA_CAPITAL")		// "[a-zA-Z]+"
 
 }

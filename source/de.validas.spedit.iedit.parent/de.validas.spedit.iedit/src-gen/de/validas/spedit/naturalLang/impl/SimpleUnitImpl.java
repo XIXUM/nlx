@@ -152,7 +152,7 @@ public class SimpleUnitImpl extends NoNElementX2Impl implements SimpleUnit
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (value: ");
     result.append(value);
     result.append(')');

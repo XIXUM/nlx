@@ -1,10 +1,10 @@
 package de.validas.nlx.ai
 
-import org.neo4j.driver.internal.value.NodeValue
 import de.validas.nlx.ai.semantics.INode
+import org.neo4j.driver.v1.types.Node
 
 interface INodeFactory {
 	
-	def INode create(NodeValue node, IParserDriver driver)
+	def INode create(Node node, IParserDriver driver)
 
 }

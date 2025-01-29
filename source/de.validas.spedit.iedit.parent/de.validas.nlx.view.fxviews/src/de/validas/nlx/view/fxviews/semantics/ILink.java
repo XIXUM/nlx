@@ -4,11 +4,13 @@
 package de.validas.nlx.view.fxviews.semantics;
 
 import java.util.List;
+import java.util.Set;
 
 import de.validas.nlx.view.fxviews.control.IDragController;
 import de.validas.utils.data.types.XPair;
 import javafx.geometry.Point2D;
 import de.validas.nlx.view.fxviews.semantics.LinkStyle;
+import de.validas.nlx.view.fxviews.semantics.types.TypeElement;
 
 /**
  * @author schaller
@@ -27,12 +29,8 @@ public interface ILink extends ILinkable {
 	public LinkPath getRoot();
 
 	public ILinkInfo getLinkInfo();
-
-	public void setOverKomma(boolean overKomma);
-
-	public boolean isOverKomma();
-
-	//public void setLinkPath(LinkPath path);
+	
+	public Set<ILink> getLinks();
 
 	public void setStyle(LinkStyle style);
 
@@ -53,6 +51,11 @@ public interface ILink extends ILinkable {
 	public ILinkable getCardinalType();
 	
 	public boolean hasCardinalType();
-
 	
+	public ILinkable getForwardType();
+	
+	public boolean hasForwardType();
+	
+	public boolean detach(ILinkable origin);
+
 }

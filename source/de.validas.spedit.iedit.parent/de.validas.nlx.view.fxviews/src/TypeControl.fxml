@@ -37,6 +37,12 @@
       						<Insets bottom="5.0" left="5.0" right="5.0" />
       					</HBox.margin>
       				</ComboBox>
+                  <AnchorPane fx:id="deleteContainer" pickOnBounds="false" stylesheets="@Panel.css">
+                     <children>
+                        <Circle fx:id="deleteIcon" fill="#ff95778c" onMouseClicked="#deleteClicked" onMousePressed="#deleteClicked" pickOnBounds="true" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" styleClass="minusIcon" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="3.0" />
+                        <Line endX="20.0" endY="13.0" mouseTransparent="true" startX="10.0" startY="13.0" strokeWidth="2.0" />
+                     </children>
+                  </AnchorPane>
       			</children>
       		</HBox>
             <HBox fx:id="secondRow" pickOnBounds="false">

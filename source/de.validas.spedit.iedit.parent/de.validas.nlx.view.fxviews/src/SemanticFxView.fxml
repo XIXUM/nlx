@@ -12,73 +12,31 @@
 
 <StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.validas.nlx.view.fxviews.control.SemanticFxViewController">
    <children>
-		<GridPane alignment="BOTTOM_CENTER" gridLinesVisible="true" style="-fx-border-color: #0000FF;">
-			<columnConstraints>
-				<ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
-			</columnConstraints>
-			<rowConstraints>
-				<RowConstraints maxHeight="90.0" minHeight="80.0" prefHeight="90.0" valignment="TOP" vgrow="NEVER" />
-				<RowConstraints vgrow="ALWAYS" />
-			</rowConstraints>
-			<children>
-				<ToolBar maxHeight="80.0" minHeight="-Infinity" prefHeight="90.0">
-					<items>
-						<Pane prefHeight="80.0" prefWidth="80.0" stylesheets="@Panel.css">
-							<styleClass>
-								<String fx:value="panelBlue" />
-								<String fx:value="tokenPanel" />
-							</styleClass>
-						</Pane>
-						<Pane prefHeight="80.0" prefWidth="80.0" styleClass="tokenPanel" stylesheets="@Panel.css" />
-						<Pane prefHeight="80.0" prefWidth="80.0" styleClass="tokenPanel" stylesheets="@Panel.css" />
-					</items>
-				</ToolBar>
-				<ScrollPane fx:id="scrollpane" hbarPolicy="ALWAYS" nodeOrientation="LEFT_TO_RIGHT" onContextMenuRequested="#onContextMenu" onDragOver="#sceneDragOver" onMouseDragOver="#sceneMouseDragOver" onMouseDragReleased="#sceneDragReleased" pannable="true" vbarPolicy="ALWAYS" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
-					<content>
-						<AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" onContextMenuRequested="#onContextMenu">
+   		<AmbientLight color="DARKGRAY" />
+		<PointLight color="DARKGRAY" lightOn="true" translateZ="-500.0"/>	
+		<ScrollPane fx:id="scrollpane" hbarPolicy="ALWAYS" nodeOrientation="LEFT_TO_RIGHT" onContextMenuRequested="#onContextMenu" onDragOver="#sceneDragOver" onMouseDragOver="#sceneMouseDragOver" onMouseDragReleased="#sceneDragReleased" pannable="true" vbarPolicy="ALWAYS" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+			<content>
+				<AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" onContextMenuRequested="#onContextMenu">
+					<children>
+						<VBox fx:id="vBox" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
 							<children>
-								<AmbientLight color="DARKGRAY" />
-								<PointLight color="DARKGRAY" lightOn="true" />	
-								<VBox fx:id="vBox" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
-									<children>
-		                        <Pane>
-		                           <children>
-		                              <StackPane>
-		                                 <children>
-		            								<HBox spacing="5.0">
-		            									<children>
-		            										<Sphere radius="15.0">
-		            											<material>
-		            												<PhongMaterial>
-		            													<diffuseColor>
-		            														<Color blue="0.9" green="0.6" opacity="1.0" red="0.3" />
-		            													</diffuseColor>
-		            												</PhongMaterial>
-		            											</material>
-		            										</Sphere>
-		            										<ChoiceBox id="choiceBox" fx:id="choiceBox" minWidth="130.0" prefWidth="150.0" />
-		            										<ComboBox id="comboBox" fx:id="comboBox" minWidth="120.0" prefWidth="150.0" />
-		            										<Button id="button" fx:id="button" minWidth="-Infinity" mnemonicParsing="false" onContextMenuRequested="#contextMenuButton" onDragDropped="#dragButtonDropped" onDragOver="#buttonDragOver" onMouseDragOver="#mouseButtonDragOver" text="Button" />
-		            									</children>
-		            								</HBox>
-		                                    <AnchorPane>
-		                                       <children>
-		                  								<Path id="path" fx:id="path" layoutX="150.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0">
-		                  									<elements>
-		                  										<MoveTo />
-		                  										<VLineTo y="10.0" />
-		                  										<ArcTo radiusX="10.0" radiusY="10.0" x="10.0" y="20.0" />
-		                  										<HLineTo x="100.0" />
-		                  										<ArcTo radiusX="10.0" radiusY="10.0" x="110.0" y="10.0" />
-		                  										<VLineTo />
-		                  									</elements>
-		                  								</Path>
-		                                       </children>
-		                                    </AnchorPane>
-		                                 </children>
-		                              </StackPane>
-		                           </children>
-		                        </Pane>
+								<HBox spacing="5.0">
+		            				<children>
+			            				<MenuButton mnemonicParsing="false" text="Display Options">
+									        <items>
+									        	<CheckMenuItem mnemonicParsing="false" text="Unspecified Action" />
+									            <CheckMenuItem mnemonicParsing="false" text="Unspecified Action" />
+									        	<MenuItem mnemonicParsing="false" text="Action 1" />
+									        	<MenuItem mnemonicParsing="false" text="Action 2" />
+									        </items>
+										</MenuButton>
+		            				</children>
+		            			</HBox>
+		            			<Separator>
+					            	<VBox.margin>
+					                	 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+					            	</VBox.margin>
+					            </Separator>
 		                        <StackPane pickOnBounds="false">
 		                           <children>
 		      								<Pane fx:id="linkPane" pickOnBounds="false" stylesheets="@Panel.css" />
@@ -89,14 +47,12 @@
 		      								</HBox>
 		                           </children>
 		                        </StackPane>
-									</children>
-								</VBox>
-							</children>
-						</AnchorPane>
-					</content>
-				</ScrollPane>
-			</children>
-		</GridPane>
+		            		</children>
+						</VBox>
+					</children>
+				</AnchorPane>
+			</content>
+		</ScrollPane>
 		<Pane fx:id="overlayPane" style="-fx-background-color: #444444AA;" visible="false" StackPane.alignment="CENTER">
          <children>
             <AnchorPane />

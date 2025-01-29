@@ -167,7 +167,7 @@ public class TableColumnSeparatorImpl extends TableBorderImpl implements TableCo
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (char: ");
     result.append(char_);
     result.append(')');

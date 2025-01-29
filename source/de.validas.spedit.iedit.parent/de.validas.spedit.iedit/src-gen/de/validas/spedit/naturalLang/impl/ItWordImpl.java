@@ -152,7 +152,7 @@ public class ItWordImpl extends NoNElementImpl implements ItWord
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (word: ");
     result.append(word);
     result.append(')');

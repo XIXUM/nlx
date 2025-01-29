@@ -9,10 +9,6 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -37,12 +33,12 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IPartListener;
+import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsoleManager;
 import org.eclipse.ui.texteditor.DefaultMarkerAnnotationAccess;
-import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.IPropertySourceProvider;
@@ -54,15 +50,13 @@ import org.eclipse.xtext.ui.editor.outline.impl.OutlinePage;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
-import de.validas.nlx.view.fxviews.views.SemanticViewSelector;
-
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
 import de.validas.nlx.dictionary.IDictionaryAccess;
 import de.validas.nlx.view.fxviews.views.ISemanticViewSelector;
-import de.validas.spedit.naturalLang.util.NaturalLangAdapterFactory;
+import de.validas.nlx.view.fxviews.views.SemanticViewSelector;
 import de.validas.spedit.ui.model.NaturalLangEditorPlugin;
 
 /**
@@ -75,7 +69,7 @@ public class NaturalLangEditor extends XtextEditor implements ISelectionProvider
 	/**
 	 * Editor Extension Class to handle Natural language in Editor
 	 */
-	public static final String INFO_ANNOTATION_TYPE = "de.validas.spedit.ui.NaturalLang.Annotation";
+	//public static final String INFO_ANNOTATION_TYPE = "de.validas.spedit.ui.NaturalLang.Annotation";
 
 	protected List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
 
@@ -93,7 +87,7 @@ public class NaturalLangEditor extends XtextEditor implements ISelectionProvider
 
 	protected Viewer viewer;
 	protected OutlinePage contentOutline;
-	protected ISemanticViewSelector semanticViewSelector;
+	protected ISelectionListener semanticViewSelector;
 
 	@Inject
 	protected IDictionaryAccess dictAcc;
@@ -135,18 +129,24 @@ public class NaturalLangEditor extends XtextEditor implements ISelectionProvider
 			return getSemanticViewSelector();
 		} else if (key.equals(NaturalLangEditor.class)){
 			return this;
-		} else {
+		} else if(key.equals(XtextBuildConsole.class)){
+			return console;
+		} else if(key.equals(IDictionaryAccess.class)){
+			return dictAcc;
+		} else if(key.equals(OutlinePage.class)){
+			return contentOutline;
+		} else{
 			return super.getAdapter(key);
 		}
 	}
 
-	public ISemanticViewSelector getSemanticViewSelector() {
+	public ISelectionListener getSemanticViewSelector() {
 
 		// TODO: multiple selectors for multible views
 		if (semanticViewSelector != null)
 			return semanticViewSelector;
 
-		ISemanticViewSelector selector = new SemanticViewSelector(dictAcc) {
+		ISelectionListener selector = new SemanticViewSelector(dictAcc) {
 			@Override
 			public void setSelectionToViewer(List<?> selection) {
 				this.setSelectionToViewer(selection);
@@ -159,6 +159,7 @@ public class NaturalLangEditor extends XtextEditor implements ISelectionProvider
 				// getActionBarContributor().shareGlobalActions(this, actionBars);
 			}
 		};
+		getSite().getPage().addPostSelectionListener(selector);
 		semanticViewSelector = selector;
 		return selector;
 
@@ -256,7 +257,9 @@ public class NaturalLangEditor extends XtextEditor implements ISelectionProvider
 	public void setSelection(ISelection selection) {
 		editorSelection = selection;
 //		initSelectionViewer();
-
+		
+		semanticViewSelector.selectionChanged(getSite().getPage().getActivePart(), selection);
+		
 		for (ISelectionChangedListener listener : selectionChangedListeners) {
 			listener.selectionChanged(new SelectionChangedEvent(this, selection));
 		}
@@ -354,14 +357,6 @@ public class NaturalLangEditor extends XtextEditor implements ISelectionProvider
 
 	protected IPartListener partListener = new IPartListener() {
 		public void partActivated(IWorkbenchPart p) {
-//		if (p instanceof ContentOutline) {
-//			if (((ContentOutline)p).getCurrentPage() == contentOutlinePage) {
-//				getActionBarContributor().setActiveEditor(NaturalLangEditor.this);
-//
-//				setCurrentViewer(contentOutlineViewer);
-//			}
-//		}
-//		else 
 			if (p instanceof PropertySheet) {
 				if (propertySheetPages.contains(((PropertySheet) p).getCurrentPage())) {
 					getActionBarContributor().setActiveEditor(NaturalLangEditor.this);

@@ -23,11 +23,6 @@ public abstract class SmallItem extends AbstractItem {
 	}
 	
 	@Override
-	public boolean hasComboBox() {
-		return false;
-	}
-	
-	@Override
 	public Node instantiateTypes() {
 		update();
 		return null;

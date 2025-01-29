@@ -26,8 +26,8 @@ class GrammarConstants extends AbstractConstantClass {
 	public static val _SEPARATOR 				= getString("_SEPARATOR")     				// Separator   
 	
 	public static val _FULL_STOP 				= getString("_FULL_STOP")					// ".";
-	public static val _BRACKEDOPEN				= getString("_BRACKEDOPEN")					// (
-	public static val _BRACKEDCLOSE				= getString("_BRACKEDCLOSE")				// )
+	public static val _BRACKETOPEN				= getString("_BRACKETOPEN")					// (
+	public static val _BRACKETCLOSE				= getString("_BRACKETCLOSE")				// )
 	public static val _EX_BR_OPEN				= getString("_EX_BR_OPEN")					// [
 	public static val _EX_BR_CLOSE				= getString("_EX_BR_CLOSE")					// ]
 	public static val _EXX_BR_OPEN				= getString("_EXX_BR_OPEN")					// {
@@ -37,4 +37,6 @@ class GrammarConstants extends AbstractConstantClass {
 	public static val _SEMI_COLON				= getString("_SEMI_COLON")					// ;
 	public static val _QUESTION_M				= getString("_QUESTION_M")					// ?
 	public static val _EXCLAMATION_M			= getString("_EXCLAMATION_M")				// !
+	
+	public static val _PRIORITY		           	= getString("_PRIORITY")					// priority
 }

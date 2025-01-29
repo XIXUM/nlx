@@ -4,8 +4,6 @@
 package de.validas.nlx.view.fxviews.access.elements;
 
 
-import static de.validas.nlx.view.fxviews.access.ItemType.FULLSTOP;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -13,14 +11,16 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.neo4j.driver.v1.types.Node;
 
+import de.validas.nlx.constants.TokenPosition;
 import de.validas.nlx.dictionary.DictItem;
+import de.validas.nlx.dictionary.grammar.rules.ImplicitRulesOnDict;
 import de.validas.nlx.dictionary.type.ITypeAttributes;
 import de.validas.nlx.dictionary.type.ITypeHierarchy;
 import de.validas.nlx.view.fxviews.access.IItem;
 import de.validas.nlx.view.fxviews.semantics.ILinkObj;
 import de.validas.nlx.view.fxviews.semantics.ILinkType;
 import de.validas.nlx.view.fxviews.semantics.types.InterpunctionType;
-import de.validas.spedit.naturalLang.Elements;
+import de.validas.utils.data.lists.IAppendable;
 import de.validas.utils.data.types.XPair;
 
 /**
@@ -29,7 +29,7 @@ import de.validas.utils.data.types.XPair;
  */
 public class TerminalItem extends SmallItem {
 	
-	private final static String FULL_STOP = ".";
+	//private final static String FULL_STOP = ".";
 	protected static final String CSS_CLASS = "panelDRed";
 	protected TokenPosition position;
 
@@ -80,10 +80,15 @@ public class TerminalItem extends SmallItem {
 	}
 
 	@Override
-	public void postProcess(ILinkObj precessor, List<ITypeAttributes> attribs) {
-		//ILinkType intType = getInternalType(); 
-		if (type != null)
-			type.postProcess(precessor, attribs);
+	public void postProcess(ImplicitRulesOnDict grammar) { //TODO: 29.09.22 redundant with ShortCutItem introduce intermediate class Layer for common routines
+		super.postProcess(grammar);
+		if (type != null) {
+			IAppendable precessor = getPrecessor();
+			if (precessor != null) {
+				List<ITypeAttributes> attribs = new ArrayList<>();
+				type.postProcess((ILinkObj) ((IItem)precessor).getParent(), attribs, grammar);
+			}
+		}
 	}
 	
 	/**

@@ -14,24 +14,23 @@ import de.validas.nlx.view.fxviews.semantics.ILink;
 import de.validas.nlx.view.fxviews.semantics.ILinkObj;
 import de.validas.nlx.view.fxviews.semantics.ILinkType;
 import de.validas.spedit.naturalLang.AllElements;
+import de.validas.utils.data.lists.IAppendable;
+import de.validas.utils.data.lists.IIndexable;
+import de.validas.utils.data.lists.IContainable;
 import de.validas.utils.data.types.XPair;
 import javafx.scene.Node;
 import de.validas.nlx.dictionary.DictItem;
+import de.validas.nlx.dictionary.grammar.rules.ImplicitRulesOnDict;
+import de.validas.nlx.dictionary.grammar.token.IGrammarItem;
+import de.validas.nlx.dictionary.grammar.types.IGrammarType;
 
 /**
  * @author schaller
  *
  */
-public interface IItem {
-
-	String getName();
-	
-	String getLabel();
+public interface IItem extends IGrammarItem {
 
 	String getSelectedItem();
-
-	@Deprecated
-	boolean hasComboBox();
 
 	String getCssClass();
 
@@ -39,13 +38,9 @@ public interface IItem {
 	
 	IJavaFxObj getParent();
 
-	ILinkType getInternalType();
-	
-	EObject getElement();
-
 	Node instantiateTypes();
 	
-	void postProcess(ILinkObj precessor, List<ITypeAttributes> attribs);
+	void postProcess(ImplicitRulesOnDict grammar);
 
 	void newType();
 
@@ -54,11 +49,7 @@ public interface IItem {
 	public abstract Collection<? extends ITypeHierarchy> getWordTypes();
 
 	List<XPair<String, ITypeAttributes>> getTypes();
-	
-	public abstract org.neo4j.driver.v1.types.Node getBaseNode();
 
 	public abstract DictItem generateTokenInfo();
-
-	public abstract long generateID();
 
 }

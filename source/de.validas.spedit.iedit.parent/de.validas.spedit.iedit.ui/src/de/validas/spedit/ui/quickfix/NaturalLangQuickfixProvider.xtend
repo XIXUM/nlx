@@ -54,6 +54,8 @@ import static de.validas.nlx.dictionary.constants.DictionaryConstants.UNDEFINED_
 import static de.validas.spedit.ui.constants.EditorUiConstants._DATA
 import static de.validas.spedit.ui.constants.EditorUiConstants._LABEL
 import static de.validas.spedit.ui.constants.EditorUiConstants._MSG
+import de.validas.spedit.ui.editor.NaturalLangEditor
+import org.eclipse.ui.PlatformUI
 
 /**
  * Custom quickfixes.
@@ -94,6 +96,13 @@ class NaturalLangQuickfixProvider extends DefaultQuickfixProvider {
 	def internal_addToDictionary(IXtextDocument document, EObject element, Issue issue, NlxDictConstants constant) {
 		val String word = issue.data.get(0)
 		dictAcc.addToDictionary(word, constant.nodeType);
+		val part = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart();
+		if (part instanceof NaturalLangEditor){
+			val selection = part.selection
+			if (selection !== null)
+				part.selection = selection
+		}
+		
 		updateMarkers(document, issue, word);
 	}
 

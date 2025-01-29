@@ -5,6 +5,10 @@ package de.validas.nlx.view.fxviews.access.elements;
 
 import static de.validas.nlx.dictionary.constants.DictionaryConstants._QUOTE;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 import de.validas.nlx.view.fxviews.access.IItem;
 import de.validas.nlx.view.fxviews.semantics.ILinkable;
 import de.validas.nlx.view.fxviews.semantics.types.LiteralType;
@@ -14,7 +18,7 @@ import de.validas.spedit.naturalLang.Quote;
  * @author schaller
  *
  */
-public class QuoteItem extends BasicItem implements IItem {
+public class QuoteItem extends BasicItem {
 
 	/**
 	 * @param el
@@ -30,8 +34,8 @@ public class QuoteItem extends BasicItem implements IItem {
 	 * @param el
 	 * @return QuoteItem
 	 */
-	public static IItem create(Quote el) {
-		return new QuoteItem(el);
+	public static Collection<IItem> create(Quote el) {
+		return new ArrayList<IItem>(Collections.singletonList(new QuoteItem(el)));
 	}
 
 }

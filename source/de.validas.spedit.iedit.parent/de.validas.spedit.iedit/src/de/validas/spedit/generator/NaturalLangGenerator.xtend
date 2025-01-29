@@ -12,21 +12,23 @@ import de.validas.spedit.naturalLang.BracketSentence
 import de.validas.spedit.naturalLang.ChapterSentence
 import de.validas.spedit.naturalLang.EString
 import de.validas.spedit.naturalLang.Elements
+import de.validas.spedit.naturalLang.ExtBracketSentence
 import de.validas.spedit.naturalLang.FootNote
 import de.validas.spedit.naturalLang.IgnoredText
 import de.validas.spedit.naturalLang.ItWord
 import de.validas.spedit.naturalLang.LineSentence
-import de.validas.spedit.naturalLang.LineSentenceChain
 import de.validas.spedit.naturalLang.ListSentence
 import de.validas.spedit.naturalLang.MailAdress
 import de.validas.spedit.naturalLang.Model
 import de.validas.spedit.naturalLang.New_Line
+import de.validas.spedit.naturalLang.NoNElement
 import de.validas.spedit.naturalLang.ParagraphBlock
 import de.validas.spedit.naturalLang.Quote
 import de.validas.spedit.naturalLang.Sentence
 import de.validas.spedit.naturalLang.SentenceChain
 import de.validas.spedit.naturalLang.SentenceX
 import de.validas.spedit.naturalLang.ShortCut
+import de.validas.spedit.naturalLang.SimpleUnit
 import de.validas.spedit.naturalLang.SubSentence
 import de.validas.spedit.naturalLang.Symbols
 import de.validas.spedit.naturalLang.Table
@@ -41,8 +43,11 @@ import de.validas.utils.data.lists.LinkedList
 import de.validas.utils.data.lists.XList
 import de.validas.utils.io.filesystem.File
 import de.validas.utils.io.filesystem.Path
+import java.util.ArrayList
+import java.util.Collections
 import java.util.HashMap
 import java.util.List
+import java.util.regex.Matcher
 import java.util.regex.Pattern
 import metaModel.referenceProcess.Process
 import metaModel.referenceProcess.ReferenceProcessFactory
@@ -62,17 +67,13 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.eclipse.xtext.resource.ILocationInFileProvider
+import org.eclipse.xtext.util.LineAndColumn
 
 import static de.validas.spedit.constants.NaturalLangConstants.*
 import static de.validas.spedit.constants.NaturalLangMessages.*
 import static de.validas.spedit.generator.utils.ReflectiveUtils.getAllChildrenRecursive
 
 import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
-import de.validas.spedit.naturalLang.ExtBracketSentence
-import org.eclipse.xtext.util.LineAndColumn
-import java.util.regex.Matcher
-import java.util.Collections
-import java.util.ArrayList
 
 /**
  * Generates code from your model files on save.
@@ -85,6 +86,8 @@ class NaturalLangGenerator extends AbstractGenerator {
 	protected ILocationInFileProvider locationInFileProvider;
 
 	protected boolean content_table = true
+	
+	public static val _NL = "\n"
 
 	/**
 	 * 
@@ -254,10 +257,12 @@ class NaturalLangGenerator extends AbstractGenerator {
 						requirementObj = newRequirementObj(requirementObj, element)
 						requirementObj.name = lineSentenceChainToString(element.headline as SentenceChain, requirementObj)
 					} else {
-						var headline = new StringBuilder(UnitToString(element.chapterNumber as Unit, requirementObj, false))
-						headline.append(' ')  
-						headline.append(lineSentenceChainToString(element.headline as SentenceChain, requirementObj))
-						headline.append(_NEW_LINE)
+						var headline = ''''''
+						headline += UnitToString(element.chapterNumber as Unit, requirementObj, false)
+						
+						headline += ' '  
+						headline += lineSentenceChainToString(element.headline as SentenceChain, requirementObj)
+						headline += _NL
 						buildLongDescrSentence(requirementObj, headline.toString())
 					}
 				}
@@ -364,18 +369,18 @@ class NaturalLangGenerator extends AbstractGenerator {
 	}
 
 	def TableToString(Table table, Requirement requirement) {
-		var sb = new StringBuilder();
+		var sb = ''''''
 		var List<Integer> columns = #[]
 		for (EObject elm : table.lines) {
 			if (elm instanceof TableLine) {
 				columns = configureTable(elm.content)
-				sb.append(elm.content)
+				sb += elm.content
 			} else if (elm instanceof TableRow) {
 				var result = TableRowToString(elm, requirement, columns)
-				sb.append(result.key)
+				sb += result.key
 				columns = result.value
 			}
-			sb.append(_NEW_LINE);
+			sb += _NL  //_NEW_LINE
 		}
 		return sb.toString
 	}
@@ -409,7 +414,7 @@ class NaturalLangGenerator extends AbstractGenerator {
 
 	def TableRowToString(TableRow row, Requirement requirement, List<Integer> columns) {
 		var intColumns = columns
-		var StringBuilder sb = new StringBuilder();
+		var sb = ''''''
 		var column = 0;
 		var firstborder = true
 		var EObject last = null
@@ -421,20 +426,20 @@ class NaturalLangGenerator extends AbstractGenerator {
 				else
 					column++
 				if (last instanceof TableColumnSeparator || last instanceof TableLine) {
-					sb.append(createCellContent('', intColumns, column - 1))
+					sb += createCellContent('', intColumns, column - 1)
 				}
-				sb.append(elm.char)
+				sb += elm.char
 			} else if (elm instanceof TableLine) {
 				var blankLine = configureTable(elm.content)
 				if (last instanceof TableColumnSeparator || last instanceof TableLine) {
-					sb.append(createCellContent('', intColumns, column))
+					sb += createCellContent('', intColumns, column)
 				}
 				intColumns = replaceColumns(row.content, intColumns, blankLine, index)
 				column += blankLine.size
-				sb.append(elm.content)
+				sb += elm.content
 			} else if (elm instanceof SentenceChain) {
 				var String content = createCellContent(lineSentenceChainToString(elm, requirement), intColumns, column)  //TODO: wrong column calculation
-				sb.append(content)
+				sb += content
 			}
 			last = elm
 			index++
@@ -466,44 +471,42 @@ class NaturalLangGenerator extends AbstractGenerator {
 
 	def lineSentenceChainToString(SentenceChain chain, Requirement requirement) {
 		var int i = 0
-		var StringBuilder sb = new StringBuilder();
+		var sb = ''''''
 		for (EObject token : chain.sentences)
 			if (token instanceof LineSentence) {
-				sb.append(sentenceToString(token as Sentence, requirement,0, 0))
+				sb += sentenceToString(token as Sentence, requirement,0, 0)
 				if (chain.separators.size() > i)
-					sb.append(chain.separators.get(i))
+					sb += chain.separators.get(i)
 			}
 		if (chain.endpoint !== null && !chain.endpoint.empty) {
-			sb.append(chain.endpoint)
+			sb += chain.endpoint
 		} 
-//		else {
-//			sb.append(_NEW_LINE)
-//		} 
+ 
 		return sb.toString
 	}
 
 	protected def paragraphToString(ParagraphBlock block, Requirement requirement) {
-		//var internalReq = requirement
-		var StringBuilder sb = new StringBuilder();
-		//var sb = ''''''
+		
+		var sb = ''''''
+		
 		for (BlockElement elm : block.block)
 			switch (elm){
 				SentenceChain:{
-					sb.append(sentenceChainToString(elm, requirement, 0))
+					sb += sentenceChainToString(elm, requirement, 0)
 				}
 				ListSentence: {
 					var pair = listSentenceToString(elm, requirement)
 					pair.value.requiredByRequirements.add(requirement)
 					requirement.requiredRequirements.add(pair.value)
 					
-					sb.append('''«_LIST_REPLACEMENT_MSS» «pair.value.ID»)«_NEW_LINE»''')
+					sb += '''«_LIST_REPLACEMENT_MSS» «pair.value.ID»)«_NL»'''
 					//internalReq = pair.value
 				}
 				FootNote: {
 					var pair = footNoteToString(elm, requirement)
 					pair.value.requiredByRequirements.add(requirement)
 					requirement.requiredRequirements.add(pair.value)
-					sb.append('''«_FOOT_NOTE_MSS» «pair.value.ID»)«_NEW_LINE»''')
+					sb += '''«_FOOT_NOTE_MSS» «pair.value.ID»)«_NL»'''
 				}
 				IgnoredText:{
 					//Ignore 
@@ -511,8 +514,8 @@ class NaturalLangGenerator extends AbstractGenerator {
 			}
 			
 		if (block.PEnd !== null)
-			sb.append(block.PEnd) // weather paragraph gap with '.' at the end or not 
-		return new Pair<String, Requirement>(sb.toString,requirement)
+			sb += block.PEnd // weather paragraph gap with '.' at the end or not 
+		return new Pair<String, Requirement>(sb, requirement)
 	}
 	
 	def footNoteToString(FootNote note, Requirement requirement) {
@@ -541,7 +544,7 @@ class NaturalLangGenerator extends AbstractGenerator {
 	}
 
 	protected def sentencesToString(EList<? extends EObject> chain, EList<String> separators, String endpoint, Requirement requirement, int start, int len) {
-		var StringBuilder sb = new StringBuilder();
+		var sb = ''''''
 		var int index = 0
 		var int sStart = 0
 		if (chain === null) return new String
@@ -549,22 +552,22 @@ class NaturalLangGenerator extends AbstractGenerator {
 		for (SentenceX sentence : chain as EList<SentenceX>) {  // odd type inferring Sentence->FreeSentence
 			if (index > 0){
 				if (len > 0 && sb.length> len)
-					return sb.toString
+					return sb
 				else 
 					if (lastSentence.length > 0)
-						sb.append(separators.get(index - 1))
+						sb += separators.get(index - 1)
 				sStart = 0
 			} else {
 				sStart = start
 			}
 			lastSentence = sentenceToString(sentence as Sentence, requirement, sStart, len)
-			sb.append(lastSentence)
+			sb += lastSentence
 			index++
 		}
 		if (endpoint !== null) {
-			sb.append(endpoint)
+			sb += endpoint
 		}
-		return sb.toString
+		return sb
 	}
 
 	def getRoot(TreeIterator<EObject> iterator) {
@@ -579,9 +582,9 @@ class NaturalLangGenerator extends AbstractGenerator {
 	 */
 	protected def void buildLongDescrSentence(Requirement requirementObj, String text) {
 		if (requirementObj.longDescription === null)
-			requirementObj.longDescription = text
+			requirementObj.longDescription = '''«text»'''
 		else
-			requirementObj.longDescription = requirementObj.longDescription.concat(text)
+			requirementObj.longDescription = requirementObj.longDescription + '''«text»'''
 	}
 
 	protected def Named findParentChapter(Named parent, String chapter_num) {
@@ -648,10 +651,15 @@ class NaturalLangGenerator extends AbstractGenerator {
 
 	protected def sentenceToString(Sentence sentence, Requirement requirement,int start, int len) {
 		var subS = (sentence as Sentence).subsentence
+		var intStart = start
 		if (len > 0 && subS.size > 0)
-			return relSubSentenceToString(subS.get(0) as SubSentence, requirement, start, len)
+			return relSubSentenceToString(subS.get(0) as SubSentence, requirement, intStart, len)
+		var i = 0
 		var str = '''«FOR rSentence : subS SEPARATOR(', ')
-						»«relSubSentenceToString(rSentence as SubSentence, requirement, start, 0)»«
+						»«IF i++ > 0
+						»«relSubSentenceToString(rSentence as SubSentence, requirement, 0, 0)»«
+						ELSE»«relSubSentenceToString(rSentence as SubSentence, requirement, intStart, 0)»«
+						ENDIF»«
 					ENDFOR»'''
 //					IF sentence.endPoint !== null
 //						»«sentence.endPoint»«
@@ -664,7 +672,8 @@ class NaturalLangGenerator extends AbstractGenerator {
 			Word: {
 				return element.word.join('')
 			}
-			Unit: {
+			Unit,
+			SimpleUnit: {
 				return UnitToString(element, requirement, true)
 			}
 			ShortCut:{
@@ -688,18 +697,30 @@ class NaturalLangGenerator extends AbstractGenerator {
 			MailAdress:
 				return element.email.join('')
 			IgnoredText:
-				return element .ignored
+				return element.ignored
 			New_Line:
 				return element.nl
 		}
 	}
 
-	def String UnitToString(Unit unit, Requirement requirement, boolean addRequirement) {
-		var result = unit.value + unit.unit
-		if (requirement == null)
+	def String UnitToString(Elements unit, Requirement requirement, boolean addRequirement) {
+		var result = ''''''
+		if (unit instanceof Unit){
+			if (unit.value instanceof EList) {
+				result += unit.value.join(' ')	
+			}
+			if (unit.unit !== null)
+				result += unit.unit
+		} else if (unit instanceof SimpleUnit) {
+			if (unit.value instanceof EList) {
+				result += unit.value.join(' ')	
+			}
+		}
+		 
+		if (requirement === null)
 			return result
 		for (req : requirement.subRequirements) {
-			if (req.ID == result)
+			if (req.ID === result)
 				return result
 		}
 		if (addRequirement)
@@ -707,7 +728,7 @@ class NaturalLangGenerator extends AbstractGenerator {
 		result
 	}
 	
-	def addSubRequirement(String id, Requirement requirement, Unit unit){
+	def addSubRequirement(String id, Requirement requirement, EObject unit){
 		var RequiredDocument reqDocumentNode = ReferenceProcessFactory.eINSTANCE.createRequiredDocument();
 		reqDocumentNode.ID = id
 		reqDocumentNode.name = _INTERNAL_REF_NODE //"Internal Reference Node"
@@ -726,18 +747,27 @@ URI: «uri»'''.toString
 	}
 
 	protected def String subSentenceToString(SubSentence ssentence, Requirement requirement, int start, int len) {
-		var StringBuilder sb = new StringBuilder();
+		var sb = ''''''
 		var int index = 0
+		var intStart = start
 		//var str ='''«FOR element : ssentence.elements SEPARATOR(' ')»«elementToString(element as Elements, requirement)»'''
+		try {
+			while (!(ssentence.elements.get(intStart) instanceof NoNElement) && intStart < ssentence.elements.length -1)
+				intStart += 1
+			
+		} catch (IndexOutOfBoundsException e) {
+			if (intStart > 0)
+				intStart -= 1
+		}
 		for (element : ssentence.elements) {
 			if (len>0 && len <= sb.length)
 				return sb.toString
-			if (index > start)
-				sb.append(' ')
-			if (index >= start) sb.append(elementToString(element as Elements, requirement, len)) 
+			if (index > intStart)
+				sb +=' '
+			if (index >= intStart) sb += elementToString(element as Elements, requirement, len) 
 			index++
 		}
-		return sb.toString
+		return sb
 	}
 
 	protected def String relSubSentenceToString(SubSentence ssentence, Requirement requirement,int start, int len) {
@@ -746,15 +776,25 @@ URI: «uri»'''.toString
 
 	protected def String brackedSentenceToText(BracketSentence bs, char startingBr, char endBr, Requirement requirement) {
 		var extractName = ""   
-		
 		var firstEl = getElement(bs, 0)
-		if (firstEl != null && (firstEl.equals(_NOTE) || firstEl.equals(_EXAMPLE))){
+		var start = 0
+		if (firstEl !== null && (firstEl.toLowerCase.equals(_NOTE) || firstEl.toLowerCase.equals(_EXAMPLE) || firstEl.toLowerCase.equals(_SOURCE))){
 			extractName =  firstEl
+			start += 1
+			var secondEl = getElement(bs, 1)
+			try {
+				var num = Integer.decode(secondEl)
+				extractName += '''-«num»'''
+				start += 1	
+			} 
+			catch (NumberFormatException e) {
+				
+			}
 		}
 		
 		var str = '''«startingBr»«
-			IF extractName.length > 0»«
-				extractBracket(bs, extractName, requirement)»«
+			IF start > 0»«
+				extractBracket(bs, start, extractName, requirement)»«
 			ELSE»«
 				sentencesToString(bs.brackedSentences, bs.separator, null, requirement, 0, 0)»«
 			ENDIF»«endBr»'''
@@ -787,16 +827,16 @@ URI: «uri»'''.toString
 		}
 	}
 	
-	def extractBracket(BracketSentence bs, String extractName, Requirement requirement) {
+	def extractBracket(BracketSentence bs, int start, String extractName, Requirement requirement) {
 		var internalReq = newRequirementObj(requirement, bs)
 		var sentences = bs.brackedSentences
 		var sep = bs.separator
 		if (internalReq != requirement){
 			var id = requirement.ID
 			internalReq.ID = '''«id»«IF (id.contains(_DASH))».«ELSE»-«ENDIF»«extractName»'''
-			internalReq.name = sentencesToString(sentences, sep, null, null, 1, NAME_MIN_LEN)
+			internalReq.name = sentencesToString(sentences, sep, null, null, start, NAME_MIN_LEN)
 			internalReq.description = extractName
-			internalReq.longDescription = sentencesToString(sentences, sep, null, internalReq, 1, 0)
+			internalReq.longDescription = sentencesToString(sentences, sep, null, internalReq, start, 0)
 			//addToParent(requirement, internalReq)
 			requirement.subRequirements.add(internalReq)
 			'''«extractName» «_NOTE_REPL_MSS» «internalReq.ID»'''

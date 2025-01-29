@@ -1,9 +1,11 @@
 package de.validas.nlx.ai
 
-import de.validas.nlx.ai.IDbAccess
-import org.neo4j.driver.internal.value.NodeValue
-import org.eclipse.xtext.builder.debug.IBuildLogger
 import de.validas.nlx.ai.semantics.INode
+import org.eclipse.xtext.builder.debug.IBuildLogger
+import org.neo4j.driver.v1.types.Node
+import org.neo4j.driver.v1.Record
+import java.util.List
+import de.validas.nlx.ai.semantics.IContextNode
 
 interface IParserDriver {
 	
@@ -19,9 +21,21 @@ interface IParserDriver {
 	
 	def INodeFactory getNodeFactory()
 	
+	def void setContextFactory(INodeFactory factory)
+	
+	def IContextFactory getContextFactory()
+	
+	def IContextNode newContext()
+	
+	def void setContext(IContextNode node) 
+	
+	def IContextNode getContext()
+	
 	def IBuildLogger getLogger()
 	
-	def INode getNodeById(NodeValue node)
+	def INode getNodeById(Node node)
+	
+	def List<Record> listConnections(Node source, String type)
 	
 	def IParserDriver newCache()
 	
