@@ -50,3 +50,12 @@ Go to Releases: [DOWNLOAD](https://github.com/XIXUM/nlx/releases)
 ## Previews
 
 see some more images of the GUI:
+
+![Poster](https://raw.githubusercontent.com/XIXUM/nlx/master/img/Screenshot 2024-10-22 092821.JPG "preview of the gui 01")
+
+![Poster](https://raw.githubusercontent.com/XIXUM/nlx/master/img/Screenshot 2024-10-22 093122.JPG "preview of the GUI 02")
+
+here are some plotted graphs of the model:
+
+![Poster](https://raw.githubusercontent.com/XIXUM/nlx/master/img/graph_grammar.png)
+![Poster](https://raw.githubusercontent.com/XIXUM/nlx/master/img/graph_dict.png)
