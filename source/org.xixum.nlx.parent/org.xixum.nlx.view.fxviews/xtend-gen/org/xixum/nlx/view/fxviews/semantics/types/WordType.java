@@ -4,10 +4,14 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.xixum.nlx.dictionary.IDictionaryAccess;
 import org.xixum.nlx.dictionary.grammar.rules.ImplicitRulesOnDict;
 import org.xixum.nlx.dictionary.type.ITypeAttributes;
 import org.xixum.nlx.dictionary.type.ITypeInfo;
+import org.xixum.nlx.view.fxviews.semantics.ILink;
+import org.xixum.nlx.view.fxviews.semantics.ILinkObj;
+import org.xixum.nlx.view.fxviews.semantics.ILinkable;
 import org.xixum.nlx.view.fxviews.semantics.constants.FxViewConstants;
 
 @SuppressWarnings("all")
@@ -24,29 +28,24 @@ public class WordType extends LiteralType {
 
   private IDictionaryAccess dictAccess;
 
-  public WordType(final ITypeInfo typeInfo, final /* ILinkable */Object parent, final IDictionaryAccess dictAccess) {
+  public WordType(final ITypeInfo typeInfo, final ILinkable parent, final IDictionaryAccess dictAccess) {
     throw new Error("Unresolved compilation problems:"
       + "\nLinkedList cannot be resolved."
-      + "\nThe constructor LiteralType(String, Object) refers to the missing type Object"
       + "\nThe field WordType.elements refers to the missing type LinkedList");
   }
 
   @Override
-  public Object getBaseType() {
+  public XPair getBaseType() {
     throw new Error("Unresolved compilation problems:"
-      + "\nILinkObj cannot be resolved to a type."
       + "\nXPair cannot be resolved."
       + "\nThe field WordType.elements refers to the missing type LinkedList"
       + "\nThe field WordType.elements refers to the missing type LinkedList"
       + "\nThe field WordType.elements refers to the missing type LinkedList"
-      + "\nThe field AbstractLinkType._parent refers to the missing type ILinkable"
       + "\nThe method generate() from the type WordType refers to the missing type Pane"
       + "\nsize cannot be resolved"
       + "\nget cannot be resolved"
       + "\nsize cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\ntoken cannot be resolved"
-      + "\nname cannot be resolved");
+      + "\n=== cannot be resolved");
   }
 
   @Override
@@ -61,12 +60,12 @@ public class WordType extends LiteralType {
   }
 
   @Override
-  public Object getTypeInfo() {
+  public ITypeInfo getTypeInfo() {
     return this.typeInfo;
   }
 
   @Override
-  public Object getRoot() {
+  public Node getRoot() {
     throw new Error("Unresolved compilation problems:"
       + "\nThe field WordType.group refers to the missing type Pane"
       + "\nThe field WordType.group refers to the missing type Pane"
@@ -89,18 +88,16 @@ public class WordType extends LiteralType {
     throw new Error("Unresolved compilation problems:"
       + "\nThe method or field Platform is undefined"
       + "\nThe method or field Platform is undefined"
+      + "\nThe field root is not visible"
+      + "\nThe field root is not visible"
+      + "\nThe field root is not visible"
       + "\nThe field WordType.elements refers to the missing type LinkedList"
-      + "\nThe method create() from the type TypeElement refers to the missing type Object"
-      + "\nThe method getRoot() from the type TypeElement refers to the missing type Node"
       + "\nThe field WordType.group refers to the missing type Pane"
-      + "\nThe method getRoot() from the type TypeElement refers to the missing type Node"
       + "\nThe field WordType.group refers to the missing type Pane"
-      + "\nThe method getRoot() from the type TypeElement refers to the missing type Node"
       + "\nThe field WordType.elements refers to the missing type LinkedList"
       + "\nkey cannot be resolved"
       + "\nvalue cannot be resolved"
       + "\nsize cannot be resolved"
-      + "\n!== cannot be resolved"
       + "\nfxApplicationThread cannot be resolved"
       + "\n! cannot be resolved"
       + "\nrunLater cannot be resolved"
@@ -116,8 +113,8 @@ public class WordType extends LiteralType {
     throw new Error("Unresolved compilation problems:"
       + "\nThe method or field Platform is undefined"
       + "\nThe method or field Platform is undefined"
+      + "\nThe field root is not visible"
       + "\nThe field WordType.group refers to the missing type Pane"
-      + "\nThe method getRoot() from the type TypeElement refers to the missing type Node"
       + "\nThe field WordType.elements refers to the missing type LinkedList"
       + "\nThe field WordType.elements refers to the missing type LinkedList"
       + "\nThe field WordType.elements refers to the missing type LinkedList"
@@ -141,9 +138,8 @@ public class WordType extends LiteralType {
   }
 
   @Override
-  public Object setSelection(final int selection) {
+  public void setSelection(final int selection) {
     throw new Error("Unresolved compilation problems:"
-      + "\nType mismatch: cannot convert from void to Object"
       + "\nThe field WordType.elements refers to the missing type LinkedList"
       + "\nsize cannot be resolved");
   }
@@ -151,20 +147,17 @@ public class WordType extends LiteralType {
   @Override
   public void update() {
     throw new Error("Unresolved compilation problems:"
-      + "\nTypeControlElController cannot be resolved to a type."
-      + "\nTypeControlElController cannot be resolved to a type."
-      + "\nTypeControlElController cannot be resolved to a type."
       + "\nThe method or field Platform is undefined"
       + "\nThe method or field Platform is undefined"
+      + "\nThe method or field sphere is undefined for the type TypeControlElController"
+      + "\nThe method or field sphere is undefined for the type TypeControlElController"
       + "\nThe field WordType.elements refers to the missing type LinkedList"
       + "\nThe field WordType.elements refers to the missing type LinkedList"
       + "\nThe field WordType.elements refers to the missing type LinkedList"
       + "\nisFxApplicationThread cannot be resolved"
       + "\n! cannot be resolved"
       + "\nrunLater cannot be resolved"
-      + "\nsphere cannot be resolved"
       + "\nvisible cannot be resolved"
-      + "\nsphere cannot be resolved"
       + "\nvisible cannot be resolved"
       + "\nindex cannot be resolved"
       + "\ncontroller cannot be resolved"
@@ -181,7 +174,7 @@ public class WordType extends LiteralType {
   }
 
   @Override
-  public /* HashMap<String, List<ILink>> */Object getLinks() {
+  public HashMap<String, List<ILink>> getLinks() {
     throw new Error("Unresolved compilation problems:"
       + "\nType mismatch: cannot convert from HashMap<Object, Object> to HashMap<String, List<ILink>>"
       + "\nThe field WordType.elements refers to the missing type LinkedList"
@@ -191,7 +184,7 @@ public class WordType extends LiteralType {
   }
 
   @Override
-  public /* List<ILink> */Object getSelectedLink() {
+  public List<ILink> getSelectedLink() {
     throw new Error("Unresolved compilation problems:"
       + "\nThe field WordType.elements refers to the missing type LinkedList"
       + "\nThe field WordType.elements refers to the missing type LinkedList"
@@ -202,7 +195,7 @@ public class WordType extends LiteralType {
       + "\ntoList cannot be resolved");
   }
 
-  public void setLinkTo(final String typeName, final /* ILink */Object link) {
+  public void setLinkTo(final String typeName, final ILink link) {
     throw new Error("Unresolved compilation problems:"
       + "\nThe field WordType.elements refers to the missing type LinkedList"
       + "\nname cannot be resolved"
@@ -217,8 +210,13 @@ public class WordType extends LiteralType {
 
   @Override
   public String toString() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method getSelectedLink() from the type WordType refers to the missing type ILink");
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("NodeType: ");
+    List<ILink> _selectedLink = this.getSelectedLink();
+    _builder.append(_selectedLink);
+    _builder.append(" Sel:");
+    _builder.append(this.selection);
+    return _builder.toString();
   }
 
   public void updateTypes(final HashMap<String, ITypeAttributes> map) {
@@ -236,40 +234,22 @@ public class WordType extends LiteralType {
   }
 
   @Override
-  public Object postProcess(final /* ILinkObj */Object precessor, final List<ITypeAttributes> attribs, final ImplicitRulesOnDict grammar) {
+  public void postProcess(final ILinkObj precessor, final List<ITypeAttributes> attribs, final ImplicitRulesOnDict grammar) {
     throw new Error("Unresolved compilation problems:"
-      + "\nILinkObj cannot be resolved to a type."
-      + "\nThe method getParent() from the type AbstractLinkType refers to the missing type ILinkable"
       + "\nThe field WordType.elements refers to the missing type LinkedList"
       + "\nThe method getTypes() from the type ITypeInfo refers to the missing type Object"
-      + "\ntoken cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\ntoLowerCase cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\ntoLowerCase cannot be resolved"
       + "\nlinks cannot be resolved"
       + "\n!== cannot be resolved"
       + "\n&& cannot be resolved"
       + "\nlinks cannot be resolved"
       + "\nempty cannot be resolved"
       + "\n! cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\n&& cannot be resolved"
       + "\nindex cannot be resolved"
       + "\ntypeAttributes cannot be resolved"
-      + "\ntoken cannot be resolved"
-      + "\ninternalType cannot be resolved"
-      + "\ntypeInfo cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\ngenerateTokenInfo cannot be resolved"
-      + "\nlabel cannot be resolved"
-      + "\ninternalType cannot be resolved"
-      + "\nname cannot be resolved"
       + "\nname cannot be resolved"
       + "\ntypeAttributes cannot be resolved"
       + "\nbaseNode cannot be resolved"
       + "\nid cannot be resolved"
-      + "\nname cannot be resolved"
       + "\nname cannot be resolved"
       + "\nkey cannot be resolved"
       + "\nvalue cannot be resolved");

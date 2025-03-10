@@ -1,8 +1,10 @@
 package org.xixum.nlx.view.fxviews.control;
 
+import org.xixum.nlx.view.fxviews.semantics.ILinkable;
+
 @SuppressWarnings("all")
-public abstract class AbstractLinkController implements /* AbstractCanvasObjController */ILinkController {
-  protected /* ILinkable */Object link;
+public abstract class AbstractLinkController extends AbstractCanvasObjController implements ILinkController {
+  protected ILinkable link;
 
   /* @FXML
    */public abstract void onDragStart(final /* MouseEvent */Object event);

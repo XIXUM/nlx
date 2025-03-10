@@ -9,10 +9,20 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.xixum.nlx.dictionary.IDictionaryAccess;
 import org.xixum.nlx.dictionary.type.ITypeAttributes;
 import org.xixum.nlx.dictionary.type.ITypeHierarchy;
+import org.xixum.nlx.view.fxviews.access.IItem;
+import org.xixum.nlx.view.fxviews.access.IJavaFxObj;
+import org.xixum.nlx.view.fxviews.access.elements.ShortCutItem;
+import org.xixum.nlx.view.fxviews.control.ICanvasController;
+import org.xixum.nlx.view.fxviews.control.IController;
+import org.xixum.nlx.view.fxviews.control.IDragController;
+import org.xixum.nlx.view.fxviews.control.IElmController;
+import org.xixum.nlx.view.fxviews.semantics.ILink;
+import org.xixum.nlx.view.fxviews.semantics.ILinkObj;
+import org.xixum.nlx.view.fxviews.semantics.ILinkable;
 import org.xixum.nlx.view.fxviews.semantics.util.IDelegates;
 
 @SuppressWarnings("all")
-public class TypeElement implements /* AbstractAppendable, IJavaFxObj */ITypeElement {
+public class TypeElement implements /* AbstractAppendable */IJavaFxObj, ITypeElement {
   protected String typeName;
 
   protected ITypeAttributes typeAttributes;
@@ -23,9 +33,9 @@ public class TypeElement implements /* AbstractAppendable, IJavaFxObj */ITypeEle
 
   private /* Node */Object root;
 
-  private /* IElmController */Object controller;
+  private IElmController controller;
 
-  private /* IDragController */Object dragController;
+  private IDragController dragController;
 
   private /* FXMLLoader */Object loader;
 
@@ -41,9 +51,15 @@ public class TypeElement implements /* AbstractAppendable, IJavaFxObj */ITypeEle
 
   private /* Map<ComboBox<String>, ChangeListener<? super String>> */Object listeners;
 
-  private /* IDelegates.Procedure2<IJavaFxObj, Event> */Object plusButton /* Skipped initializer because of errors */;
+  private /* IDelegates.Procedure2<IJavaFxObj, Event> */Object plusButton = ((IDelegates.Procedure2<IJavaFxObj, Object>) (IJavaFxObj parent, Object event) -> {
+    Object wordT = parent.getParent();
+    if ((wordT instanceof WordType)) {
+      ((WordType)wordT).setSelection(this.index);
+      ((WordType)wordT).getParent().getCanvas().getLinkListener().update();
+    }
+  });
 
-  private /* IDelegates.Procedure2<IJavaFxObj, Event> */Object deleteButton = ((IDelegates.Procedure2<Object, Object>) (Object parent, Object event) -> {
+  private /* IDelegates.Procedure2<IJavaFxObj, Event> */Object deleteButton = ((IDelegates.Procedure2<IJavaFxObj, Object>) (IJavaFxObj parent, Object event) -> {
     this.deleteTypeInDict(this.typeName);
   });
 
@@ -53,113 +69,69 @@ public class TypeElement implements /* AbstractAppendable, IJavaFxObj */ITypeEle
 
   public TypeElement(final String name, final ITypeAttributes attributes, final int index, final LiteralType parent, final URL ressource, final boolean withNone) {
     throw new Error("Unresolved compilation problems:"
-      + "\nILinkObj cannot be resolved to a type."
-      + "\nShortCutItem cannot be resolved to a type."
       + "\nFXMLLoader cannot be resolved."
       + "\nThe field TypeElement.loader refers to the missing type FXMLLoader"
       + "\nThe field TypeElement.loader refers to the missing type FXMLLoader"
-      + "\nThe method getParent() from the type AbstractLinkType refers to the missing type ILinkable"
       + "\nThe field TypeElement.listeners refers to the missing type ComboBox"
       + "\nThe field TypeElement.links refers to the missing type XPair"
-      + "\nThe method getParent() from the type AbstractLinkType refers to the missing type ILinkable"
-      + "\nsetClassLoader cannot be resolved"
-      + "\ncanvas cannot be resolved"
-      + "\nfxClassLoader cannot be resolved"
-      + "\ntoken cannot be resolved"
-      + "\ndictAccess cannot be resolved");
+      + "\nsetClassLoader cannot be resolved");
   }
 
-  public Object create() {
+  public void create() {
     throw new Error("Unresolved compilation problems:"
-      + "\nTypeControlElController cannot be resolved to a type."
-      + "\nILinkObj cannot be resolved to a type."
-      + "\nILinkObj cannot be resolved to a type."
+      + "\nThe method or field secondRow is undefined for the type TypeControlElController"
+      + "\nThe method or field secondRow is undefined for the type TypeControlElController"
+      + "\nThe method or field deleteContainer is undefined for the type TypeControlElController"
+      + "\nThe method or field deleteContainer is undefined for the type TypeControlElController"
+      + "\nThe method or field sphere is undefined for the type TypeControlElController"
+      + "\nThe method or field sphere is undefined for the type TypeControlElController"
       + "\nThe method size() is undefined for the type Object"
+      + "\nThe method or field deleteContainer is undefined for the type TypeControlElController"
+      + "\nThe method or field deleteContainer is undefined for the type TypeControlElController"
+      + "\nThe method addListener(String, Procedure2<IJavaFxObj, Event>) is undefined for the type TypeControlElController"
+      + "\nThe method addListener(String, Procedure2<IJavaFxObj, Event>) is undefined for the type TypeControlElController"
       + "\nThe field TypeElement.root refers to the missing type Node"
       + "\nThe field TypeElement.loader refers to the missing type FXMLLoader"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
       + "\nThe field TypeElement.loader refers to the missing type FXMLLoader"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe method getParent() from the type AbstractLinkType refers to the missing type ILinkable"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe field TypeElement.plusButton refers to the missing type IJavaFxObj"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe field TypeElement.deleteButton refers to the missing type IJavaFxObj"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe field TypeElement.dragController refers to the missing type IDragController"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe method getParent() from the type AbstractLinkType refers to the missing type ILinkable"
+      + "\nThe field TypeElement.plusButton refers to the missing type Event"
+      + "\nThe field TypeElement.deleteButton refers to the missing type Event"
       + "\nload cannot be resolved"
       + "\ngetController cannot be resolved"
-      + "\nsecondRow cannot be resolved"
       + "\nmanagedProperty cannot be resolved"
       + "\nbind cannot be resolved"
-      + "\nsecondRow cannot be resolved"
       + "\nvisibleProperty cannot be resolved"
-      + "\ndeleteContainer cannot be resolved"
       + "\nmanagedProperty cannot be resolved"
       + "\nbind cannot be resolved"
-      + "\ndeleteContainer cannot be resolved"
       + "\nvisibleProperty cannot be resolved"
-      + "\ntoken cannot be resolved"
-      + "\nwordTypes cannot be resolved"
-      + "\n?: cannot be resolved"
-      + "\nsphere cannot be resolved"
       + "\nvisible cannot be resolved"
-      + "\nsphere cannot be resolved"
       + "\nvisible cannot be resolved"
       + "\n< cannot be resolved"
-      + "\ndeleteContainer cannot be resolved"
       + "\nvisible cannot be resolved"
-      + "\ndeleteContainer cannot be resolved"
-      + "\nvisible cannot be resolved"
-      + "\naddListener cannot be resolved"
-      + "\naddListener cannot be resolved"
-      + "\naddDragController cannot be resolved"
-      + "\nsetParent cannot be resolved"
-      + "\ntoken cannot be resolved"
-      + "\nname cannot be resolved");
+      + "\nvisible cannot be resolved");
   }
 
   public void addItems(final List<ITypeHierarchy> types) {
     throw new Error("Unresolved compilation problems:"
-      + "\nTypeControlElController cannot be resolved to a type."
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
+      + "\nThe method or field mainCombo is undefined for the type TypeControlElController"
+      + "\nThe method or field secondRow is undefined for the type TypeControlElController"
+      + "\nThe method or field mainCombo is undefined for the type TypeControlElController"
       + "\nThe method setSelectionChangedListener(ComboBox, ChangeListener) from the type TypeElement refers to the missing type ComboBox"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nmainCombo cannot be resolved"
       + "\nitems cannot be resolved"
       + "\n+= cannot be resolved"
       + "\nvalue cannot be resolved"
-      + "\nsecondRow cannot be resolved"
-      + "\nvisible cannot be resolved"
-      + "\nmainCombo cannot be resolved");
+      + "\nvisible cannot be resolved");
   }
 
   public Object setDeleteVisible(final boolean visibility) {
     throw new Error("Unresolved compilation problems:"
-      + "\nTypeControlElController cannot be resolved to a type."
       + "\nThe method or field Platform is undefined"
       + "\nThe method or field Platform is undefined"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
+      + "\nThe method or field deleteContainer is undefined for the type TypeControlElController"
+      + "\nThe method or field deleteContainer is undefined for the type TypeControlElController"
       + "\nisFxApplicationThread cannot be resolved"
       + "\n! cannot be resolved"
       + "\nrunLater cannot be resolved"
-      + "\ndeleteContainer cannot be resolved"
       + "\nvisible cannot be resolved"
-      + "\ndeleteContainer cannot be resolved"
       + "\nvisible cannot be resolved");
   }
 
@@ -180,38 +152,33 @@ public class TypeElement implements /* AbstractAppendable, IJavaFxObj */ITypeEle
 
   public void deleteTypeInDict(final String type) {
     throw new Error("Unresolved compilation problems:"
-      + "\nILinkObj cannot be resolved to a type."
-      + "\nShortCutItem cannot be resolved to a type."
-      + "\nThe method getParent() from the type AbstractLinkType refers to the missing type ILinkable"
-      + "\ntoken cannot be resolved"
-      + "\nname cannot be resolved");
+      + "\nType mismatch: cannot convert from TypeElement to TypeElement");
   }
 
   public void removeLinks() {
     throw new Error("Unresolved compilation problems:"
       + "\nThe field TypeElement.links refers to the missing type XPair"
       + "\nThe field TypeElement.links refers to the missing type XPair"
-      + "\nThe method getParent() from the type AbstractLinkType refers to the missing type ILinkable"
-      + "\nThe field TypeElement.links refers to the missing type XPair"
-      + "\ndetach cannot be resolved");
+      + "\nThe field TypeElement.links refers to the missing type XPair");
   }
 
   public void replaceTypeInDict(final String oldType, final String newType) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nILinkObj cannot be resolved to a type."
-      + "\nShortCutItem cannot be resolved to a type."
-      + "\nThe method getParent() from the type AbstractLinkType refers to the missing type ILinkable"
-      + "\ntoken cannot be resolved"
-      + "\nname cannot be resolved");
+    ILinkable _parent = this.parent.getParent();
+    IItem _token = ((ILinkObj) _parent).getToken();
+    String name = ((ShortCutItem) _token).getName();
+    this.typeAttributes = this.dictAccess.replaceTypeForWord(name, oldType, newType);
+    this.removeLinks();
   }
 
   public ITypeAttributes addTypeToDict(final String type) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nILinkObj cannot be resolved to a type."
-      + "\nShortCutItem cannot be resolved to a type."
-      + "\nThe method getParent() from the type AbstractLinkType refers to the missing type ILinkable"
-      + "\ntoken cannot be resolved"
-      + "\nname cannot be resolved");
+    ITypeAttributes _xblockexpression = null;
+    {
+      ILinkable _parent = this.parent.getParent();
+      IItem _token = ((ILinkObj) _parent).getToken();
+      String name = ((ShortCutItem) _token).getName();
+      _xblockexpression = this.typeAttributes = this.dictAccess.addTypeToWord(name, type);
+    }
+    return _xblockexpression;
   }
 
   public Node getRoot() {
@@ -220,23 +187,29 @@ public class TypeElement implements /* AbstractAppendable, IJavaFxObj */ITypeEle
   }
 
   @Override
-  public LiteralType getParent() {
+  public Object getParent() {
     return this.parent;
   }
 
   @Override
-  public IElmController getController() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field TypeElement.controller refers to the missing type IElmController");
+  public IController getController() {
+    return this.controller;
   }
 
   @Override
-  public Object getCanvasController() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nILinkable cannot be resolved to a type."
-      + "\nILinkObj cannot be resolved to a type."
-      + "\nThe method getParent() from the type AbstractLinkType refers to the missing type ILinkable"
-      + "\ncanvasController cannot be resolved");
+  public ICanvasController getCanvasController() {
+    ICanvasController _xblockexpression = null;
+    {
+      ILinkable panel = this.parent.getParent();
+      ICanvasController _xifexpression = null;
+      if ((panel instanceof ILinkObj)) {
+        _xifexpression = ((ILinkObj)panel).getCanvasController();
+      } else {
+        _xifexpression = null;
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
 
   public String getName() {
@@ -251,13 +224,12 @@ public class TypeElement implements /* AbstractAppendable, IJavaFxObj */ITypeEle
     return this.typeName;
   }
 
-  public ILink addLink(final /* ILink */Object link) {
+  public ILink addLink(final ILink link) {
     throw new Error("Unresolved compilation problems:"
-      + "\nThe method getParent() from the type AbstractLinkType refers to the missing type ILinkable"
+      + "\nThe method getOpposite(ILinkable) is undefined for the type ILink"
       + "\nThe method containsKeyPair(HashMap<XPair, ILink>, XPair) from the type TypeElement refers to the missing type XPair"
       + "\nThe field TypeElement.links refers to the missing type XPair"
-      + "\nThe field TypeElement.links refers to the missing type XPair"
-      + "\ngetOpposite cannot be resolved");
+      + "\nThe field TypeElement.links refers to the missing type XPair");
   }
 
   public boolean containsKeyPair(final /* HashMap<XPair<String, ILinkable>, ILink> */Object map, final /* XPair<String, ILinkable> */Object pair) {
@@ -276,15 +248,13 @@ public class TypeElement implements /* AbstractAppendable, IJavaFxObj */ITypeEle
       + "\nThe field TypeElement.links refers to the missing type XPair");
   }
 
-  public /* List<ILink> */Object getLink(final String name) {
+  public List<ILink> getLink(final String name) {
     throw new Error("Unresolved compilation problems:"
       + "\nThe field TypeElement.links refers to the missing type XPair");
   }
 
   public void setSelectionChangedListener(final /* ComboBox<String> */Object combo, final /* ChangeListener<? super String> */Object listener) {
     throw new Error("Unresolved compilation problems:"
-      + "\nTypeControlElController cannot be resolved to a type."
-      + "\nThe field TypeElement.controller refers to the missing type IElmController"
       + "\nThe field TypeElement.listeners refers to the missing type ComboBox"
       + "\n!== cannot be resolved"
       + "\nvalueProperty cannot be resolved"
