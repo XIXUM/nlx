@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: de.validas.vvt
+Bundle-SymbolicName: de.validas.vvt;singleton:=true
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,org.eclipse
+ .core.runtime,org.eclipse.emf.edit
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Import-Package: org.eclipse.emf.edit.domain
+Export-Package: de.validas.vvt,de.validas.vvt.impl,de.validas.vvt.util
+ ,de.validas.vvt.utils
+Bundle-Name: %pluginName
+Bundle-Version: 1.0.0.202008172211
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+

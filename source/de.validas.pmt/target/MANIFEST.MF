@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: de.validas.pmt
+Bundle-SymbolicName: de.validas.pmt;singleton:=true
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,org.eclipse
+ .core.runtime,de.validas.vvt;bundle-version="1.0.0",org.eclipse.jface
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Export-Package: de.validas.pmt.utils,de.validas.spm.metaobjects.model.
+ util,de.validas.spm.processes.model.util,de.validas.spm.supertypes.mo
+ del.util,de.validas.spm.terms.model.util,metaModel,metaModel.impl,met
+ aModel.modellDescr,metaModel.modellDescr.impl,metaModel.modellDescr.u
+ til,metaModel.referenceProcess,metaModel.referenceProcess.impl,metaMo
+ del.referenceProcess.util,metaModel.suptertype,metaModel.suptertype.i
+ mpl,metaModel.suptertype.util,metaModel.terms,metaModel.terms.impl,me
+ taModel.terms.util,metaModel.util
+Bundle-Name: %pluginName
+Bundle-Version: 1.0.0.202008172211
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+
