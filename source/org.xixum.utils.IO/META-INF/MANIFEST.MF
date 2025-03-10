@@ -1,0 +1,35 @@
+<<<<<<< HEAD:source/de.validas.utils.IO/META-INF/MANIFEST.MF
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: IO
+Bundle-SymbolicName: de.validas.utils.IO
+Bundle-Version: 0.1.5.qualifier
+Bundle-Activator: de.validas.utils.io.Activator
+Bundle-Vendor: Validas AG
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ de.validas.utils.Data,
+ com.google.guava;bundle-version="21.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: de.validas.utils
+Bundle-ActivationPolicy: lazy
+Export-Package: de.validas.utils.io,
+ de.validas.utils.io.filesystem
+=======
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: IO
+Bundle-SymbolicName: org.xixum.utils.IO
+Bundle-Version: 0.1.5.qualifier
+Bundle-Activator: org.xixum.utils.io.Activator
+Bundle-Vendor: Validas AG
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.xixum.utils.Data,
+ com.google.guava;bundle-version="21.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: org.xixum.utils
+Bundle-ActivationPolicy: lazy
+Export-Package: org.xixum.utils.io,
+ org.xixum.utils.io.filesystem
+>>>>>>> 28be792edcf63b5c495498de39713fad9b7858d6:source/org.xixum.utils.IO/META-INF/MANIFEST.MF

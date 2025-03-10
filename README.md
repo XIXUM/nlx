@@ -1,5 +1,5 @@
 # NLX - Natural Language Platform
-![splash image](https://raw.githubusercontent.com/validas/NLX/master/img/splash.jpg "splash image")
+![splash image](https://raw.githubusercontent.com/XIXUM/nlx/master/img/splash.jpg "splash image")
 
 this software, (which is currently in prototype state) represents an extendable platform for all kinds of natural language processing. Core of this software builds a DSL generated with the XText Framework. This DSL can turn text of natural language documents into a DAG tree of the document content. It creates a Tree from:
 
@@ -36,12 +36,26 @@ Currently under Development is:
   * Spam-Bots, Fake-News, and much more use cases possible...
 ---
 ## Demo Project
-You can import a demo project to see the tool in operation. [Link & Documentation](https://github.com/validas/NLX/tree/master/resources/demo.project)
+You can import a demo project to see the tool in operation. [Link & Documentation](https://github.com/XIXUM/nlx/tree/master/resources/demo.project)
 
 ---
 ## Releases / Downloads
 
-Go to Releases: [DOWNLOAD](https://github.com/validas/NLX/releases)
+Go to Releases: [DOWNLOAD](https://github.com/XIXUM/nlx/releases)
 
 ---
-![Poster](https://raw.githubusercontent.com/validas/NLX/master/img/Preview.jpg)
+![Poster](https://raw.githubusercontent.com/XIXUM/nlx/master/img/Preview.jpg "Poster Image")
+
+
+## Previews
+
+see some more images of the GUI:
+
+![Poster](https://raw.githubusercontent.com/XIXUM/nlx/master/img/gui_preview1.JPG "preview of the gui 01") img/Screenshot%202024-10-22%20092821.JPG
+
+![Poster](https://raw.githubusercontent.com/XIXUM/nlx/master/img/grammat_trainer_gui01.JPG "preview of the GUI 02")
+
+here are some plotted graphs of the model:
+
+![Poster](https://raw.githubusercontent.com/XIXUM/nlx/master/img/graph_grammar.png)
+![Poster](https://raw.githubusercontent.com/XIXUM/nlx/master/img/graph_dict.png)
