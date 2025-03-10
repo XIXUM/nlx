@@ -5,13 +5,13 @@
          point="org.eclipse.ui.commands">
       <command
             defaultHandler="de.validas.spedit.ide.actions.SaveModelHandler"
-            id="de.validas.spedit.iedit.ide.savemodel"
+            id="org.xixum.nlx.model.ide.savemodel"
             name="Save Model (handler)">
       </command>
       
       <command
             defaultHandler="de.validas.spedit.ide.actions.SaveModelHandler"
-            id="de.validas.spedit.iedit.ide.savemodeloutline"
+            id="org.xixum.nlx.model.ide.savemodeloutline"
             name="Save Model (outline)">
       </command>
    </extension>
@@ -19,22 +19,22 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="false"
-            id="de.validas.spedit.iedit.ide.SaveModelAction"
+            id="org.xixum.nlx.model.ide.SaveModelAction"
             objectClass="org.eclipse.core.resources.IResource">
          <action
                class="de.validas.spedit.ide.actions.SaveModelAction"
-               id="de.validas.spedit.iedit.ide.savemodel"
+               id="org.xixum.nlx.model.ide.savemodel"
                label="Save Model (action)">
          </action>
       </objectContribution>
       
       <objectContribution
             adaptable="false"
-            id="de.validas.spedit.iedit.ide.outlinerSaveModelAction"
+            id="org.xixum.nlx.model.ide.outlinerSaveModelAction"
             objectClass="org.eclipse.emf.ecore.EObject">
          <action
                class="de.validas.spedit.ide.actions.SaveModelAction"
-               id="de.validas.spedit.iedit.ide.savemodel"
+               id="org.xixum.nlx.model.ide.savemodel"
                label="Save Model (ol)">
          </action>
       </objectContribution>
@@ -50,7 +50,7 @@
          <menu
                label="Save Model (addition)">
             <command
-                  commandId="de.validas.spedit.iedit.ide.savemodel"
+                  commandId="org.xixum.nlx.model.ide.savemodel"
                   label="Save"
                   style="push">
                <visibleWhen
@@ -74,7 +74,7 @@
       <menuContribution
         locationURI="menu:org.eclipse.ui.views.ContentOutline">
      <command
-           commandId="de.validas.spedit.iedit.ide.savemodel"
+           commandId="org.xixum.nlx.model.ide.savemodel"
            label="Save Model (outline)"
            style="push">
      </command>

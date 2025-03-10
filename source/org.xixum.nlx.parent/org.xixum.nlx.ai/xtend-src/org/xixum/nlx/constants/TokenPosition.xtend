@@ -1,4 +1,4 @@
-package de.validas.nlx.constants
+package org.xixum.nlx.constants
 
 enum TokenPosition {
 	START,

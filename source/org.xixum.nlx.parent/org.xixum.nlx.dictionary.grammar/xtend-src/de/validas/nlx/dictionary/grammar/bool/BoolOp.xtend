@@ -1,6 +1,6 @@
-package de.validas.nlx.dictionary.grammar.bool
+package org.xixum.nlx.dictionary.grammar.bool
 
-import de.validas.nlx.ai.semantics.INode
+import org.xixum.nlx.ai.semantics.INode
 
 abstract class BoolOp {
 	def boolean isTrue(INode node)

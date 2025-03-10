@@ -1,17 +1,17 @@
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
-import de.validas.nlx.ai.IParserDriver
-import de.validas.nlx.ai.semantics.INode
-import de.validas.nlx.dictionary.grammar.bool.BoolOr
-import de.validas.utils.data.lists.IAppendable
+import org.xixum.nlx.ai.IParserDriver
+import org.xixum.nlx.ai.semantics.INode
+import org.xixum.nlx.dictionary.grammar.bool.BoolOr
+import org.xixum.utils.data.lists.IAppendable
 import java.util.List
 import org.neo4j.driver.v1.Record
 import org.neo4j.driver.v1.types.Node
 
-import static de.validas.nlx.constants.Neo4jConstants._TOKEN
-import static de.validas.nlx.dictionary.constants.PredicateConstants.DO_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.ENTER_RULE_
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateDO
+import static org.xixum.nlx.constants.Neo4jConstants._TOKEN
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.DO_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.ENTER_RULE_
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateDO
 
 class ImplRuleNode extends AbstractDictRuleObj implements IRuleNode {
 	

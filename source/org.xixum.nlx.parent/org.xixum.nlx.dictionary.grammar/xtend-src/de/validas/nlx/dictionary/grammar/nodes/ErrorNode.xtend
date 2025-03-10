@@ -1,6 +1,6 @@
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
-import de.validas.nlx.ai.IParserDriver
+import org.xixum.nlx.ai.IParserDriver
 import org.neo4j.driver.v1.types.Node
 
 class ErrorNode extends AbstractDictRuleObj {

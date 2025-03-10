@@ -1,13 +1,13 @@
 Manifest-Version: 1.0
-Automatic-Module-Name: de.validas.spedit.iedit.ui
+Automatic-Module-Name: org.xixum.nlx.model.ui
 Bundle-ManifestVersion: 2
-Bundle-Name: de.validas.spedit.iedit.ui
+Bundle-Name: org.xixum.nlx.model.ui
 Bundle-Vendor: My Company
 Bundle-Version: 0.2.0.qualifier
-Bundle-SymbolicName: de.validas.spedit.iedit.ui; singleton:=true
+Bundle-SymbolicName: org.xixum.nlx.model.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: de.validas.spedit.iedit,
- de.validas.spedit.iedit.ide,
+Require-Bundle: org.xixum.nlx.model,
+ org.xixum.nlx.model.ide,
  org.eclipse.xtext.ui,
  org.eclipse.xtext.ui.shared,
  org.eclipse.xtext.ui.codetemplates.ui,
@@ -23,7 +23,7 @@ Require-Bundle: de.validas.spedit.iedit,
  org.eclipse.emf.edit,
  org.eclipse.swt,
  org.eclipse.jface,
- de.validas.spedit.iedit.edit;bundle-version="0.2.0",
+ org.xixum.nlx.model.edit;bundle-version="0.2.0",
  org.eclipse.text,
  org.eclipse.ui,
  org.eclipse.ui.editors,
@@ -31,11 +31,11 @@ Require-Bundle: de.validas.spedit.iedit,
  org.eclipse.xtend.lib;bundle-version="2.14.0";resolution:=optional,
  org.eclipse.ui.ide;bundle-version="3.14.0",
  org.eclipse.ui.workbench.texteditor;bundle-version="3.11.0",
- de.validas.nlx.ai,
- de.validas.nlx.dictionary,
- de.validas.utils.Data,
+ org.xixum.nlx.ai,
+ org.xixum.nlx.dictionary,
+ org.xixum.utils.Data,
  org.apache.commons.lang;bundle-version="2.6.0",
- de.validas.nlx.view.fxviews,
+ org.xixum.nlx.view.fxviews,
  org.eclipse.ui.console,
  org.eclipse.core.expressions;bundle-version="3.6.100",
  org.eclipse.e4.core.di.annotations;bundle-version="1.6.100",
@@ -44,6 +44,6 @@ Require-Bundle: de.validas.spedit.iedit,
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.validas.spedit.ui.quickfix,
- de.validas.spedit.iedit.ui.internal,
+ org.xixum.nlx.model.ui.internal,
  de.validas.spedit.ui.contentassist
-Bundle-Activator: de.validas.spedit.iedit.ui.internal.IeditActivator
+Bundle-Activator: org.xixum.nlx.model.ui.internal.IeditActivator

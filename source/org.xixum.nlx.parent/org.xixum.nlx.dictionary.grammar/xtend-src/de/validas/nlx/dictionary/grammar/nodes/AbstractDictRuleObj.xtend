@@ -5,24 +5,24 @@
  * @author Felix Schaller
  */
 
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
-import static de.validas.nlx.constants.Neo4jConstants._ATTR_NAME
-import static de.validas.nlx.constants.Neo4jConstants._LINK
-import static de.validas.nlx.constants.Neo4jConstants._NODE
-import static de.validas.nlx.constants.Neo4jConstants._NAME
-import static de.validas.nlx.constants.Neo4jConstants._TARGET
-import static de.validas.nlx.dictionary.constants.NodeConstants._KOMMA_SEP_FILTER
-import static de.validas.nlx.dictionary.constants.NodeConstants._NEGATIVE_FILTER
-import static de.validas.nlx.constants.Neo4jConstants._TOKEN
+import static org.xixum.nlx.constants.Neo4jConstants._ATTR_NAME
+import static org.xixum.nlx.constants.Neo4jConstants._LINK
+import static org.xixum.nlx.constants.Neo4jConstants._NODE
+import static org.xixum.nlx.constants.Neo4jConstants._NAME
+import static org.xixum.nlx.constants.Neo4jConstants._TARGET
+import static org.xixum.nlx.dictionary.constants.NodeConstants._KOMMA_SEP_FILTER
+import static org.xixum.nlx.dictionary.constants.NodeConstants._NEGATIVE_FILTER
+import static org.xixum.nlx.constants.Neo4jConstants._TOKEN
 
-import de.validas.nlx.ai.IFunction1
-import de.validas.nlx.ai.IParserDriver
-import de.validas.nlx.ai.neo4j.Neo4jAccess.Action
-import de.validas.nlx.ai.semantics.INode
-import de.validas.nlx.ai.semantics.IPredicate
-import de.validas.nlx.ai.util.NodeUtil
-import de.validas.nlx.dictionary.grammar.bool.BoolOp
+import org.xixum.nlx.ai.IFunction1
+import org.xixum.nlx.ai.IParserDriver
+import org.xixum.nlx.ai.neo4j.Neo4jAccess.Action
+import org.xixum.nlx.ai.semantics.INode
+import org.xixum.nlx.ai.semantics.IPredicate
+import org.xixum.nlx.ai.util.NodeUtil
+import org.xixum.nlx.dictionary.grammar.bool.BoolOp
 import java.util.ArrayList
 import java.util.Collections
 import java.util.HashMap
@@ -30,12 +30,12 @@ import java.util.List
 import org.neo4j.driver.internal.value.NodeValue
 import org.neo4j.driver.internal.value.RelationshipValue
 import org.neo4j.driver.v1.Record
-import de.validas.nlx.constants.Direction
-import de.validas.nlx.ai.util.Arrow
+import org.xixum.nlx.constants.Direction
+import org.xixum.nlx.ai.util.Arrow
 import java.util.Map
 import org.neo4j.driver.v1.types.Node
 import org.eclipse.xtext.xbase.lib.Functions.Function1
-import de.validas.nlx.dictionary.grammar.token.IGrammarItem
+import org.xixum.nlx.dictionary.grammar.token.IGrammarItem
 
 abstract class AbstractDictRuleObj extends AbstractNode implements INode {
 	protected Node node

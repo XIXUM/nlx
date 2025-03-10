@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Test-Data
-Bundle-SymbolicName: de.validas.utils.Data.test
+Bundle-SymbolicName: org.xixum.utils.Data.test
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: de.validas.utils.data.test.Activator
+Bundle-Activator: org.xixum.utils.data.test.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.junit,
@@ -21,5 +21,5 @@ Require-Bundle: org.eclipse.ui,
  org.opentest4j,
  org.apiguardian
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Automatic-Module-Name: de.validas.utils.Data.test
+Automatic-Module-Name: org.xixum.utils.Data.test
 Bundle-ActivationPolicy: lazy

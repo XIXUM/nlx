@@ -1,8 +1,8 @@
-package de.validas.nlx.dictionary.grammar.constants
+package org.xixum.nlx.dictionary.grammar.constants
 
 class NaturalLangConstants extends AbstractConstantClass {
 	
-	public static val pluginName = 				getString("pluginName")				//"de.validas.spedit.iedit
+	public static val pluginName = 				getString("pluginName")				//"org.xixum.nlx.model
 	public static val providerName = 			getString("providerName") 			//"My Company
 	public static val _Capitalize_Name = 		getString("_Capitalize_Name")		//"Word should start with a capital
 																				//

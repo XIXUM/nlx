@@ -1,14 +1,14 @@
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
-import static de.validas.nlx.constants.Neo4jConstants._TOKEN
-import static de.validas.nlx.constants.Neo4jConstants._ATTR_NAME
+import static org.xixum.nlx.constants.Neo4jConstants._TOKEN
+import static org.xixum.nlx.constants.Neo4jConstants._ATTR_NAME
 
-import de.validas.nlx.ai.IParserDriver
+import org.xixum.nlx.ai.IParserDriver
 import org.neo4j.driver.v1.types.Node
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateENDS_WITH
-import de.validas.nlx.ai.semantics.INode
-import de.validas.nlx.dictionary.grammar.token.IGrammarItem
-import de.validas.nlx.dictionary.grammar.utils.GrammarUtil
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateENDS_WITH
+import org.xixum.nlx.ai.semantics.INode
+import org.xixum.nlx.dictionary.grammar.token.IGrammarItem
+import org.xixum.nlx.dictionary.grammar.utils.GrammarUtil
 
 class WordFragment extends AbstractDictRuleObj implements IDictNode, IPredicateENDS_WITH {
 	

@@ -1,4 +1,4 @@
-package de.validas.nlx.dictionary.grammar.token
+package org.xixum.nlx.dictionary.grammar.token
 
 interface IGrammarLiteral {
 	

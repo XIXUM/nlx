@@ -1,11 +1,11 @@
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
-import static de.validas.nlx.constants.Neo4jConstants._TOKEN
+import static org.xixum.nlx.constants.Neo4jConstants._TOKEN
 
 import java.util.HashMap
 import java.util.List
-import de.validas.nlx.ai.semantics.INode
-import de.validas.nlx.dictionary.grammar.token.IGrammarItem
+import org.xixum.nlx.ai.semantics.INode
+import org.xixum.nlx.dictionary.grammar.token.IGrammarItem
 
 class ValidateNode {
 

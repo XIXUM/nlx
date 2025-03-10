@@ -1,8 +1,8 @@
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
-import de.validas.nlx.ai.IParserDriver
-import de.validas.nlx.ai.semantics.INode
-import de.validas.nlx.dictionary.grammar.bool.BoolOr
+import org.xixum.nlx.ai.IParserDriver
+import org.xixum.nlx.ai.semantics.INode
+import org.xixum.nlx.dictionary.grammar.bool.BoolOr
 import java.util.List
 import org.neo4j.driver.v1.Record
 import org.neo4j.driver.v1.types.Node

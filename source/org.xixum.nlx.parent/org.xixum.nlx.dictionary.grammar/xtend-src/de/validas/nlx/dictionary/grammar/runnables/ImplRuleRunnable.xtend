@@ -1,8 +1,8 @@
-package de.validas.nlx.dictionary.grammar.runnables
+package org.xixum.nlx.dictionary.grammar.runnables
 
-import de.validas.nlx.ai.semantics.INode
-import de.validas.nlx.dictionary.grammar.nodes.ImplRuleNode
-import de.validas.nlx.dictionary.grammar.token.IGrammarItem
+import org.xixum.nlx.ai.semantics.INode
+import org.xixum.nlx.dictionary.grammar.nodes.ImplRuleNode
+import org.xixum.nlx.dictionary.grammar.token.IGrammarItem
 import java.util.HashMap
 
 class ImplRuleRunnable extends Thread implements IRuleRunnable {

@@ -1,15 +1,12 @@
-package de.validas.nlx.constants;
-
-import javax.annotation.Generated;
+package org.xixum.nlx.constants;
 
 @SuppressWarnings("all")
-@Generated("org.eclipse.xtend.core.compiler.XtendGenerator")
 public enum TokenPosition {
   START,
-  
+
   END,
-  
+
   INTERMEDIATE,
-  
+
   NONE;
 }

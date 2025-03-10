@@ -1,6 +1,6 @@
-package de.validas.nlx.ai.util
+package org.xixum.nlx.ai.util
 
-import de.validas.nlx.constants.Direction
+import org.xixum.nlx.constants.Direction
 import java.io.Serializable
 import java.util.Map
 

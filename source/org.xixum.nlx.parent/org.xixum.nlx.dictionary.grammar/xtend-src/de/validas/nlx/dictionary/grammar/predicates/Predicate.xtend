@@ -5,15 +5,15 @@
  * @author Felix Schaller
  */
 
-package de.validas.nlx.dictionary.grammar.predicates
+package org.xixum.nlx.dictionary.grammar.predicates
 
-import de.validas.nlx.ai.IDbAccess
-import de.validas.nlx.ai.neo4j.Neo4jAccess.Action
-import de.validas.nlx.ai.semantics.INode
-import de.validas.nlx.ai.semantics.IPredicate
-import de.validas.nlx.ai.util.Arrow
-import de.validas.nlx.constants.Direction
-import de.validas.nlx.dictionary.grammar.nodes.ValidateNode
+import org.xixum.nlx.ai.IDbAccess
+import org.xixum.nlx.ai.neo4j.Neo4jAccess.Action
+import org.xixum.nlx.ai.semantics.INode
+import org.xixum.nlx.ai.semantics.IPredicate
+import org.xixum.nlx.ai.util.Arrow
+import org.xixum.nlx.constants.Direction
+import org.xixum.nlx.dictionary.grammar.nodes.ValidateNode
 import java.text.MessageFormat
 import java.util.Collections
 import java.util.List
@@ -23,26 +23,26 @@ import org.neo4j.driver.internal.value.RelationshipValue
 import org.neo4j.driver.v1.Record
 import org.neo4j.driver.v1.types.Relationship
 
-import static de.validas.nlx.constants.Neo4jConstants._LINK
-import static de.validas.nlx.constants.Neo4jConstants._NODE
-//import static de.validas.nlx.constants.Neo4jConstants._NAME
-//import static de.validas.nlx.constants.Neo4jConstants._OF_CLASS
-import static de.validas.nlx.constants.Neo4jConstants._TARGET
-import static de.validas.nlx.dictionary.constants.PredicateConstants.BASE_FORM_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.CONJUGATION_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.GET_SOURCE_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.GET_TARGET_
-import static de.validas.nlx.constants.Neo4jConstants._TOKEN
-import static de.validas.nlx.dictionary.constants.PredicateConstants.NAME_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.SUB_CLASS_OF_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.PRECEED_BY_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.TENSE_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.WITH_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.RESULT_
-import de.validas.nlx.dictionary.grammar.nodes.IDictNode
+import static org.xixum.nlx.constants.Neo4jConstants._LINK
+import static org.xixum.nlx.constants.Neo4jConstants._NODE
+//import static org.xixum.nlx.constants.Neo4jConstants._NAME
+//import static org.xixum.nlx.constants.Neo4jConstants._OF_CLASS
+import static org.xixum.nlx.constants.Neo4jConstants._TARGET
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.BASE_FORM_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.CONJUGATION_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.GET_SOURCE_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.GET_TARGET_
+import static org.xixum.nlx.constants.Neo4jConstants._TOKEN
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.NAME_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.SUB_CLASS_OF_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.PRECEED_BY_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.TENSE_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.WITH_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.RESULT_
+import org.xixum.nlx.dictionary.grammar.nodes.IDictNode
 
-//import static de.validas.nlx.dictionary.constants.NodeConstants._WORD
-//import static de.validas.nlx.dictionary.constants.DictionaryConstants._POSITION
+//import static org.xixum.nlx.dictionary.constants.NodeConstants._WORD
+//import static org.xixum.nlx.dictionary.constants.DictionaryConstants._POSITION
 
 
 

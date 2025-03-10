@@ -1,12 +1,12 @@
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
-import static de.validas.nlx.dictionary.constants.PredicateConstants.WITH_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.WITH_
 
 import org.neo4j.driver.v1.types.Node
-import de.validas.nlx.ai.IParserDriver
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateGET
+import org.xixum.nlx.ai.IParserDriver
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateGET
 import org.neo4j.driver.v1.types.Relationship
-import de.validas.nlx.ai.semantics.INode
+import org.xixum.nlx.ai.semantics.INode
 
 abstract class AbstractActionPredicatedNodeObj extends AbstractPredicatedNodeObj implements IPredicateGET {
 	

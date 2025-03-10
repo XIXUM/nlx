@@ -5,11 +5,11 @@
  * @author Felix Schaller
  */
 
-package de.validas.nlx.ai.semantics
+package org.xixum.nlx.ai.semantics
 
-import de.validas.nlx.ai.IFunction1
-import de.validas.nlx.ai.IParserDriver
-import de.validas.nlx.constants.Direction
+import org.xixum.nlx.ai.IFunction1
+import org.xixum.nlx.ai.IParserDriver
+import org.xixum.nlx.constants.Direction
 import java.util.List
 import org.neo4j.driver.internal.value.NodeValue
 import org.neo4j.driver.v1.Record

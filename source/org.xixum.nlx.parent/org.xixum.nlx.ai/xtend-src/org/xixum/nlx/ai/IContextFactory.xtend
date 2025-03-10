@@ -1,6 +1,6 @@
-package de.validas.nlx.ai
+package org.xixum.nlx.ai
 
-import de.validas.nlx.ai.semantics.IContextNode
+import org.xixum.nlx.ai.semantics.IContextNode
 
 interface IContextFactory {
 	

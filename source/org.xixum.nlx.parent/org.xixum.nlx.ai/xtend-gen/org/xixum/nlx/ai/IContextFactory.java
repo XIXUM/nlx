@@ -1,11 +1,8 @@
-package de.validas.nlx.ai;
+package org.xixum.nlx.ai;
 
-import de.validas.nlx.ai.IParserDriver;
-import de.validas.nlx.ai.semantics.IContextNode;
-import javax.annotation.Generated;
+import org.xixum.nlx.ai.semantics.IContextNode;
 
 @SuppressWarnings("all")
-@Generated("org.eclipse.xtend.core.compiler.XtendGenerator")
 public interface IContextFactory {
-  public abstract IContextNode create(final IParserDriver driver);
+  IContextNode create(final IParserDriver driver);
 }

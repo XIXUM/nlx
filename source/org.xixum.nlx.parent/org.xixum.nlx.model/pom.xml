@@ -2,11 +2,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>de.validas.spedit.iedit</groupId>
-		<artifactId>de.validas.spedit.iedit.parent</artifactId>
+		<groupId>org.xixum.nlx.model</groupId>
+		<artifactId>org.xixum.nlx.model.parent</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>de.validas.spedit.iedit</artifactId>
+	<artifactId>org.xixum.nlx.model</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
 	<build>
@@ -74,37 +74,37 @@
 				<configuration>
 					<filesets combine.children="append">
 						<fileset>
-							<directory>${basedir}/../de.validas.spedit.iedit/src-gen/</directory>
+							<directory>${basedir}/../org.xixum.nlx.model/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
 						</fileset>
 						<fileset>
-							<directory>${basedir}/../de.validas.spedit.iedit.tests/src-gen/</directory>
+							<directory>${basedir}/../org.xixum.nlx.model.tests/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
 						</fileset>
 						<fileset>
-							<directory>${basedir}/../de.validas.spedit.iedit.ide/src-gen/</directory>
+							<directory>${basedir}/../org.xixum.nlx.model.ide/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
 						</fileset>
 						<fileset>
-							<directory>${basedir}/../de.validas.spedit.iedit.ui/src-gen/</directory>
+							<directory>${basedir}/../org.xixum.nlx.model.ui/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
 						</fileset>
 						<fileset>
-							<directory>${basedir}/../de.validas.spedit.iedit.ui.tests/src-gen/</directory>
+							<directory>${basedir}/../org.xixum.nlx.model.ui.tests/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
 						</fileset>
 						<fileset>
-							<directory>${basedir}/../de.validas.spedit.iedit.web/src-gen/</directory>
+							<directory>${basedir}/../org.xixum.nlx.model.web/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>

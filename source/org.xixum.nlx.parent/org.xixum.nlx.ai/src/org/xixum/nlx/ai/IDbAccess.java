@@ -1,4 +1,4 @@
-package de.validas.nlx.ai;
+package org.xixum.nlx.ai;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.neo4j.driver.v1.Driver;
 import org.neo4j.driver.v1.Record;
 import com.google.inject.ImplementedBy;
 
-import de.validas.nlx.ai.neo4j.Neo4jAccess;
-import de.validas.nlx.ai.neo4j.Neo4jAccess.Action;
+import org.xixum.nlx.ai.neo4j.Neo4jAccess;
+import org.xixum.nlx.ai.neo4j.Neo4jAccess.Action;
 
 @ImplementedBy(Neo4jAccess.class)
 public interface IDbAccess {

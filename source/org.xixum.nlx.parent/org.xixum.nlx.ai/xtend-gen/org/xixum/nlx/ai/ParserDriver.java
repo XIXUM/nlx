@@ -1,40 +1,33 @@
-package de.validas.nlx.ai;
+package org.xixum.nlx.ai;
 
-import de.validas.nlx.ai.IContextFactory;
-import de.validas.nlx.ai.IDbAccess;
-import de.validas.nlx.ai.INodeFactory;
-import de.validas.nlx.ai.IParserDriver;
-import de.validas.nlx.ai.IPredicateFactory;
-import de.validas.nlx.ai.neo4j.Neo4jAccess;
-import de.validas.nlx.ai.semantics.IContextNode;
-import de.validas.nlx.ai.semantics.INode;
-import de.validas.nlx.constants.Neo4jConstants;
 import java.util.HashMap;
 import java.util.List;
-import javax.annotation.Generated;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.builder.debug.IBuildLogger;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.types.Node;
+import org.xixum.nlx.ai.neo4j.Neo4jAccess;
+import org.xixum.nlx.ai.semantics.IContextNode;
+import org.xixum.nlx.ai.semantics.INode;
+import org.xixum.nlx.constants.Neo4jConstants;
 
 @SuppressWarnings("all")
-@Generated("org.eclipse.xtend.core.compiler.XtendGenerator")
 public class ParserDriver implements IParserDriver {
   private IDbAccess dbAccess;
-  
+
   private IPredicateFactory predicateFactory;
-  
+
   private INodeFactory nodeFactory;
-  
+
   private IContextFactory contextFactory;
-  
+
   private IBuildLogger logger;
-  
+
   private IContextNode innerContext;
-  
+
   private HashMap<Long, INode> nodeCache;
-  
+
   public ParserDriver(final IDbAccess access, final INodeFactory factory, final IPredicateFactory factory2, final IContextFactory factory3, final IBuildLogger logger) {
     this.dbAccess = access;
     this.nodeFactory = factory;
@@ -44,57 +37,57 @@ public class ParserDriver implements IParserDriver {
     this.innerContext = this.newContext();
     this.logger = logger;
   }
-  
+
   @Override
   public IDbAccess getDbAccessor() {
     return this.dbAccess;
   }
-  
+
   @Override
   public void setDbAccessor(final IDbAccess access) {
     this.dbAccess = access;
   }
-  
+
   @Override
   public void setPredicateFactory(final IPredicateFactory factory) {
     this.predicateFactory = factory;
   }
-  
+
   @Override
   public IPredicateFactory getPredicateFactory() {
     return this.predicateFactory;
   }
-  
+
   @Override
   public void setNodeFactory(final INodeFactory factory) {
     this.nodeFactory = factory;
   }
-  
+
   @Override
   public INodeFactory getNodeFactory() {
     return this.nodeFactory;
   }
-  
+
   @Override
   public void setContextFactory(final INodeFactory factory) {
     this.setContextFactory(factory);
   }
-  
+
   @Override
   public IContextFactory getContextFactory() {
     return this.contextFactory;
   }
-  
+
   @Override
   public IBuildLogger getLogger() {
     return this.logger;
   }
-  
+
   @Override
   public IContextNode newContext() {
     return this.contextFactory.create(this);
   }
-  
+
   @Override
   public INode getNodeById(final Node node) {
     if ((node == null)) {
@@ -114,7 +107,7 @@ public class ParserDriver implements IParserDriver {
     }
     return null;
   }
-  
+
   @Override
   public List<Record> listConnections(final Node source, final String type) {
     List<Record> _xblockexpression = null;
@@ -145,7 +138,7 @@ public class ParserDriver implements IParserDriver {
     }
     return _xblockexpression;
   }
-  
+
   @Override
   public IParserDriver newCache() {
     ParserDriver returnDriver = new ParserDriver(this.dbAccess, this.nodeFactory, this.predicateFactory, this.contextFactory, this.logger);
@@ -153,12 +146,12 @@ public class ParserDriver implements IParserDriver {
     returnDriver.setContext(returnDriver.newContext());
     return returnDriver;
   }
-  
+
   @Override
   public void setContext(final IContextNode node) {
     this.innerContext = node;
   }
-  
+
   @Override
   public IContextNode getContext() {
     return this.innerContext;

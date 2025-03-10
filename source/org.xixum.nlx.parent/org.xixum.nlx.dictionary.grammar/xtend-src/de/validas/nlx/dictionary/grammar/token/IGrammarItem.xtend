@@ -1,14 +1,14 @@
 /**
  * 
  */
-package de.validas.nlx.dictionary.grammar.token;
+package org.xixum.nlx.dictionary.grammar.token;
 
-import de.validas.utils.data.lists.IAppendable
-import de.validas.utils.data.lists.IContainable
-import de.validas.utils.data.lists.IIndexable
+import org.xixum.utils.data.lists.IAppendable
+import org.xixum.utils.data.lists.IContainable
+import org.xixum.utils.data.lists.IIndexable
 import org.eclipse.emf.ecore.EObject
 import org.neo4j.driver.v1.types.Node
-import de.validas.nlx.dictionary.grammar.types.IGrammarType
+import org.xixum.nlx.dictionary.grammar.types.IGrammarType
 
 /**
  * @author schaller

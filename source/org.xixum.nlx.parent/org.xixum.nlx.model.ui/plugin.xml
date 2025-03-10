@@ -383,7 +383,7 @@
 			point="org.eclipse.ui.ide.markerResolution">
 		<markerResolutionGenerator
 			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-			markerType="de.validas.spedit.iedit.ui.naturallang.check.fast">
+			markerType="org.xixum.nlx.model.ui.naturallang.check.fast">
 			<attribute
 				name="FIXABLE_KEY"
 				value="true">
@@ -391,7 +391,7 @@
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
 			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-			markerType="de.validas.spedit.iedit.ui.naturallang.check.normal">
+			markerType="org.xixum.nlx.model.ui.naturallang.check.normal">
 			<attribute
 				name="FIXABLE_KEY"
 				value="true">
@@ -399,7 +399,7 @@
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
 			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-			markerType="de.validas.spedit.iedit.ui.naturallang.check.expensive">
+			markerType="org.xixum.nlx.model.ui.naturallang.check.expensive">
 			<attribute
 				name="FIXABLE_KEY"
 				value="true">
@@ -476,13 +476,13 @@
          point="org.eclipse.ui.commands">
       <command
             defaultHandler="de.validas.spedit.ui.actions.SaveModelHandler"
-            id="de.validas.spedit.iedit.ide.savemodel"
+            id="org.xixum.nlx.model.ide.savemodel"
             name="Save Model (handler)">
       </command>
       
       <!--<command
             defaultHandler="de.validas.spedit.ide.actions.SaveModelHandler"
-            id="de.validas.spedit.iedit.ide.savemodeloutline"
+            id="org.xixum.nlx.model.ide.savemodeloutline"
             name="Save Model (outline)">
       </command> -->
    </extension>
@@ -496,7 +496,7 @@
          <menu
                label="Save Model (addition)">
             <command
-                  commandId="de.validas.spedit.iedit.ide.savemodel"
+                  commandId="org.xixum.nlx.model.ide.savemodel"
                   label="Save"
                   style="push">
                <visibleWhen
@@ -520,7 +520,7 @@
       <menuContribution
         locationURI="menu:org.eclipse.ui.views.ContentOutline">
      <command
-           commandId="de.validas.spedit.iedit.ide.savemodel"
+           commandId="org.xixum.nlx.model.ide.savemodel"
            label="Save Model (outline)"
            style="push">
      </command>

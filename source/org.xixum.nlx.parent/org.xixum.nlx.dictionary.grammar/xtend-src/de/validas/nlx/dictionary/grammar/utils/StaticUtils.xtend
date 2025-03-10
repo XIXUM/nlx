@@ -1,4 +1,4 @@
-package de.validas.nlx.dictionary.grammar.utils
+package org.xixum.nlx.dictionary.grammar.utils
 
 import org.eclipse.emf.edit.EMFEditPlugin
 

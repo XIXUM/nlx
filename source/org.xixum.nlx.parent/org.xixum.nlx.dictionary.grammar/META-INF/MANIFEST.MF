@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Semantics
-Bundle-SymbolicName: de.validas.nlx.dictionary.grammar
+Bundle-SymbolicName: org.xixum.nlx.dictionary.grammar
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: de.validas.nlx.dictionary.grammar.Activator
+Bundle-Activator: org.xixum.nlx.dictionary.grammar.Activator
 Bundle-Vendor: felixschaller.com
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -11,27 +11,27 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro,
- de.validas.nlx.ai;bundle-version="0.2.0",
- de.validas.nlx.dictionary;bundle-version="0.2.0",
- de.validas.spedit.iedit;bundle-version="0.2.0",
- de.validas.utils.Data;bundle-version="0.2.0",
+ org.xixum.nlx.ai;bundle-version="0.2.0",
+ org.xixum.nlx.dictionary;bundle-version="0.2.0",
+ org.xixum.nlx.model;bundle-version="0.2.0",
+ org.xixum.utils.Data;bundle-version="0.2.0",
  org.eclipse.emf.common;bundle-version="2.14.0",
  org.eclipse.emf.ecore;bundle-version="2.14.0",
  org.eclipse.xtext.builder;bundle-version="2.16.0",
  org.eclipse.emf.common.ui,
  org.eclipse.emf.edit;bundle-version="2.13.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Automatic-Module-Name: de.validas.nlx.dictionary.semantics
+Automatic-Module-Name: org.xixum.nlx.dictionary.semantics
 Bundle-ActivationPolicy: lazy
-Export-Package: de.validas.nlx.dictionary.grammar,
- de.validas.nlx.dictionary.grammar.bool,
- de.validas.nlx.dictionary.grammar.constants,
- de.validas.nlx.dictionary.grammar.factories,
- de.validas.nlx.dictionary.grammar.nodes,
- de.validas.nlx.dictionary.grammar.predicates,
- de.validas.nlx.dictionary.grammar.rules,
- de.validas.nlx.dictionary.grammar.runnables,
- de.validas.nlx.dictionary.grammar.token,
- de.validas.nlx.dictionary.grammar.types,
- de.validas.nlx.dictionary.grammar.util,
- de.validas.nlx.dictionary.grammar.utils
+Export-Package: org.xixum.nlx.dictionary.grammar,
+ org.xixum.nlx.dictionary.grammar.bool,
+ org.xixum.nlx.dictionary.grammar.constants,
+ org.xixum.nlx.dictionary.grammar.factories,
+ org.xixum.nlx.dictionary.grammar.nodes,
+ org.xixum.nlx.dictionary.grammar.predicates,
+ org.xixum.nlx.dictionary.grammar.rules,
+ org.xixum.nlx.dictionary.grammar.runnables,
+ org.xixum.nlx.dictionary.grammar.token,
+ org.xixum.nlx.dictionary.grammar.types,
+ org.xixum.nlx.dictionary.grammar.util,
+ org.xixum.nlx.dictionary.grammar.utils

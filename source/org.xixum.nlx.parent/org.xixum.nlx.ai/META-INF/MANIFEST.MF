@@ -1,17 +1,17 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Ai Module
-Bundle-SymbolicName: de.validas.nlx.ai
+Bundle-SymbolicName: org.xixum.nlx.ai
 Bundle-Version: 0.2.0.qualifier
 Bundle-Vendor: felixschaller.com
-Automatic-Module-Name: de.validas.nlx.ai
+Automatic-Module-Name: org.xixum.nlx.ai
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: de.validas.nlx.ai,
- de.validas.nlx.ai.neo4j,
- de.validas.nlx.ai.semantics,
- de.validas.nlx.ai.util,
- de.validas.nlx.constants,
- de.validas.nlx.util,
+Export-Package: org.xixum.nlx.ai,
+ org.xixum.nlx.ai.neo4j,
+ org.xixum.nlx.ai.semantics,
+ org.xixum.nlx.ai.util,
+ org.xixum.nlx.constants,
+ org.xixum.nlx.util,
  org.neo4j.driver.internal,
  org.neo4j.driver.internal.async,
  org.neo4j.driver.internal.async.inbound,

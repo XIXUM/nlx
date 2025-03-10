@@ -1,11 +1,11 @@
-package de.validas.nlx.ai
+package org.xixum.nlx.ai
 
-import de.validas.nlx.ai.semantics.INode
+import org.xixum.nlx.ai.semantics.INode
 import org.eclipse.xtext.builder.debug.IBuildLogger
 import org.neo4j.driver.v1.types.Node
 import org.neo4j.driver.v1.Record
 import java.util.List
-import de.validas.nlx.ai.semantics.IContextNode
+import org.xixum.nlx.ai.semantics.IContextNode
 
 interface IParserDriver {
 	

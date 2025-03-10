@@ -1,7 +1,7 @@
-package de.validas.nlx.ai.util
+package org.xixum.nlx.ai.util
 
-import de.validas.nlx.ai.IDbAccess
-import de.validas.nlx.ai.neo4j.Neo4jAccess.Action
+import org.xixum.nlx.ai.IDbAccess
+import org.xixum.nlx.ai.neo4j.Neo4jAccess.Action
 import java.util.List
 import org.neo4j.driver.internal.InternalRecord
 import org.neo4j.driver.internal.value.FloatValue
@@ -14,12 +14,12 @@ import org.neo4j.driver.v1.Record
 import org.neo4j.driver.v1.Value
 import org.neo4j.driver.v1.types.Node
 
-import static de.validas.nlx.constants.Neo4jConstants._HIT
-import static de.validas.nlx.constants.Neo4jConstants._I
-import static de.validas.nlx.constants.Neo4jConstants._LINK
-import static de.validas.nlx.constants.Neo4jConstants._NODE
-import static de.validas.nlx.constants.Neo4jConstants._SOURCE
-import static de.validas.nlx.constants.Neo4jConstants._TARGET
+import static org.xixum.nlx.constants.Neo4jConstants._HIT
+import static org.xixum.nlx.constants.Neo4jConstants._I
+import static org.xixum.nlx.constants.Neo4jConstants._LINK
+import static org.xixum.nlx.constants.Neo4jConstants._NODE
+import static org.xixum.nlx.constants.Neo4jConstants._SOURCE
+import static org.xixum.nlx.constants.Neo4jConstants._TARGET
 import org.neo4j.driver.v1.types.Path
 
 class NodeUtil {

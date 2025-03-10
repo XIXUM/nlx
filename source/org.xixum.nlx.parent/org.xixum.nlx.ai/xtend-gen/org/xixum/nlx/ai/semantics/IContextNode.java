@@ -1,11 +1,8 @@
-package de.validas.nlx.ai.semantics;
-
-import javax.annotation.Generated;
+package org.xixum.nlx.ai.semantics;
 
 @SuppressWarnings("all")
-@Generated("org.eclipse.xtend.core.compiler.XtendGenerator")
 public interface IContextNode {
-  public abstract Object getAttribute(final String key);
-  
-  public abstract Object setAttribute(final String key, final Object value);
+  Object getAttribute(final String key);
+
+  Object setAttribute(final String key, final Object value);
 }

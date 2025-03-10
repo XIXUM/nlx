@@ -1,17 +1,17 @@
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
-import static de.validas.nlx.constants.Neo4jConstants._TOKEN
-import static de.validas.nlx.dictionary.constants.NodeConstants._TYPE
+import static org.xixum.nlx.constants.Neo4jConstants._TOKEN
+import static org.xixum.nlx.dictionary.constants.NodeConstants._TYPE
 
-import de.validas.nlx.dictionary.grammar.nodes.AbstractDictRuleObj
+import org.xixum.nlx.dictionary.grammar.nodes.AbstractDictRuleObj
 import org.neo4j.driver.v1.types.Node
-import de.validas.nlx.ai.IParserDriver
+import org.xixum.nlx.ai.IParserDriver
 
 
-import static de.validas.nlx.dictionary.constants.DictionaryConstants._POSITION
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateEQUALS
-import de.validas.nlx.ai.semantics.INode
-import de.validas.nlx.dictionary.grammar.token.IGrammarItem
+import static org.xixum.nlx.dictionary.constants.DictionaryConstants._POSITION
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateEQUALS
+import org.xixum.nlx.ai.semantics.INode
+import org.xixum.nlx.dictionary.grammar.token.IGrammarItem
 
 class TerminalNode extends AbstractDictRuleObj implements IDictNode, IPredicateEQUALS {
 	

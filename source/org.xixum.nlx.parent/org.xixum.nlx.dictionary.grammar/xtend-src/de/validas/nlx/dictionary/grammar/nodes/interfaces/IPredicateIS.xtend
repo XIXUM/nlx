@@ -1,7 +1,7 @@
-package de.validas.nlx.dictionary.grammar.nodes.interfaces
+package org.xixum.nlx.dictionary.grammar.nodes.interfaces
 
-import de.validas.nlx.ai.semantics.INode
-import de.validas.nlx.dictionary.grammar.token.IGrammarItem
+import org.xixum.nlx.ai.semantics.INode
+import org.xixum.nlx.dictionary.grammar.token.IGrammarItem
 
 interface IPredicateIS {
 	def INode is(INode caller) 

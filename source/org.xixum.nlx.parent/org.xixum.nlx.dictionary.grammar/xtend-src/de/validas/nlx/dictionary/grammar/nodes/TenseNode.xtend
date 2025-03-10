@@ -1,12 +1,12 @@
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
-import static de.validas.nlx.dictionary.constants.PredicateConstants.NAME_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.AS_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.NAME_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.AS_
 
-import de.validas.nlx.ai.IParserDriver
+import org.xixum.nlx.ai.IParserDriver
 import org.neo4j.driver.v1.types.Node
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateLINK_TO
-import de.validas.nlx.ai.semantics.INode
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateLINK_TO
+import org.xixum.nlx.ai.semantics.INode
 import org.neo4j.driver.v1.types.Relationship
 //import org.eclipse.xtext.xbase.lib.Functions.Function1
 

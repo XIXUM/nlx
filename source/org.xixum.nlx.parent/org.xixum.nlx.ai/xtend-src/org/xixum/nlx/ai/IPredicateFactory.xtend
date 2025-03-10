@@ -1,8 +1,8 @@
-package de.validas.nlx.ai
+package org.xixum.nlx.ai
 
 import org.neo4j.driver.internal.value.RelationshipValue
-import de.validas.nlx.ai.semantics.INode
-import de.validas.nlx.ai.semantics.IPredicate
+import org.xixum.nlx.ai.semantics.INode
+import org.xixum.nlx.ai.semantics.IPredicate
 
 interface IPredicateFactory {
 	

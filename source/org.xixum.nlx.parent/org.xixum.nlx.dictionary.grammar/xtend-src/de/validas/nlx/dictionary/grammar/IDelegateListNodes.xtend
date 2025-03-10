@@ -1,10 +1,10 @@
-package de.validas.nlx.dictionary.grammar
+package org.xixum.nlx.dictionary.grammar
 
 import java.util.List
 import org.neo4j.driver.internal.value.NodeValue
 
 /**
- *  deprecated. use IFunction from: de.validas.nlx.ai
+ *  deprecated. use IFunction from: org.xixum.nlx.ai
  */
 @Deprecated
 interface IDelegateListNodes {

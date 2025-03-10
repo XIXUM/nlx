@@ -1,6 +1,6 @@
-package de.validas.nlx.constants
+package org.xixum.nlx.constants
 
-import de.validas.nlx.util.PluginUtils
+import org.xixum.nlx.util.PluginUtils
 
 class Neo4jConstants {
 	

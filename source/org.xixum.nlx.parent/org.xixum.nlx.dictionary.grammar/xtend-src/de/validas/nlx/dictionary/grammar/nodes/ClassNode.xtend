@@ -1,20 +1,20 @@
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
-import static de.validas.nlx.constants.Neo4jConstants._TOKEN
-import static de.validas.nlx.constants.Neo4jConstants._OF_CLASS
-import static de.validas.nlx.constants.Neo4jConstants._NAME
-import static de.validas.nlx.constants.Neo4jConstants._CLASS
+import static org.xixum.nlx.constants.Neo4jConstants._TOKEN
+import static org.xixum.nlx.constants.Neo4jConstants._OF_CLASS
+import static org.xixum.nlx.constants.Neo4jConstants._NAME
+import static org.xixum.nlx.constants.Neo4jConstants._CLASS
 
-import de.validas.nlx.dictionary.grammar.nodes.AbstractPredicatedNodeObj
+import org.xixum.nlx.dictionary.grammar.nodes.AbstractPredicatedNodeObj
 import org.neo4j.driver.v1.types.Node
-import de.validas.nlx.ai.IParserDriver
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateIS
-import de.validas.nlx.ai.semantics.INode
-import de.validas.nlx.dictionary.grammar.token.IGrammarItem
-import de.validas.nlx.dictionary.grammar.token.IGrammarLiteral
-import de.validas.nlx.dictionary.grammar.utils.GrammarUtil
-import de.validas.nlx.dictionary.grammar.token.IGrammarInterpunction
-import de.validas.nlx.ai.util.NodeUtil
+import org.xixum.nlx.ai.IParserDriver
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateIS
+import org.xixum.nlx.ai.semantics.INode
+import org.xixum.nlx.dictionary.grammar.token.IGrammarItem
+import org.xixum.nlx.dictionary.grammar.token.IGrammarLiteral
+import org.xixum.nlx.dictionary.grammar.utils.GrammarUtil
+import org.xixum.nlx.dictionary.grammar.token.IGrammarInterpunction
+import org.xixum.nlx.ai.util.NodeUtil
 import java.util.List
 
 class ClassNode extends AbstractPredicatedNodeObj implements IPredicateIS{

@@ -1,13 +1,13 @@
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
-import static de.validas.nlx.dictionary.constants.PredicateConstants.GET_NAME_
-import static de.validas.nlx.constants.Neo4jConstants._ATTR_NAME
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.GET_NAME_
+import static org.xixum.nlx.constants.Neo4jConstants._ATTR_NAME
 
-import de.validas.nlx.dictionary.grammar.nodes.AbstractDictRuleObj
+import org.xixum.nlx.dictionary.grammar.nodes.AbstractDictRuleObj
 import org.neo4j.driver.v1.types.Node
-import de.validas.nlx.ai.IParserDriver
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateGET_NAME
-import de.validas.nlx.ai.semantics.INode
+import org.xixum.nlx.ai.IParserDriver
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateGET_NAME
+import org.xixum.nlx.ai.semantics.INode
 import org.neo4j.driver.v1.types.Relationship
 
 abstract class AbstractPredicatedNodeObj extends AbstractDictRuleObj implements IPredicateGET_NAME{

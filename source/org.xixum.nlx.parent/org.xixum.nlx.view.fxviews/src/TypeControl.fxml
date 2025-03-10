@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.paint.Color?>
 
-<AnchorPane pickOnBounds="false" stylesheets="@Panel.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.validas.nlx.view.fxviews.control.TypeControlElController">
+<AnchorPane pickOnBounds="false" stylesheets="@Panel.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.xixum.nlx.view.fxviews.control.TypeControlElController">
 	<children>
       <VBox pickOnBounds="false">
          <children>

@@ -344,7 +344,7 @@
 			point="org.eclipse.ui.ide.markerResolution">
 		<markerResolutionGenerator
 			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-			markerType="de.validas.spedit.iedit.ui.naturallang.check.fast">
+			markerType="org.xixum.nlx.model.ui.naturallang.check.fast">
 			<attribute
 				name="FIXABLE_KEY"
 				value="true">
@@ -352,7 +352,7 @@
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
 			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-			markerType="de.validas.spedit.iedit.ui.naturallang.check.normal">
+			markerType="org.xixum.nlx.model.ui.naturallang.check.normal">
 			<attribute
 				name="FIXABLE_KEY"
 				value="true">
@@ -360,7 +360,7 @@
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
 			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-			markerType="de.validas.spedit.iedit.ui.naturallang.check.expensive">
+			markerType="org.xixum.nlx.model.ui.naturallang.check.expensive">
 			<attribute
 				name="FIXABLE_KEY"
 				value="true">

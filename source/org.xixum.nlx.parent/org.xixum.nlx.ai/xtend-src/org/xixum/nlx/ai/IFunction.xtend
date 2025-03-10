@@ -1,4 +1,4 @@
-package de.validas.nlx.ai
+package org.xixum.nlx.ai
 
 /**
  * stubs for delegate functions

@@ -2,7 +2,7 @@
  * (c) 2022 felixschaller.com 
  * @author Felix Schaller
  */
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
 interface IActionSubject {
 	/**

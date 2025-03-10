@@ -1,22 +1,22 @@
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
-import static de.validas.nlx.dictionary.constants.PredicateConstants.DO_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.FIND_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.GET_SOURCE_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.GET_TARGET_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.LINK_INSTANCE_TO_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.LINK_TO_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.WITH_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.TARGET_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.DO_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.FIND_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.GET_SOURCE_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.GET_TARGET_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.LINK_INSTANCE_TO_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.LINK_TO_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.WITH_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.TARGET_
 
-import de.validas.nlx.ai.IParserDriver
-import de.validas.nlx.ai.semantics.INode
-import de.validas.nlx.dictionary.grammar.bool.BoolOr
+import org.xixum.nlx.ai.IParserDriver
+import org.xixum.nlx.ai.semantics.INode
+import org.xixum.nlx.dictionary.grammar.bool.BoolOr
 import java.util.List
 import org.neo4j.driver.v1.Record
 import org.neo4j.driver.v1.types.Node
 
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateDO
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateDO
 
 
 class ActionNode extends AbstractActionPredicatedNodeObj implements IActionNode, IActionSubject, IPredicateDO {

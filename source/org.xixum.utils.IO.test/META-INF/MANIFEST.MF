@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Test-IO
-Bundle-SymbolicName: de.validas.utils.IO.test
+Bundle-SymbolicName: org.xixum.utils.IO.test
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: de.validas.utils.io.test.Activator
+Bundle-Activator: org.xixum.utils.io.test.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.junit,
@@ -20,11 +20,11 @@ Require-Bundle: org.eclipse.ui,
  org.hamcrest.core,
  org.opentest4j,
  org.apiguardian,
- de.validas.utils.IO;bundle-version="1.0.0",
- de.validas.utils.IO,
- de.validas.utils.Data
+ org.xixum.utils.IO;bundle-version="1.0.0",
+ org.xixum.utils.IO,
+ org.xixum.utils.Data
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Automatic-Module-Name: de.validas.utils.IO.test
+Automatic-Module-Name: org.xixum.utils.IO.test
 Bundle-ActivationPolicy: lazy
-Export-Package: de.validas.utils.io.test,
+Export-Package: org.xixum.utils.io.test,
  testSuite.fileUtils

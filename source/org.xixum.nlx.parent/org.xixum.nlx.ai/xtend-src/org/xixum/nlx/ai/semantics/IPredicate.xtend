@@ -1,4 +1,4 @@
-package de.validas.nlx.ai.semantics
+package org.xixum.nlx.ai.semantics
 
 interface IPredicate {
 	

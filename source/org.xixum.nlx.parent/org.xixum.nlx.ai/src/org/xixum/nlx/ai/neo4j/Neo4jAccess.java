@@ -5,11 +5,11 @@
  * @author Felix schaller
  */
 
-package de.validas.nlx.ai.neo4j;
+package org.xixum.nlx.ai.neo4j;
 
-import static de.validas.nlx.constants.Neo4jConstants.DB_PASS;
-import static de.validas.nlx.constants.Neo4jConstants.DB_URI;
-import static de.validas.nlx.constants.Neo4jConstants.DB_USER;
+import static org.xixum.nlx.constants.Neo4jConstants.DB_PASS;
+import static org.xixum.nlx.constants.Neo4jConstants.DB_URI;
+import static org.xixum.nlx.constants.Neo4jConstants.DB_USER;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ import org.neo4j.driver.v1.Transaction;
 import org.neo4j.driver.v1.TransactionWork;
 import org.neo4j.driver.v1.exceptions.ServiceUnavailableException;
 
-import de.validas.nlx.ai.IDbAccess;
+import org.xixum.nlx.ai.IDbAccess;
 
 
 public class Neo4jAccess implements IDbAccess {

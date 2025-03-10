@@ -5,4 +5,4 @@
  * @author schaller
  *
  */
-package de.validas.nlx.ai;
+package org.xixum.nlx.ai;

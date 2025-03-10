@@ -2,7 +2,7 @@
  * (c) felixschaller.com
  * @author Felix Schaller
  */
-package de.validas.nlx.dictionary.grammar.types
+package org.xixum.nlx.dictionary.grammar.types
 
 //TODO: 05.10.22 replace by some more dynamic solution (class or neo4j node)
 enum ItemType {

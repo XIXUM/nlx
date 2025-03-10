@@ -1,20 +1,20 @@
-package de.validas.nlx.dictionary.grammar.rules
+package org.xixum.nlx.dictionary.grammar.rules
 
-import de.validas.nlx.ai.IParserDriver
-import de.validas.nlx.ai.ParserDriver
-import de.validas.nlx.ai.neo4j.Neo4jAccess.Action
-import de.validas.nlx.dictionary.IDictionaryAccess
-import de.validas.nlx.dictionary.grammar.factories.PredicateFactory
-import de.validas.nlx.dictionary.grammar.factories.RuleNodeFactory
-import de.validas.nlx.dictionary.grammar.nodes.ImplRuleNode
-import de.validas.nlx.dictionary.grammar.runnables.ImplRuleRunnable
-import de.validas.nlx.dictionary.grammar.token.IGrammarItem
+import org.xixum.nlx.ai.IParserDriver
+import org.xixum.nlx.ai.ParserDriver
+import org.xixum.nlx.ai.neo4j.Neo4jAccess.Action
+import org.xixum.nlx.dictionary.IDictionaryAccess
+import org.xixum.nlx.dictionary.grammar.factories.PredicateFactory
+import org.xixum.nlx.dictionary.grammar.factories.RuleNodeFactory
+import org.xixum.nlx.dictionary.grammar.nodes.ImplRuleNode
+import org.xixum.nlx.dictionary.grammar.runnables.ImplRuleRunnable
+import org.xixum.nlx.dictionary.grammar.token.IGrammarItem
 import de.validas.spedit.naturalLang.New_Line
 import de.validas.spedit.naturalLang.Sentence
 import de.validas.spedit.naturalLang.SubSentence
 import de.validas.spedit.naturalLang.Word
-import de.validas.utils.data.lists.IAppendable
-import de.validas.utils.data.types.XPair
+import org.xixum.utils.data.lists.IAppendable
+import org.xixum.utils.data.types.XPair
 import java.util.ArrayList
 import java.util.List
 import org.eclipse.emf.common.util.BasicEList
@@ -25,11 +25,11 @@ import org.neo4j.driver.internal.value.NodeValue
 import org.neo4j.driver.v1.Record
 import org.neo4j.driver.v1.types.Node
 
-import static de.validas.nlx.constants.Neo4jConstants._NODE
-import static de.validas.nlx.constants.Neo4jConstants._TOKEN
-import static de.validas.nlx.dictionary.constants.NodeConstants._IMPL_DICT_RULE
-import static de.validas.nlx.dictionary.constants.NodeConstants._KOMMA
-import de.validas.nlx.dictionary.grammar.factories.ContextFactory
+import static org.xixum.nlx.constants.Neo4jConstants._NODE
+import static org.xixum.nlx.constants.Neo4jConstants._TOKEN
+import static org.xixum.nlx.dictionary.constants.NodeConstants._IMPL_DICT_RULE
+import static org.xixum.nlx.dictionary.constants.NodeConstants._KOMMA
+import org.xixum.nlx.dictionary.grammar.factories.ContextFactory
 
 class ImplicitRulesOnDict {
 

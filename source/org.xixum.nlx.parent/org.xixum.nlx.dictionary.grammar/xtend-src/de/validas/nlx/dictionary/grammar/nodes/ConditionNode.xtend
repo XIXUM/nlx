@@ -1,19 +1,19 @@
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
-import static de.validas.nlx.dictionary.constants.PredicateConstants.ENDS_WITH_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.INSTANCE_OF_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.IS_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.TARGET_
-import static de.validas.nlx.constants.Neo4jConstants._TOKEN
-import static de.validas.nlx.constants.Neo4jConstants._NODE
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.ENDS_WITH_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.INSTANCE_OF_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.IS_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.TARGET_
+import static org.xixum.nlx.constants.Neo4jConstants._TOKEN
+import static org.xixum.nlx.constants.Neo4jConstants._NODE
 
-import de.validas.nlx.ai.IParserDriver
-import de.validas.nlx.ai.semantics.INode
+import org.xixum.nlx.ai.IParserDriver
+import org.xixum.nlx.ai.semantics.INode
 import java.util.List
 import org.neo4j.driver.v1.types.Node
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateEQUALS
-import de.validas.nlx.dictionary.grammar.token.IGrammarItem
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateTARGET
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateEQUALS
+import org.xixum.nlx.dictionary.grammar.token.IGrammarItem
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateTARGET
 
 abstract class ConditionNode extends AbstractPredicatedNodeObj implements IRuleNode, ITokenNode, IPredicateEQUALS, IPredicateTARGET{
 	

@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
-Automatic-Module-Name: de.validas.spedit.iedit.web
+Automatic-Module-Name: org.xixum.nlx.model.web
 Bundle-ManifestVersion: 2
-Bundle-Name: de.validas.spedit.iedit
+Bundle-Name: org.xixum.nlx.model
 Bundle-Vendor: My Company
 Bundle-Version: 0.1.5.qualifier
-Bundle-SymbolicName: de.validas.spedit.iedit.web; singleton:=true
+Bundle-SymbolicName: org.xixum.nlx.model.web; singleton:=true
 Bundle-ActivationPolicy: lazy

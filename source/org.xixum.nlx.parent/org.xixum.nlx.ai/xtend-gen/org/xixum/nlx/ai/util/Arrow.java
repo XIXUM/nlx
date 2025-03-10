@@ -1,39 +1,37 @@
-package de.validas.nlx.ai.util;
+package org.xixum.nlx.ai.util;
 
-import com.google.common.base.Objects;
-import de.validas.nlx.constants.Direction;
 import java.io.Serializable;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.IntPredicate;
-import javax.annotation.Generated;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.xixum.nlx.constants.Direction;
 
 @SuppressWarnings("all")
-@Generated("org.eclipse.xtend.core.compiler.XtendGenerator")
 public class Arrow {
   private String varName;
-  
+
   private String classT;
-  
+
   private Direction direction;
-  
+
   private Map<String, Serializable> attribs;
-  
+
   private boolean usePath;
-  
+
   private String min;
-  
+
   private String max;
-  
+
   public Arrow(final String varName, final String classT, final Direction direction) {
     this(varName, classT, null, true, direction);
   }
-  
+
   public Arrow(final String varName, final String classT, final Map<String, Serializable> attribs, final Direction direction) {
     this(varName, classT, attribs, null, null, false, direction);
   }
-  
+
   /**
    * @Deprecated
    * deprecated interface because useQuotes is determined dynamically
@@ -42,12 +40,12 @@ public class Arrow {
   public Arrow(final String varName, final String classT, final Map<String, Serializable> attribs, final boolean useQuotes, final Direction direction) {
     this(varName, classT, attribs, null, null, false, direction);
   }
-  
+
   @Deprecated
   public Arrow(final String varName, final String classT, final Map<String, Serializable> attribs, final String min, final String max, final boolean usePath, final boolean useQuotes, final Direction direction) {
     this(varName, classT, attribs, min, max, usePath, direction);
   }
-  
+
   public Arrow(final String varName, final String classT, final Map<String, Serializable> attribs, final String min, final String max, final boolean usePath, final Direction direction) {
     this.varName = varName;
     this.classT = classT;
@@ -57,23 +55,23 @@ public class Arrow {
     this.max = max;
     this.usePath = usePath;
   }
-  
+
   public String getVarName() {
     return this.varName;
   }
-  
+
   public String getClassT() {
     return this.classT;
   }
-  
+
   public Direction getDirection() {
     return this.direction;
   }
-  
+
   public CharSequence generate() {
     StringConcatenation _builder = new StringConcatenation();
     {
-      boolean _equals = Objects.equal(this.direction, Direction.LEFT);
+      boolean _equals = Objects.equals(this.direction, Direction.LEFT);
       if (_equals) {
         _builder.append("<-");
       } else {
@@ -142,7 +140,7 @@ public class Arrow {
     }
     _builder.append("]");
     {
-      boolean _equals_1 = Objects.equal(this.direction, Direction.RIGHT);
+      boolean _equals_1 = Objects.equals(this.direction, Direction.RIGHT);
       if (_equals_1) {
         _builder.append("->");
       } else {
@@ -151,7 +149,7 @@ public class Arrow {
     }
     return _builder;
   }
-  
+
   public boolean requirequotes(final Serializable attr) {
     boolean _switchResult = false;
     boolean _matched = false;

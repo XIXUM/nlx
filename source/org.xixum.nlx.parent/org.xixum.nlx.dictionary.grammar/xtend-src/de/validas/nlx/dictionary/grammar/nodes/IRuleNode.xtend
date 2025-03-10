@@ -1,6 +1,6 @@
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
-import de.validas.nlx.ai.semantics.INode
+import org.xixum.nlx.ai.semantics.INode
 
 interface IRuleNode extends INode {
 	

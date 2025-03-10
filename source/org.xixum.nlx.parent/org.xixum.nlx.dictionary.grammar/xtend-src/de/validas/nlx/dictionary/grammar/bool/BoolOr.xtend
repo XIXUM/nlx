@@ -1,7 +1,7 @@
-package de.validas.nlx.dictionary.grammar.bool
+package org.xixum.nlx.dictionary.grammar.bool
 
-import de.validas.nlx.dictionary.grammar.bool.BoolOp
-import de.validas.nlx.ai.semantics.INode
+import org.xixum.nlx.dictionary.grammar.bool.BoolOp
+import org.xixum.nlx.ai.semantics.INode
 
 class BoolOr extends BoolOp {
 	

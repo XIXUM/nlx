@@ -1,15 +1,15 @@
-package de.validas.nlx.ai
+package org.xixum.nlx.ai
 
-import de.validas.nlx.ai.neo4j.Neo4jAccess.Action
-import de.validas.nlx.ai.semantics.INode
+import org.xixum.nlx.ai.neo4j.Neo4jAccess.Action
+import org.xixum.nlx.ai.semantics.INode
 import java.util.HashMap
 import org.eclipse.xtext.builder.debug.IBuildLogger
 import org.neo4j.driver.v1.types.Node
 
-import static de.validas.nlx.constants.Neo4jConstants._LINK
-import static de.validas.nlx.constants.Neo4jConstants._NODE
-import static de.validas.nlx.constants.Neo4jConstants._TARGET
-import de.validas.nlx.ai.semantics.IContextNode
+import static org.xixum.nlx.constants.Neo4jConstants._LINK
+import static org.xixum.nlx.constants.Neo4jConstants._NODE
+import static org.xixum.nlx.constants.Neo4jConstants._TARGET
+import org.xixum.nlx.ai.semantics.IContextNode
 
 class ParserDriver implements IParserDriver {
 	

@@ -1,30 +1,30 @@
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
-import static de.validas.nlx.dictionary.constants.PredicateConstants.EQUALS_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.EXTENDS_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.NEXT_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.PREVIOUS_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.RESULT_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.TARGET_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.AS_
-import static de.validas.nlx.constants.Neo4jConstants._TOKEN
-import static de.validas.nlx.constants.Neo4jConstants._NODE
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.EQUALS_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.EXTENDS_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.NEXT_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.PREVIOUS_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.RESULT_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.TARGET_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.AS_
+import static org.xixum.nlx.constants.Neo4jConstants._TOKEN
+import static org.xixum.nlx.constants.Neo4jConstants._NODE
 
-import de.validas.nlx.ai.IParserDriver
-import de.validas.nlx.ai.semantics.INode
-import de.validas.nlx.dictionary.grammar.bool.BoolOr
+import org.xixum.nlx.ai.IParserDriver
+import org.xixum.nlx.ai.semantics.INode
+import org.xixum.nlx.dictionary.grammar.bool.BoolOr
 import java.util.List
 import org.neo4j.driver.v1.Record
 import org.neo4j.driver.v1.types.Node
-import de.validas.nlx.dictionary.grammar.token.IGrammarItem
+import org.xixum.nlx.dictionary.grammar.token.IGrammarItem
 import org.eclipse.xtext.xbase.lib.Functions.Function1
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicatePREVIOUS
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateENTER_RULE
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateEXTENDS
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateGET
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateNEXT
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicatePREVIOUS
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateENTER_RULE
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateEXTENDS
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateGET
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateNEXT
 import org.neo4j.driver.v1.types.Relationship
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateLINK_TO
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateLINK_TO
 import java.util.Set
 import java.util.Collection
 

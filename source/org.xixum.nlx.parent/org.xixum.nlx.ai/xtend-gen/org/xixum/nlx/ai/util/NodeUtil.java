@@ -1,9 +1,5 @@
-package de.validas.nlx.ai.util;
+package org.xixum.nlx.ai.util;
 
-import de.validas.nlx.ai.IDbAccess;
-import de.validas.nlx.ai.neo4j.Neo4jAccess;
-import de.validas.nlx.ai.util.Arrow;
-import de.validas.nlx.constants.Neo4jConstants;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -11,7 +7,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import javax.annotation.Generated;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -28,9 +23,11 @@ import org.neo4j.driver.v1.Value;
 import org.neo4j.driver.v1.types.Node;
 import org.neo4j.driver.v1.types.Path;
 import org.neo4j.driver.v1.types.Relationship;
+import org.xixum.nlx.ai.IDbAccess;
+import org.xixum.nlx.ai.neo4j.Neo4jAccess;
+import org.xixum.nlx.constants.Neo4jConstants;
 
 @SuppressWarnings("all")
-@Generated("org.eclipse.xtend.core.compiler.XtendGenerator")
 public class NodeUtil {
   public static List<Record> linkExistOrCreate(final IDbAccess dbAccessor, final String sourceQuery, final String targetQuery, final String linkQuery, final long sourceID, final long targetID) {
     List<Record> _xblockexpression = null;
@@ -201,7 +198,7 @@ public class NodeUtil {
     }
     return _xblockexpression;
   }
-  
+
   /**
    * @parameter fail: returns null (fails) when grammar exists
    */
@@ -261,7 +258,7 @@ public class NodeUtil {
     }
     return _xblockexpression;
   }
-  
+
   /**
    * polymorphic version of
    * @method: nodeExistOrCreate
@@ -269,7 +266,7 @@ public class NodeUtil {
   public static Node nodeExistOrCreate(final IDbAccess dbAccessor, final String subQuery, final String varName, final List<String> exclude, final boolean fail) {
     return NodeUtil.nodeExistOrCreate(dbAccessor, subQuery, varName, exclude, null, fail);
   }
-  
+
   public static Relationship connectionExistOrCreate(final IDbAccess dbAccessor, final Node source, final Arrow arrow, final Node target) {
     Relationship _xblockexpression = null;
     {
@@ -338,7 +335,7 @@ public class NodeUtil {
     }
     return _xblockexpression;
   }
-  
+
   public static Node getFirstRecord(final List<Record> records, final String varName) {
     Object _xblockexpression = null;
     {
@@ -354,7 +351,7 @@ public class NodeUtil {
     }
     return ((Node)_xblockexpression);
   }
-  
+
   public static Relationship getFirstRelation(final List<Record> records, final String varName) {
     for (final Record rec : records) {
       if ((rec instanceof InternalRecord)) {
@@ -363,7 +360,7 @@ public class NodeUtil {
     }
     return null;
   }
-  
+
   public static List<Node> recordsToNode(final List<Record> records, final String key) {
     List<Node> _xblockexpression = null;
     {
@@ -376,7 +373,7 @@ public class NodeUtil {
     }
     return _xblockexpression;
   }
-  
+
   public static List<Record> listConnections(final IDbAccess dbAccessor, final Node source, final String type) {
     List<Record> _xblockexpression = null;
     {
@@ -406,7 +403,7 @@ public class NodeUtil {
     }
     return _xblockexpression;
   }
-  
+
   public static Node asNode(final Value value) {
     Object _xblockexpression = null;
     {
@@ -417,7 +414,7 @@ public class NodeUtil {
     }
     return ((Node)_xblockexpression);
   }
-  
+
   public static Object valueToNum(final Value value) {
     Object _switchResult = null;
     boolean _matched = false;
@@ -501,7 +498,7 @@ public class NodeUtil {
     }
     return _switchResult;
   }
-  
+
   public static ArrayList<ArrayList<Node>> pathToNodes(final List<Path> paths) {
     if (((paths == null) || paths.isEmpty())) {
       return null;

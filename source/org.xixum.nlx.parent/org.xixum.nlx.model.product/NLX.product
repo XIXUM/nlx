@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="NLX - Natural Language Platform" uid="NLX" id="de.validas.nlx.perspective.ide" application="org.eclipse.ui.ide.workbench" version="0.3.0.qualifier" useFeatures="false" includeLaunchers="true">
+<product name="NLX - Natural Language Platform" uid="NLX" id="org.xixum.nlx.perspective.ide" application="org.eclipse.ui.ide.workbench" version="0.3.0.qualifier" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
       <image path="nlx_lg.png"/>
@@ -21,19 +21,19 @@
       </vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="nlx16.png" i32="nlx32.png" i48="nlx48.png" i64="/de.validas.nlx.perspective/nlx64.png" i128="/de.validas.nlx.perspective/nlx128.png" i256="/de.validas.nlx.perspective/nlx256.png"/>
+   <windowImages i16="nlx16.png" i32="nlx32.png" i48="nlx48.png" i64="/org.xixum.nlx.perspective/nlx64.png" i128="/org.xixum.nlx.perspective/nlx128.png" i256="/org.xixum.nlx.perspective/nlx256.png"/>
 
    <splash
-      location="de.validas.nlx.perspective"
+      location="org.xixum.nlx.perspective"
       startupProgressRect="2,290,450,10"
       startupMessageRect="7,265,320,20"
       startupForegroundColor="e6e8ff" />
    <launcher name="NLX">
       <win useIco="false">
          <bmp
-            winSmallHigh="/de.validas.nlx.perspective/nlx16.bmp"
-            winMediumHigh="/de.validas.nlx.perspective/nlx32.bmp"
-            winLargeHigh="/de.validas.nlx.perspective/nlx48.bmp"/>
+            winSmallHigh="/org.xixum.nlx.perspective/nlx16.bmp"
+            winMediumHigh="/org.xixum.nlx.perspective/nlx32.bmp"
+            winLargeHigh="/org.xixum.nlx.perspective/nlx48.bmp"/>
       </win>
    </launcher>
 
@@ -46,17 +46,17 @@
       <plugin id="com.google.inject"/>
       <plugin id="com.ibm.icu"/>
       <plugin id="com.jcraft.jsch"/>
-      <plugin id="de.validas.nlx.ai"/>
-      <plugin id="de.validas.nlx.dictionary"/>
-      <plugin id="de.validas.nlx.perspective"/>
-      <plugin id="de.validas.nlx.view.fxviews"/>
+      <plugin id="org.xixum.nlx.ai"/>
+      <plugin id="org.xixum.nlx.dictionary"/>
+      <plugin id="org.xixum.nlx.perspective"/>
+      <plugin id="org.xixum.nlx.view.fxviews"/>
       <plugin id="de.validas.pmt"/>
-      <plugin id="de.validas.spedit.iedit"/>
-      <plugin id="de.validas.spedit.iedit.edit"/>
-      <plugin id="de.validas.spedit.iedit.ide"/>
-      <plugin id="de.validas.spedit.iedit.ui"/>
-      <plugin id="de.validas.utils.Data"/>
-      <plugin id="de.validas.utils.IO"/>
+      <plugin id="org.xixum.nlx.model"/>
+      <plugin id="org.xixum.nlx.model.edit"/>
+      <plugin id="org.xixum.nlx.model.ide"/>
+      <plugin id="org.xixum.nlx.model.ui"/>
+      <plugin id="org.xixum.utils.Data"/>
+      <plugin id="org.xixum.utils.IO"/>
       <plugin id="de.validas.vvt"/>
       <plugin id="javax.annotation"/>
       <plugin id="javax.inject"/>

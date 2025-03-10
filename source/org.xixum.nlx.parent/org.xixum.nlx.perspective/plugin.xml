@@ -31,7 +31,7 @@
 				value="%introDescription-samples"/>
 		  <property
 				name="applicationXMI"
-				value="de.validas.nlx.perspective/LegacyIDE.e4xmi">
+				value="org.xixum.nlx.perspective/LegacyIDE.e4xmi">
 		  </property>
 		  <property
 				name="cssTheme"
@@ -71,16 +71,16 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            class="de.validas.nlx.perspective.PerspectiveFactory"
+            class="org.xixum.nlx.perspective.PerspectiveFactory"
             fixed="true"
-            id="de.validas.nlx.perspective.perspective1"
+            id="org.xixum.nlx.perspective.perspective1"
             name="NLX">
       </perspective>
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
-            targetID="de.validas.nlx.perspective.perspective1">
+            targetID="org.xixum.nlx.perspective.perspective1">
             <view
                   id="org.eclipse.ui.navigator.ProjectExplorer"
                   minimized="false"
@@ -91,7 +91,7 @@
             </view>
  
             <view
-                  id="de.validas.nlx.view.fxviews.views.SemanticFxViewPart"
+                  id="org.xixum.nlx.view.fxviews.views.SemanticFxViewPart"
                   minimized="false"
                   ratio="0.8"
                   relationship="bottom"
@@ -119,7 +119,7 @@
                   id="org.eclipse.ui.console.ConsoleView"
                   minimized="false"
                   relationship="stack"
-                  relative="de.validas.nlx.view.fxviews.views.SemanticFxViewPart">
+                  relative="org.xixum.nlx.view.fxviews.views.SemanticFxViewPart">
             </view>
             <view
                   id="org.eclipse.ui.views.ProgressView"
@@ -134,13 +134,13 @@
    
 <!--   <extension point="org.eclipse.ui.views">
       <category
-            id="de.validas.nlx.views.viewCategory"
+            id="org.xixum.nlx.views.viewCategory"
             name="%views.viewCategory.name">
       </category>
       <view
-            category="de.validas.nlx.views.viewCategory"
-            class="de.validas.nlx.view.InfoView"
-            id="de.validas.nlx.view"
+            category="org.xixum.nlx.views.viewCategory"
+            class="org.xixum.nlx.view.InfoView"
+            id="org.xixum.nlx.view"
             name="%views.view.name">
       </view>
 </extension>-->

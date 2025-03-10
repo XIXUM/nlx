@@ -1,6 +1,6 @@
-package de.validas.nlx.dictionary.grammar.constants
+package org.xixum.nlx.dictionary.grammar.constants
 
-import de.validas.nlx.dictionary.grammar.util.PluginUtils
+import org.xixum.nlx.dictionary.grammar.util.PluginUtils
 
 abstract class AbstractConstantClass {
 	

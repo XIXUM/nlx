@@ -1,53 +1,53 @@
-package de.validas.nlx.dictionary.grammar.factories
+package org.xixum.nlx.dictionary.grammar.factories
 
-//import static de.validas.nlx.constants.Neo4jConstants._ATTR_NAME
-//import static de.validas.nlx.constants.Neo4jConstants._NAME
-//import static de.validas.nlx.constants.Neo4jConstants._NODE
-//import static de.validas.nlx.constants.Neo4jConstants._TARGET
-//import static de.validas.nlx.constants.Neo4jConstants._TOKEN
-import static de.validas.nlx.dictionary.constants.PredicateConstants.DO_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.ENDS_WITH_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.ENTER_RULE_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.EQUALS_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.EXTENDS_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.FIND_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.OF_CLASS_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.GET_NAME_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.GET_SOURCE_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.GET_TARGET_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.INSTANCE_OF_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.IS_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.LINK_INSTANCE_TO_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.LINK_TO_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.NEXT_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.PREVIOUS_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.OF_
-//import static de.validas.nlx.dictionary.constants.PredicateConstants.RESULT_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.TARGET_
-//import static de.validas.nlx.dictionary.constants.PredicateConstants.WITH_
-//import static de.validas.nlx.dictionary.constants.NodeConstants._QUERY
-//import static de.validas.nlx.dictionary.constants.NodeConstants._WORD
+//import static org.xixum.nlx.constants.Neo4jConstants._ATTR_NAME
+//import static org.xixum.nlx.constants.Neo4jConstants._NAME
+//import static org.xixum.nlx.constants.Neo4jConstants._NODE
+//import static org.xixum.nlx.constants.Neo4jConstants._TARGET
+//import static org.xixum.nlx.constants.Neo4jConstants._TOKEN
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.DO_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.ENDS_WITH_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.ENTER_RULE_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.EQUALS_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.EXTENDS_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.FIND_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.OF_CLASS_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.GET_NAME_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.GET_SOURCE_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.GET_TARGET_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.INSTANCE_OF_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.IS_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.LINK_INSTANCE_TO_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.LINK_TO_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.NEXT_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.PREVIOUS_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.OF_
+//import static org.xixum.nlx.dictionary.constants.PredicateConstants.RESULT_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.TARGET_
+//import static org.xixum.nlx.dictionary.constants.PredicateConstants.WITH_
+//import static org.xixum.nlx.dictionary.constants.NodeConstants._QUERY
+//import static org.xixum.nlx.dictionary.constants.NodeConstants._WORD
 
-import de.validas.nlx.ai.IDbAccess
-import de.validas.nlx.ai.IPredicateFactory
-import de.validas.nlx.ai.semantics.INode
-import de.validas.nlx.dictionary.grammar.predicates.Predicate
+import org.xixum.nlx.ai.IDbAccess
+import org.xixum.nlx.ai.IPredicateFactory
+import org.xixum.nlx.ai.semantics.INode
+import org.xixum.nlx.dictionary.grammar.predicates.Predicate
 import org.neo4j.driver.internal.value.RelationshipValue
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateNEXT
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateIS
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateEQUALS
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicatePREVIOUS
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateDO
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateENTER_RULE
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateEXTENDS
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateGET
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateENDS_WITH
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateOF
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateLINK_TO
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateGET_NAME
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateFIND
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateOF_CLASS
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateTARGET
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateNEXT
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateIS
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateEQUALS
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicatePREVIOUS
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateDO
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateENTER_RULE
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateEXTENDS
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateGET
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateENDS_WITH
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateOF
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateLINK_TO
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateGET_NAME
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateFIND
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateOF_CLASS
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateTARGET
 
 class PredicateFactory implements IPredicateFactory {
 	IDbAccess dbAccessor

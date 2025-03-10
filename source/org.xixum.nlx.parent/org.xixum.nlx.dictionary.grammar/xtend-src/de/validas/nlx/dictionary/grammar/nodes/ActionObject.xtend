@@ -1,28 +1,28 @@
-package de.validas.nlx.dictionary.grammar.nodes
+package org.xixum.nlx.dictionary.grammar.nodes
 
-import de.validas.nlx.ai.IParserDriver
-import de.validas.nlx.ai.semantics.INode
-import de.validas.nlx.dictionary.grammar.bool.BoolOr
+import org.xixum.nlx.ai.IParserDriver
+import org.xixum.nlx.ai.semantics.INode
+import org.xixum.nlx.dictionary.grammar.bool.BoolOr
 import java.util.List
 import org.neo4j.driver.v1.Record
 import org.neo4j.driver.v1.types.Node
 
-import static de.validas.nlx.constants.Neo4jConstants._NAME
-import static de.validas.nlx.constants.Neo4jConstants._NODE
-import static de.validas.nlx.constants.Neo4jConstants._TARGET
-import static de.validas.nlx.dictionary.constants.PredicateConstants.GET_NAME_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.WITH_
-import static de.validas.nlx.dictionary.constants.PredicateConstants.OF_
-import static de.validas.nlx.dictionary.constants.NodeConstants._ATTR_NAME
-import static de.validas.nlx.dictionary.constants.NodeConstants._QUERY
-import static de.validas.nlx.dictionary.constants.NodeConstants._SHORT_OF
-import static de.validas.nlx.dictionary.constants.NodeConstants._TYPE
-import static de.validas.nlx.dictionary.constants.NodeConstants._WORD
+import static org.xixum.nlx.constants.Neo4jConstants._NAME
+import static org.xixum.nlx.constants.Neo4jConstants._NODE
+import static org.xixum.nlx.constants.Neo4jConstants._TARGET
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.GET_NAME_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.WITH_
+import static org.xixum.nlx.dictionary.constants.PredicateConstants.OF_
+import static org.xixum.nlx.dictionary.constants.NodeConstants._ATTR_NAME
+import static org.xixum.nlx.dictionary.constants.NodeConstants._QUERY
+import static org.xixum.nlx.dictionary.constants.NodeConstants._SHORT_OF
+import static org.xixum.nlx.dictionary.constants.NodeConstants._TYPE
+import static org.xixum.nlx.dictionary.constants.NodeConstants._WORD
 
-import de.validas.nlx.dictionary.grammar.nodes.AbstractActionPredicatedNodeObj
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateOF
+import org.xixum.nlx.dictionary.grammar.nodes.AbstractActionPredicatedNodeObj
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateOF
 import org.neo4j.driver.v1.types.Relationship
-import de.validas.nlx.dictionary.grammar.nodes.interfaces.IPredicateFIND
+import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateFIND
 
 class ActionObject extends AbstractActionPredicatedNodeObj implements IObjectNode, IPredicateOF, IPredicateFIND {
 	

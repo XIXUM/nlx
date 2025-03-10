@@ -1,8 +1,8 @@
-package de.validas.nlx.dictionary.grammar.runnables
+package org.xixum.nlx.dictionary.grammar.runnables
 
-import de.validas.nlx.ai.semantics.INode
-import de.validas.nlx.dictionary.grammar.nodes.ImplRuleNode
-import de.validas.utils.data.types.XPair
+import org.xixum.nlx.ai.semantics.INode
+import org.xixum.nlx.dictionary.grammar.nodes.ImplRuleNode
+import org.xixum.utils.data.types.XPair
 import java.util.Map
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject

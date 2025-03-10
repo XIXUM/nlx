@@ -1,10 +1,6 @@
-package de.validas.nlx.ai.semantics;
-
-import de.validas.nlx.ai.semantics.INode;
-import javax.annotation.Generated;
+package org.xixum.nlx.ai.semantics;
 
 @SuppressWarnings("all")
-@Generated("org.eclipse.xtend.core.compiler.XtendGenerator")
 public interface IPredicate {
-  public abstract INode execute();
+  INode execute();
 }

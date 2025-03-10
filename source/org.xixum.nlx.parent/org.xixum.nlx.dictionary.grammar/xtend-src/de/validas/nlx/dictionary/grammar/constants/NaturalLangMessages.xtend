@@ -1,6 +1,6 @@
-package de.validas.nlx.dictionary.grammar.constants
+package org.xixum.nlx.dictionary.grammar.constants
 
-import de.validas.nlx.dictionary.grammar.constants.AbstractConstantClass
+import org.xixum.nlx.dictionary.grammar.constants.AbstractConstantClass
 
 class NaturalLangMessages extends AbstractConstantClass {
 	public static val _NOTE_REPL_MSS 	= getString("_NOTE_REPL_MSS") 					// replaced by internal Req.ID: 

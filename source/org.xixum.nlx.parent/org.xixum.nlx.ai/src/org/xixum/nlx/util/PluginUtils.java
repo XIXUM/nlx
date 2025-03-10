@@ -6,7 +6,7 @@ otherwise this produces: "the Hierarchy of the class implementation is inconsist
 @author Felix Schaller
  */
 
-package de.validas.nlx.util;
+package org.xixum.nlx.util;
 
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;

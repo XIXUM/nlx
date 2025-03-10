@@ -1,12 +1,10 @@
-package de.validas.nlx.ai;
+package org.xixum.nlx.ai;
 
-import de.validas.nlx.ai.semantics.INode;
-import de.validas.nlx.ai.semantics.IPredicate;
-import javax.annotation.Generated;
 import org.neo4j.driver.internal.value.RelationshipValue;
+import org.xixum.nlx.ai.semantics.INode;
+import org.xixum.nlx.ai.semantics.IPredicate;
 
 @SuppressWarnings("all")
-@Generated("org.eclipse.xtend.core.compiler.XtendGenerator")
 public interface IPredicateFactory {
-  public abstract IPredicate create(final RelationshipValue value, final INode nodeStart, final INode nodeEnd);
+  IPredicate create(final RelationshipValue value, final INode nodeStart, final INode nodeEnd);
 }

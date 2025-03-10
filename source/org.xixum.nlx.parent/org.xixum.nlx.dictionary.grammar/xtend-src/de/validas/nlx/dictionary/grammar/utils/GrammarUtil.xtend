@@ -1,31 +1,31 @@
-package de.validas.nlx.dictionary.grammar.utils
+package org.xixum.nlx.dictionary.grammar.utils
 
-import static de.validas.nlx.dictionary.constants.NodeConstants._WORD
-import static de.validas.nlx.dictionary.constants.DictionaryConstants._POSITION
-import static de.validas.nlx.constants.Neo4jConstants._NAME
-import static de.validas.nlx.constants.Neo4jConstants._OF_CLASS
-import static de.validas.nlx.constants.Neo4jConstants._CLASS
-import static de.validas.nlx.dictionary.constants.DictionaryConstants._WORD_TYPE
-import static de.validas.nlx.constants.Neo4jConstants._TOKEN
-import static de.validas.nlx.constants.Neo4jConstants._P
-import static de.validas.nlx.constants.Neo4jConstants._N
-import static de.validas.nlx.constants.Neo4jConstants._T
-import static de.validas.nlx.constants.Neo4jConstants._L
+import static org.xixum.nlx.dictionary.constants.NodeConstants._WORD
+import static org.xixum.nlx.dictionary.constants.DictionaryConstants._POSITION
+import static org.xixum.nlx.constants.Neo4jConstants._NAME
+import static org.xixum.nlx.constants.Neo4jConstants._OF_CLASS
+import static org.xixum.nlx.constants.Neo4jConstants._CLASS
+import static org.xixum.nlx.dictionary.constants.DictionaryConstants._WORD_TYPE
+import static org.xixum.nlx.constants.Neo4jConstants._TOKEN
+import static org.xixum.nlx.constants.Neo4jConstants._P
+import static org.xixum.nlx.constants.Neo4jConstants._N
+import static org.xixum.nlx.constants.Neo4jConstants._T
+import static org.xixum.nlx.constants.Neo4jConstants._L
 
 
 import org.eclipse.xtext.xbase.lib.Functions.Function1
-import de.validas.nlx.ai.semantics.INode
+import org.xixum.nlx.ai.semantics.INode
 import java.util.List
 import org.neo4j.driver.v1.types.Node
-import de.validas.nlx.constants.Direction
-import de.validas.nlx.dictionary.grammar.token.IGrammarItem
-import de.validas.nlx.dictionary.grammar.nodes.TerminalNode
-import de.validas.nlx.dictionary.grammar.nodes.ClassNode
-import de.validas.nlx.ai.util.Arrow
+import org.xixum.nlx.constants.Direction
+import org.xixum.nlx.dictionary.grammar.token.IGrammarItem
+import org.xixum.nlx.dictionary.grammar.nodes.TerminalNode
+import org.xixum.nlx.dictionary.grammar.nodes.ClassNode
+import org.xixum.nlx.ai.util.Arrow
 import org.neo4j.driver.v1.Record
-import de.validas.nlx.ai.util.NodeUtil
-import de.validas.nlx.ai.neo4j.Neo4jAccess.Action
-import de.validas.nlx.ai.IParserDriver
+import org.xixum.nlx.ai.util.NodeUtil
+import org.xixum.nlx.ai.neo4j.Neo4jAccess.Action
+import org.xixum.nlx.ai.IParserDriver
 import org.neo4j.driver.v1.types.Path
 
 class GrammarUtil {
