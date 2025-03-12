@@ -1,4 +1,4 @@
-package de.validas.spedit.generator
+package org.xixum.nlx.generator
 
 class Context {
 	int leading

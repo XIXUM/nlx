@@ -13,7 +13,7 @@ import org.xixum.nlx.dictionary.type.ITypeHierarchy;
 import org.xixum.nlx.view.fxviews.semantics.ILink;
 import org.xixum.nlx.view.fxviews.semantics.ILinkObj;
 import org.xixum.nlx.view.fxviews.semantics.ILinkType;
-import de.validas.spedit.naturalLang.AllElements;
+import org.xixum.nlx.naturalLang.AllElements;
 import org.xixum.utils.data.lists.IAppendable;
 import org.xixum.utils.data.lists.IIndexable;
 import org.xixum.utils.data.lists.IContainable;

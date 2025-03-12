@@ -1,11 +1,11 @@
-package de.validas.spedit.generator.utils
+package org.xixum.nlx.generator.utils
 
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.IPath
 import org.eclipse.emf.ecore.resource.Resource
 import java.util.regex.Pattern
 
-import static de.validas.spedit.constants.NaturalLangConstants._DECIMAL_REGEX
+import static org.xixum.nlx.constants.NaturalLangConstants._DECIMAL_REGEX
 
 class NlxGeneratorUtil {
 	

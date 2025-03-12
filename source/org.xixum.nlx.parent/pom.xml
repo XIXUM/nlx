@@ -2,9 +2,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.xixum.nlx.model</groupId>
+	<groupId>org.xixum.nlx</groupId>
 	<version>0.3.0-SNAPSHOT</version>
-	<artifactId>org.xixum.nlx.model.parent</artifactId>
+	<artifactId>org.xixum.nlx.parent</artifactId>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -22,16 +22,16 @@
 	</properties>
 	<modules>
 		<module>de.validas.nlx.view.fxviews</module>
-		<module>de.validas.spedit.iedit</module>
-		<module>de.validas.spedit.iedit.ide</module>
-		<module>de.validas.spedit.iedit.ui</module>
-		<module>de.validas.spedit.iedit.target</module>
-		<module>de.validas.spedit.iedit.product</module>
+		<module>org.xixum.nlxiedit</module>
+		<module>org.xixum.nlxiedit.ide</module>
+		<module>org.xixum.nlxiedit.ui</module>
+		<module>org.xixum.nlxiedit.target</module>
+		<module>org.xixum.nlxiedit.product</module>
 		<module>de.validas.nlx.ai</module>
 		<module>de.validas.nlx.dictionary</module>
 		<module>de.validas.nlx.perspective</module>
 		<module>../de.validas.pmt</module>
-		<module>de.validas.spedit.iedit.edit</module>
+		<module>org.xixum.nlxiedit.edit</module>
 		<module>../../../Eclipse_PluginDev/Utils/de.validas.utils.Data</module>
 		<module>../../../Eclipse_PluginDev/Utils/de.validas.utils.IO</module>
 		<module>../de.validas.vvt</module>
@@ -51,8 +51,8 @@
 				<configuration>
 					<target>
 						<artifact>
-							<groupId>de.validas.spedit.iedit</groupId>
-							<artifactId>de.validas.spedit.iedit.target</artifactId>
+							<groupId>org.xixum.nlxiedit</groupId>
+							<artifactId>org.xixum.nlxiedit.target</artifactId>
 							<version>0.2.0-SNAPSHOT</version>
 						</artifact>
 					</target>

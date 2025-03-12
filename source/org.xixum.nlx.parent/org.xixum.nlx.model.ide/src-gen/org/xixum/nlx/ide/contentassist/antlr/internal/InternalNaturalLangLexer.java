@@ -1,4 +1,4 @@
-package de.validas.spedit.ide.contentassist.antlr.internal;
+package org.xixum.nlx.ide.contentassist.antlr.internal;
 
 // Hack: Use our own Lexer superclass by means of import. 
 // Currently there is no other way to specify the superclass for the lexer.

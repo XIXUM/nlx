@@ -1,12 +1,17 @@
 package org.xixum.nlx.view.fxviews.semantics.types;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.xixum.nlx.dictionary.IDictionaryAccess;
+import org.xixum.nlx.dictionary.constants.NodeConstants;
 import org.xixum.nlx.dictionary.type.ITypeAttributes;
 import org.xixum.nlx.dictionary.type.ITypeHierarchy;
 import org.xixum.nlx.view.fxviews.access.IItem;
@@ -20,16 +25,20 @@ import org.xixum.nlx.view.fxviews.semantics.ILink;
 import org.xixum.nlx.view.fxviews.semantics.ILinkObj;
 import org.xixum.nlx.view.fxviews.semantics.ILinkable;
 import org.xixum.nlx.view.fxviews.semantics.util.IDelegates;
+import org.xixum.utils.data.lists.AbstractAppendable;
+import org.xixum.utils.data.lists.IAppendable;
+import org.xixum.utils.data.lists.LinkedList;
+import org.xixum.utils.data.types.XPair;
 
 @SuppressWarnings("all")
-public class TypeElement implements /* AbstractAppendable */IJavaFxObj, ITypeElement {
+public class TypeElement extends AbstractAppendable implements IJavaFxObj, ITypeElement {
   protected String typeName;
 
   protected ITypeAttributes typeAttributes;
 
   private LiteralType parent;
 
-  protected /* LinkedList<? extends IAppendable> */Object container;
+  protected LinkedList<? extends IAppendable> container;
 
   private /* Node */Object root;
 
@@ -41,7 +50,7 @@ public class TypeElement implements /* AbstractAppendable */IJavaFxObj, ITypeEle
 
   private int index;
 
-  private /* HashMap<XPair<String, ILinkable>, ILink> */Object links;
+  private HashMap<XPair<String, ILinkable>, ILink> links;
 
   private IDictionaryAccess dictAccess;
 
@@ -73,7 +82,6 @@ public class TypeElement implements /* AbstractAppendable */IJavaFxObj, ITypeEle
       + "\nThe field TypeElement.loader refers to the missing type FXMLLoader"
       + "\nThe field TypeElement.loader refers to the missing type FXMLLoader"
       + "\nThe field TypeElement.listeners refers to the missing type ComboBox"
-      + "\nThe field TypeElement.links refers to the missing type XPair"
       + "\nsetClassLoader cannot be resolved");
   }
 
@@ -85,7 +93,6 @@ public class TypeElement implements /* AbstractAppendable */IJavaFxObj, ITypeEle
       + "\nThe method or field deleteContainer is undefined for the type TypeControlElController"
       + "\nThe method or field sphere is undefined for the type TypeControlElController"
       + "\nThe method or field sphere is undefined for the type TypeControlElController"
-      + "\nThe method size() is undefined for the type Object"
       + "\nThe method or field deleteContainer is undefined for the type TypeControlElController"
       + "\nThe method or field deleteContainer is undefined for the type TypeControlElController"
       + "\nThe method addListener(String, Procedure2<IJavaFxObj, Event>) is undefined for the type TypeControlElController"
@@ -105,7 +112,6 @@ public class TypeElement implements /* AbstractAppendable */IJavaFxObj, ITypeEle
       + "\nvisibleProperty cannot be resolved"
       + "\nvisible cannot be resolved"
       + "\nvisible cannot be resolved"
-      + "\n< cannot be resolved"
       + "\nvisible cannot be resolved"
       + "\nvisible cannot be resolved");
   }
@@ -151,15 +157,30 @@ public class TypeElement implements /* AbstractAppendable */IJavaFxObj, ITypeEle
   }
 
   public void deleteTypeInDict(final String type) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nType mismatch: cannot convert from TypeElement to TypeElement");
+    ILinkable _parent = this.parent.getParent();
+    IItem _token = ((ILinkObj) _parent).getToken();
+    String name = ((ShortCutItem) _token).getName();
+    boolean _equals = type.equals(NodeConstants._NONE);
+    boolean _not = (!_equals);
+    if (_not) {
+      this.dictAccess.deleteTypeToWord(name, type);
+    }
+    this.removeLinks();
+    this.parent.removeType(this);
   }
 
   public void removeLinks() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field TypeElement.links refers to the missing type XPair"
-      + "\nThe field TypeElement.links refers to the missing type XPair"
-      + "\nThe field TypeElement.links refers to the missing type XPair");
+    ArrayList<XPair<String, ILinkable>> removes = CollectionLiterals.<XPair<String, ILinkable>>newArrayList();
+    Set<XPair<String, ILinkable>> _keySet = this.links.keySet();
+    for (final XPair<String, ILinkable> key : _keySet) {
+      boolean _detach = this.links.get(key).detach(this.parent.getParent());
+      if (_detach) {
+        removes.add(key);
+      }
+    }
+    for (final XPair<String, ILinkable> e : removes) {
+      this.links.remove(e);
+    }
   }
 
   public void replaceTypeInDict(final String oldType, final String newType) {
@@ -225,32 +246,50 @@ public class TypeElement implements /* AbstractAppendable */IJavaFxObj, ITypeEle
   }
 
   public ILink addLink(final ILink link) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method getOpposite(ILinkable) is undefined for the type ILink"
-      + "\nThe method containsKeyPair(HashMap<XPair, ILink>, XPair) from the type TypeElement refers to the missing type XPair"
-      + "\nThe field TypeElement.links refers to the missing type XPair"
-      + "\nThe field TypeElement.links refers to the missing type XPair");
+    ILink _xblockexpression = null;
+    {
+      ILinkable source = this.parent.getParent();
+      XPair<String, ILinkable> target = link.getOpposite(source);
+      ILink _xifexpression = null;
+      boolean _containsKeyPair = this.containsKeyPair(this.links, target);
+      boolean _not = (!_containsKeyPair);
+      if (_not) {
+        _xifexpression = this.links.put(target, link);
+      } else {
+        _xifexpression = null;
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
 
-  public boolean containsKeyPair(final /* HashMap<XPair<String, ILinkable>, ILink> */Object map, final /* XPair<String, ILinkable> */Object pair) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nkey cannot be resolved"
-      + "\nequals cannot be resolved"
-      + "\nkey cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nvalue cannot be resolved"
-      + "\nequals cannot be resolved"
-      + "\nvalue cannot be resolved");
+  public boolean containsKeyPair(final HashMap<XPair<String, ILinkable>, ILink> map, final XPair<String, ILinkable> pair) {
+    boolean _xblockexpression = false;
+    {
+      Set<XPair<String, ILinkable>> _keySet = map.keySet();
+      for (final XPair<String, ILinkable> pairEl : _keySet) {
+        if ((pairEl.getKey().equals(pair.getKey()) && pairEl.getValue().equals(pair.getValue()))) {
+          return true;
+        }
+      }
+      _xblockexpression = false;
+    }
+    return _xblockexpression;
   }
 
-  public /* HashMap<XPair, ILink> */Object getLinks() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field TypeElement.links refers to the missing type XPair");
+  public HashMap<XPair<String, ILinkable>, ILink> getLinks() {
+    return this.links;
   }
 
   public List<ILink> getLink(final String name) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field TypeElement.links refers to the missing type XPair");
+    List<ILink> _xifexpression = null;
+    boolean _equals = name.equals(this.typeName);
+    if (_equals) {
+      _xifexpression = IterableExtensions.<ILink>toList(this.links.values());
+    } else {
+      _xifexpression = null;
+    }
+    return _xifexpression;
   }
 
   public void setSelectionChangedListener(final /* ComboBox<String> */Object combo, final /* ChangeListener<? super String> */Object listener) {
@@ -277,15 +316,13 @@ public class TypeElement implements /* AbstractAppendable */IJavaFxObj, ITypeEle
   }
 
   @Override
-  public /* LinkedList<? extends IAppendable> */Object getContainer() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field TypeElement.container refers to the missing type LinkedList");
+  public LinkedList<? extends IAppendable> getContainer() {
+    return this.container;
   }
 
   @Override
-  public <E/*  extends IAppendable */> void setContainer(final /* LinkedList<E> */Object linkedList) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field TypeElement.container refers to the missing type LinkedList");
+  public <E extends IAppendable> void setContainer(final LinkedList<E> linkedList) {
+    this.container = linkedList;
   }
 
   @Override

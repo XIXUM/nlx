@@ -2,6 +2,7 @@ package org.xixum.nlx.dictionary.grammar.types;
 
 import org.xixum.nlx.dictionary.type.ITypeAttributes;
 import org.xixum.nlx.dictionary.type.ITypeInfo;
+import org.xixum.utils.data.types.XPair;
 
 @SuppressWarnings("all")
 public interface IGrammarType {
@@ -9,5 +10,5 @@ public interface IGrammarType {
 
   ITypeInfo getTypeInfo();
 
-  /* XPair<String, ITypeAttributes> */Object getBaseType();
+  XPair<String, ITypeAttributes> getBaseType();
 }

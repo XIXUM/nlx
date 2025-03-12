@@ -4,13 +4,13 @@
   <!-- <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="de.validas.spedit.ide.actions.SaveModelHandler"
+            defaultHandler="org.xixum.nlxide.actions.SaveModelHandler"
             id="org.xixum.nlx.model.ide.savemodel"
             name="Save Model (handler)">
       </command>
       
       <command
-            defaultHandler="de.validas.spedit.ide.actions.SaveModelHandler"
+            defaultHandler="org.xixum.nlxide.actions.SaveModelHandler"
             id="org.xixum.nlx.model.ide.savemodeloutline"
             name="Save Model (outline)">
       </command>
@@ -22,7 +22,7 @@
             id="org.xixum.nlx.model.ide.SaveModelAction"
             objectClass="org.eclipse.core.resources.IResource">
          <action
-               class="de.validas.spedit.ide.actions.SaveModelAction"
+               class="org.xixum.nlxide.actions.SaveModelAction"
                id="org.xixum.nlx.model.ide.savemodel"
                label="Save Model (action)">
          </action>
@@ -33,7 +33,7 @@
             id="org.xixum.nlx.model.ide.outlinerSaveModelAction"
             objectClass="org.eclipse.emf.ecore.EObject">
          <action
-               class="de.validas.spedit.ide.actions.SaveModelAction"
+               class="org.xixum.nlxide.actions.SaveModelAction"
                id="org.xixum.nlx.model.ide.savemodel"
                label="Save Model (ol)">
          </action>

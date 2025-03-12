@@ -5,11 +5,11 @@ Bundle-SymbolicName: org.xixum.nlx.model.editor;singleton:=true
 Automatic-Module-Name: org.xixum.nlx.model.editor
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: de.validas.spedit.naturalLang.presentation.NaturalLangEditorPlugin$Implementation
+Bundle-Activator: org.xixum.nlx.naturalLang.presentation.NaturalLangEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: de.validas.spedit.naturalLang.presentation
+Export-Package: org.xixum.nlx.naturalLang.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  org.xixum.nlx.model.edit;visibility:=reexport,

@@ -3,9 +3,11 @@ package org.xixum.nlx.view.fxviews.semantics.types;
 import java.util.List;
 import java.util.Map;
 import org.xixum.nlx.dictionary.grammar.types.IGrammarType;
+import org.xixum.nlx.dictionary.type.ITypeAttributes;
 import org.xixum.nlx.view.fxviews.semantics.ILink;
 import org.xixum.nlx.view.fxviews.semantics.ILinkable;
 import org.xixum.nlx.view.fxviews.views.IPanelContainer;
+import org.xixum.utils.data.types.XPair;
 
 @SuppressWarnings("all")
 public class AbstractGrammarType implements ILinkable {
@@ -42,12 +44,12 @@ public class AbstractGrammarType implements ILinkable {
   }
 
   @Override
-  public Object getType() {
+  public XPair<String, ITypeAttributes> getType() {
     return null;
   }
 
   @Override
-  public Object getTypes() {
+  public List<XPair<String, ITypeAttributes>> getTypes() {
     return null;
   }
 

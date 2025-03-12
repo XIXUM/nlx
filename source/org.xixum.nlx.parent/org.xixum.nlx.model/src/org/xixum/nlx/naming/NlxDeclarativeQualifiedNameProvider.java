@@ -1,4 +1,4 @@
-package de.validas.spedit.naming;
+package org.xixum.nlx.naming;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.DefaultDeclarativeQualifiedNameProvider;

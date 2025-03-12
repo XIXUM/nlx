@@ -1,4 +1,4 @@
-package de.validas.spedit.constants
+package org.xixum.nlx.constants
 
 class NaturalLangConstants extends AbstractConstantClass {
 	

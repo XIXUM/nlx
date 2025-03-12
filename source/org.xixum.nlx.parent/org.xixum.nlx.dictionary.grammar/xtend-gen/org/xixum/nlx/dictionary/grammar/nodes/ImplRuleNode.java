@@ -8,6 +8,7 @@ import org.xixum.nlx.ai.semantics.INode;
 import org.xixum.nlx.constants.Neo4jConstants;
 import org.xixum.nlx.dictionary.constants.PredicateConstants;
 import org.xixum.nlx.dictionary.grammar.bool.BoolOr;
+import org.xixum.utils.data.lists.IAppendable;
 
 @SuppressWarnings("all")
 public class ImplRuleNode extends AbstractDictRuleObj implements IRuleNode {
@@ -17,7 +18,7 @@ public class ImplRuleNode extends AbstractDictRuleObj implements IRuleNode {
 
   protected INode result;
 
-  public ImplRuleNode(final Node node, final /* IAppendable */Object token, final IParserDriver driver) {
+  public ImplRuleNode(final Node node, final IAppendable token, final IParserDriver driver) {
     super(node, driver);
     driver.getContext().setAttribute(Neo4jConstants._TOKEN, token);
     this.setAttribute(Neo4jConstants._TOKEN, token);

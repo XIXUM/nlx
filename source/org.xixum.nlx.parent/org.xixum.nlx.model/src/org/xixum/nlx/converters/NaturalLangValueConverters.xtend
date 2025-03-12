@@ -1,4 +1,4 @@
-package de.validas.spedit.converters
+package org.xixum.nlx.converters
 
 import org.eclipse.xtext.xtext.XtextValueConverters
 import org.eclipse.xtext.conversion.ValueConverter
@@ -22,17 +22,17 @@ class NaturalLangValueConverters extends XtextValueConverters {
 		nlxValueConverter
 	}
 	
-	@ValueConverter(rule = "de.validas.spedit.NaturalLang.STRING")
+	@ValueConverter(rule = "org.xixum.nlx.naturalLang.STRING")
 	def IValueConverter<String> NlxSTRING() {
 		nlxValueConverter
 	}
 	
-	@ValueConverter(rule = "de.validas.spedit.NaturalLang.Number")
+	@ValueConverter(rule = "org.xixum.nlx.naturalLang.Number")
 	def IValueConverter<String> NlxNumber() {
 		nlxValueConverter
 	}
 	
-	@ValueConverter(rule = "de.validas.spedit.NaturalLang.ALPHA_NUMERIC_C")
+	@ValueConverter(rule = "org.xixum.nlx.naturalLang.ALPHA_NUMERIC_C")
 	def IValueConverter<String> NlxAlphaNumeric() {
 		nlxValueConverter
 	}

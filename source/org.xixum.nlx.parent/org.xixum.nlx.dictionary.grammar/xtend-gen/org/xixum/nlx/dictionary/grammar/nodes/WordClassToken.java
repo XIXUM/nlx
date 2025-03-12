@@ -5,11 +5,18 @@ import org.neo4j.driver.v1.types.Node;
 import org.neo4j.driver.v1.types.Relationship;
 import org.xixum.nlx.ai.IParserDriver;
 import org.xixum.nlx.ai.semantics.INode;
+import org.xixum.nlx.constants.Neo4jConstants;
 import org.xixum.nlx.dictionary.constants.PredicateConstants;
 import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateIS;
 import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateLINK_TO;
 import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateOF_CLASS;
+import org.xixum.nlx.dictionary.grammar.token.IGrammarInterpunction;
 import org.xixum.nlx.dictionary.grammar.token.IGrammarItem;
+import org.xixum.nlx.dictionary.grammar.token.IGrammarLiteral;
+import org.xixum.nlx.dictionary.grammar.types.IGrammarType;
+import org.xixum.nlx.dictionary.grammar.utils.GrammarUtil;
+import org.xixum.nlx.dictionary.type.ITypeAttributes;
+import org.xixum.utils.data.types.XPair;
 
 @SuppressWarnings("all")
 public class WordClassToken extends AbstractPredicatedNodeObj implements IDictNode, IPredicateIS, IPredicateOF_CLASS, IPredicateLINK_TO {
@@ -26,12 +33,31 @@ public class WordClassToken extends AbstractPredicatedNodeObj implements IDictNo
 
   @Override
   public INode is(final INode caller) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method getBaseType() from the type IGrammarType refers to the missing type XPair"
-      + "\nkey cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nequals cannot be resolved");
+    Object _attribute = caller.getAttribute(Neo4jConstants._TOKEN);
+    this.item = ((IGrammarItem) _attribute);
+    final IGrammarType type = this.item.getInternalType();
+    boolean _matched = false;
+    if (type instanceof IGrammarLiteral) {
+      _matched=true;
+      XPair<String, ITypeAttributes> _baseType = type.getBaseType();
+      String _key = null;
+      if (_baseType!=null) {
+        _key=_baseType.getKey();
+      }
+      final String selectedT = _key;
+      if (((selectedT != null) && selectedT.equals(this.getAttribute(Neo4jConstants._NAME)))) {
+        return GrammarUtil.findTarget(this, this.item.getName());
+      } else {
+        return this.solve();
+      }
+    }
+    if (!_matched) {
+      if (type instanceof IGrammarInterpunction) {
+        _matched=true;
+        return GrammarUtil.findInterpunction(this, this.item);
+      }
+    }
+    return this.solve();
   }
 
   @Override

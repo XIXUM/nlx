@@ -15,4 +15,4 @@ Require-Bundle: org.xixum.nlx.model.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.workbench;resolution:=optional
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: de.validas.spedit.ui.tests;x-internal=true
+Export-Package: org.xixum.nlx.ui.tests;x-internal=true

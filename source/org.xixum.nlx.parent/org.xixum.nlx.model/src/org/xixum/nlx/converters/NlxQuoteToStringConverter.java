@@ -1,4 +1,4 @@
-package de.validas.spedit.converters;
+package org.xixum.nlx.converters;
 
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.conversion.ValueConverterWithValueException;

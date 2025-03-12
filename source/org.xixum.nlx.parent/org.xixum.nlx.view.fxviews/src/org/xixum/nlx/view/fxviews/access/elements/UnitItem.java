@@ -19,7 +19,7 @@ import org.xixum.nlx.dictionary.type.ITypeHierarchy;
 import org.xixum.nlx.view.fxviews.access.IItem;
 import org.xixum.nlx.view.fxviews.semantics.ILinkObj;
 import org.xixum.nlx.view.fxviews.semantics.types.UnitType;
-import de.validas.spedit.naturalLang.Unit;
+import org.xixum.nlx.naturalLang.Unit;
 import org.xixum.utils.data.types.XPair;
 import javafx.scene.Node;
 

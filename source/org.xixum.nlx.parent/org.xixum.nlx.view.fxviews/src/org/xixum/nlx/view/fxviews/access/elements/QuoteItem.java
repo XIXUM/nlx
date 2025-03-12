@@ -12,7 +12,7 @@ import java.util.Collections;
 import org.xixum.nlx.view.fxviews.access.IItem;
 import org.xixum.nlx.view.fxviews.semantics.ILinkable;
 import org.xixum.nlx.view.fxviews.semantics.types.LiteralType;
-import de.validas.spedit.naturalLang.Quote;
+import org.xixum.nlx.naturalLang.Quote;
 
 /**
  * @author schaller

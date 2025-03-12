@@ -6,7 +6,6 @@ Bundle-Version: 0.2.0.qualifier
 Bundle-Activator: org.xixum.nlx.view.fxviews.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.fx.ui.workbench3,
  org.xixum.nlx.model,
  org.eclipse.xtext.ui,
  org.xixum.nlx.dictionary;bundle-version="0.2.0",

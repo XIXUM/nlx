@@ -14,9 +14,9 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import org.xixum.nlx.view.fxviews.access.IItem;
 import org.xixum.nlx.view.fxviews.semantics.types.WebType;
-import de.validas.spedit.naturalLang.MailAdress;
-import de.validas.spedit.naturalLang.NoNElement;
-import de.validas.spedit.naturalLang.UrlAdress;
+import org.xixum.nlx.naturalLang.MailAdress;
+import org.xixum.nlx.naturalLang.NoNElement;
+import org.xixum.nlx.naturalLang.UrlAdress;
 
 /**
  * @author schaller

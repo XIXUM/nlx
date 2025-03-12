@@ -11,6 +11,7 @@ import org.xixum.nlx.view.fxviews.semantics.ILink;
 import org.xixum.nlx.view.fxviews.semantics.ILinkObj;
 import org.xixum.nlx.view.fxviews.semantics.ILinkType;
 import org.xixum.nlx.view.fxviews.semantics.ILinkable;
+import org.xixum.utils.data.types.XPair;
 
 @SuppressWarnings("all")
 public abstract class AbstractLinkType implements ILinkType {
@@ -111,12 +112,12 @@ public abstract class AbstractLinkType implements ILinkType {
   }
 
   @Override
-  public XPair getBaseType() {
+  public XPair<String, ITypeAttributes> getBaseType() {
     return null;
   }
 
   @Override
-  public Object getTypeEls() {
+  public List<XPair<String, ITypeAttributes>> getTypeEls() {
     return null;
   }
 

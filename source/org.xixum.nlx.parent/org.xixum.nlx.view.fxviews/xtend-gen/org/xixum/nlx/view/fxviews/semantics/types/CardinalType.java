@@ -1,18 +1,25 @@
 package org.xixum.nlx.view.fxviews.semantics.types;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Pair;
+import org.neo4j.driver.v1.types.Node;
+import org.xixum.nlx.dictionary.constants.AttributeSet;
 import org.xixum.nlx.dictionary.type.ITypeAttributes;
+import org.xixum.nlx.dictionary.type.LinkTypeAttribute;
 import org.xixum.nlx.view.fxviews.semantics.ILink;
 import org.xixum.nlx.view.fxviews.semantics.ILinkable;
+import org.xixum.nlx.view.fxviews.semantics.util.LinkUtils;
 import org.xixum.nlx.view.fxviews.views.IPanelContainer;
+import org.xixum.utils.data.types.XPair;
 
 @SuppressWarnings("all")
 public class CardinalType extends AbstractGrammarType implements ICardinalLinkable {
-  private /* XPair<String, ILinkable> */Object start;
+  private XPair<String, ILinkable> start;
 
-  private /* XPair<String, ILinkable> */Object end;
+  private XPair<String, ILinkable> end;
 
   private ITypeAttributes attribs;
 
@@ -26,23 +33,25 @@ public class CardinalType extends AbstractGrammarType implements ICardinalLinkab
 
   private int cardinality;
 
-  public CardinalType(final ILinkable parent, final /* XPair<String, ILinkable> */Object start, final /* XPair<String, ILinkable> */Object end, final ITypeAttributes linkAttribs) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field CardinalType.start refers to the missing type XPair"
-      + "\nThe field CardinalType.end refers to the missing type XPair"
-      + "\nkey cannot be resolved"
-      + "\nvalue cannot be resolved"
-      + "\ncardinality cannot be resolved"
-      + "\nvalue cannot be resolved"
-      + "\ncardinality cannot be resolved");
+  public CardinalType(final ILinkable parent, final XPair<String, ILinkable> start, final XPair<String, ILinkable> end, final ITypeAttributes linkAttribs) {
+    this.parent = parent;
+    this.start = start;
+    this.end = end;
+    this.attribs = linkAttribs;
+    Pair<Integer, Integer> pair = LinkUtils.calculateBounds(start, end);
+    this.lower = pair.getKey();
+    this.higher = pair.getValue();
+    this.name = start.getKey();
+    int _max = Math.max(start.getValue().getCardinality(), end.getValue().getCardinality());
+    int _plus = (_max + 1);
+    this.cardinality = _plus;
+    Node baseN = ((LinkTypeAttribute) this.attribs).getParent(AttributeSet.START).getBaseNode();
+    this.typesIntersect = ((LinkTypeAttribute) this.attribs).intersection(baseN, true, false);
   }
 
   @Override
   public IPanelContainer getCanvas() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field CardinalType.start refers to the missing type XPair"
-      + "\nvalue cannot be resolved"
-      + "\ncanvas cannot be resolved");
+    return this.start.getValue().getCanvas();
   }
 
   @Override
@@ -61,17 +70,15 @@ public class CardinalType extends AbstractGrammarType implements ICardinalLinkab
   }
 
   @Override
-  public Object getType() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nXPair cannot be resolved."
-      + "\nThe field CardinalType.start refers to the missing type XPair"
-      + "\nkey cannot be resolved");
+  public XPair<String, ITypeAttributes> getType() {
+    String _key = this.start.getKey();
+    return new XPair<String, ITypeAttributes>(_key, this.typesIntersect);
   }
 
   @Override
-  public Object getTypes() {
-    Object _type = this.getType();
-    return Collections.<Object>unmodifiableList(CollectionLiterals.<Object>newArrayList(_type));
+  public List<XPair<String, ITypeAttributes>> getTypes() {
+    XPair<String, ITypeAttributes> _type = this.getType();
+    return Collections.<XPair<String, ITypeAttributes>>unmodifiableList(CollectionLiterals.<XPair<String, ITypeAttributes>>newArrayList(_type));
   }
 
   @Override
@@ -89,23 +96,29 @@ public class CardinalType extends AbstractGrammarType implements ICardinalLinkab
   }
 
   @Override
-  public Object getBaseType() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field startLink is undefined for the type ILink"
-      + "\nThe field CardinalType.start refers to the missing type XPair"
-      + "\nvalue cannot be resolved"
-      + "\nvalue cannot be resolved");
+  public ILinkable getBaseType() {
+    ILinkable _xblockexpression = null;
+    {
+      ILinkable higher = ((ILink) this.parent).getStartLink().getValue();
+      ILinkable _xifexpression = null;
+      if (((higher instanceof ILink) && ((ILink) higher).hasCardinalType())) {
+        ILinkable _cardinalType = ((ILink) higher).getCardinalType();
+        _xifexpression = ((ICardinalLinkable) _cardinalType).getBaseType();
+      } else {
+        _xifexpression = this.start.getValue();
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
 
   @Override
-  public Object getStart() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field CardinalType.start refers to the missing type XPair");
+  public XPair<String, ILinkable> getStart() {
+    return this.start;
   }
 
   @Override
-  public Object getEnd() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field CardinalType.end refers to the missing type XPair");
+  public XPair<String, ILinkable> getEnd() {
+    return this.end;
   }
 }

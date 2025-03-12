@@ -26,11 +26,15 @@ import org.xixum.nlx.dictionary.grammar.types.IGrammarType;
 import org.xixum.nlx.dictionary.grammar.types.ItemType;
 import org.xixum.nlx.dictionary.type.ITypeAttributes;
 import org.xixum.nlx.dictionary.type.ITypeInfo;
+import org.xixum.nlx.naturalLang.BracketSentence;
+import org.xixum.nlx.naturalLang.ExtBracketSentence;
 import org.xixum.nlx.view.fxviews.access.IItem;
 import org.xixum.nlx.view.fxviews.access.elements.TerminalItem;
 import org.xixum.nlx.view.fxviews.semantics.ILinkObj;
 import org.xixum.nlx.view.fxviews.semantics.ILinkable;
 import org.xixum.nlx.view.fxviews.semantics.constants.SubClassType;
+import org.xixum.utils.data.types.XPair;
+import org.xixum.utils.data.util.StringUtils;
 
 @SuppressWarnings("all")
 public class InterpunctionType extends AbstractLinkType implements IGrammarInterpunction {
@@ -51,12 +55,28 @@ public class InterpunctionType extends AbstractLinkType implements IGrammarInter
   }
 
   public InterpunctionType(final EObject el, final ItemType cathegory, final String separator, final IDictionaryAccess dictAccess) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nExtBracketSentence cannot be resolved to a type."
-      + "\nBracketSentence cannot be resolved to a type."
-      + "\nThe method or field StringUtils is undefined"
-      + "\nUnreachable code: The if condition can never match. It is already handled by a previous condition."
-      + "\nspecial_escape cannot be resolved");
+    this.cathegory = cathegory;
+    this.name = NodeConstants._INTERPUNCTION;
+    if ((separator != null)) {
+      final String clean = separator.replaceAll("\\s", "");
+      boolean _isEmpty = clean.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        this.type = clean;
+      } else {
+        this.type = StringUtils.special_escape(separator);
+      }
+    }
+    if ((el instanceof ExtBracketSentence)) {
+      this.subClass = SubClassType.EXT_BRACKET_SENTENCE;
+    } else {
+      if ((el instanceof BracketSentence)) {
+        this.subClass = SubClassType.BRACKET_SENTENCE;
+      } else {
+        this.subClass = SubClassType.INTERPUNCTION;
+      }
+    }
+    this.dictAccess = dictAccess;
   }
 
   @Override
@@ -220,9 +240,8 @@ public class InterpunctionType extends AbstractLinkType implements IGrammarInter
   }
 
   @Override
-  public XPair getBaseType() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nXPair cannot be resolved.");
+  public XPair<String, ITypeAttributes> getBaseType() {
+    return new XPair<String, ITypeAttributes>(this.type, null);
   }
 
   @Override
@@ -249,13 +268,26 @@ public class InterpunctionType extends AbstractLinkType implements IGrammarInter
   }
 
   public void update() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method getTypes() from the type ITypeInfo refers to the missing type Object"
-      + "\nkey cannot be resolved"
-      + "\nequals cannot be resolved"
-      + "\nvalue cannot be resolved"
-      + "\nvalue cannot be resolved"
-      + "\nvalue cannot be resolved");
+    boolean _isConnected = this.dictAccess.isConnected();
+    if (_isConnected) {
+      ITypeInfo info = this.dictAccess.getLinkTypes(this.cathegory.toString(), NodeConstants._INTERPUNCTION, true);
+      if ((info != null)) {
+        List<XPair<String, ITypeAttributes>> _types = info.getTypes();
+        for (final XPair<String, ITypeAttributes> typ : _types) {
+          {
+            boolean _equals = typ.getKey().equals(this.cathegory.toString());
+            if (_equals) {
+              this.createAttributes(typ.getValue());
+            }
+            if ((this.attrs == null)) {
+              this.attrs = typ.getValue();
+            } else {
+              this.attrs.merge(typ.getValue());
+            }
+          }
+        }
+      }
+    }
   }
 
   @Override

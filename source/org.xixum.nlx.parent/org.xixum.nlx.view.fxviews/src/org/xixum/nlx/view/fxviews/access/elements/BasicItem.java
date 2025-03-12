@@ -24,10 +24,10 @@ import org.xixum.nlx.view.fxviews.semantics.ILinkObj;
 import org.xixum.nlx.view.fxviews.semantics.ILinkType;
 import org.xixum.nlx.view.fxviews.semantics.ILinkable;
 import org.xixum.nlx.view.fxviews.semantics.types.LiteralType;
-import de.validas.spedit.naturalLang.AllElements;
-import de.validas.spedit.naturalLang.IgnoredText;
-import de.validas.spedit.naturalLang.Quote;
-import de.validas.spedit.naturalLang.Symbols;
+import org.xixum.nlx.naturalLang.AllElements;
+import org.xixum.nlx.naturalLang.IgnoredText;
+import org.xixum.nlx.naturalLang.Quote;
+import org.xixum.nlx.naturalLang.Symbols;
 import org.xixum.utils.data.types.XPair;
 import javafx.scene.Node;
 
