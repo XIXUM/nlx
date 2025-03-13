@@ -1,8 +1,21 @@
 package org.xixum.nlx.model.ui.outline;
 
+import com.google.common.collect.Iterables;
 import java.util.Collection;
+import java.util.Objects;
+import org.apache.log4j.Logger;
+import org.eclipse.jface.viewers.IBaseLabelProvider;
+import org.eclipse.jface.viewers.IContentProvider;
+import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
+import org.eclipse.xtext.ui.editor.outline.impl.OutlineNodeContentProvider;
+import org.eclipse.xtext.ui.editor.outline.impl.OutlineNodeLabelProvider;
 import org.eclipse.xtext.ui.editor.outline.impl.OutlinePage;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.xixum.nlx.model.ui.util.NlxDisplayRunHelper;
+import org.xixum.nlx.model.ui.util.ReflectionUtil;
 
 @SuppressWarnings("all")
 public class NlxOutlinePage extends OutlinePage {
@@ -10,14 +23,63 @@ public class NlxOutlinePage extends OutlinePage {
 
   @Override
   protected void refreshViewer(final IOutlineNode rootNode, final Collection<IOutlineNode> nodesToBeExpanded, final Collection<IOutlineNode> selectedNodes) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field ReflectionUtil is undefined"
-      + "\nThe method or field ReflectionUtil is undefined"
-      + "\nThe method or field ReflectionUtil is undefined"
-      + "\nThe method or field NlxDisplayRunHelper is undefined"
-      + "\ngetPrivateFromSuper cannot be resolved"
-      + "\ngetPrivateFromSuper cannot be resolved"
-      + "\ngetPrivateFromSuper cannot be resolved"
-      + "\nrunAsyncInDisplayThread cannot be resolved");
+    Object _privateFromSuper = ReflectionUtil.getPrivateFromSuper(this, "labelProvider");
+    final OutlineNodeLabelProvider labelProvider_super = ((OutlineNodeLabelProvider) _privateFromSuper);
+    Object _privateFromSuper_1 = ReflectionUtil.getPrivateFromSuper(this, "contentProvider");
+    final OutlineNodeContentProvider contentProvider_super = ((OutlineNodeContentProvider) _privateFromSuper_1);
+    Object _privateFromSuper_2 = ReflectionUtil.getPrivateFromSuper(this, "LOG");
+    final Logger LOG_super = ((Logger) _privateFromSuper_2);
+    NlxDisplayRunHelper.runAsyncInDisplayThread(new Thread("Tree Viewer") {
+      @Override
+      public void run() {
+        try {
+          TreeViewer treeViewer = NlxOutlinePage.this.getTreeViewer();
+          boolean _isDisposed = treeViewer.getTree().isDisposed();
+          boolean _not = (!_isDisposed);
+          if (_not) {
+            NlxOutlinePage.this.getTreeViewer().getTree().setRedraw(false);
+            IBaseLabelProvider _labelProvider = treeViewer.getLabelProvider();
+            boolean _notEquals = (!Objects.equals(_labelProvider, labelProvider_super));
+            if (_notEquals) {
+              if (((!Objects.equals(treeViewer.getInput(), null)) && (!Objects.equals(treeViewer.getContentProvider(), null)))) {
+                treeViewer.setInput(null);
+              }
+              treeViewer.setLabelProvider(labelProvider_super);
+            }
+            IContentProvider _contentProvider = treeViewer.getContentProvider();
+            boolean _notEquals_1 = (!Objects.equals(_contentProvider, contentProvider_super));
+            if (_notEquals_1) {
+              if (((!Objects.equals(treeViewer.getInput(), null)) && (!Objects.equals(treeViewer.getContentProvider(), null)))) {
+                treeViewer.setInput(null);
+              }
+              treeViewer.setContentProvider(contentProvider_super);
+            }
+            treeViewer.setInput(rootNode);
+            treeViewer.expandToLevel(1);
+            treeViewer.setExpandedElements(Iterables.<IOutlineNode>toArray(nodesToBeExpanded, IOutlineNode.class));
+            IOutlineNode[] _array = Iterables.<IOutlineNode>toArray(selectedNodes, 
+              IOutlineNode.class);
+            StructuredSelection _structuredSelection = new StructuredSelection(_array);
+            treeViewer.setSelection(_structuredSelection);
+            ISelectionProvider selectionProvider = NlxOutlinePage.this.getSourceViewer().getSelectionProvider();
+            selectionProvider.setSelection(selectionProvider.getSelection());
+            NlxOutlinePage.this.treeUpdated();
+          }
+        } catch (final Throwable _t) {
+          if (_t instanceof Throwable) {
+            final Throwable t = (Throwable)_t;
+            LOG_super.error("Error refreshing outline", t);
+          } else {
+            throw Exceptions.sneakyThrow(_t);
+          }
+        } finally {
+          boolean _isDisposed_1 = NlxOutlinePage.this.getTreeViewer().getTree().isDisposed();
+          boolean _not_1 = (!_isDisposed_1);
+          if (_not_1) {
+            NlxOutlinePage.this.getTreeViewer().getTree().setRedraw(true);
+          }
+        }
+      }
+    });
   }
 }

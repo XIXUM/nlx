@@ -3,12 +3,8 @@
  */
 package org.xixum.nlx.model.ui.model;
 
-import org.eclipse.core.resources.IMarker;
-import org.eclipse.jface.resource.StringConverter;
 import org.eclipse.jface.text.source.Annotation;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.RGB;
-import org.eclipse.ui.texteditor.AnnotationPreference;
 import org.eclipse.xtext.ui.editor.model.XtextMarkerAnnotationImageProvider;
 
 /**

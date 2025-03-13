@@ -1,19 +1,15 @@
 package org.xixum.nlx.model.ui.outline
 
-import org.eclipse.xtext.ui.editor.outline.impl.OutlinePage
-import org.eclipse.xtext.ui.editor.outline.IOutlineNode
 import com.google.common.collect.Iterables
 import java.util.Collection
-import org.eclipse.jface.viewers.TreeViewer
-import org.eclipse.xtext.ui.util.DisplayRunHelper
-import org.eclipse.jface.viewers.ISelectionProvider
-import org.eclipse.jface.viewers.StructuredSelection
-import java.lang.reflect.Field
-import org.eclipse.xtext.ui.editor.outline.impl.OutlineNodeLabelProvider
-import org.eclipse.xtext.ui.editor.outline.impl.OutlineNodeContentProvider
 import org.apache.log4j.Logger
-import org.xixum.nlx.ui.util.ReflectionUtil
-import org.xixum.nlx.ui.util.NlxDisplayRunHelper
+import org.eclipse.jface.viewers.StructuredSelection
+import org.eclipse.xtext.ui.editor.outline.IOutlineNode
+import org.eclipse.xtext.ui.editor.outline.impl.OutlineNodeContentProvider
+import org.eclipse.xtext.ui.editor.outline.impl.OutlineNodeLabelProvider
+import org.eclipse.xtext.ui.editor.outline.impl.OutlinePage
+import org.xixum.nlx.model.ui.util.NlxDisplayRunHelper
+import org.xixum.nlx.model.ui.util.ReflectionUtil
 
 class NlxOutlinePage extends OutlinePage {
 	

@@ -57,7 +57,7 @@ import com.google.inject.Provider;
 import org.xixum.nlx.dictionary.IDictionaryAccess;
 import org.xixum.nlx.model.view.fxviews.views.ISemanticViewSelector;
 import org.xixum.nlx.model.view.fxviews.views.SemanticViewSelector;
-import org.xixum.nlx.model.ui.NaturalLangEditorPlugin;
+import org.xixum.nlx.model.ui.model.NaturalLangEditorPlugin;
 
 /**
  * @author Felix Schaller
