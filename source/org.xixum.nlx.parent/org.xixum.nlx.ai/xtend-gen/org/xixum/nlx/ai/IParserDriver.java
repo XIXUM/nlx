@@ -11,11 +11,11 @@ import org.xixum.nlx.ai.semantics.INode;
 public interface IParserDriver {
   IDbAccess getDbAccessor();
 
-  IPredicateFactory getPredicateFactory();
+  /* IPredicateFactory */Object getPredicateFactory();
 
   void setDbAccessor(final IDbAccess access);
 
-  void setPredicateFactory(final IPredicateFactory factory);
+  void setPredicateFactory(final /* IPredicateFactory */Object factory);
 
   void setNodeFactory(final INodeFactory factory);
 
