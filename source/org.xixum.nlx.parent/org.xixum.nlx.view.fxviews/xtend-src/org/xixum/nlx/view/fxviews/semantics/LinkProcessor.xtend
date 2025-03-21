@@ -509,7 +509,7 @@ import org.xixum.nlx.view.fxviews.cache.INodeCacheManager
 import org.xixum.nlx.view.fxviews.semantics.types.ICardinalLinkable
 import org.xixum.nlx.view.fxviews.semantics.util.LinkUtils
 import org.xixum.nlx.view.fxviews.visual.IPanel
-import de.validas.spedit.presets.NlxDictConstants
+import org.xixum.nlxpresets.NlxDictConstants
 import org.xixum.utils.data.types.XPair
 import java.util.HashMap
 import java.util.List

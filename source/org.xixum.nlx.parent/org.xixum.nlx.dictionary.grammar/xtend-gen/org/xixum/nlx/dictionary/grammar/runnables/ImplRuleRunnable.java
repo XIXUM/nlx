@@ -44,8 +44,7 @@ public class ImplRuleRunnable extends Thread implements IRuleRunnable {
 
   public void solve() {
     throw new Error("Unresolved compilation problems:"
-      + "\nThe method getIndex() is undefined for the type IGrammarItem"
-      + "\nThe method or field toString is undefined for the type IGrammarItem");
+      + "\nThe method getIndex() is undefined for the type IGrammarItem");
   }
 
   @Override

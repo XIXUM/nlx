@@ -536,13 +536,13 @@
 <plugin>
 	<extension point="org.eclipse.xtext.ui.shared.overridingGuiceModule">
     	<module
-	        class="de.validas.spedit.ui.NlxBuilderModule">
+	        class="org.xixum.nlx.ui.NlxBuilderModule">
     	</module>
 	</extension>
 	<extension
         point="org.eclipse.ui.console.consoleFactories">
      <consoleFactory
-           class="de.validas.spedit.ui.editor.NlxBuildConsole$Factory"
+           class="org.xixum.nlx.ui.editor.NlxBuildConsole$Factory"
            icon="icons/console.png"
            label="Xtext Build">
      </consoleFactory>
@@ -550,48 +550,48 @@
 	<extension
 		point="org.eclipse.ui.editors">
 		<editor
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:de.validas.spedit.ui.editor.NaturalLangEditor"
-			contributorClass="de.validas.spedit.ui.editor.NaturalLangActionBarContributor"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.xixum.nlx.ui.editor.NaturalLangEditor"
+			contributorClass="org.xixum.nlx.ui.editor.NaturalLangActionBarContributor"
 			default="true"
 			extensions="nlx"
-			id="de.validas.spedit.NaturalLang"
+			id="org.xixum.nlx.naturalLang"
 			name="NaturalLang Editor">
 		</editor>
 	</extension>
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
 			commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
 			<activeWhen>
 				<reference
-					definitionId="de.validas.spedit.NaturalLang.Editor.opened">
+					definitionId="org.xixum.nlx.naturalLang.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
 		<handler
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-			commandId="de.validas.spedit.NaturalLang.validate">
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+			commandId="org.xixum.nlx.naturalLang.validate">
 		<activeWhen>
 			<reference
-					definitionId="de.validas.spedit.NaturalLang.Editor.opened">
+					definitionId="org.xixum.nlx.naturalLang.Editor.opened">
 			</reference>
 		</activeWhen>
 		</handler>
 		<!-- copy qualified name -->
 		<handler
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
 			<activeWhen>
-				<reference definitionId="de.validas.spedit.NaturalLang.Editor.opened" />
+				<reference definitionId="org.xixum.nlx.naturalLang.Editor.opened" />
 			</activeWhen>
 		</handler>
 		<handler
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
 			<activeWhen>
 				<and>
-					<reference definitionId="de.validas.spedit.NaturalLang.XtextEditor.opened" />
+					<reference definitionId="org.xixum.nlx.naturalLang.XtextEditor.opened" />
 					<iterate>
 						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 					</iterate>
@@ -600,22 +600,22 @@
 		</handler>
 	</extension>
 	<extension point="org.eclipse.core.expressions.definitions">
-		<definition id="de.validas.spedit.NaturalLang.Editor.opened">
+		<definition id="org.xixum.nlx.naturalLang.Editor.opened">
 			<and>
 				<reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
-						value="de.validas.spedit.NaturalLang"
+						value="org.xixum.nlx.naturalLang"
 						forcePluginActivation="true"/>
 				</with>
 			</and>
 		</definition>
-		<definition id="de.validas.spedit.NaturalLang.XtextEditor.opened">
+		<definition id="org.xixum.nlx.naturalLang.XtextEditor.opened">
 			<and>
 				<reference definitionId="isXtextEditorActive"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
-						value="de.validas.spedit.NaturalLang"
+						value="org.xixum.nlx.naturalLang"
 						forcePluginActivation="true"/>
 				</with>
 			</and>
@@ -624,33 +624,33 @@
 	<extension
 			point="org.eclipse.ui.preferencePages">
 		<page
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="de.validas.spedit.NaturalLang"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="org.xixum.nlx.naturalLang"
 			name="NaturalLang">
-			<keywordReference id="de.validas.spedit.ui.keyword_NaturalLang"/>
+			<keywordReference id="org.xixum.nlx.ui.keyword_NaturalLang"/>
 		</page>
 		<page
-			category="de.validas.spedit.NaturalLang"
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-			id="de.validas.spedit.NaturalLang.coloring"
+			category="org.xixum.nlx.naturalLang"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+			id="org.xixum.nlx.naturalLang.coloring"
 			name="Syntax Coloring">
-			<keywordReference id="de.validas.spedit.ui.keyword_NaturalLang"/>
+			<keywordReference id="org.xixum.nlx.ui.keyword_NaturalLang"/>
 		</page>
 		<page
-			category="de.validas.spedit.NaturalLang"
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-			id="de.validas.spedit.NaturalLang.templates"
+			category="org.xixum.nlx.naturalLang"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+			id="org.xixum.nlx.naturalLang.templates"
 			name="Templates">
-			<keywordReference id="de.validas.spedit.ui.keyword_NaturalLang"/>
+			<keywordReference id="org.xixum.nlx.ui.keyword_NaturalLang"/>
 		</page>
 	</extension>
 	<extension
 			point="org.eclipse.ui.propertyPages">
 		<page
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="de.validas.spedit.NaturalLang"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="org.xixum.nlx.naturalLang"
 			name="NaturalLang">
-			<keywordReference id="de.validas.spedit.ui.keyword_NaturalLang"/>
+			<keywordReference id="org.xixum.nlx.ui.keyword_NaturalLang"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -660,14 +660,14 @@
 	<extension
 		point="org.eclipse.ui.keywords">
 		<keyword
-			id="de.validas.spedit.ui.keyword_NaturalLang"
+			id="org.xixum.nlx.ui.keyword_NaturalLang"
 			label="NaturalLang"/>
 	</extension>
 	<extension
 		point="org.eclipse.ui.commands">
 	<command
 			description="Trigger expensive validation"
-			id="de.validas.spedit.NaturalLang.validate"
+			id="org.xixum.nlx.naturalLang.validate"
 			name="Validate">
 	</command>
 	<!-- copy qualified name -->
@@ -688,12 +688,12 @@
 		<menuContribution
 			locationURI="popup:#TextEditorContext?after=group.edit">
 			 <command
-				 commandId="de.validas.spedit.NaturalLang.validate"
+				 commandId="org.xixum.nlx.naturalLang.validate"
 				 style="push"
 				 tooltip="Trigger expensive validation">
 			<visibleWhen checkEnabled="false">
 				<reference
-					definitionId="de.validas.spedit.NaturalLang.Editor.opened">
+					definitionId="org.xixum.nlx.naturalLang.Editor.opened">
 				</reference>
 			</visibleWhen>
 		</command>
@@ -703,7 +703,7 @@
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.validas.spedit.NaturalLang.Editor.opened" />
+					<reference definitionId="org.xixum.nlx.naturalLang.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -711,7 +711,7 @@
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.validas.spedit.NaturalLang.Editor.opened" />
+					<reference definitionId="org.xixum.nlx.naturalLang.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -720,7 +720,7 @@
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
 					<and>
-						<reference definitionId="de.validas.spedit.NaturalLang.XtextEditor.opened" />
+						<reference definitionId="org.xixum.nlx.naturalLang.XtextEditor.opened" />
 						<iterate>
 							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 						</iterate>
@@ -733,7 +733,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.validas.spedit.NaturalLang.Editor.opened">
+					<reference definitionId="org.xixum.nlx.naturalLang.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -741,11 +741,11 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
 			commandId="org.eclipse.xtext.ui.editor.FindReferences">
 			<activeWhen>
 				<reference
-					definitionId="de.validas.spedit.NaturalLang.Editor.opened">
+					definitionId="org.xixum.nlx.naturalLang.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -754,7 +754,7 @@
 		<content-type
 			base-type="org.eclipse.core.runtime.text"
 			file-extensions="nlx"
-			id="de.validas.spedit.NaturalLang.contenttype"
+			id="org.xixum.nlx.naturalLang.contenttype"
 			name="NaturalLang File"
 			priority="normal">
 		</content-type>
@@ -763,17 +763,17 @@
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
 			type="nlx">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
 		<resourceServiceProvider
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
 			uriExtension="nlx">
 		</resourceServiceProvider>
 	</extension>
-	<!-- marker definitions for de.validas.spedit.NaturalLang -->
+	<!-- marker definitions for org.xixum.nlx.naturalLang -->
 	<extension
 			id="naturallang.check.fast"
 			name="NaturalLang Problem"
@@ -797,23 +797,23 @@
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="de.validas.spedit.NaturalLang"
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
-			id="de.validas.spedit.NaturalLang.validator.preferencePage"
+			category="org.xixum.nlx.naturalLang"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
+			id="org.xixum.nlx.naturalLang.validator.preferencePage"
 			name="Errors/Warnings">
-			<keywordReference id="de.validas.spedit.ui.keyword_NaturalLang"/>
+			<keywordReference id="org.xixum.nlx.ui.keyword_NaturalLang"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
 			fileExtensions="nlx"/>
 	</extension>
 	<!-- Annotation Spec -->
 	<extension
          point="org.eclipse.ui.editors.annotationTypes">
       <type
-         name="de.validas.spedit.ui.NaturalLang.Annotation"
+         name="org.xixum.nlx.ui.NaturalLang.Annotation"
          markerType="org.eclipse.emf.ecore.diagnostic"
       	 markerSeverity="0"
          super="org.eclipse.ui.workbench.texteditor.info">
@@ -822,8 +822,8 @@
 	<extension
          point="org.eclipse.ui.editors.markerAnnotationSpecification">
       <specification
-            annotationImageProvider="de.validas.spedit.ui.model.NlxMarkerAnnotationImageProvider"
-            annotationType="de.validas.spedit.ui.NaturalLang.Annotation"
+            annotationImageProvider="org.xixum.nlx.ui.model.NlxMarkerAnnotationImageProvider"
+            annotationType="org.xixum.nlx.ui.NaturalLang.Annotation"
             icon="/icons/nature_overlay3.png"
             includeOnPreferencePage="true"
             symbolicIcon="task"
@@ -837,20 +837,20 @@
     
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="de.validas.spedit.NaturalLang"
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="de.validas.spedit.NaturalLang.compiler.preferencePage"
+			category="org.xixum.nlx.naturalLang"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="org.xixum.nlx.naturalLang.compiler.preferencePage"
 			name="Compiler">
-			<keywordReference id="de.validas.spedit.ui.keyword_NaturalLang"/>
+			<keywordReference id="org.xixum.nlx.ui.keyword_NaturalLang"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.ui.propertyPages">
 		<page
-			category="de.validas.spedit.NaturalLang"
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="de.validas.spedit.NaturalLang.compiler.propertyPage"
+			category="org.xixum.nlx.naturalLang"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="org.xixum.nlx.naturalLang.compiler.propertyPage"
 			name="Compiler">
-			<keywordReference id="de.validas.spedit.ui.keyword_NaturalLang"/>
+			<keywordReference id="org.xixum.nlx.ui.keyword_NaturalLang"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -861,20 +861,20 @@
 		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
 			<command
 				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
-				id="de.validas.spedit.NaturalLang.OpenGeneratedCode"
+				id="org.xixum.nlx.naturalLang.OpenGeneratedCode"
 				style="push">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.validas.spedit.NaturalLang.Editor.opened" />
+					<reference definitionId="org.xixum.nlx.naturalLang.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
 			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
 			<activeWhen>
-				<reference definitionId="de.validas.spedit.NaturalLang.Editor.opened" />
+				<reference definitionId="org.xixum.nlx.naturalLang.Editor.opened" />
 			</activeWhen>
 		</handler>
 	</extension>
@@ -882,11 +882,11 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler 
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="de.validas.spedit.NaturalLang.Editor.opened">
+					definitionId="org.xixum.nlx.naturalLang.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -906,16 +906,16 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.validas.spedit.NaturalLang.Editor.opened"/>
+					<reference definitionId="org.xixum.nlx.naturalLang.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
-	<!-- quickfix marker resolution generator for de.validas.spedit.NaturalLang -->
+	<!-- quickfix marker resolution generator for org.xixum.nlx.naturalLang -->
 	<extension
 			point="org.eclipse.ui.ide.markerResolution">
 		<markerResolutionGenerator
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="org.xixum.nlx.model.ui.naturallang.check.fast">
 			<attribute
 				name="FIXABLE_KEY"
@@ -923,7 +923,7 @@
 			</attribute>
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="org.xixum.nlx.model.ui.naturallang.check.normal">
 			<attribute
 				name="FIXABLE_KEY"
@@ -931,7 +931,7 @@
 			</attribute>
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="org.xixum.nlx.model.ui.naturallang.check.expensive">
 			<attribute
 				name="FIXABLE_KEY"
@@ -942,11 +942,11 @@
 	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="de.validas.spedit.NaturalLang.Editor.opened">
+					definitionId="org.xixum.nlx.naturalLang.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -958,7 +958,7 @@
 				style="push">
 				<visibleWhen checkEnabled="false">
 					<reference
-						definitionId="de.validas.spedit.NaturalLang.Editor.opened">
+						definitionId="org.xixum.nlx.naturalLang.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -966,34 +966,34 @@
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="de.validas.spedit.NaturalLang"
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-			id="de.validas.spedit.NaturalLang.refactoring"
+			category="org.xixum.nlx.naturalLang"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+			id="org.xixum.nlx.naturalLang.refactoring"
 			name="Refactoring">
-			<keywordReference id="de.validas.spedit.ui.keyword_NaturalLang"/>
+			<keywordReference id="org.xixum.nlx.ui.keyword_NaturalLang"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.compare.contentViewers">
-		<viewer id="de.validas.spedit.NaturalLang.compare.contentViewers"
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+		<viewer id="org.xixum.nlx.naturalLang.compare.contentViewers"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="nlx">
 		</viewer>
 		<contentTypeBinding
-			contentTypeId="de.validas.spedit.NaturalLang.contenttype"
-			contentViewerId="de.validas.spedit.NaturalLang.compare.contentViewers" />
+			contentTypeId="org.xixum.nlx.naturalLang.contenttype"
+			contentViewerId="org.xixum.nlx.naturalLang.compare.contentViewers" />
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
-		<viewer id="de.validas.spedit.NaturalLang.compare.contentMergeViewers"
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+		<viewer id="org.xixum.nlx.naturalLang.compare.contentMergeViewers"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="nlx" label="NaturalLang Compare">
 		</viewer>
 		<contentTypeBinding
-			contentTypeId="de.validas.spedit.NaturalLang.contenttype"
-			contentMergeViewerId="de.validas.spedit.NaturalLang.compare.contentMergeViewers" />
+			contentTypeId="org.xixum.nlx.naturalLang.contenttype"
+			contentMergeViewerId="org.xixum.nlx.naturalLang.compare.contentMergeViewers" />
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
-		<provider id="de.validas.spedit.NaturalLang.editors.documentProviders"
-			class="de.validas.spedit.ui.NaturalLangExecutableExtensionFactory:de.validas.spedit.ui.editor.model.NlxDocumentProvider"
+		<provider id="org.xixum.nlx.naturalLang.editors.documentProviders"
+			class="org.xixum.nlx.ui.NaturalLangExecutableExtensionFactory:org.xixum.nlx.ui.editor.model.NlxDocumentProvider"
 			extensions="nlx">
 		</provider>
 	</extension>
@@ -1008,13 +1008,13 @@
 	<extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="de.validas.spedit.ui.actions.SaveModelHandler"
+            defaultHandler="org.xixum.nlx.ui.actions.SaveModelHandler"
             id="org.xixum.nlx.model.ide.savemodel"
             name="Save Model (handler)">
       </command>
       
       <!--<command
-            defaultHandler="de.validas.spedit.ide.actions.SaveModelHandler"
+            defaultHandler="org.xixum.nlxide.actions.SaveModelHandler"
             id="org.xixum.nlx.model.ide.savemodeloutline"
             name="Save Model (outline)">
       </command> -->

@@ -1,4 +1,4 @@
-package de.validas.spedit.parser.antlr.internal;
+package org.xixum.nlx.parser.antlr.internal;
 
 import org.eclipse.xtext.*;
 import org.eclipse.xtext.parser.*;
@@ -9,7 +9,7 @@ import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
 import org.eclipse.xtext.parser.antlr.AntlrDatatypeRuleToken;
-import de.validas.spedit.services.NaturalLangGrammarAccess;
+import org.xixum.nlx.services.NaturalLangGrammarAccess;
 
 
 
@@ -3871,7 +3871,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      					current,
             	      					"sentences",
             	      					lv_sentences_0_0,
-            	      					"de.validas.spedit.NaturalLang.SentenceType");
+            	      					"org.xixum.nlx.naturalLang.SentenceType");
             	      				afterParserOrEnumRuleCall();
             	      			
             	    }
@@ -4128,7 +4128,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"pEnd",
               						lv_pEnd_4_0,
-              						"de.validas.spedit.NaturalLang.Paragraph");
+              						"org.xixum.nlx.naturalLang.Paragraph");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -4422,7 +4422,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      					current,
             	      					"block",
             	      					lv_block_0_0,
-            	      					"de.validas.spedit.NaturalLang.BlockElement");
+            	      					"org.xixum.nlx.naturalLang.BlockElement");
             	      				afterParserOrEnumRuleCall();
             	      			
             	    }
@@ -4753,7 +4753,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"number",
               						lv_number_0_0,
-              						"de.validas.spedit.NaturalLang.simpleNum");
+              						"org.xixum.nlx.naturalLang.simpleNum");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -4794,7 +4794,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"SentenceChain",
               						lv_SentenceChain_2_0,
-              						"de.validas.spedit.NaturalLang.SentenceChain");
+              						"org.xixum.nlx.naturalLang.SentenceChain");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -4910,7 +4910,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               					current,
               					"content",
               					lv_content_0_0,
-              					"de.validas.spedit.NaturalLang.TABLE_LINE");
+              					"org.xixum.nlx.naturalLang.TABLE_LINE");
               			
             }
 
@@ -5205,7 +5205,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"content",
               						lv_content_1_0,
-              						"de.validas.spedit.NaturalLang.TableBorder");
+              						"org.xixum.nlx.naturalLang.TableBorder");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -5248,7 +5248,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       						current,
                       						"content",
                       						lv_content_2_0,
-                      						"de.validas.spedit.NaturalLang.LineSentenceChain");
+                      						"org.xixum.nlx.naturalLang.LineSentenceChain");
                       					afterParserOrEnumRuleCall();
                       				
                     }
@@ -5316,7 +5316,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"content",
             	      							lv_content_3_0,
-            	      							"de.validas.spedit.NaturalLang.TableBorder");
+            	      							"org.xixum.nlx.naturalLang.TableBorder");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -5359,7 +5359,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	              							current,
             	              							"content",
             	              							lv_content_4_0,
-            	              							"de.validas.spedit.NaturalLang.LineSentenceChain");
+            	              							"org.xixum.nlx.naturalLang.LineSentenceChain");
             	              						afterParserOrEnumRuleCall();
             	              					
             	            }
@@ -5406,7 +5406,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"content",
               						lv_content_5_0,
-              						"de.validas.spedit.NaturalLang.TableBorder");
+              						"org.xixum.nlx.naturalLang.TableBorder");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -5515,7 +5515,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               					current,
               					"char",
               					lv_char_0_0,
-              					"de.validas.spedit.NaturalLang.HORIZ_SEP");
+              					"org.xixum.nlx.naturalLang.HORIZ_SEP");
               			
             }
 
@@ -5640,7 +5640,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"lines",
               						lv_lines_0_0,
-              						"de.validas.spedit.NaturalLang.TableLine");
+              						"org.xixum.nlx.naturalLang.TableLine");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -5706,7 +5706,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"lines",
             	      							lv_lines_2_0,
-            	      							"de.validas.spedit.NaturalLang.TableRow");
+            	      							"org.xixum.nlx.naturalLang.TableRow");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -5797,7 +5797,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"lines",
             	      							lv_lines_4_0,
-            	      							"de.validas.spedit.NaturalLang.TableLine");
+            	      							"org.xixum.nlx.naturalLang.TableLine");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -5863,7 +5863,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	    	      								current,
             	    	      								"lines",
             	    	      								lv_lines_6_0,
-            	    	      								"de.validas.spedit.NaturalLang.TableRow");
+            	    	      								"org.xixum.nlx.naturalLang.TableRow");
             	    	      							afterParserOrEnumRuleCall();
             	    	      						
             	    	    }
@@ -5927,7 +5927,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"lines",
               						lv_lines_8_0,
-              						"de.validas.spedit.NaturalLang.TableLine");
+              						"org.xixum.nlx.naturalLang.TableLine");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -6066,7 +6066,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"sentences",
               						lv_sentences_1_0,
-              						"de.validas.spedit.NaturalLang.LineSentence");
+              						"org.xixum.nlx.naturalLang.LineSentence");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -6118,7 +6118,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"separators",
             	      							lv_separators_2_0,
-            	      							"de.validas.spedit.NaturalLang.FULL_STOP_IM");
+            	      							"org.xixum.nlx.naturalLang.FULL_STOP_IM");
             	      					
             	    }
 
@@ -6152,7 +6152,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"sentences",
             	      							lv_sentences_3_0,
-            	      							"de.validas.spedit.NaturalLang.LineSentence");
+            	      							"org.xixum.nlx.naturalLang.LineSentence");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -6200,7 +6200,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       						current,
                       						"endpoint",
                       						lv_endpoint_4_0,
-                      						"de.validas.spedit.NaturalLang.FULL_STOP_IM");
+                      						"org.xixum.nlx.naturalLang.FULL_STOP_IM");
                       				
                     }
 
@@ -6342,7 +6342,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"sentences",
               						lv_sentences_1_0,
-              						"de.validas.spedit.NaturalLang.Sentence");
+              						"org.xixum.nlx.naturalLang.Sentence");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -6388,7 +6388,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"separators",
             	      							lv_separators_2_0,
-            	      							"de.validas.spedit.NaturalLang.FULL_STOP_IM");
+            	      							"org.xixum.nlx.naturalLang.FULL_STOP_IM");
             	      					
             	    }
 
@@ -6422,7 +6422,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"sentences",
             	      							lv_sentences_3_0,
-            	      							"de.validas.spedit.NaturalLang.SentenceX");
+            	      							"org.xixum.nlx.naturalLang.SentenceX");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -6483,7 +6483,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       							current,
                       							"endpoint",
                       							lv_endpoint_4_0,
-                      							"de.validas.spedit.NaturalLang.FULL_STOP_NL");
+                      							"org.xixum.nlx.naturalLang.FULL_STOP_NL");
                       					
                     }
 
@@ -6519,7 +6519,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       							current,
                       							"endpoint",
                       							lv_endpoint_5_0,
-                      							"de.validas.spedit.NaturalLang.NEWLINE");
+                      							"org.xixum.nlx.naturalLang.NEWLINE");
                       					
                     }
 
@@ -6665,7 +6665,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"sentences",
               						lv_sentences_1_0,
-              						"de.validas.spedit.NaturalLang.Sentence");
+              						"org.xixum.nlx.naturalLang.Sentence");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -6711,7 +6711,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"separators",
             	      							lv_separators_2_0,
-            	      							"de.validas.spedit.NaturalLang.FULL_STOP_IM");
+            	      							"org.xixum.nlx.naturalLang.FULL_STOP_IM");
             	      					
             	    }
 
@@ -6745,7 +6745,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"sentences",
             	      							lv_sentences_3_0,
-            	      							"de.validas.spedit.NaturalLang.SentenceX");
+            	      							"org.xixum.nlx.naturalLang.SentenceX");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -6818,7 +6818,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       								current,
                       								"endpoint",
                       								lv_endpoint_4_0,
-                      								"de.validas.spedit.NaturalLang.FULL_STOP_NL");
+                      								"org.xixum.nlx.naturalLang.FULL_STOP_NL");
                       						
                     }
 
@@ -6854,7 +6854,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       								current,
                       								"endpoint",
                       								lv_endpoint_5_0,
-                      								"de.validas.spedit.NaturalLang.NEWLINE");
+                      								"org.xixum.nlx.naturalLang.NEWLINE");
                       						
                     }
 
@@ -6890,7 +6890,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       								current,
                       								"endpoint",
                       								lv_endpoint_6_0,
-                      								"de.validas.spedit.NaturalLang.KOMMA");
+                      								"org.xixum.nlx.naturalLang.KOMMA");
                       						
                     }
 
@@ -7036,7 +7036,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"subsentence",
               						lv_subsentence_1_0,
-              						"de.validas.spedit.NaturalLang.SubSentence");
+              						"org.xixum.nlx.naturalLang.SubSentence");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -7098,7 +7098,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"subsentence",
             	      							lv_subsentence_3_0,
-            	      							"de.validas.spedit.NaturalLang.TrailSubSentence");
+            	      							"org.xixum.nlx.naturalLang.TrailSubSentence");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -7245,7 +7245,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"subsentence",
               						lv_subsentence_1_0,
-              						"de.validas.spedit.NaturalLang.LineSubSentence");
+              						"org.xixum.nlx.naturalLang.LineSubSentence");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -7301,7 +7301,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"subsentence",
             	      							lv_subsentence_3_0,
-            	      							"de.validas.spedit.NaturalLang.LineSubSentence");
+            	      							"org.xixum.nlx.naturalLang.LineSubSentence");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -7448,7 +7448,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"subsentence",
               						lv_subsentence_1_0,
-              						"de.validas.spedit.NaturalLang.FreeSubSentence");
+              						"org.xixum.nlx.naturalLang.FreeSubSentence");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -7504,7 +7504,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"subsentence",
             	      							lv_subsentence_3_0,
-            	      							"de.validas.spedit.NaturalLang.FreeSubSentence");
+            	      							"org.xixum.nlx.naturalLang.FreeSubSentence");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -7651,7 +7651,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"subsentence",
               						lv_subsentence_1_0,
-              						"de.validas.spedit.NaturalLang.TrailSubSentence");
+              						"org.xixum.nlx.naturalLang.TrailSubSentence");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -7713,7 +7713,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"subsentence",
             	      							lv_subsentence_3_0,
-            	      							"de.validas.spedit.NaturalLang.TrailSubSentence");
+            	      							"org.xixum.nlx.naturalLang.TrailSubSentence");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -7842,7 +7842,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"listpoint",
               						lv_listpoint_0_0,
-              						"de.validas.spedit.NaturalLang.ListPoint");
+              						"org.xixum.nlx.naturalLang.ListPoint");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -7898,7 +7898,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       							current,
                       							"SentenceChain",
                       							lv_SentenceChain_1_0,
-                      							"de.validas.spedit.NaturalLang.SentenceChainX");
+                      							"org.xixum.nlx.naturalLang.SentenceChainX");
                       						afterParserOrEnumRuleCall();
                       					
                     }
@@ -8099,7 +8099,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       							current,
                       							"chapterNumber",
                       							lv_chapterNumber_0_0,
-                      							"de.validas.spedit.NaturalLang.Chapter_Unit_Low");
+                      							"org.xixum.nlx.naturalLang.Chapter_Unit_Low");
                       						afterParserOrEnumRuleCall();
                       					
                     }
@@ -8140,7 +8140,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       							current,
                       							"chapterNumber",
                       							lv_chapterNumber_1_0,
-                      							"de.validas.spedit.NaturalLang.ChapterAlpha");
+                      							"org.xixum.nlx.naturalLang.ChapterAlpha");
                       						afterParserOrEnumRuleCall();
                       					
                     }
@@ -8181,7 +8181,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       							current,
                       							"chapterNumber",
                       							lv_chapterNumber_2_0,
-                      							"de.validas.spedit.NaturalLang.Chapter_Unit_HI");
+                      							"org.xixum.nlx.naturalLang.Chapter_Unit_HI");
                       						afterParserOrEnumRuleCall();
                       					
                     }
@@ -8222,7 +8222,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"Headline",
               						lv_Headline_3_0,
-              						"de.validas.spedit.NaturalLang.LineSentenceChain");
+              						"org.xixum.nlx.naturalLang.LineSentenceChain");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -8392,7 +8392,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       								current,
                       								"elements",
                       								lv_elements_1_0,
-                      								"de.validas.spedit.NaturalLang.NoNElement");
+                      								"org.xixum.nlx.naturalLang.NoNElement");
                       							afterParserOrEnumRuleCall();
                       						
                     }
@@ -8454,7 +8454,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                     	      									current,
                     	      									"elements",
                     	      									lv_elements_3_0,
-                    	      									"de.validas.spedit.NaturalLang.Elements");
+                    	      									"org.xixum.nlx.naturalLang.Elements");
                     	      								afterParserOrEnumRuleCall();
                     	      							
                     	    }
@@ -8510,7 +8510,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       								current,
                       								"elements",
                       								lv_elements_4_0,
-                      								"de.validas.spedit.NaturalLang.NoNElementX");
+                      								"org.xixum.nlx.naturalLang.NoNElementX");
                       							afterParserOrEnumRuleCall();
                       						
                     }
@@ -8573,7 +8573,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                     	      									current,
                     	      									"elements",
                     	      									lv_elements_6_0,
-                    	      									"de.validas.spedit.NaturalLang.Elements");
+                    	      									"org.xixum.nlx.naturalLang.Elements");
                     	      								afterParserOrEnumRuleCall();
                     	      							
                     	    }
@@ -8684,7 +8684,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"elements",
             	      							lv_elements_8_0,
-            	      							"de.validas.spedit.NaturalLang.New_Line");
+            	      							"org.xixum.nlx.naturalLang.New_Line");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -8742,7 +8742,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"elements",
             	      							lv_elements_10_0,
-            	      							"de.validas.spedit.NaturalLang.NoNElementX2");
+            	      							"org.xixum.nlx.naturalLang.NoNElementX2");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -8804,7 +8804,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	    	      								current,
             	    	      								"elements",
             	    	      								lv_elements_12_0,
-            	    	      								"de.validas.spedit.NaturalLang.Elements");
+            	    	      								"org.xixum.nlx.naturalLang.Elements");
             	    	      							afterParserOrEnumRuleCall();
             	    	      						
             	    	    }
@@ -9006,7 +9006,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               							current,
               							"elements",
               							lv_elements_1_0,
-              							"de.validas.spedit.NaturalLang.Elements");
+              							"org.xixum.nlx.naturalLang.Elements");
               						afterParserOrEnumRuleCall();
               					
             }
@@ -9068,7 +9068,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      								current,
             	      								"elements",
             	      								lv_elements_3_0,
-            	      								"de.validas.spedit.NaturalLang.Elements");
+            	      								"org.xixum.nlx.naturalLang.Elements");
             	      							afterParserOrEnumRuleCall();
             	      						
             	    }
@@ -9165,7 +9165,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      								current,
             	      								"elements",
             	      								lv_elements_5_0,
-            	      								"de.validas.spedit.NaturalLang.New_Line");
+            	      								"org.xixum.nlx.naturalLang.New_Line");
             	      							afterParserOrEnumRuleCall();
             	      						
             	    }
@@ -9223,7 +9223,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      								current,
             	      								"elements",
             	      								lv_elements_7_0,
-            	      								"de.validas.spedit.NaturalLang.NoNElementX2");
+            	      								"org.xixum.nlx.naturalLang.NoNElementX2");
             	      							afterParserOrEnumRuleCall();
             	      						
             	    }
@@ -9285,7 +9285,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	    	      									current,
             	    	      									"elements",
             	    	      									lv_elements_9_0,
-            	    	      									"de.validas.spedit.NaturalLang.Elements");
+            	    	      									"org.xixum.nlx.naturalLang.Elements");
             	    	      								afterParserOrEnumRuleCall();
             	    	      							
             	    	    }
@@ -9506,7 +9506,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"elements",
             	      							lv_elements_2_0,
-            	      							"de.validas.spedit.NaturalLang.New_Line");
+            	      							"org.xixum.nlx.naturalLang.New_Line");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -9550,7 +9550,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"elements",
               						lv_elements_3_0,
-              						"de.validas.spedit.NaturalLang.AllElements");
+              						"org.xixum.nlx.naturalLang.AllElements");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -9631,7 +9631,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	    	      								current,
             	    	      								"elements",
             	    	      								lv_elements_5_0,
-            	    	      								"de.validas.spedit.NaturalLang.New_Line");
+            	    	      								"org.xixum.nlx.naturalLang.New_Line");
             	    	      							afterParserOrEnumRuleCall();
             	    	      						
             	    	    }
@@ -9680,7 +9680,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"elements",
             	      							lv_elements_6_0,
-            	      							"de.validas.spedit.NaturalLang.AllElements");
+            	      							"org.xixum.nlx.naturalLang.AllElements");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -9766,7 +9766,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"elements",
             	      							lv_elements_8_0,
-            	      							"de.validas.spedit.NaturalLang.New_Line");
+            	      							"org.xixum.nlx.naturalLang.New_Line");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -9924,7 +9924,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"elements",
               						lv_elements_1_0,
-              						"de.validas.spedit.NaturalLang.Elements");
+              						"org.xixum.nlx.naturalLang.Elements");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -9986,7 +9986,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      							current,
             	      							"elements",
             	      							lv_elements_3_0,
-            	      							"de.validas.spedit.NaturalLang.Elements");
+            	      							"org.xixum.nlx.naturalLang.Elements");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -12196,7 +12196,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"open",
               						lv_open_1_0,
-              						"de.validas.spedit.NaturalLang.BR_O");
+              						"org.xixum.nlx.naturalLang.BR_O");
               				
             }
 
@@ -12237,7 +12237,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       							current,
                       							"brackedSentences",
                       							lv_brackedSentences_2_0,
-                      							"de.validas.spedit.NaturalLang.FreeSentence");
+                      							"org.xixum.nlx.naturalLang.FreeSentence");
                       						afterParserOrEnumRuleCall();
                       					
                     }
@@ -12281,7 +12281,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                     	      								current,
                     	      								"separator",
                     	      								lv_separator_3_0,
-                    	      								"de.validas.spedit.NaturalLang.FullStop");
+                    	      								"org.xixum.nlx.naturalLang.FullStop");
                     	      							afterParserOrEnumRuleCall();
                     	      						
                     	    }
@@ -12316,7 +12316,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                     	      								current,
                     	      								"brackedSentences",
                     	      								lv_brackedSentences_4_0,
-                    	      								"de.validas.spedit.NaturalLang.FreeSentence");
+                    	      								"org.xixum.nlx.naturalLang.FreeSentence");
                     	      							afterParserOrEnumRuleCall();
                     	      						
                     	    }
@@ -12401,7 +12401,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                               							current,
                               							"separator",
                               							lv_separator_5_1,
-                              							"de.validas.spedit.NaturalLang.DOT");
+                              							"org.xixum.nlx.naturalLang.DOT");
                               					
                             }
 
@@ -12425,7 +12425,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                               							current,
                               							"separator",
                               							lv_separator_5_2,
-                              							"de.validas.spedit.NaturalLang.FS");
+                              							"org.xixum.nlx.naturalLang.FS");
                               					
                             }
 
@@ -12453,7 +12453,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                               							current,
                               							"separator",
                               							lv_separator_5_3,
-                              							"de.validas.spedit.NaturalLang.FullStop");
+                              							"org.xixum.nlx.naturalLang.FullStop");
                               						afterParserOrEnumRuleCall();
                               					
                             }
@@ -12567,7 +12567,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"close",
               						lv_close_9_0,
-              						"de.validas.spedit.NaturalLang.BR_CL");
+              						"org.xixum.nlx.naturalLang.BR_CL");
               				
             }
 
@@ -12708,7 +12708,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"open",
               						lv_open_1_0,
-              						"de.validas.spedit.NaturalLang.EXBR_O");
+              						"org.xixum.nlx.naturalLang.EXBR_O");
               				
             }
 
@@ -12806,7 +12806,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       							current,
                       							"brackedSentences",
                       							lv_brackedSentences_2_0,
-                      							"de.validas.spedit.NaturalLang.FreeSentence");
+                      							"org.xixum.nlx.naturalLang.FreeSentence");
                       						afterParserOrEnumRuleCall();
                       					
                     }
@@ -12889,7 +12889,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                     	      								current,
                     	      								"separator",
                     	      								lv_separator_3_0,
-                    	      								"de.validas.spedit.NaturalLang.FullStop");
+                    	      								"org.xixum.nlx.naturalLang.FullStop");
                     	      							afterParserOrEnumRuleCall();
                     	      						
                     	    }
@@ -12924,7 +12924,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                     	      								current,
                     	      								"brackedSentences",
                     	      								lv_brackedSentences_4_0,
-                    	      								"de.validas.spedit.NaturalLang.FreeSentence");
+                    	      								"org.xixum.nlx.naturalLang.FreeSentence");
                     	      							afterParserOrEnumRuleCall();
                     	      						
                     	    }
@@ -13009,7 +13009,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                               							current,
                               							"separator",
                               							lv_separator_5_1,
-                              							"de.validas.spedit.NaturalLang.DOT");
+                              							"org.xixum.nlx.naturalLang.DOT");
                               					
                             }
 
@@ -13033,7 +13033,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                               							current,
                               							"separator",
                               							lv_separator_5_2,
-                              							"de.validas.spedit.NaturalLang.FS");
+                              							"org.xixum.nlx.naturalLang.FS");
                               					
                             }
 
@@ -13061,7 +13061,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                               							current,
                               							"separator",
                               							lv_separator_5_3,
-                              							"de.validas.spedit.NaturalLang.FullStop");
+                              							"org.xixum.nlx.naturalLang.FullStop");
                               						afterParserOrEnumRuleCall();
                               					
                             }
@@ -13124,7 +13124,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"close",
               						lv_close_7_0,
-              						"de.validas.spedit.NaturalLang.EXBR_CL");
+              						"org.xixum.nlx.naturalLang.EXBR_CL");
               				
             }
 
@@ -13265,7 +13265,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"open",
               						lv_open_1_0,
-              						"de.validas.spedit.NaturalLang.EXBRC_O");
+              						"org.xixum.nlx.naturalLang.EXBRC_O");
               				
             }
 
@@ -13363,7 +13363,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       							current,
                       							"brackedSentences",
                       							lv_brackedSentences_2_0,
-                      							"de.validas.spedit.NaturalLang.FreeSentence");
+                      							"org.xixum.nlx.naturalLang.FreeSentence");
                       						afterParserOrEnumRuleCall();
                       					
                     }
@@ -13446,7 +13446,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                     	      								current,
                     	      								"separator",
                     	      								lv_separator_3_0,
-                    	      								"de.validas.spedit.NaturalLang.FullStop");
+                    	      								"org.xixum.nlx.naturalLang.FullStop");
                     	      							afterParserOrEnumRuleCall();
                     	      						
                     	    }
@@ -13481,7 +13481,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                     	      								current,
                     	      								"brackedSentences",
                     	      								lv_brackedSentences_4_0,
-                    	      								"de.validas.spedit.NaturalLang.FreeSentence");
+                    	      								"org.xixum.nlx.naturalLang.FreeSentence");
                     	      							afterParserOrEnumRuleCall();
                     	      						
                     	    }
@@ -13566,7 +13566,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                               							current,
                               							"separator",
                               							lv_separator_5_1,
-                              							"de.validas.spedit.NaturalLang.DOT");
+                              							"org.xixum.nlx.naturalLang.DOT");
                               					
                             }
 
@@ -13590,7 +13590,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                               							current,
                               							"separator",
                               							lv_separator_5_2,
-                              							"de.validas.spedit.NaturalLang.FS");
+                              							"org.xixum.nlx.naturalLang.FS");
                               					
                             }
 
@@ -13618,7 +13618,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                               							current,
                               							"separator",
                               							lv_separator_5_3,
-                              							"de.validas.spedit.NaturalLang.FullStop");
+                              							"org.xixum.nlx.naturalLang.FullStop");
                               						afterParserOrEnumRuleCall();
                               					
                             }
@@ -13681,7 +13681,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"close",
               						lv_close_7_0,
-              						"de.validas.spedit.NaturalLang.EXBRC_CL");
+              						"org.xixum.nlx.naturalLang.EXBRC_CL");
               				
             }
 
@@ -13950,7 +13950,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       							current,
                       							"word",
                       							lv_word_0_0,
-                      							"de.validas.spedit.NaturalLang.FragmentX");
+                      							"org.xixum.nlx.naturalLang.FragmentX");
                       						afterParserOrEnumRuleCall();
                       					
                     }
@@ -13997,7 +13997,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       									current,
                       									"word",
                       									lv_word_1_0,
-                      									"de.validas.spedit.NaturalLang.Fragment");
+                      									"org.xixum.nlx.naturalLang.Fragment");
                       								afterParserOrEnumRuleCall();
                       							
                     }
@@ -14092,7 +14092,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                     	      									current,
                     	      									"word",
                     	      									lv_word_2_0,
-                    	      									"de.validas.spedit.NaturalLang.SeparatorsL");
+                    	      									"org.xixum.nlx.naturalLang.SeparatorsL");
                     	      								afterParserOrEnumRuleCall();
                     	      							
                     	    }
@@ -14127,7 +14127,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                     	      									current,
                     	      									"word",
                     	      									lv_word_3_0,
-                    	      									"de.validas.spedit.NaturalLang.Fragment");
+                    	      									"org.xixum.nlx.naturalLang.Fragment");
                     	      								afterParserOrEnumRuleCall();
                     	      							
                     	    }
@@ -14193,7 +14193,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                       						current,
                       						"word",
                       						lv_word_4_0,
-                      						"de.validas.spedit.NaturalLang.SeparatorsL");
+                      						"org.xixum.nlx.naturalLang.SeparatorsL");
                       					afterParserOrEnumRuleCall();
                       				
                     }
@@ -14329,7 +14329,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
               						current,
               						"word",
               						lv_word_1_0,
-              						"de.validas.spedit.NaturalLang.ALPHA");
+              						"org.xixum.nlx.naturalLang.ALPHA");
               				
             }
 
@@ -15213,7 +15213,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                                     	      											current,
                                     	      											"word",
                                     	      											lv_word_0_0,
-                                    	      											"de.validas.spedit.NaturalLang.SeparatorsIt");
+                                    	      											"org.xixum.nlx.naturalLang.SeparatorsIt");
                                     	      										afterParserOrEnumRuleCall();
                                     	      									
                                     	    }
@@ -15265,7 +15265,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                                       											current,
                                       											"word",
                                       											lv_word_1_0,
-                                      											"de.validas.spedit.NaturalLang.HashP");
+                                      											"org.xixum.nlx.naturalLang.HashP");
                                       										afterParserOrEnumRuleCall();
                                       									
                                     }
@@ -15302,7 +15302,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                                       											current,
                                       											"word",
                                       											lv_word_2_0,
-                                      											"de.validas.spedit.NaturalLang.MULTI");
+                                      											"org.xixum.nlx.naturalLang.MULTI");
                                       									
                                     }
 
@@ -15338,7 +15338,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                                       											current,
                                       											"word",
                                       											lv_word_3_0,
-                                      											"de.validas.spedit.NaturalLang.CURRENCY");
+                                      											"org.xixum.nlx.naturalLang.CURRENCY");
                                       									
                                     }
 
@@ -15480,7 +15480,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                                       											current,
                                       											"word",
                                       											lv_word_4_0,
-                                      											"de.validas.spedit.NaturalLang.ItWordElXx");
+                                      											"org.xixum.nlx.naturalLang.ItWordElXx");
                                       										afterParserOrEnumRuleCall();
                                       									
                                     }
@@ -15521,7 +15521,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                                       											current,
                                       											"word",
                                       											lv_word_5_0,
-                                      											"de.validas.spedit.NaturalLang.Fragment");
+                                      											"org.xixum.nlx.naturalLang.Fragment");
                                       										afterParserOrEnumRuleCall();
                                       									
                                     }
@@ -15602,7 +15602,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                                       										current,
                                       										"word",
                                       										lv_word_6_0,
-                                      										"de.validas.spedit.NaturalLang.ItWordEl");
+                                      										"org.xixum.nlx.naturalLang.ItWordEl");
                                       									afterParserOrEnumRuleCall();
                                       								
                                     }
@@ -15639,7 +15639,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                                       										current,
                                       										"word",
                                       										lv_word_7_0,
-                                      										"de.validas.spedit.NaturalLang.CURL");
+                                      										"org.xixum.nlx.naturalLang.CURL");
                                       								
                                     }
 
@@ -15678,7 +15678,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                                       											current,
                                       											"word",
                                       											lv_word_8_0,
-                                      											"de.validas.spedit.NaturalLang.ALL_ALPHA");
+                                      											"org.xixum.nlx.naturalLang.ALL_ALPHA");
                                       									
                                     }
 
@@ -15708,7 +15708,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                                       											current,
                                       											"word",
                                       											lv_word_9_0,
-                                      											"de.validas.spedit.NaturalLang.COLON");
+                                      											"org.xixum.nlx.naturalLang.COLON");
                                       									
                                     }
 
@@ -15779,7 +15779,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                     	    	      									current,
                     	    	      									"word",
                     	    	      									lv_word_10_0,
-                    	    	      									"de.validas.spedit.NaturalLang.AllSep");
+                    	    	      									"org.xixum.nlx.naturalLang.AllSep");
                     	    	      								afterParserOrEnumRuleCall();
                     	    	      							
                     	    	    }
@@ -15825,7 +15825,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                     	      									current,
                     	      									"word",
                     	      									lv_word_11_0,
-                    	      									"de.validas.spedit.NaturalLang.ItWordElXx");
+                    	      									"org.xixum.nlx.naturalLang.ItWordElXx");
                     	      								afterParserOrEnumRuleCall();
                     	      							
                     	    }
@@ -15979,7 +15979,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                               									current,
                               									"word",
                               									lv_word_12_0,
-                              									"de.validas.spedit.NaturalLang.Fragment");
+                              									"org.xixum.nlx.naturalLang.Fragment");
                               								afterParserOrEnumRuleCall();
                               							
                             }
@@ -16020,7 +16020,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                               									current,
                               									"word",
                               									lv_word_13_0,
-                              									"de.validas.spedit.NaturalLang.Asterisk");
+                              									"org.xixum.nlx.naturalLang.Asterisk");
                               								afterParserOrEnumRuleCall();
                               							
                             }
@@ -16084,7 +16084,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                             	      										current,
                             	      										"word",
                             	      										lv_word_14_0,
-                            	      										"de.validas.spedit.NaturalLang.SeparatorsIt");
+                            	      										"org.xixum.nlx.naturalLang.SeparatorsIt");
                             	      									afterParserOrEnumRuleCall();
                             	      								
                             	    }
@@ -16130,7 +16130,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                               										current,
                               										"word",
                               										lv_word_15_0,
-                              										"de.validas.spedit.NaturalLang.ItWordElXx");
+                              										"org.xixum.nlx.naturalLang.ItWordElXx");
                               									afterParserOrEnumRuleCall();
                               								
                             }
@@ -16190,7 +16190,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                             	      										current,
                             	      										"word",
                             	      										lv_word_16_0,
-                            	      										"de.validas.spedit.NaturalLang.AllSep");
+                            	      										"org.xixum.nlx.naturalLang.AllSep");
                             	      									afterParserOrEnumRuleCall();
                             	      								
                             	    }
@@ -16236,7 +16236,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                               										current,
                               										"word",
                               										lv_word_17_0,
-                              										"de.validas.spedit.NaturalLang.ItWordElX");
+                              										"org.xixum.nlx.naturalLang.ItWordElX");
                               									afterParserOrEnumRuleCall();
                               								
                             }
@@ -16302,7 +16302,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                     	    	      									current,
                     	    	      									"word",
                     	    	      									lv_word_18_0,
-                    	    	      									"de.validas.spedit.NaturalLang.AllSep");
+                    	    	      									"org.xixum.nlx.naturalLang.AllSep");
                     	    	      								afterParserOrEnumRuleCall();
                     	    	      							
                     	    	    }
@@ -16348,7 +16348,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
                     	      									current,
                     	      									"word",
                     	      									lv_word_19_0,
-                    	      									"de.validas.spedit.NaturalLang.ItWordElXx");
+                    	      									"org.xixum.nlx.naturalLang.ItWordElXx");
                     	      								afterParserOrEnumRuleCall();
                     	      							
                     	    }
@@ -16422,7 +16422,7 @@ abstract class InternalNaturalLangParser2 extends InternalNaturalLangParser1 {
             	      						current,
             	      						"word",
             	      						lv_word_20_0,
-            	      						"de.validas.spedit.NaturalLang.AllSep");
+            	      						"org.xixum.nlx.naturalLang.AllSep");
             	      					afterParserOrEnumRuleCall();
             	      				
             	    }
@@ -18056,7 +18056,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               					current,
               					"quote",
               					lv_quote_0_0,
-              					"de.validas.spedit.NaturalLang.STRING");
+              					"org.xixum.nlx.naturalLang.STRING");
               			
             }
 
@@ -18184,7 +18184,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       						current,
                       						"signature",
                       						lv_signature_0_0,
-                      						"de.validas.spedit.NaturalLang.MINUS");
+                      						"org.xixum.nlx.naturalLang.MINUS");
                       				
                     }
 
@@ -18221,7 +18221,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               						current,
               						"value",
               						lv_value_1_0,
-              						"de.validas.spedit.NaturalLang.Number");
+              						"org.xixum.nlx.naturalLang.Number");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -18276,7 +18276,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       							current,
                       							"unit",
                       							lv_unit_2_0,
-                      							"de.validas.spedit.NaturalLang.CURRENCY");
+                      							"org.xixum.nlx.naturalLang.CURRENCY");
                       					
                     }
 
@@ -18312,7 +18312,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       							current,
                       							"unit",
                       							lv_unit_3_0,
-                      							"de.validas.spedit.NaturalLang.ID");
+                      							"org.xixum.nlx.naturalLang.ID");
                       					
                     }
 
@@ -18348,7 +18348,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       							current,
                       							"unit",
                       							lv_unit_4_0,
-                      							"de.validas.spedit.NaturalLang.PERCENT");
+                      							"org.xixum.nlx.naturalLang.PERCENT");
                       					
                     }
 
@@ -18529,7 +18529,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       							current,
                       							"value",
                       							lv_value_1_0,
-                      							"de.validas.spedit.NaturalLang.chapterNum");
+                      							"org.xixum.nlx.naturalLang.chapterNum");
                       						afterParserOrEnumRuleCall();
                       					
                     }
@@ -18573,7 +18573,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       						current,
                       						"value",
                       						lv_value_2_0,
-                      						"de.validas.spedit.NaturalLang.ItNum");
+                      						"org.xixum.nlx.naturalLang.ItNum");
                       					afterParserOrEnumRuleCall();
                       				
                     }
@@ -18610,7 +18610,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       						current,
                       						"value",
                       						lv_value_3_0,
-                      						"de.validas.spedit.NaturalLang.HEX_NUMBER");
+                      						"org.xixum.nlx.naturalLang.HEX_NUMBER");
                       				
                     }
 
@@ -18755,7 +18755,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               						current,
               						"value",
               						lv_value_1_0,
-              						"de.validas.spedit.NaturalLang.chapterNum");
+              						"org.xixum.nlx.naturalLang.chapterNum");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -18924,7 +18924,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               						current,
               						"value",
               						lv_value_1_0,
-              						"de.validas.spedit.NaturalLang.decimalNumEN");
+              						"org.xixum.nlx.naturalLang.decimalNumEN");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -19111,7 +19111,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       							current,
                       							"sign",
                       							lv_sign_1_1,
-                      							"de.validas.spedit.NaturalLang.HASH");
+                      							"org.xixum.nlx.naturalLang.HASH");
                       					
                     }
 
@@ -19135,7 +19135,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       							current,
                       							"sign",
                       							lv_sign_1_2,
-                      							"de.validas.spedit.NaturalLang.PARAGR");
+                      							"org.xixum.nlx.naturalLang.PARAGR");
                       					
                     }
 
@@ -19175,7 +19175,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               						current,
               						"value",
               						lv_value_2_0,
-              						"de.validas.spedit.NaturalLang.Number");
+              						"org.xixum.nlx.naturalLang.Number");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -19345,7 +19345,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       							current,
                       							"value",
                       							lv_value_1_0,
-                      							"de.validas.spedit.NaturalLang.ID_C");
+                      							"org.xixum.nlx.naturalLang.ID_C");
                       					
                     }
 
@@ -19381,7 +19381,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       							current,
                       							"value",
                       							lv_value_2_0,
-                      							"de.validas.spedit.NaturalLang.ALL_ALPHA");
+                      							"org.xixum.nlx.naturalLang.ALL_ALPHA");
                       					
                     }
 
@@ -19417,7 +19417,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               						current,
               						"value",
               						lv_value_3_0,
-              						"de.validas.spedit.NaturalLang.DOT");
+              						"org.xixum.nlx.naturalLang.DOT");
               				
             }
 
@@ -19451,7 +19451,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               						current,
               						"value",
               						lv_value_4_0,
-              						"de.validas.spedit.NaturalLang.ChapterIntermediate");
+              						"org.xixum.nlx.naturalLang.ChapterIntermediate");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -19518,7 +19518,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
             	              								current,
             	              								"value",
             	              								lv_value_5_0,
-            	              								"de.validas.spedit.NaturalLang.DOT");
+            	              								"org.xixum.nlx.naturalLang.DOT");
             	              						
             	            }
 
@@ -19554,7 +19554,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
             	              								current,
             	              								"value",
             	              								lv_value_6_0,
-            	              								"de.validas.spedit.NaturalLang.MINUS");
+            	              								"org.xixum.nlx.naturalLang.MINUS");
             	              						
             	            }
 
@@ -19594,7 +19594,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
             	      							current,
             	      							"value",
             	      							lv_value_7_0,
-            	      							"de.validas.spedit.NaturalLang.ChapterIntermediate");
+            	      							"org.xixum.nlx.naturalLang.ChapterIntermediate");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -19990,7 +19990,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               						current,
               						"symbol",
               						lv_symbol_1_0,
-              						"de.validas.spedit.NaturalLang.SpecialSymbols");
+              						"org.xixum.nlx.naturalLang.SpecialSymbols");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -20329,7 +20329,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               						current,
               						"symbol",
               						lv_symbol_1_0,
-              						"de.validas.spedit.NaturalLang.SpecialCh");
+              						"org.xixum.nlx.naturalLang.SpecialCh");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -20492,7 +20492,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       							current,
                       							"word",
                       							lv_word_1_0,
-                      							"de.validas.spedit.NaturalLang.ALL_ALPHA");
+                      							"org.xixum.nlx.naturalLang.ALL_ALPHA");
                       					
                     }
 
@@ -20528,7 +20528,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       							current,
                       							"word",
                       							lv_word_2_0,
-                      							"de.validas.spedit.NaturalLang.ALPHA");
+                      							"org.xixum.nlx.naturalLang.ALPHA");
                       					
                     }
 
@@ -20586,7 +20586,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
             	      							current,
             	      							"word",
             	      							lv_word_3_0,
-            	      							"de.validas.spedit.NaturalLang.DOT");
+            	      							"org.xixum.nlx.naturalLang.DOT");
             	      					
             	    }
 
@@ -20637,7 +20637,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
             	              								current,
             	              								"word",
             	              								lv_word_4_0,
-            	              								"de.validas.spedit.NaturalLang.ALL_ALPHA");
+            	              								"org.xixum.nlx.naturalLang.ALL_ALPHA");
             	              						
             	            }
 
@@ -20673,7 +20673,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
             	              								current,
             	              								"word",
             	              								lv_word_5_0,
-            	              								"de.validas.spedit.NaturalLang.ALPHA");
+            	              								"org.xixum.nlx.naturalLang.ALPHA");
             	              						
             	            }
 
@@ -20723,7 +20723,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               						current,
               						"word",
               						lv_word_6_0,
-              						"de.validas.spedit.NaturalLang.DOT");
+              						"org.xixum.nlx.naturalLang.DOT");
               				
             }
 
@@ -20855,7 +20855,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               						current,
               						"shortcut",
               						lv_shortcut_1_0,
-              						"de.validas.spedit.NaturalLang.SHORTCUTS");
+              						"org.xixum.nlx.naturalLang.SHORTCUTS");
               				
             }
 
@@ -20991,7 +20991,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       						current,
                       						"shortcut",
                       						lv_shortcut_0_0,
-                      						"de.validas.spedit.NaturalLang.ShortcutLib");
+                      						"org.xixum.nlx.naturalLang.ShortcutLib");
                       					afterParserOrEnumRuleCall();
                       				
                     }
@@ -21032,7 +21032,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       						current,
                       						"shortcut",
                       						lv_shortcut_1_0,
-                      						"de.validas.spedit.NaturalLang.ShortcutGen");
+                      						"org.xixum.nlx.naturalLang.ShortcutGen");
                       					afterParserOrEnumRuleCall();
                       				
                     }
@@ -21144,7 +21144,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               					current,
               					"ignored",
               					lv_ignored_0_0,
-              					"de.validas.spedit.NaturalLang.IGNORED");
+              					"org.xixum.nlx.naturalLang.IGNORED");
               			
             }
 
@@ -22536,7 +22536,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               						current,
               						"protocol",
               						lv_protocol_0_0,
-              						"de.validas.spedit.NaturalLang.URL_PROTOCOL");
+              						"org.xixum.nlx.naturalLang.URL_PROTOCOL");
               				
             }
 
@@ -22570,7 +22570,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               						current,
               						"url",
               						lv_url_1_0,
-              						"de.validas.spedit.NaturalLang.ItWordElurl");
+              						"org.xixum.nlx.naturalLang.ItWordElurl");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -22627,7 +22627,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
             	    	      							current,
             	    	      							"url",
             	    	      							lv_url_2_0,
-            	    	      							"de.validas.spedit.NaturalLang.AllSep");
+            	    	      							"org.xixum.nlx.naturalLang.AllSep");
             	    	      						afterParserOrEnumRuleCall();
             	    	      					
             	    	    }
@@ -22793,7 +22793,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
             	              								current,
             	              								"url",
             	              								lv_url_3_0,
-            	              								"de.validas.spedit.NaturalLang.ItWordElXx");
+            	              								"org.xixum.nlx.naturalLang.ItWordElXx");
             	              							afterParserOrEnumRuleCall();
             	              						
             	            }
@@ -22834,7 +22834,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
             	              								current,
             	              								"url",
             	              								lv_url_4_0,
-            	              								"de.validas.spedit.NaturalLang.simpleNum");
+            	              								"org.xixum.nlx.naturalLang.simpleNum");
             	              							afterParserOrEnumRuleCall();
             	              						
             	            }
@@ -22875,7 +22875,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
             	              								current,
             	              								"url",
             	              								lv_url_5_0,
-            	              								"de.validas.spedit.NaturalLang.Fragment");
+            	              								"org.xixum.nlx.naturalLang.Fragment");
             	              							afterParserOrEnumRuleCall();
             	              						
             	            }
@@ -22946,7 +22946,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
             	      						current,
             	      						"url",
             	      						lv_url_6_0,
-            	      						"de.validas.spedit.NaturalLang.AllSep");
+            	      						"org.xixum.nlx.naturalLang.AllSep");
             	      					afterParserOrEnumRuleCall();
             	      				
             	    }
@@ -23064,7 +23064,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               					current,
               					"email",
               					lv_email_0_0,
-              					"de.validas.spedit.NaturalLang.AT");
+              					"org.xixum.nlx.naturalLang.AT");
               			
             }
 
@@ -23197,7 +23197,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       							current,
                       							"email",
                       							lv_email_0_0,
-                      							"de.validas.spedit.NaturalLang.ItWord");
+                      							"org.xixum.nlx.naturalLang.ItWord");
                       						afterParserOrEnumRuleCall();
                       					
                     }
@@ -23238,7 +23238,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       							current,
                       							"email",
                       							lv_email_1_0,
-                      							"de.validas.spedit.NaturalLang.Word");
+                      							"org.xixum.nlx.naturalLang.Word");
                       						afterParserOrEnumRuleCall();
                       					
                     }
@@ -23279,7 +23279,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               						current,
               						"email",
               						lv_email_2_0,
-              						"de.validas.spedit.NaturalLang.EmailAT");
+              						"org.xixum.nlx.naturalLang.EmailAT");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -23314,7 +23314,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               						current,
               						"email",
               						lv_email_3_0,
-              						"de.validas.spedit.NaturalLang.ItWord");
+              						"org.xixum.nlx.naturalLang.ItWord");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -23462,7 +23462,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       						current,
                       						"name",
                       						lv_name_0_0,
-                      						"de.validas.spedit.NaturalLang.EmailAT");
+                      						"org.xixum.nlx.naturalLang.EmailAT");
                       					afterParserOrEnumRuleCall();
                       				
                     }
@@ -23507,7 +23507,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       							current,
                       							"name",
                       							lv_name_1_0,
-                      							"de.validas.spedit.NaturalLang.ItWord");
+                      							"org.xixum.nlx.naturalLang.ItWord");
                       						afterParserOrEnumRuleCall();
                       					
                     }
@@ -23548,7 +23548,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       							current,
                       							"name",
                       							lv_name_2_0,
-                      							"de.validas.spedit.NaturalLang.Word");
+                      							"org.xixum.nlx.naturalLang.Word");
                       						afterParserOrEnumRuleCall();
                       					
                     }
@@ -23589,7 +23589,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               						current,
               						"parameters",
               						lv_parameters_3_0,
-              						"de.validas.spedit.NaturalLang.BracketSentence");
+              						"org.xixum.nlx.naturalLang.BracketSentence");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -23658,7 +23658,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
             	              								current,
             	              								"name",
             	              								lv_name_5_0,
-            	              								"de.validas.spedit.NaturalLang.ItWord");
+            	              								"org.xixum.nlx.naturalLang.ItWord");
             	              							afterParserOrEnumRuleCall();
             	              						
             	            }
@@ -23699,7 +23699,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
             	              								current,
             	              								"name",
             	              								lv_name_6_0,
-            	              								"de.validas.spedit.NaturalLang.Word");
+            	              								"org.xixum.nlx.naturalLang.Word");
             	              							afterParserOrEnumRuleCall();
             	              						
             	            }
@@ -23740,7 +23740,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
             	      							current,
             	      							"parameters",
             	      							lv_parameters_7_0,
-            	      							"de.validas.spedit.NaturalLang.BracketSentence");
+            	      							"org.xixum.nlx.naturalLang.BracketSentence");
             	      						afterParserOrEnumRuleCall();
             	      					
             	    }
@@ -23887,7 +23887,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       							current,
                       							"name",
                       							lv_name_0_0,
-                      							"de.validas.spedit.NaturalLang.ItWord");
+                      							"org.xixum.nlx.naturalLang.ItWord");
                       						afterParserOrEnumRuleCall();
                       					
                     }
@@ -23928,7 +23928,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
                       							current,
                       							"name",
                       							lv_name_1_0,
-                      							"de.validas.spedit.NaturalLang.Word");
+                      							"org.xixum.nlx.naturalLang.Word");
                       						afterParserOrEnumRuleCall();
                       					
                     }
@@ -23982,7 +23982,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
             	      						current,
             	      						"parameters",
             	      						lv_parameters_2_0,
-            	      						"de.validas.spedit.NaturalLang.ExtBracketSentence");
+            	      						"org.xixum.nlx.naturalLang.ExtBracketSentence");
             	      					afterParserOrEnumRuleCall();
             	      				
             	    }
@@ -24126,7 +24126,7 @@ abstract class InternalNaturalLangParser3 extends InternalNaturalLangParser2 {
               						current,
               						"nl",
               						lv_nl_1_0,
-              						"de.validas.spedit.NaturalLang.NEWLINE");
+              						"org.xixum.nlx.naturalLang.NEWLINE");
               				
             }
 

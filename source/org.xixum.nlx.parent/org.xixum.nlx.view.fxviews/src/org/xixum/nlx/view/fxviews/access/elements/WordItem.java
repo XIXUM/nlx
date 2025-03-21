@@ -14,8 +14,8 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import org.xixum.nlx.dictionary.IDictionaryAccess;
 import org.xixum.nlx.view.fxviews.access.IItem;
-import de.validas.spedit.naturalLang.Word;
-import de.validas.spedit.naturalLang.WordShort;
+import org.xixum.nlx.naturalLang.Word;
+import org.xixum.nlx.naturalLang.WordShort;
 
 /**
  * @author schaller

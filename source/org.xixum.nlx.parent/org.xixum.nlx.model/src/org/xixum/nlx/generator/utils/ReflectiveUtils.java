@@ -268,7 +268,7 @@ public class ReflectiveUtils {
 /**
  * 
  */
-package de.validas.spedit.generator.utils;
+package org.xixum.nlx.generator.utils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

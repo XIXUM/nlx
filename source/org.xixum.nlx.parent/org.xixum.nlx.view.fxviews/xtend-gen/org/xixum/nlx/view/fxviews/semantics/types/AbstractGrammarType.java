@@ -1,14 +1,21 @@
 package org.xixum.nlx.view.fxviews.semantics.types;
 
+import java.util.List;
+import java.util.Map;
+import org.xixum.nlx.dictionary.grammar.types.IGrammarType;
+import org.xixum.nlx.dictionary.type.ITypeAttributes;
+import org.xixum.nlx.view.fxviews.semantics.ILink;
+import org.xixum.nlx.view.fxviews.semantics.ILinkable;
+import org.xixum.nlx.view.fxviews.views.IPanelContainer;
+import org.xixum.utils.data.types.XPair;
+
 @SuppressWarnings("all")
-public class AbstractGrammarType /* implements ILinkable  */{
-  protected /* ILinkable */Object parent;
+public class AbstractGrammarType implements ILinkable {
+  protected ILinkable parent;
 
   @Override
-  public Object getCanvas() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field AbstractGrammarType.parent refers to the missing type ILinkable"
-      + "\ncanvas cannot be resolved");
+  public IPanelContainer getCanvas() {
+    return this.parent.getCanvas();
   }
 
   @Override
@@ -17,12 +24,12 @@ public class AbstractGrammarType /* implements ILinkable  */{
   }
 
   @Override
-  public Object getLink() {
+  public List<ILink> getLink() {
     return null;
   }
 
   @Override
-  public Object getLinkType() {
+  public IGrammarType getLinkType() {
     return null;
   }
 
@@ -32,17 +39,17 @@ public class AbstractGrammarType /* implements ILinkable  */{
   }
 
   @Override
-  public Object getName() {
+  public String getName() {
     return null;
   }
 
   @Override
-  public Object getType() {
+  public XPair<String, ITypeAttributes> getType() {
     return null;
   }
 
   @Override
-  public Object getTypes() {
+  public List<XPair<String, ITypeAttributes>> getTypes() {
     return null;
   }
 
@@ -52,14 +59,11 @@ public class AbstractGrammarType /* implements ILinkable  */{
   }
 
   @Override
-  public Object getIntermediate() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field AbstractGrammarType.parent refers to the missing type ILinkable"
-      + "\nintermediate cannot be resolved");
+  public Map<? extends String, ?> getIntermediate() {
+    return this.parent.getIntermediate();
   }
 
   @Override
-  public Object setLink(final String type, final /* ILink */Object link) {
-    return null;
+  public void setLink(final String type, final ILink link) {
   }
 }

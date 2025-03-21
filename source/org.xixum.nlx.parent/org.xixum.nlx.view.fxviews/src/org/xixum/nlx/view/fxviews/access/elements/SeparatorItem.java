@@ -88,7 +88,7 @@ import org.xixum.nlx.dictionary.IDictionaryAccess;
 import org.xixum.nlx.dictionary.type.ITypeHierarchy;
 import org.xixum.nlx.view.fxviews.access.IItem;
 import org.xixum.nlx.view.fxviews.semantics.types.InterpunctionType;
-import de.validas.spedit.naturalLang.Elements;
+import org.xixum.nlx.naturalLang.Elements;
 
 /**
  * @author schaller

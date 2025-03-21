@@ -264,8 +264,8 @@ import org.xixum.nlx.view.fxviews.semantics.ILinkObj
 import org.xixum.nlx.view.fxviews.semantics.ILinkable
 import org.xixum.nlx.view.fxviews.semantics.constants.SubClassType
 import org.xixum.nlx.view.fxviews.semantics.util.AttribUtils
-import de.validas.spedit.naturalLang.BracketSentence
-import de.validas.spedit.naturalLang.ExtBracketSentence
+import org.xixum.nlx.naturalLang.BracketSentence
+import org.xixum.nlx.naturalLang.ExtBracketSentence
 import org.xixum.utils.data.types.XPair
 import org.xixum.utils.data.util.StringUtils
 import java.util.ArrayList

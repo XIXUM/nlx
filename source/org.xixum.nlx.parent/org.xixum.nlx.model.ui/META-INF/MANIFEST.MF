@@ -94,8 +94,8 @@ Require-Bundle: org.xixum.nlx.model,
  org.eclipse.core.filesystem;bundle-version="1.7.100"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: de.validas.spedit.ui.quickfix,
+Export-Package: org.xixum.nlx.ui.quickfix,
  org.xixum.nlx.model.ui.internal,
- de.validas.spedit.ui.contentassist
+ org.xixum.nlx.ui.contentassist
 Bundle-Activator: org.xixum.nlx.model.ui.internal.IeditActivator
 >>>>>>> 28be792edcf63b5c495498de39713fad9b7858d6:source/org.xixum.nlx.parent/org.xixum.nlx.model.ui/META-INF/MANIFEST.MF

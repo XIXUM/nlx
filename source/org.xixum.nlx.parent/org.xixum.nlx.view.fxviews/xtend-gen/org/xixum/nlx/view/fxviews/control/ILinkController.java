@@ -1,10 +1,12 @@
 package org.xixum.nlx.view.fxviews.control;
 
+import org.xixum.nlx.view.fxviews.access.IJavaFxObj;
+
 @SuppressWarnings("all")
 public interface ILinkController {
-  void setParent(final /* IJavaFxObj */Object link);
+  void setParent(final IJavaFxObj link);
 
-  void addDragController(final /* IDragController */Object controller);
+  void addDragController(final IDragController controller);
 
   void setContextMenu(final IContextMenu menu);
 }

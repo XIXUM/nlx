@@ -46,7 +46,7 @@ package org.xixum.nlx.view.fxviews.access.elements;
 
 import org.xixum.nlx.dictionary.IDictionaryAccess;
 import org.xixum.nlx.view.fxviews.access.IItem;
-import de.validas.spedit.naturalLang.Word;
+import org.xixum.nlx.naturalLang.Word;
 
 /**
  * @author schaller

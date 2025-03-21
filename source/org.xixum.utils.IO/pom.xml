@@ -19,10 +19,10 @@
   <version>0.1.5-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
   <parent>
-  	<groupId>de.validas.spedit.iedit</groupId>
-  	<artifactId>de.validas.spedit.iedit.parent</artifactId>
+  	<groupId>org.xixum.nlxiedit</groupId>
+  	<artifactId>org.xixum.nlxiedit.parent</artifactId>
   	<version>0.2.0-SNAPSHOT</version>
-  	<relativePath>../../../NLX-Parser/source/de.validas.spedit.iedit.parent</relativePath>
+  	<relativePath>../../../NLX-Parser/source/org.xixum.nlxiedit.parent</relativePath>
   </parent>
 >>>>>>> 28be792edcf63b5c495498de39713fad9b7858d6:source/org.xixum.utils.IO/pom.xml
 </project>

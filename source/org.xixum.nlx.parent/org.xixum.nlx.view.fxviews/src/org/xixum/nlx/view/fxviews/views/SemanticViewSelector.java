@@ -253,11 +253,11 @@ import org.xixum.nlx.view.fxviews.access.ListPanelAccessor;
 import org.xixum.nlx.view.fxviews.control.SemanticFxViewController;
 import org.xixum.nlx.view.fxviews.views.SemanticFxViewPart.UpdateDelegate;
 import org.xixum.nlx.view.fxviews.views.SemanticFxViewPart.UpdateTask;
-import de.validas.spedit.naturalLang.BracketSentence;
-import de.validas.spedit.naturalLang.FreeSentence;
-import de.validas.spedit.naturalLang.Sentence;
-import de.validas.spedit.naturalLang.SentenceChain;
-import de.validas.spedit.presets.NlxDictConstants;
+import org.xixum.nlx.naturalLang.BracketSentence;
+import org.xixum.nlx.naturalLang.FreeSentence;
+import org.xixum.nlx.naturalLang.Sentence;
+import org.xixum.nlx.naturalLang.SentenceChain;
+import org.xixum.nlxpresets.NlxDictConstants;
 import org.xixum.utils.data.types.XPair;
 
 import static org.xixum.nlx.view.fxviews.semantics.constants.FxViewConstants.NLX_BACKGROUND_THREAD;

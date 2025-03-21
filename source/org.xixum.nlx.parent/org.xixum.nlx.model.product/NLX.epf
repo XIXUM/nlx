@@ -93,12 +93,12 @@ file_export_version=3.0
 /configuration/org.eclipse.ui.ide/RECENT_WORKSPACES_PROTOCOL=3
 /configuration/org.eclipse.ui.ide/SHOW_RECENT_WORKSPACES=false
 /configuration/org.eclipse.ui.ide/SHOW_WORKSPACE_SELECTION_DIALOG=true
-/instance/de.validas.spedit.NaturalLang/de.validas.spedit.NaturalLang.syntaxColorer.tokenStyles.email.style=1073741824
-/instance/de.validas.spedit.NaturalLang/de.validas.spedit.NaturalLang.syntaxColorer.tokenStyles.error.color=255,0,0
-/instance/de.validas.spedit.NaturalLang/de.validas.spedit.NaturalLang.syntaxColorer.tokenStyles.symbols.color=255,128,64
-/instance/de.validas.spedit.NaturalLang/de.validas.spedit.NaturalLang.syntaxColorer.tokenStyles.url.style=1073741824
-/instance/de.validas.spedit.NaturalLang/ui.editor.markOccurrences=true
-/instance/org.xixum.nlx.model.ui/de.validas.spedit.NaturalLang.templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+/instance/org.xixum.nlx.naturalLang/org.xixum.nlx.naturalLang.syntaxColorer.tokenStyles.email.style=1073741824
+/instance/org.xixum.nlx.naturalLang/org.xixum.nlx.naturalLang.syntaxColorer.tokenStyles.error.color=255,0,0
+/instance/org.xixum.nlx.naturalLang/org.xixum.nlx.naturalLang.syntaxColorer.tokenStyles.symbols.color=255,128,64
+/instance/org.xixum.nlx.naturalLang/org.xixum.nlx.naturalLang.syntaxColorer.tokenStyles.url.style=1073741824
+/instance/org.xixum.nlx.naturalLang/ui.editor.markOccurrences=true
+/instance/org.xixum.nlx.model.ui/org.xixum.nlx.naturalLang.templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 /instance/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
 /instance/org.eclipse.core.resources/version=1
 /instance/org.eclipse.debug.ui/org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<launchPerspectives/>\r\n

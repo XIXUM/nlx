@@ -1,4 +1,4 @@
-package de.validas.spedit.ide.contentassist.antlr.internal;
+package org.xixum.nlx.ide.contentassist.antlr.internal;
 
 import java.io.InputStream;
 import org.eclipse.xtext.*;
@@ -10,7 +10,7 @@ import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
 import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
 import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.DFA;
-import de.validas.spedit.services.NaturalLangGrammarAccess;
+import org.xixum.nlx.services.NaturalLangGrammarAccess;
 
 
 

@@ -22,6 +22,7 @@ import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateLINK_TO;
 import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateNEXT;
 import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicatePREVIOUS;
 import org.xixum.nlx.dictionary.grammar.token.IGrammarItem;
+import org.xixum.utils.data.lists.IAppendable;
 
 @SuppressWarnings("all")
 public class RuleToken extends AbstractPredicatedNodeObj implements IRuleNode, ITokenNode, IPredicateNEXT, IPredicatePREVIOUS, IPredicateENTER_RULE, IPredicateEXTENDS, IPredicateGET, IPredicateLINK_TO {
@@ -68,14 +69,43 @@ public class RuleToken extends AbstractPredicatedNodeObj implements IRuleNode, I
 
   @Override
   public INode next(final INode caller) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field successor is undefined for the type IGrammarItem");
+    INode _xblockexpression = null;
+    {
+      final Function1<INode, Object> _function = (INode e) -> {
+        IGrammarItem _xblockexpression_1 = null;
+        {
+          Object _attribute = ((INode) e).getAttribute(Neo4jConstants._TOKEN);
+          IAppendable _successor = ((IGrammarItem) _attribute).getSuccessor();
+          IGrammarItem next = ((IGrammarItem) _successor);
+          ((INode) e).getDriver().getContext().setAttribute(PredicateConstants.NEXT_, next);
+          _xblockexpression_1 = next;
+        }
+        return _xblockexpression_1;
+      };
+      Function1<INode, Object> preSolve = _function;
+      _xblockexpression = this.wrappedWalker(caller, preSolve, null, null);
+    }
+    return _xblockexpression;
   }
 
   @Override
   public INode previous(final INode caller) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field precessor is undefined for the type IGrammarItem");
+    INode _xblockexpression = null;
+    {
+      final Function1<INode, Object> _function = (INode e) -> {
+        Object _xblockexpression_1 = null;
+        {
+          Object _attribute = ((INode) e).getAttribute(Neo4jConstants._TOKEN);
+          IAppendable _precessor = ((IGrammarItem) _attribute).getPrecessor();
+          IGrammarItem pre = ((IGrammarItem) _precessor);
+          _xblockexpression_1 = ((INode) e).getDriver().getContext().setAttribute(PredicateConstants.PREVIOUS_, pre);
+        }
+        return _xblockexpression_1;
+      };
+      final Function1<INode, Object> preSolve = _function;
+      _xblockexpression = this.wrappedWalker(caller, preSolve, null, null);
+    }
+    return _xblockexpression;
   }
 
   @Override

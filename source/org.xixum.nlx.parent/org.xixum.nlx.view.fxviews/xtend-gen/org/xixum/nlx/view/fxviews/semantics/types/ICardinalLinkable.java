@@ -3,14 +3,17 @@
  */
 package org.xixum.nlx.view.fxviews.semantics.types;
 
+import org.xixum.nlx.view.fxviews.semantics.ILinkable;
+import org.xixum.utils.data.types.XPair;
+
 /**
  * extends ILinkable for cardinal type forwarding
  */
 @SuppressWarnings("all")
-public interface ICardinalLinkable /* extends ILinkable  */{
-  /* ILinkable */Object getBaseType();
+public interface ICardinalLinkable extends ILinkable {
+  ILinkable getBaseType();
 
-  /* XPair<String, ILinkable> */Object getStart();
+  XPair<String, ILinkable> getStart();
 
-  /* XPair<String, ILinkable> */Object getEnd();
+  XPair<String, ILinkable> getEnd();
 }
