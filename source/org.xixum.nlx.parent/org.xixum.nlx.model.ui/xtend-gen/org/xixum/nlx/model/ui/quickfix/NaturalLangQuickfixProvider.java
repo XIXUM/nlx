@@ -4,7 +4,6 @@
 package org.xixum.nlx.model.ui.quickfix;
 
 import com.google.inject.Inject;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -19,20 +18,16 @@ import org.eclipse.ui.texteditor.MarkerAnnotation;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.model.edit.IModification;
 import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
-import org.eclipse.xtext.ui.editor.model.edit.ISemanticModification;
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
 import org.eclipse.xtext.ui.editor.quickfix.Fix;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.ui.editor.quickfix.XtextResourceMarkerAnnotationModel;
 import org.eclipse.xtext.ui.editor.validation.XtextAnnotation;
 import org.eclipse.xtext.validation.Issue;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.Pair;
 import org.xixum.nlx.constants.NaturalLangConstants;
 import org.xixum.nlx.dictionary.IDictionaryAccess;
-import org.xixum.nlx.dictionary.constants.DictionaryConstants;
 import org.xixum.nlx.model.ui.constants.EditorUiConstants;
 import org.xixum.nlx.model.ui.editor.NaturalLangEditor;
 import org.xixum.nlx.model.ui.editor.model.NlxDocument;
@@ -49,20 +44,12 @@ public class NaturalLangQuickfixProvider extends DefaultQuickfixProvider {
   @Inject
   private IDictionaryAccess dictAcc;
 
-  private final List<Map<String, Object>> acceptors = Collections.<Map<String, Object>>unmodifiableList(CollectionLiterals.<Map<String, Object>>newArrayList(Collections.<String, Object>unmodifiableMap(CollectionLiterals.<String, Object>newHashMap(Pair.<String, String>of(EditorUiConstants._LABEL, DictionaryConstants.NOUN_), Pair.<String, String>of(EditorUiConstants._MSG, EditorUiConstants._UI_MSG_NOUN), Pair.<String, NlxDictConstants>of(EditorUiConstants._DATA, NlxDictConstants.NOUN))), Collections.<String, Object>unmodifiableMap(CollectionLiterals.<String, Object>newHashMap(Pair.<String, String>of(EditorUiConstants._LABEL, DictionaryConstants.NAME_), Pair.<String, String>of(EditorUiConstants._MSG, EditorUiConstants._UI_MSG_NAME), Pair.<String, NlxDictConstants>of(EditorUiConstants._DATA, NlxDictConstants.NAME))), Collections.<String, Object>unmodifiableMap(CollectionLiterals.<String, Object>newHashMap(Pair.<String, String>of(EditorUiConstants._LABEL, DictionaryConstants.PRONOUN_), Pair.<String, String>of(EditorUiConstants._MSG, EditorUiConstants._UI_MSG_PRONOUN), Pair.<String, NlxDictConstants>of(EditorUiConstants._DATA, NlxDictConstants.PRONOUN))), Collections.<String, Object>unmodifiableMap(CollectionLiterals.<String, Object>newHashMap(Pair.<String, String>of(EditorUiConstants._LABEL, DictionaryConstants.ARTICLE_), Pair.<String, String>of(EditorUiConstants._MSG, EditorUiConstants._UI_MSG_ARTICLE), Pair.<String, NlxDictConstants>of(EditorUiConstants._DATA, NlxDictConstants.ARTICLE))), Collections.<String, Object>unmodifiableMap(CollectionLiterals.<String, Object>newHashMap(Pair.<String, String>of(EditorUiConstants._LABEL, DictionaryConstants.VERB_), Pair.<String, String>of(EditorUiConstants._MSG, EditorUiConstants._UI_MSG_VERB), Pair.<String, NlxDictConstants>of(EditorUiConstants._DATA, NlxDictConstants.VERB))), Collections.<String, Object>unmodifiableMap(CollectionLiterals.<String, Object>newHashMap(Pair.<String, String>of(EditorUiConstants._LABEL, DictionaryConstants.ADJECTIVE_), Pair.<String, String>of(EditorUiConstants._MSG, EditorUiConstants._UI_MSG_ADJECTIVE), Pair.<String, NlxDictConstants>of(EditorUiConstants._DATA, NlxDictConstants.ADJECTIVE))), Collections.<String, Object>unmodifiableMap(CollectionLiterals.<String, Object>newHashMap(Pair.<String, String>of(EditorUiConstants._LABEL, DictionaryConstants.ADVERB_), Pair.<String, String>of(EditorUiConstants._MSG, EditorUiConstants._UI_MSG_ADVERB), Pair.<String, NlxDictConstants>of(EditorUiConstants._DATA, NlxDictConstants.ADVERB))), Collections.<String, Object>unmodifiableMap(CollectionLiterals.<String, Object>newHashMap(Pair.<String, String>of(EditorUiConstants._LABEL, DictionaryConstants.PREPOSITION_), Pair.<String, String>of(EditorUiConstants._MSG, EditorUiConstants._UI_MSG_PREPOSITION), Pair.<String, NlxDictConstants>of(EditorUiConstants._DATA, NlxDictConstants.PREPOSITION))), Collections.<String, Object>unmodifiableMap(CollectionLiterals.<String, Object>newHashMap(Pair.<String, String>of(EditorUiConstants._LABEL, DictionaryConstants.CONJUNCTION_), Pair.<String, String>of(EditorUiConstants._MSG, EditorUiConstants._UI_MSG_CONJUNCTION), Pair.<String, NlxDictConstants>of(EditorUiConstants._DATA, NlxDictConstants.CONJUNCTION))), Collections.<String, Object>unmodifiableMap(CollectionLiterals.<String, Object>newHashMap(Pair.<String, String>of(EditorUiConstants._LABEL, DictionaryConstants.INTERJECTION_), Pair.<String, String>of(EditorUiConstants._MSG, EditorUiConstants._UI_MSG_INTERJECTION), Pair.<String, NlxDictConstants>of(EditorUiConstants._DATA, NlxDictConstants.INTERJECTION))), Collections.<String, Object>unmodifiableMap(CollectionLiterals.<String, Object>newHashMap(Pair.<String, String>of(EditorUiConstants._LABEL, DictionaryConstants.UNDEFINED_), Pair.<String, String>of(EditorUiConstants._MSG, EditorUiConstants._UI_MSG_UNDEFINED), Pair.<String, NlxDictConstants>of(EditorUiConstants._DATA, NlxDictConstants.SPECIAL_TYPE)))));
+  private final /* List<Map<String, Object>> */Object acceptors /* Skipped initializer because of errors */;
 
   @Fix(NaturalLangConstants._TRAIN_DICT_)
   public void trainDictionary(final Issue issue, final IssueResolutionAcceptor acceptor) {
-    for (final Map<String, Object> accept : this.acceptors) {
-      Object _get = accept.get(EditorUiConstants._LABEL);
-      Object _get_1 = accept.get(EditorUiConstants._MSG);
-      final ISemanticModification _function = (EObject element, IModificationContext context) -> {
-        final IXtextDocument xtextDocument = context.getXtextDocument();
-        Object _get_2 = accept.get(EditorUiConstants._DATA);
-        this.internal_addToDictionary(xtextDocument, element, issue, ((NlxDictConstants) _get_2));
-      };
-      acceptor.accept(issue, ((String) _get), ((String) _get_1), EditorUiConstants._NLX_TRAIN_IMAGE_URL, _function);
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe field NaturalLangQuickfixProvider.acceptors refers to the missing type Object");
   }
 
   public void internal_addToDictionary(final IXtextDocument document, final EObject element, final Issue issue, final NlxDictConstants constant) {
