@@ -1,3 +1,62 @@
+<<<<<<< HEAD:source/de.validas.spedit.iedit.parent/de.validas.nlx.view.fxviews/src/de/validas/nlx/view/fxviews/control/ContainerController.java
+package de.validas.nlx.view.fxviews.control;
+
+import de.validas.nlx.view.fxviews.access.IJavaFxObj;
+import de.validas.nlx.view.fxviews.semantics.util.IDelegates.Procedure2;
+import javafx.event.Event;
+import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
+import javafx.scene.control.Labeled;
+import javafx.scene.control.TitledPane;
+import javafx.scene.input.TransferMode;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+
+public class ContainerController extends AbstractObjController implements IContainerController{
+	
+	@FXML
+	private TitledPane title;
+	@FXML
+	private HBox layoutSpace;
+	@FXML
+	protected Pane linkPane;
+	
+	public ContainerController() {
+		super();
+		hoverMode = (event)-> {
+			event.acceptTransferModes(TransferMode.ANY);
+		};
+	}
+	
+	@Override
+	public Labeled getLabel() {
+		return title;
+	}
+	/**
+	 * @return the layoutSpace
+	 */
+	public Pane getLayoutSpace() {
+		return layoutSpace;
+	}
+	/**
+	 * @return the linkPane
+	 */
+	public Pane getLinkPane() {
+		return linkPane;
+	}
+	@Override
+	public Point2D createAbsolutePos(double sceneX, double sceneY) {
+
+		return new Point2D(sceneX, sceneY);
+	}
+
+	@Override
+	public void addListener(String string, Procedure2<IJavaFxObj, Event> plusButton) {
+		//stub
+	}
+
+}
+=======
 package org.xixum.nlx.view.fxviews.control;
 
 import org.xixum.nlx.view.fxviews.access.IJavaFxObj;
@@ -55,3 +114,4 @@ public class ContainerController extends AbstractObjController implements IConta
 	}
 
 }
+>>>>>>> 28be792edcf63b5c495498de39713fad9b7858d6:source/org.xixum.nlx.parent/org.xixum.nlx.view.fxviews/src/org/xixum/nlx/view/fxviews/control/ContainerController.java

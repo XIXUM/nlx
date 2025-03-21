@@ -1,3 +1,22 @@
+<<<<<<< HEAD:source/de.validas.spedit.iedit.parent/de.validas.spedit.iedit.target/.project
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>de.validas.spedit.iedit.target</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.m2e.core.maven2Nature</nature>
+	</natures>
+</projectDescription>
+=======
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>org.xixum.nlx.model.product</name>
@@ -26,3 +45,4 @@
 		</filter>
 	</filteredResources>
 </projectDescription>
+>>>>>>> 28be792edcf63b5c495498de39713fad9b7858d6:source/org.xixum.nlx.parent/org.xixum.nlx.model.product/.project
