@@ -6,46 +6,54 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.xixum.nlx.constants.Direction;
 import org.xixum.nlx.dictionary.grammar.rules.ImplicitRulesOnDict;
 import org.xixum.nlx.dictionary.type.ITypeAttributes;
+import org.xixum.nlx.dictionary.type.ITypeInfo;
+import org.xixum.nlx.view.fxviews.semantics.ILink;
+import org.xixum.nlx.view.fxviews.semantics.ILinkObj;
+import org.xixum.nlx.view.fxviews.semantics.ILinkType;
+import org.xixum.nlx.view.fxviews.semantics.ILinkable;
+import org.xixum.utils.data.types.XPair;
 
 @SuppressWarnings("all")
-public abstract class AbstractLinkType /* implements ILinkType  */{
+public abstract class AbstractLinkType implements ILinkType {
   protected String name;
 
-  protected /* ILinkable */Object _parent;
+  protected ILinkable _parent;
 
   @Override
-  public ILinkable setParent(final /* ILinkable */Object nodePanel) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field AbstractLinkType._parent refers to the missing type ILinkable");
+  public void setParent(final ILinkable nodePanel) {
+    this._parent = nodePanel;
   }
 
   @Override
-  public CharSequence getNameClamped() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nILink cannot be resolved to a type."
-      + "\nThe method getParent() from the type AbstractLinkType refers to the missing type ILinkable");
+  public String getNameClamped() {
+    String _xifexpression = null;
+    ILinkable _parent = this.getParent();
+    if ((_parent instanceof ILink)) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("(");
+      _builder.append(this.name);
+      _builder.append(")");
+      _xifexpression = _builder.toString();
+    } else {
+      _xifexpression = this.name;
+    }
+    return _xifexpression;
   }
 
   public void createAttributes(final ITypeAttributes dbAttrs) {
     throw new Error("Unresolved compilation problems:"
-      + "\nIJavaFxObj cannot be resolved to a type."
-      + "\nSmallPanelObjController cannot be resolved to a type."
       + "\nVBox cannot be resolved to a type."
       + "\nTitledPane cannot be resolved to a type."
-      + "\nILinkObj cannot be resolved to a type."
       + "\nThe method or field Platform is undefined"
       + "\nThe method or field Platform is undefined"
-      + "\nThe method getParent() from the type AbstractLinkType refers to the missing type ILinkable"
+      + "\nThe method getAttribVBox(Direction) is undefined for the type SmallPanelObjController"
+      + "\nThe method getAccordion(Direction) is undefined for the type SmallPanelObjController"
       + "\nThe method clearAttribBox(Direction) from the type AbstractLinkType refers to the missing type Object"
       + "\nThe method clearAttribBox(Direction) from the type AbstractLinkType refers to the missing type Object"
-      + "\nThe method getParent() from the type AbstractLinkType refers to the missing type ILinkable"
-      + "\nThe method createAttrEntry(Object, Node, Node, Relationship) from the type AttribUtils refers to the missing type Object"
-      + "\ncontroller cannot be resolved"
+      + "\nThe method createAttrEntry(VBox, Node, Node, Relationship) from the type AttribUtils refers to the missing type Object"
       + "\nisFxApplicationThread cannot be resolved"
       + "\n! cannot be resolved"
       + "\nrunLater cannot be resolved"
-      + "\ngetAttribVBox cannot be resolved"
-      + "\ngetAccordion cannot be resolved"
       + "\nvisible cannot be resolved"
       + "\n! cannot be resolved"
       + "\nvisible cannot be resolved");
@@ -53,11 +61,7 @@ public abstract class AbstractLinkType /* implements ILinkType  */{
 
   public Object clearAttribBox(final Direction dir) {
     throw new Error("Unresolved compilation problems:"
-      + "\nIJavaFxObj cannot be resolved to a type."
-      + "\nSmallPanelObjController cannot be resolved to a type."
-      + "\nThe method getParent() from the type AbstractLinkType refers to the missing type ILinkable"
-      + "\ncontroller cannot be resolved"
-      + "\ngetAttribVBox cannot be resolved"
+      + "\nThe method getAttribVBox(Direction) is undefined for the type SmallPanelObjController"
       + "\nchildren cannot be resolved"
       + "\nclear cannot be resolved");
   }
@@ -77,8 +81,7 @@ public abstract class AbstractLinkType /* implements ILinkType  */{
 
   @Override
   public ILinkable getParent() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field AbstractLinkType._parent refers to the missing type ILinkable");
+    return this._parent;
   }
 
   @Override
@@ -91,37 +94,35 @@ public abstract class AbstractLinkType /* implements ILinkType  */{
   }
 
   @Override
-  public Object setSelection(final int selection) {
+  public void setSelection(final int selection) {
+  }
+
+  @Override
+  public HashMap<String, List<ILink>> getLinks() {
     return null;
   }
 
   @Override
-  public /* HashMap<String, List<ILink>> */Object getLinks() {
+  public List<ILink> getSelectedLink() {
     return null;
   }
 
   @Override
-  public /* List<ILink> */Object getSelectedLink() {
+  public void postProcess(final ILinkObj precessor, final List<ITypeAttributes> attribs, final ImplicitRulesOnDict grammar) {
+  }
+
+  @Override
+  public XPair<String, ITypeAttributes> getBaseType() {
     return null;
   }
 
   @Override
-  public Object postProcess(final /* ILinkObj */Object precessor, final List<ITypeAttributes> attribs, final ImplicitRulesOnDict grammar) {
+  public List<XPair<String, ITypeAttributes>> getTypeEls() {
     return null;
   }
 
   @Override
-  public Object getBaseType() {
-    return null;
-  }
-
-  @Override
-  public Object getTypeEls() {
-    return null;
-  }
-
-  @Override
-  public Object getTypeInfo() {
+  public ITypeInfo getTypeInfo() {
     return null;
   }
 }

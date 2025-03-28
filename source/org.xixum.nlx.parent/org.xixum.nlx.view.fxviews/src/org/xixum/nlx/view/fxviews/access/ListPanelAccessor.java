@@ -230,7 +230,7 @@ import org.xixum.nlx.view.fxviews.semantics.ILinkObj;
 import org.xixum.nlx.view.fxviews.semantics.ILinkType;
 import org.xixum.nlx.view.fxviews.semantics.types.LiteralType;
 import org.xixum.nlx.view.fxviews.visual.NodePanel;
-import de.validas.spedit.naturalLang.AllElements;
+import org.xixum.nlx.naturalLang.AllElements;
 import org.xixum.utils.data.lists.LinkedList;
 import org.xixum.utils.data.types.XPair;
 import javafx.beans.value.ChangeListener;

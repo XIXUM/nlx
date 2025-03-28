@@ -223,8 +223,8 @@ import org.xixum.nlx.view.fxviews.semantics.types.CompoundType;
 import org.xixum.nlx.view.fxviews.views.IPanelContainer;
 import org.xixum.nlx.view.fxviews.views.SemanticViewSelector;
 import org.xixum.nlx.view.fxviews.visual.ContainerPanel;
-import de.validas.spedit.naturalLang.AllElements;
-import de.validas.spedit.naturalLang.BracketSentence;
+import org.xixum.nlx.naturalLang.AllElements;
+import org.xixum.nlx.naturalLang.BracketSentence;
 import org.xixum.utils.data.lists.IAppendable;
 
 /**

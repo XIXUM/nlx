@@ -64,9 +64,9 @@ class Intermediate {
 package org.xixum.nlx.view.fxviews.semantics
 
 import org.xixum.nlx.view.fxviews.semantics.types.InterpunctionType
-import de.validas.spedit.naturalLang.BracketSentence
-import de.validas.spedit.naturalLang.ExtBracketSentence
-import de.validas.spedit.naturalLang.impl.WordImpl
+import org.xixum.nlx.naturalLang.BracketSentence
+import org.xixum.nlx.naturalLang.ExtBracketSentence
+import org.xixum.nlx.naturalLang.impl.WordImpl
 import org.eclipse.emf.ecore.EObject
 
 class Intermediate {

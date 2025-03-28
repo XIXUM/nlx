@@ -73,7 +73,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.xixum.nlx.view.fxviews.access.IItem;
 import org.xixum.nlx.view.fxviews.semantics.ILinkable;
 import org.xixum.nlx.view.fxviews.semantics.types.LiteralType;
-import de.validas.spedit.naturalLang.ItWord;
+import org.xixum.nlx.naturalLang.ItWord;
 
 /**
  * @author schaller

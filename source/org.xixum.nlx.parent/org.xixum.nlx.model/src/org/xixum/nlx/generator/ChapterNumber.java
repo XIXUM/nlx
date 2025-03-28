@@ -63,7 +63,7 @@ public class ChapterNumber implements IAppendable {
 /**
  * 
  */
-package de.validas.spedit.generator;
+package org.xixum.nlx.generator;
 
 import org.xixum.utils.data.lists.IAppendable;
 

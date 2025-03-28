@@ -1,4 +1,4 @@
-package de.validas.spedit.util
+package org.xixum.nlx.util
 
 import org.eclipse.emf.edit.EMFEditPlugin
 

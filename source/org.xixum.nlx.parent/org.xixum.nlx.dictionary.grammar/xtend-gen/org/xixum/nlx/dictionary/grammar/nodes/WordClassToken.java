@@ -5,7 +5,6 @@ import org.neo4j.driver.v1.types.Node;
 import org.neo4j.driver.v1.types.Relationship;
 import org.xixum.nlx.ai.IParserDriver;
 import org.xixum.nlx.ai.semantics.INode;
-import org.xixum.nlx.dictionary.constants.PredicateConstants;
 import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateIS;
 import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateLINK_TO;
 import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateOF_CLASS;
@@ -27,11 +26,7 @@ public class WordClassToken extends AbstractPredicatedNodeObj implements IDictNo
   @Override
   public INode is(final INode caller) {
     throw new Error("Unresolved compilation problems:"
-      + "\nThe method getBaseType() from the type IGrammarType refers to the missing type XPair"
-      + "\nkey cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nequals cannot be resolved");
+      + "\nThe method getBaseType() from the type IGrammarType refers to the missing type ITypeAttributes");
   }
 
   @Override
@@ -41,7 +36,7 @@ public class WordClassToken extends AbstractPredicatedNodeObj implements IDictNo
 
   @Override
   public INode linkTo(final INode caller, final Relationship relation, final Function1<? super String, ? extends INode> delegate) {
-    String type = relation.get(PredicateConstants.AS_).asString().toLowerCase();
-    return delegate.apply(type);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe field PredicateConstants.AS_ refers to the missing type Object");
   }
 }

@@ -1,12 +1,16 @@
 package org.xixum.nlx.view.fxviews.semantics;
 
 import java.net.URL;
+import org.xixum.nlx.view.fxviews.access.IJavaFxObj;
+import org.xixum.nlx.view.fxviews.control.ICanvasController;
 import org.xixum.nlx.view.fxviews.control.IContextMenu;
+import org.xixum.nlx.view.fxviews.control.IController;
+import org.xixum.nlx.view.fxviews.control.IDragController;
 import org.xixum.nlx.view.fxviews.control.ILinkController;
 
 @SuppressWarnings("all")
-public class LinkPath /* implements IJavaFxObj  */{
-  private final /* ILink */Object parent;
+public class LinkPath implements IJavaFxObj {
+  private final ILink parent;
 
   private URL resource;
 
@@ -18,45 +22,34 @@ public class LinkPath /* implements IJavaFxObj  */{
 
   private /* FXMLLoader */Object loader;
 
-  protected /* IDragController */Object dragController;
+  protected IDragController dragController;
 
   private IContextMenu contextmenu;
 
-  public LinkPath(final /* ILink */Object parent, final IContextMenu menu) {
+  public LinkPath(final ILink parent, final IContextMenu menu) {
     throw new Error("Unresolved compilation problems:"
       + "\nFXMLLoader cannot be resolved."
+      + "\nThe method or field linkPane is undefined for the type ICanvasController"
       + "\nThe field LinkPath.loader refers to the missing type FXMLLoader"
       + "\nThe field LinkPath.loader refers to the missing type FXMLLoader"
-      + "\nThe field LinkPath.parent refers to the missing type ILink"
-      + "\nThe field LinkPath.dragController refers to the missing type IDragController"
       + "\nThe field LinkPath.linkPane refers to the missing type Pane"
-      + "\nThe method getCanvasController() from the type LinkPath refers to the missing type ICanvasController"
-      + "\nsetClassLoader cannot be resolved"
-      + "\ncanvas cannot be resolved"
-      + "\nfxClassLoader cannot be resolved"
-      + "\ndragController cannot be resolved"
-      + "\nlinkPane cannot be resolved");
+      + "\nsetClassLoader cannot be resolved");
   }
 
   @Override
   public ICanvasController getCanvasController() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nICanvasController cannot be resolved to a type."
-      + "\nThe field LinkPath.parent refers to the missing type ILink"
-      + "\ncanvas cannot be resolved"
-      + "\ncontroller cannot be resolved");
+    IController _controller = this.parent.getCanvas().getController();
+    return ((ICanvasController) _controller);
   }
 
   @Override
   public IController getController() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nIController cannot be resolved to a type.");
+    return ((IController) this.controller);
   }
 
   @Override
-  public ILink getParent() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field LinkPath.parent refers to the missing type ILink");
+  public Object getParent() {
+    return this.parent;
   }
 
   public Shape getContainer() {
@@ -74,10 +67,6 @@ public class LinkPath /* implements IJavaFxObj  */{
       + "\nThe field LinkPath.shape refers to the missing type Shape"
       + "\nThe field LinkPath.loader refers to the missing type FXMLLoader"
       + "\nThe field LinkPath.loader refers to the missing type FXMLLoader"
-      + "\nThe method addDragController(IDragController) from the type ILinkController refers to the missing type IDragController"
-      + "\nThe field LinkPath.dragController refers to the missing type IDragController"
-      + "\nThe method setParent(IJavaFxObj) from the type ILinkController refers to the missing type IJavaFxObj"
-      + "\nThe field LinkPath.parent refers to the missing type ILink"
       + "\nThe method getContainer() from the type LinkPath refers to the missing type Shape"
       + "\nThe field LinkPath.shape refers to the missing type Shape"
       + "\nThe field LinkPath.shape refers to the missing type Shape"
@@ -87,9 +76,6 @@ public class LinkPath /* implements IJavaFxObj  */{
       + "\n=== cannot be resolved"
       + "\nload cannot be resolved"
       + "\ngetController cannot be resolved"
-      + "\nstyle cannot be resolved"
-      + "\nclasses cannot be resolved"
-      + "\n!== cannot be resolved"
       + "\ngetStyleClass cannot be resolved"
       + "\nclear cannot be resolved"
       + "\naddAll cannot be resolved"

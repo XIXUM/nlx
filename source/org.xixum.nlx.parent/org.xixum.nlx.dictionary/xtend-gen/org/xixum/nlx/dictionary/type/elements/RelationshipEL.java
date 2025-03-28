@@ -1,21 +1,16 @@
 package org.xixum.nlx.dictionary.type.elements;
 
-import java.util.Map;
-import org.eclipse.xtend2.lib.StringConcatenation;
-import org.neo4j.driver.v1.types.Relationship;
-
 @SuppressWarnings("all")
 public class RelationshipEL extends NetworkEL implements IRelationshipEL {
-  private Relationship relation;
+  private /* Relationship */Object relation;
 
   private INodeEL startN;
 
   private INodeEL endN;
 
-  private RelationshipEL(final INodeEL start, final INodeEL end, final Relationship rel) {
-    this.startN = start;
-    this.endN = end;
-    this.relation = rel;
+  private RelationshipEL(final INodeEL start, final INodeEL end, final /* Relationship */Object rel) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe field RelationshipEL.relation refers to the missing type Relationship");
   }
 
   @Override
@@ -29,30 +24,21 @@ public class RelationshipEL extends NetworkEL implements IRelationshipEL {
   }
 
   @Override
-  public Relationship getRelationship() {
-    return this.relation;
+  public /* Relationship */Object getRelationship() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe field RelationshipEL.relation refers to the missing type Relationship");
   }
 
-  public static IRelationshipEL create(final INodeEL start, final INodeEL end, final Relationship rel) {
-    RelationshipEL _xblockexpression = null;
-    {
-      RelationshipEL instance = new RelationshipEL(start, end, rel);
-      INodeEL _start = instance.getStart();
-      if (_start!=null) {
-        _start.addRel(instance);
-      }
-      INodeEL _end = instance.getEnd();
-      if (_end!=null) {
-        _end.addRel(instance);
-      }
-      _xblockexpression = instance;
-    }
-    return _xblockexpression;
+  public static IRelationshipEL create(final INodeEL start, final INodeEL end, final /* Relationship */Object rel) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe constructor RelationshipEL(INodeEL, INodeEL, Relationship) refers to the missing type Relationship");
   }
 
   @Override
   public long getID() {
-    return this.relation.id();
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe field RelationshipEL.relation refers to the missing type Relationship"
+      + "\nid cannot be resolved");
   }
 
   @Override
@@ -86,12 +72,10 @@ public class RelationshipEL extends NetworkEL implements IRelationshipEL {
 
   @Override
   public String toString() {
-    StringConcatenation _builder = new StringConcatenation();
-    String _type = this.relation.type();
-    _builder.append(_type);
-    _builder.append(" | ");
-    Map<String, Object> _asMap = this.relation.asMap();
-    _builder.append(_asMap);
-    return _builder.toString();
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe field RelationshipEL.relation refers to the missing type Relationship"
+      + "\nThe field RelationshipEL.relation refers to the missing type Relationship"
+      + "\ntype cannot be resolved"
+      + "\nasMap cannot be resolved");
   }
 }

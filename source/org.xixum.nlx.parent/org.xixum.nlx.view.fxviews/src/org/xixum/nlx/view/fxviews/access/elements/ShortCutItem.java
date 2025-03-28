@@ -233,8 +233,8 @@ import org.xixum.nlx.view.fxviews.semantics.types.LiteralType;
 import org.xixum.nlx.view.fxviews.semantics.types.TypeElement;
 import org.xixum.nlx.view.fxviews.semantics.types.WordType;
 import org.xixum.nlx.view.fxviews.visual.NodePanel;
-import de.validas.spedit.naturalLang.EString;
-import de.validas.spedit.naturalLang.ShortCut;
+import org.xixum.nlx.naturalLang.EString;
+import org.xixum.nlx.naturalLang.ShortCut;
 import org.xixum.utils.data.lists.IAppendable;
 import org.xixum.utils.data.types.XPair;
 import javafx.scene.Node;
@@ -263,7 +263,7 @@ public class ShortCutItem extends TypedItem { // TODO differentiate Items by der
 
 	/**
 	 * Duplicate Method from:
-	 * de.validas.spedit.validation.NaturalLangValidator.checkWordIsInDict(Elements)
+	 * org.xixum.nlxvalidation.NaturalLangValidator.checkWordIsInDict(Elements)
 	 * 
 	 * @param name
 	 * @return

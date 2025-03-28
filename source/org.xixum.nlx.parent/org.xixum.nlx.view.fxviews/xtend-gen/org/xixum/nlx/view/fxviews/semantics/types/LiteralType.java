@@ -1,12 +1,13 @@
 package org.xixum.nlx.view.fxviews.semantics.types;
 
 import org.xixum.nlx.dictionary.grammar.token.IGrammarLiteral;
+import org.xixum.nlx.view.fxviews.semantics.ILinkable;
 
 @SuppressWarnings("all")
 public class LiteralType extends AbstractLinkType implements IGrammarLiteral {
-  public LiteralType(final String name, final /* ILinkable */Object parent) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method setParent(ILinkable) from the type AbstractLinkType refers to the missing type ILinkable");
+  public LiteralType(final String name, final ILinkable parent) {
+    this.name = name;
+    this.setParent(parent);
   }
 
   public /* Node */Object getRoot() {

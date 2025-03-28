@@ -22,10 +22,6 @@ public class ClassNode extends AbstractPredicatedNodeObj implements IPredicateIS
   @Override
   public INode is(final INode caller) {
     throw new Error("Unresolved compilation problems:"
-      + "\nThe method getBaseType() from the type IGrammarType refers to the missing type XPair"
-      + "\nkey cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nequals cannot be resolved");
+      + "\nThe method getBaseType() from the type IGrammarType refers to the missing type ITypeAttributes");
   }
 }

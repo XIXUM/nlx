@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.types.Node;
-import org.xixum.nlx.ai.IFunction1;
 import org.xixum.nlx.ai.IParserDriver;
 import org.xixum.nlx.constants.Direction;
 
@@ -46,7 +45,7 @@ public interface INode {
 
   void setFilter(final String filter);
 
-  INode findNodeAndCreateTarget(final String string, final IFunction1<Object, ?> delegate);
+  INode findNodeAndCreateTarget(final String string, final /* IFunction1<Object, ?> */Object delegate);
 
   List<Node> findNodeTypeByName(final String type, final String name);
 

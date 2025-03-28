@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.validas.spedit.presets;
+package org.xixum.nlx.presets;
 
 import java.util.ArrayList;
 import java.util.Arrays;

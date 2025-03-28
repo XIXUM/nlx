@@ -1,7 +1,5 @@
 package org.xixum.nlx.dictionary.grammar.nodes;
 
-import java.util.List;
-import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.types.Node;
 import org.xixum.nlx.ai.IParserDriver;
 import org.xixum.nlx.ai.semantics.INode;
@@ -17,15 +15,7 @@ public class BoolOrConditionNode extends ConditionNode {
 
   @Override
   public INode solve() {
-    if ((this.predicates == null)) {
-      List<Record> outs = this.listAllOutputs();
-      this.createPredicates(outs);
-    }
-    INode result = this.doExecuteTypes(this.connections, BoolOrConditionNode.boolOr);
-    if ((result instanceof IDictNode)) {
-      return result;
-    } else {
-      return null;
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe field AbstractDictRuleObj.predicates refers to the missing type IPredicate");
   }
 }
