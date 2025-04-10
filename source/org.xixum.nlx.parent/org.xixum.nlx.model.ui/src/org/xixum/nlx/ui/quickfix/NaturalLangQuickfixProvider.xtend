@@ -8,7 +8,7 @@ import org.xixum.nlx.dictionary.IDictionaryAccess
 import org.xixum.nlx.model.constants.NaturalLangConstants
 import org.xixum.nlx.model.presets.NlxDictConstants
 import org.xixum.nlx.model.ui.editor.model.NlxDocument
-import de.validas.utils.data.util.ClassUtil
+import org.xixum.utils.data.util.ClassUtil
 import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.jface.text.IDocumentListener

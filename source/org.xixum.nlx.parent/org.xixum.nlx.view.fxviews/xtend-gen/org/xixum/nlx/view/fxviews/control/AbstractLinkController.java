@@ -1,3 +1,7 @@
+/**
+ * (c) XIXUM.ORG - all rights reserved
+ * @author felix.schaller
+ */
 package org.xixum.nlx.view.fxviews.control;
 
 import org.xixum.nlx.view.fxviews.semantics.ILinkable;

@@ -1,4 +1,7 @@
 /**
+ * (c) XIXUM.ORG - all rights reserved
+ * @author felix.schaller
+ * 
  * Node Cache Manager is a interface between Client and Database to cache Inquiries to database to speed up and to avoid calling for redundant calls on the database
  * it acts as a invisible layer between and filters out redundant calls, attempting to query data only once unless modified on the DB.
  */

@@ -4,6 +4,8 @@ import org.neo4j.driver.v1.types.Node;
 import org.neo4j.driver.v1.types.Relationship;
 import org.xixum.nlx.ai.IParserDriver;
 import org.xixum.nlx.ai.semantics.INode;
+import org.xixum.nlx.constants.Neo4jConstants;
+import org.xixum.nlx.dictionary.constants.PredicateConstants;
 import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateGET_NAME;
 
 @SuppressWarnings("all")
@@ -14,7 +16,11 @@ public abstract class AbstractPredicatedNodeObj extends AbstractDictRuleObj impl
 
   @Override
   public INode getName(final INode caller, final Relationship relation) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field PredicateConstants.GET_NAME_ refers to the missing type Object");
+    Object _xblockexpression = null;
+    {
+      caller.setAttribute(PredicateConstants.GET_NAME_, this.getAttribute(Neo4jConstants._ATTR_NAME));
+      _xblockexpression = null;
+    }
+    return ((INode)_xblockexpression);
   }
 }

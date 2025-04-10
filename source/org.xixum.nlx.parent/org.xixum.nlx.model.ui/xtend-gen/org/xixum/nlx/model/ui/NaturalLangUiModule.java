@@ -44,7 +44,6 @@ import org.xixum.nlx.model.ui.highlighting.NlxTokenToAttributeMapper;
 import org.xixum.nlx.model.ui.outline.NlxOutlinePage;
 import org.xixum.nlx.naturalLang.provider.NaturalLangItemProviderAdapterFactory;
 import org.xixum.nlx.naturalLang.util.NaturalLangAdapterFactory;
-import org.xixum.nlx.ui.quickfix.NlxQuickAssistProcessor;
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
@@ -120,7 +119,8 @@ public class NaturalLangUiModule extends AbstractNaturalLangUiModule {
   }
 
   public Class<? extends XtextQuickAssistProcessor> bindXtextQuickAssistProcessor() {
-    return NlxQuickAssistProcessor.class;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field NlxQuickAssistProcessor is undefined");
   }
 
   @Override
@@ -134,6 +134,7 @@ public class NaturalLangUiModule extends AbstractNaturalLangUiModule {
   }
 
   public NaturalLangUiModule(final AbstractUIPlugin plugin) {
-    super(plugin);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe type NaturalLangUiModule is already defined in NaturalLangUiModule.xtend.");
   }
 }

@@ -1,9 +1,12 @@
 package org.xixum.nlx.dictionary.grammar.nodes;
 
+import java.util.List;
+import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.types.Node;
 import org.xixum.nlx.ai.IParserDriver;
 import org.xixum.nlx.ai.semantics.INode;
 import org.xixum.nlx.constants.Neo4jConstants;
+import org.xixum.nlx.dictionary.constants.PredicateConstants;
 import org.xixum.nlx.dictionary.grammar.bool.BoolOr;
 import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateEQUALS;
 import org.xixum.nlx.dictionary.grammar.nodes.interfaces.IPredicateTARGET;
@@ -33,12 +36,18 @@ public class WordToken extends AbstractDictRuleObj implements IDictNode, IPredic
 
   @Override
   public INode solve() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field AbstractDictRuleObj.predicates refers to the missing type IPredicate"
-      + "\nThe method doExecuteType(String, BoolOp, List<IPredicate>) from the type AbstractDictRuleObj refers to the missing type IPredicate"
-      + "\nThe field PredicateConstants.OF_CLASS_ refers to the missing type Object"
-      + "\nThe field AbstractDictRuleObj.predicates refers to the missing type IPredicate"
-      + "\nThe field PredicateConstants.OF_CLASS_ refers to the missing type Object");
+    Object _xblockexpression = null;
+    {
+      if ((this.predicates == null)) {
+        List<Record> outs = this.listAllOutputs();
+        this.createPredicates(outs);
+      }
+      if ((this.wordClass == null)) {
+        this.wordClass = this.doExecuteType(PredicateConstants.OF_CLASS_, WordToken.boolOr, this.predicates.get(PredicateConstants.OF_CLASS_));
+      }
+      _xblockexpression = null;
+    }
+    return ((INode)_xblockexpression);
   }
 
   @Override
@@ -63,7 +72,14 @@ public class WordToken extends AbstractDictRuleObj implements IDictNode, IPredic
 
   @Override
   public INode target(final INode caller) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field PredicateConstants.TARGET_ refers to the missing type Object");
+    INode _xblockexpression = null;
+    {
+      INode result = this.equals(caller);
+      if ((result != null)) {
+        this.driver.getContext().setAttribute(PredicateConstants.TARGET_, result);
+      }
+      _xblockexpression = result;
+    }
+    return _xblockexpression;
   }
 }

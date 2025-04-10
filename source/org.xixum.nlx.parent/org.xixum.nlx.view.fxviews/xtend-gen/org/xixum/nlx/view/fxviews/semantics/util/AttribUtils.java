@@ -1,3 +1,7 @@
+/**
+ * (c) XIXUM.ORG - all rights reserved
+ * @author felix.schaller
+ */
 package org.xixum.nlx.view.fxviews.semantics.util;
 
 import org.neo4j.driver.v1.types.Node;

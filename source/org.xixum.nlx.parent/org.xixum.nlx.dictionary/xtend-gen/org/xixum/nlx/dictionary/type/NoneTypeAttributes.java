@@ -2,6 +2,7 @@ package org.xixum.nlx.dictionary.type;
 
 import java.util.Collection;
 import java.util.List;
+import org.neo4j.driver.v1.types.Node;
 import org.xixum.nlx.dictionary.type.elements.INodeEL;
 import org.xixum.nlx.dictionary.type.elements.IRelationshipEL;
 
@@ -18,12 +19,12 @@ public class NoneTypeAttributes implements ITypeAttributes {
   }
 
   @Override
-  public /* List<Node> */Object getSource() {
+  public List<Node> getSource() {
     return null;
   }
 
   @Override
-  public /* List<Node> */Object getTarget() {
+  public List<Node> getTarget() {
     return null;
   }
 

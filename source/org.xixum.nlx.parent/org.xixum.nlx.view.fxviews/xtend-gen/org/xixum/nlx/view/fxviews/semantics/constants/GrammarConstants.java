@@ -1,5 +1,5 @@
 /**
- * (c) 2021 felixschaller.com
+ * (c) 20256 XIXIUM.ORG
  * this class is created separately to FxViewConstants due to the intention later separate semantic logic from view
  */
 package org.xixum.nlx.view.fxviews.semantics.constants;

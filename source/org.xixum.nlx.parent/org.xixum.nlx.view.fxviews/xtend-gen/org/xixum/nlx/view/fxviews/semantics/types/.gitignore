@@ -1,0 +1,14 @@
+/AbstractGrammarType.java
+/AbstractLinkType.java
+/CardinalType.java
+/CompoundType.java
+/ForwardType.java
+/ICardinalLinkable.java
+/IForwardLinkable.java
+/ITypeElement.java
+/InterpunctionType.java
+/LiteralType.java
+/TypeElement.java
+/UnitType.java
+/WebType.java
+/WordType.java

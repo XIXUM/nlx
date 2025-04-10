@@ -1,4 +1,6 @@
 /**
+ * (c) XIXUM.ORG - all rights reserved
+ * 
  * @author: Felix Schaller
  */
 package org.xixum.nlx.view.fxviews.semantics.types;

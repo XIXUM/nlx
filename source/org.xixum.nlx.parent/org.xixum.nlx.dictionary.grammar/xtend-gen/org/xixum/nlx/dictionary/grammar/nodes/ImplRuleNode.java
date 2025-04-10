@@ -1,9 +1,12 @@
 package org.xixum.nlx.dictionary.grammar.nodes;
 
+import java.util.List;
+import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.types.Node;
 import org.xixum.nlx.ai.IParserDriver;
 import org.xixum.nlx.ai.semantics.INode;
 import org.xixum.nlx.constants.Neo4jConstants;
+import org.xixum.nlx.dictionary.constants.PredicateConstants;
 import org.xixum.nlx.dictionary.grammar.bool.BoolOr;
 import org.xixum.utils.data.lists.IAppendable;
 
@@ -23,16 +26,17 @@ public class ImplRuleNode extends AbstractDictRuleObj implements IRuleNode {
 
   @Override
   public INode solve() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field AbstractDictRuleObj.predicates refers to the missing type IPredicate"
-      + "\nThe method doExecuteType(String, BoolOp, List<IPredicate>) from the type AbstractDictRuleObj refers to the missing type IPredicate"
-      + "\nThe field PredicateConstants.ENTER_RULE_ refers to the missing type Object"
-      + "\nThe field AbstractDictRuleObj.predicates refers to the missing type IPredicate"
-      + "\nThe field PredicateConstants.ENTER_RULE_ refers to the missing type Object"
-      + "\nThe method doExecuteType(String, BoolOp, List<IPredicate>) from the type AbstractDictRuleObj refers to the missing type IPredicate"
-      + "\nThe field PredicateConstants.DO_ refers to the missing type Object"
-      + "\nThe field AbstractDictRuleObj.predicates refers to the missing type IPredicate"
-      + "\nThe field PredicateConstants.DO_ refers to the missing type Object");
+    if ((this.predicates == null)) {
+      List<Record> outs = this.listAllOutputs();
+      this.createPredicates(outs);
+    }
+    this.setResult(this.doExecuteType(PredicateConstants.ENTER_RULE_, ImplRuleNode.boolOr, this.predicates.get(PredicateConstants.ENTER_RULE_)));
+    INode _result = this.getResult();
+    boolean _tripleNotEquals = (_result != null);
+    if (_tripleNotEquals) {
+      return this.doExecuteType(PredicateConstants.DO_, ImplRuleNode.boolOr, this.predicates.get(PredicateConstants.DO_));
+    }
+    return null;
   }
 
   public INode setResult(final INode node) {

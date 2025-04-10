@@ -2,21 +2,22 @@ package org.xixum.nlx.dictionary.type;
 
 import java.util.Collection;
 import java.util.List;
+import org.neo4j.driver.v1.types.Node;
 import org.xixum.nlx.dictionary.type.elements.INodeEL;
 import org.xixum.nlx.dictionary.type.elements.IRelationshipEL;
 
 @SuppressWarnings("all")
 public interface ITypeAttributes {
-  /* Node */Object getBaseNode();
+  Node getBaseNode();
 
   @Deprecated
   Object getAttrs();
 
   @Deprecated
-  /* List<Node> */Object getSource();
+  List<Node> getSource();
 
   @Deprecated
-  /* List<Node> */Object getTarget();
+  List<Node> getTarget();
 
   void merge(final ITypeAttributes attributes);
 

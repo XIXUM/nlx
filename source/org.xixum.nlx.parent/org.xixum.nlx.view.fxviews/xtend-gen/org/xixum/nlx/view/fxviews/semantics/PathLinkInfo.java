@@ -1,5 +1,5 @@
 /**
- * (c)2022 felixschaller.com
+ * (c)2025 xixum.org
  */
 package org.xixum.nlx.view.fxviews.semantics;
 

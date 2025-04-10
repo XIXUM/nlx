@@ -6,6 +6,8 @@
  */
 package org.xixum.nlx.dictionary.grammar.nodes;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,14 +15,21 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.neo4j.driver.internal.value.NodeValue;
+import org.neo4j.driver.internal.value.RelationshipValue;
 import org.neo4j.driver.v1.Record;
+import org.neo4j.driver.v1.Value;
 import org.neo4j.driver.v1.types.Node;
+import org.xixum.nlx.ai.IFunction1;
 import org.xixum.nlx.ai.IParserDriver;
 import org.xixum.nlx.ai.neo4j.Neo4jAccess;
 import org.xixum.nlx.ai.semantics.INode;
+import org.xixum.nlx.ai.semantics.IPredicate;
+import org.xixum.nlx.ai.util.Arrow;
 import org.xixum.nlx.ai.util.NodeUtil;
 import org.xixum.nlx.constants.Direction;
 import org.xixum.nlx.constants.Neo4jConstants;
+import org.xixum.nlx.dictionary.constants.NodeConstants;
 import org.xixum.nlx.dictionary.grammar.bool.BoolOp;
 import org.xixum.nlx.dictionary.grammar.token.IGrammarItem;
 
@@ -36,7 +45,7 @@ public abstract class AbstractDictRuleObj extends AbstractNode implements INode 
 
   protected IParserDriver driver;
 
-  protected /* Map<String, List<IPredicate>> */Object predicates;
+  protected Map<String, List<IPredicate>> predicates;
 
   protected List<String> negativeFilter;
 
@@ -251,9 +260,26 @@ public abstract class AbstractDictRuleObj extends AbstractNode implements INode 
   }
 
   @Override
-  public INode findNodeAndCreateTarget(final String string, final /* IFunction1<Object, ?> */Object delegate) {
-    throw new Error("Unresolved compilation problems:"
-      + "\napply cannot be resolved");
+  public INode findNodeAndCreateTarget(final String string, final IFunction1<Object, ?> delegate) {
+    INode _xblockexpression = null;
+    {
+      Object result = delegate.apply(string);
+      INode _xifexpression = null;
+      if ((result instanceof List)) {
+        INode _xblockexpression_1 = null;
+        {
+          List<Node> nodes = ((List<Node>)result);
+          INode _xifexpression_1 = null;
+          if (((nodes != null) && (!nodes.isEmpty()))) {
+            _xifexpression_1 = this.driver.getNodeById(nodes.get(0));
+          }
+          _xblockexpression_1 = _xifexpression_1;
+        }
+        _xifexpression = _xblockexpression_1;
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
 
   @Override
@@ -282,37 +308,133 @@ public abstract class AbstractDictRuleObj extends AbstractNode implements INode 
 
   @Override
   public List<Node> findLinkedNodeByName(final String string, final String linkType, final Direction dir) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nArrow cannot be resolved."
-      + "\ngenerate cannot be resolved");
+    List<Node> _xblockexpression = null;
+    {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("MATCH (");
+      _builder.append(Neo4jConstants._NODE);
+      _builder.append(":");
+      _builder.append(this.label);
+      _builder.append(" {");
+      _builder.append(Neo4jConstants._ATTR_NAME);
+      _builder.append(":\"");
+      Object _get = this.attributes.get(Neo4jConstants._ATTR_NAME.toString());
+      _builder.append(_get);
+      _builder.append("\"})");
+      CharSequence _generate = new Arrow(null, linkType, dir).generate();
+      _builder.append(_generate);
+      _builder.append("(");
+      _builder.append(Neo4jConstants._TARGET);
+      _builder.append(" {");
+      _builder.append(Neo4jConstants._ATTR_NAME);
+      _builder.append(": \"");
+      _builder.append(string);
+      _builder.append("\"})");
+      _builder.newLineIfNotEmpty();
+      _builder.append("WHERE ID(");
+      _builder.append(Neo4jConstants._NODE);
+      _builder.append(") = ");
+      _builder.append(this.ID);
+      _builder.newLineIfNotEmpty();
+      _builder.append("RETURN ");
+      _builder.append(Neo4jConstants._TARGET);
+      final String query = _builder.toString();
+      final List<Record> records = this.driver.getDbAccessor().runCodeRecords(query, Neo4jAccess.Action.READ);
+      _xblockexpression = NodeUtil.recordsToNode(records, Neo4jConstants._TARGET);
+    }
+    return _xblockexpression;
   }
 
   protected void createPredicates(final List<Record> outs) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field AbstractDictRuleObj.predicates refers to the missing type IPredicate"
-      + "\nThe method getPredicateFactory() from the type IParserDriver refers to the missing type Object"
-      + "\nThe field AbstractDictRuleObj.predicates refers to the missing type IPredicate"
-      + "\nThe field AbstractDictRuleObj.predicates refers to the missing type IPredicate"
-      + "\ncreate cannot be resolved"
-      + "\n!== cannot be resolved");
+    this.predicates = CollectionLiterals.<String, List<IPredicate>>newHashMap();
+    for (final Record record : outs) {
+      {
+        Value _get = record.get(Neo4jConstants._LINK.toString());
+        RelationshipValue rel = ((RelationshipValue) _get);
+        Value _get_1 = record.get(Neo4jConstants._TARGET);
+        IPredicate predicate = this.driver.getPredicateFactory().create(rel, this, 
+          this.driver.getNodeById(((NodeValue) _get_1).asNode()));
+        String type = rel.asRelationship().type().toLowerCase();
+        if ((predicate != null)) {
+          List<IPredicate> result = this.predicates.get(type);
+          if ((result == null)) {
+            ArrayList<IPredicate> _arrayList = new ArrayList<IPredicate>();
+            result = _arrayList;
+          }
+          result.add(predicate);
+          this.predicates.put(type, result);
+        }
+      }
+    }
   }
 
   protected INode doExecuteTypes(final List<String> types, final BoolOp boolOp) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field AbstractDictRuleObj.predicates refers to the missing type IPredicate"
-      + "\nThe method doExecuteType(String, BoolOp, List<IPredicate>) from the type AbstractDictRuleObj refers to the missing type IPredicate");
+    INode _xblockexpression = null;
+    {
+      INode result = null;
+      for (final String connection : types) {
+        {
+          List<IPredicate> type = this.predicates.get(connection);
+          if (((type != null) && (!type.isEmpty()))) {
+            result = this.doExecuteType(connection, boolOp, type);
+            if ((result != null)) {
+              this.setAttribute(connection, result);
+            }
+            boolean _isTrue = boolOp.isTrue(result);
+            if (_isTrue) {
+              return boolOp.returnIntermediate(result);
+            }
+          }
+        }
+      }
+      _xblockexpression = boolOp.returnFinal(result);
+    }
+    return _xblockexpression;
   }
 
-  protected INode doExecuteType(final String type, final BoolOp boolOp, final /* List<IPredicate> */Object connections) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nexecute cannot be resolved");
+  protected INode doExecuteType(final String type, final BoolOp boolOp, final List<IPredicate> connections) {
+    INode _xblockexpression = null;
+    {
+      INode result = null;
+      if (((this.negativeFilter != null) && this.negativeFilter.contains(type))) {
+        return null;
+      }
+      List<IPredicate> _elvis = null;
+      if (connections != null) {
+        _elvis = connections;
+      } else {
+        List<IPredicate> _emptyList = Collections.<IPredicate>emptyList();
+        _elvis = _emptyList;
+      }
+      for (final IPredicate predicate : _elvis) {
+        {
+          result = predicate.execute();
+          boolean _isTrue = boolOp.isTrue(result);
+          if (_isTrue) {
+            return boolOp.returnIntermediate(result);
+          }
+        }
+      }
+      _xblockexpression = boolOp.returnFinal(result);
+    }
+    return _xblockexpression;
   }
 
   @Override
   public void setFilter(final String filter) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field _KOMMA_SEP_FILTER is undefined"
-      + "\nThe method or field _NEGATIVE_FILTER is undefined");
+    ArrayList<String> _arrayList = new ArrayList<String>();
+    this.negativeFilter = _arrayList;
+    ArrayList<String> _arrayList_1 = new ArrayList<String>();
+    this.positiveFilter = _arrayList_1;
+    String[] _split = filter.split(NodeConstants._KOMMA_SEP_FILTER);
+    for (final String element : _split) {
+      boolean _startsWith = element.startsWith(NodeConstants._NEGATIVE_FILTER);
+      if (_startsWith) {
+        this.negativeFilter.add(element.substring(1));
+      } else {
+        this.positiveFilter.add(element);
+      }
+    }
   }
 
   public INode executeQuery(final String query, final IParserDriver driver) {

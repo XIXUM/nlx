@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.builder.debug.IBuildLogger;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.types.Node;
 import org.xixum.nlx.ai.neo4j.Neo4jAccess;
@@ -15,7 +16,7 @@ import org.xixum.nlx.constants.Neo4jConstants;
 public class ParserDriver implements IParserDriver {
   private IDbAccess dbAccess;
 
-  private /* IPredicateFactory */Object predicateFactory;
+  private IPredicateFactory predicateFactory;
 
   private INodeFactory nodeFactory;
 
@@ -27,9 +28,14 @@ public class ParserDriver implements IParserDriver {
 
   private HashMap<Long, INode> nodeCache;
 
-  public ParserDriver(final IDbAccess access, final INodeFactory factory, final /* IPredicateFactory */Object factory2, final IContextFactory factory3, final IBuildLogger logger) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field ParserDriver.predicateFactory refers to the missing type IPredicateFactory");
+  public ParserDriver(final IDbAccess access, final INodeFactory factory, final IPredicateFactory factory2, final IContextFactory factory3, final IBuildLogger logger) {
+    this.dbAccess = access;
+    this.nodeFactory = factory;
+    this.predicateFactory = factory2;
+    this.contextFactory = factory3;
+    this.nodeCache = CollectionLiterals.<Long, INode>newHashMap();
+    this.innerContext = this.newContext();
+    this.logger = logger;
   }
 
   @Override
@@ -43,15 +49,13 @@ public class ParserDriver implements IParserDriver {
   }
 
   @Override
-  public void setPredicateFactory(final /* IPredicateFactory */Object factory) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field ParserDriver.predicateFactory refers to the missing type IPredicateFactory");
+  public void setPredicateFactory(final IPredicateFactory factory) {
+    this.predicateFactory = factory;
   }
 
   @Override
   public IPredicateFactory getPredicateFactory() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field ParserDriver.predicateFactory refers to the missing type IPredicateFactory");
+    return this.predicateFactory;
   }
 
   @Override
@@ -137,9 +141,10 @@ public class ParserDriver implements IParserDriver {
 
   @Override
   public IParserDriver newCache() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe constructor ParserDriver(IDbAccess, INodeFactory, IPredicateFactory, IContextFactory, IBuildLogger) refers to the missing type IPredicateFactory"
-      + "\nThe field ParserDriver.predicateFactory refers to the missing type IPredicateFactory");
+    ParserDriver returnDriver = new ParserDriver(this.dbAccess, this.nodeFactory, this.predicateFactory, this.contextFactory, this.logger);
+    returnDriver.nodeCache = CollectionLiterals.<Long, INode>newHashMap();
+    returnDriver.setContext(returnDriver.newContext());
+    return returnDriver;
   }
 
   @Override
