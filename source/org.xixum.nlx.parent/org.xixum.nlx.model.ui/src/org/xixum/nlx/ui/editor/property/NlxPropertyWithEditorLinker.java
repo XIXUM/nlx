@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.validas.spedit.ui.editor.property;
+package org.xixum.nlx.model.ui.editor.property;
 
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.util.IPropertyChangeListener;

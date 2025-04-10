@@ -29,7 +29,7 @@ class ServerLauncher {
 				new WebInfConfiguration,
 				new MetaInfConfiguration
 			]
-			setAttribute(WebInfConfiguration.CONTAINER_JAR_PATTERN, '.*/de\\.validas\\.spedit\\.iedit\\.web/.*,.*\\.jar')
+			setAttribute(WebInfConfiguration.CONTAINER_JAR_PATTERN, '.*/org\\.xixum\\.nlx\\.model\\.web/.*,.*\\.jar')
 			setInitParameter("org.mortbay.jetty.servlet.Default.useFileMappedBuffer", "false")
 		]
 		val log = new Slf4jLog(ServerLauncher.name)

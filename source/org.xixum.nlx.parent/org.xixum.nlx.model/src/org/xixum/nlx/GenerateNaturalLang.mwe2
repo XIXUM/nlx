@@ -1,4 +1,4 @@
-module de.validas.spedit.GenerateNaturalLang
+module org.xixum.nlx.model.GenerateNaturalLang
 
 import org.eclipse.xtext.xtext.generator.*
 import org.eclipse.xtext.xtext.generator.model.project.*
@@ -10,7 +10,7 @@ Workflow {
 	component = XtextGenerator {
 		configuration = {
 			project = StandardProjectConfig {
-				baseName = "de.validas.spedit.iedit"
+				baseName = "org.xixum.nlx.model"
 				rootPath = rootPath
 				runtimeTest = {
 					enabled = true
@@ -33,7 +33,7 @@ Workflow {
 			}
 		}
 		language = StandardLanguage {
-			name = "de.validas.spedit.NaturalLang"
+			name = "org.xixum.nlx.model.NaturalLang"
 			fileExtensions = "nlx"
 			serializer = {
 				generateStub = false

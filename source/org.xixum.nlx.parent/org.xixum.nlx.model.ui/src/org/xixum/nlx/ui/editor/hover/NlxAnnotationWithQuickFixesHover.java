@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.validas.spedit.ui.editor.hover;
+package org.xixum.nlx.model.ui.editor.hover;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -67,7 +67,7 @@ import org.eclipse.xtext.ui.editor.quickfix.QuickAssistInvocationContext;
 
 import com.google.inject.Inject;
 
-import de.validas.spedit.ui.quickfix.NlxQuickAssistProcessor;
+import org.xixum.nlx.model.ui.quickfix.NlxQuickAssistProcessor;
 
 /**
  * @author schaller

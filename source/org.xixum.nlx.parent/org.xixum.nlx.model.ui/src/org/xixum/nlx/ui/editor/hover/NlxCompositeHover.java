@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.validas.spedit.ui.editor.hover;
+package org.xixum.nlx.model.ui.editor.hover;
 
 import java.util.ArrayList;
 import java.util.List;

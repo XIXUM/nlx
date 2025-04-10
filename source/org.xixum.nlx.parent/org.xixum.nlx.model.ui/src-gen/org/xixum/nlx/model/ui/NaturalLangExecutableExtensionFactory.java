@@ -24,7 +24,7 @@ public class NaturalLangExecutableExtensionFactory extends AbstractGuiceAwareExe
 	@Override
 	protected Injector getInjector() {
 		IeditActivator activator = IeditActivator.getInstance();
-		return activator != null ? activator.getInjector(IeditActivator.DE_VALIDAS_SPEDIT_NATURALLANG) : null;
+		return activator != null ? activator.getInjector(IeditActivator.ORG_XIXUM_NLX_NATURALLANG) : null;
 	}
 
 }

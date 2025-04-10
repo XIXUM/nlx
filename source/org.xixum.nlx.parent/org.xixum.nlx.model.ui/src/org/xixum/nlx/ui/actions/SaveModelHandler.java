@@ -2,11 +2,11 @@
  * @author schaller
  * 
  * */
-package de.validas.spedit.ui.actions;
+package org.xixum.nlx.model.ui.actions;
 
-import static de.validas.spedit.ui.constants.EditorUiConstants._UI_EDITOR_SAVEAS_OVERWRITE_TITLE;
-import static de.validas.spedit.ui.constants.EditorUiConstants._UI_ENCODING;
-import static de.validas.spedit.ui.constants.EditorUiConstants._UI_Editor_saveAs_overwrite_message;
+import static org.xixum.nlx.model.ui.constants.EditorUiConstants._UI_EDITOR_SAVEAS_OVERWRITE_TITLE;
+import static org.xixum.nlx.model.ui.constants.EditorUiConstants._UI_ENCODING;
+import static org.xixum.nlx.model.ui.constants.EditorUiConstants._UI_Editor_saveAs_overwrite_message;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,8 +46,8 @@ import org.eclipse.xtext.linking.lazy.LazyLinkingResource;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
-import de.validas.spedit.ui.editor.NaturalLangEditor;
-import de.validas.spedit.ui.editor.model.NlxDocument;
+import org.xixum.nlx.model.ui.editor.NaturalLangEditor;
+import org.xixum.nlx.model.ui.editor.model.NlxDocument;
 
 @SuppressWarnings("restriction")
 public class SaveModelHandler extends AbstractSaveHandler{

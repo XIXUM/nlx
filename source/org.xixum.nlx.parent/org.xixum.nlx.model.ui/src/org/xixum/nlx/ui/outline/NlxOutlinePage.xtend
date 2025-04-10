@@ -1,4 +1,4 @@
-package de.validas.spedit.ui.outline
+package org.xixum.nlx.model.ui.outline
 
 import org.eclipse.xtext.ui.editor.outline.impl.OutlinePage
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode
@@ -12,8 +12,8 @@ import java.lang.reflect.Field
 import org.eclipse.xtext.ui.editor.outline.impl.OutlineNodeLabelProvider
 import org.eclipse.xtext.ui.editor.outline.impl.OutlineNodeContentProvider
 import org.apache.log4j.Logger
-import de.validas.spedit.ui.util.ReflectionUtil
-import de.validas.spedit.ui.util.NlxDisplayRunHelper
+import org.xixum.nlx.model.ui.util.ReflectionUtil
+import org.xixum.nlx.model.ui.util.NlxDisplayRunHelper
 
 class NlxOutlinePage extends OutlinePage {
 	

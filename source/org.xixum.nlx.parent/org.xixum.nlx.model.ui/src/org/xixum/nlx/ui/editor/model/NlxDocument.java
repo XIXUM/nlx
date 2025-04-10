@@ -1,7 +1,7 @@
 /**
- * (c) Validas AG
+ * (c) XIXUM ORG 2025
  */
-package de.validas.spedit.ui.editor.model;
+package org.xixum.nlx.model.ui.editor.model;
 
 import java.util.List;
 

@@ -44,8 +44,8 @@ public class NaturalLangStandaloneSetupGenerated implements ISetup {
 	}
 	
 	public void register(Injector injector) {
-		if (!EPackage.Registry.INSTANCE.containsKey("http://www.validas.de/spedit/NaturalLang")) {
-			EPackage.Registry.INSTANCE.put("http://www.validas.de/spedit/NaturalLang", NaturalLangPackage.eINSTANCE);
+		if (!EPackage.Registry.INSTANCE.containsKey("http://www.xixum.org/nlx/NaturalLang")) {
+			EPackage.Registry.INSTANCE.put("http://www.xixum.org/nlx/NaturalLang", NaturalLangPackage.eINSTANCE);
 		}
 		IResourceFactory resourceFactory = injector.getInstance(IResourceFactory.class);
 		IResourceServiceProvider serviceProvider = injector.getInstance(IResourceServiceProvider.class);

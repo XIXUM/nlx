@@ -21,19 +21,19 @@
 		<tycho.testArgLine></tycho.testArgLine>
 	</properties>
 	<modules>
-		<module>de.validas.nlx.view.fxviews</module>
-		<module>org.xixum.nlxiedit</module>
-		<module>org.xixum.nlxiedit.ide</module>
-		<module>org.xixum.nlxiedit.ui</module>
-		<module>org.xixum.nlxiedit.target</module>
-		<module>org.xixum.nlxiedit.product</module>
-		<module>de.validas.nlx.ai</module>
-		<module>de.validas.nlx.dictionary</module>
-		<module>de.validas.nlx.perspective</module>
+		<module>org.xixum.nlx.view.fxviews</module>
+		<module>org.xixum.nlx.model</module>
+		<module>org.xixum.nlx.model.ide</module>
+		<module>org.xixum.nlx.model.ui</module>
+		<module>org.xixum.nlx.model.target</module>
+		<module>org.xixum.nlx.model.product</module>
+		<module>org.xixum..nlx.ai</module>
+		<module>org.xixum..nlx.dictionary</module>
+		<module>org.xixum..nlx.perspective</module>
 		<module>../de.validas.pmt</module>
-		<module>org.xixum.nlxiedit.edit</module>
-		<module>../../../Eclipse_PluginDev/Utils/de.validas.utils.Data</module>
-		<module>../../../Eclipse_PluginDev/Utils/de.validas.utils.IO</module>
+		<module>org.xixum.nlx.model.edit</module>
+		<module>../../../Eclipse_PluginDev/Utils/org.xixum.utils.Data</module>
+		<module>../../../Eclipse_PluginDev/Utils/org.xixum.utils.IO</module>
 		<module>../de.validas.vvt</module>
 	</modules>
 	<build>

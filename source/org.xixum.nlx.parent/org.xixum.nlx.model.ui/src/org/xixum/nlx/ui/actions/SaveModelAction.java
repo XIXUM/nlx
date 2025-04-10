@@ -1,4 +1,4 @@
-package de.validas.spedit.ui.actions;
+package org.xixum.nlx.model.ui.actions;
 
 import java.util.LinkedList;
 import java.util.List;

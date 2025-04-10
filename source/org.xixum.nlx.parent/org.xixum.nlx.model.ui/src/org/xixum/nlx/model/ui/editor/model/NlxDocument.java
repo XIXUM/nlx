@@ -1,5 +1,5 @@
 /**
- * (c) Validas AG
+ * (c) XIXUM.ORG
  */
 package org.xixum.nlx.model.ui.editor.model;
 

@@ -1,4 +1,4 @@
-package de.validas.spedit.ui.highlighting;
+package org.xixum.nlx.model.ui.highlighting;
 
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.xtext.ui.editor.model.TerminalsTokenTypeToPartitionMapper;

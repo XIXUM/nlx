@@ -1,4 +1,4 @@
-package de.validas.spedit.ui.editor.property;
+package org.xixum.nlx.model.ui.editor.property;
 
 import java.util.Map;
 

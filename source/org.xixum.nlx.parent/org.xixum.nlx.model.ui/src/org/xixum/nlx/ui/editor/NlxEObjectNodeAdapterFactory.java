@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.validas.spedit.ui.editor;
+package org.xixum.nlx.model.ui.editor;
 
 import java.util.List;
 
@@ -21,9 +21,9 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor.PropertyValueWrapper
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
-import de.validas.spedit.naturalLang.util.NaturalLangAdapterFactory;
-import de.validas.spedit.ui.editor.provider.NlxEObjectNodeItemProvider;
-import de.validas.spedit.ui.editor.provider.NlxPropertyValueWrapper;
+import org.xixum.nlx.model.naturalLang.util.NaturalLangAdapterFactory;
+import org.xixum.nlx.model.ui.editor.provider.NlxEObjectNodeItemProvider;
+import org.xixum.nlx.model.ui.editor.provider.NlxPropertyValueWrapper;
 
 /**
  * @author Felix Schaller

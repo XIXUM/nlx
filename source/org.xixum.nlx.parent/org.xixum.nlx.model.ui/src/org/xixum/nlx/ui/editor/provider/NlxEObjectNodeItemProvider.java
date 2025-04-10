@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.validas.spedit.ui.editor.provider;
+package org.xixum.nlx.model.ui.editor.provider;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ import org.eclipse.xtext.ui.editor.outline.impl.EObjectNode;
 import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
-import de.validas.spedit.ui.model.NaturalLangEditorPlugin;
+import org.xixum.nlx.model.ui.model.NaturalLangEditorPlugin;
 
 /**
  * @author Felix Schaller

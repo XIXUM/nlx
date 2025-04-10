@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.validas.spedit.ui.editor.embedded;
+package org.xixum.nlx.model.ui.editor.embedded;
 
 import java.util.Iterator;
 import java.util.List;
@@ -49,7 +49,7 @@ import com.google.common.base.Function;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
-import de.validas.spedit.ui.editor.validation.NlxAnnotationIssueProcessor;
+import org.xixum.nlx.model.ui.editor.validation.NlxAnnotationIssueProcessor;
 
 /**
  * @author schaller

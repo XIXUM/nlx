@@ -11,6 +11,6 @@ public class NaturalLangAntlrTokenFileProvider implements IAntlrTokenFileProvide
 	@Override
 	public InputStream getAntlrTokenFile() {
 		ClassLoader classLoader = getClass().getClassLoader();
-		return classLoader.getResourceAsStream("de/validas/spedit/parser/antlr/internal/InternalNaturalLang.tokens");
+		return classLoader.getResourceAsStream("org/xixum/nlx/parser/antlr/internal/InternalNaturalLang.tokens");
 	}
 }

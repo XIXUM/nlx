@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.validas.spedit.ui.editor.provider;
+package org.xixum.nlx.model.ui.editor.provider;
 
 import java.util.List;
 

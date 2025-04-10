@@ -1,6 +1,6 @@
 /**
  */
-package de.validas.spedit.ui.model;
+package org.xixum.nlx.model.ui.model;
 
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;

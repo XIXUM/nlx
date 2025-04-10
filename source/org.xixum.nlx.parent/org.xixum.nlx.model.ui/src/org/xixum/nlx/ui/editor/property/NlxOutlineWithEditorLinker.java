@@ -1,4 +1,4 @@
-package de.validas.spedit.ui.editor.property;
+package org.xixum.nlx.model.ui.editor.property;
 
 import org.eclipse.core.runtime.Adapters;
 import org.eclipse.jface.text.ITextSelection;
@@ -21,9 +21,9 @@ import org.eclipse.xtext.util.TextRegion;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
-import de.validas.nlx.view.fxviews.views.ISemanticViewSelector;
-import de.validas.spedit.ui.editor.NaturalLangEditor;
-import de.validas.spedit.ui.editor.NaturalLangPropertySheetPage;
+import org.xixum.nlx.view.fxviews.views.ISemanticViewSelector;
+import org.xixum.nlx.model.ui.editor.NaturalLangEditor;
+import org.xixum.nlx.model.ui.editor.NaturalLangPropertySheetPage;
 
 public class NlxOutlineWithEditorLinker extends OutlineWithEditorLinker {
 

@@ -1,9 +1,9 @@
 /**
  * Editor Extension Class
- * (c) Validas AG 2019
+ * (c) XIXUM ORG 2025
  * Author: Schaller
  */
-package de.validas.spedit.ui.editor;
+package org.xixum.nlx.model.ui.editor;
 
 import java.util.ArrayList;
 import java.util.Collections;

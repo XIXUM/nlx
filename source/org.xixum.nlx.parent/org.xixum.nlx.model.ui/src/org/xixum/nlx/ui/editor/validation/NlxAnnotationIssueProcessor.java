@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.validas.spedit.ui.editor.validation;
+package org.xixum.nlx.model.ui.editor.validation;
 
 import org.eclipse.jface.text.source.IAnnotationModel;
 import org.eclipse.xtext.ui.editor.XtextEditor;
@@ -9,7 +9,7 @@ import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionProvider;
 import org.eclipse.xtext.ui.editor.validation.AnnotationIssueProcessor;
 
-import static de.validas.spedit.ui.constants.EditorUiConstants.INFO_ANNOTATION_TYPE;
+import static org.xixum.nlx.model.ui.constants.EditorUiConstants.INFO_ANNOTATION_TYPE;
 
 /**
  * @author Felix Schaller

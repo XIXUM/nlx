@@ -1,4 +1,4 @@
-package de.validas.spedit.ui.highlighting
+package org.xixum.nlx.model.ui.highlighting
 
 import org.eclipse.xtext.ide.editor.syntaxcoloring.DefaultAntlrTokenToAttributeIdMapper
 import com.google.inject.Singleton

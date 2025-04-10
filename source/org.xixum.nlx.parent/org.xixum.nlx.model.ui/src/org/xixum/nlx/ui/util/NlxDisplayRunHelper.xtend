@@ -1,4 +1,4 @@
-package de.validas.spedit.ui.util
+package org.xixum.nlx.model.ui.util
 
 import org.eclipse.xtext.ui.util.DisplayRunHelper
 import org.eclipse.swt.widgets.Display

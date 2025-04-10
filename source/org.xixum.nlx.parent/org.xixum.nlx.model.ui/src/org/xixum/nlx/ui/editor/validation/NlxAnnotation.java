@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.validas.spedit.ui.editor.validation;
+package org.xixum.nlx.model.ui.editor.validation;
 
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.jface.text.source.Annotation;

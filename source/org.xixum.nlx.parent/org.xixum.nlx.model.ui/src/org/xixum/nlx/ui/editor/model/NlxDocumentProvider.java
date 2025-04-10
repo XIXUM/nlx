@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.validas.spedit.ui.editor.model;
+package org.xixum.nlx.model.ui.editor.model;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.text.source.IAnnotationModel;
@@ -15,7 +15,7 @@ import org.eclipse.xtext.validation.IResourceValidator;
 
 import com.google.inject.Inject;
 
-import de.validas.spedit.ui.editor.validation.NlxAnnotationIssueProcessor; 
+import org.xixum.nlx.model.ui.editor.validation.NlxAnnotationIssueProcessor; 
 
 /**
  * @author Felix Schaller

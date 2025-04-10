@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.validas.spedit.ui.editor;
+package org.xixum.nlx.model.ui.editor;
 
 import org.eclipse.emf.edit.ui.action.CopyAction;
 import org.eclipse.emf.edit.ui.action.CutAction;

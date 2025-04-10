@@ -1,4 +1,4 @@
-package de.validas.spedit.ui.editor.provider;
+package org.xixum.nlx.model.ui.editor.provider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;

@@ -1,4 +1,4 @@
-package de.validas.spedit.ui.highlighting;
+package org.xixum.nlx.model.ui.highlighting;
 
 import java.util.Set;
 

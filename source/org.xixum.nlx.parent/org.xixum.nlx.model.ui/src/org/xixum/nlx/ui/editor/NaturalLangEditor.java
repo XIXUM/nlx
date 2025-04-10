@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.validas.spedit.ui.editor;
+package org.xixum.nlx.model.ui.editor;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -54,10 +54,10 @@ import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
-import de.validas.nlx.dictionary.IDictionaryAccess;
-import de.validas.nlx.view.fxviews.views.ISemanticViewSelector;
-import de.validas.nlx.view.fxviews.views.SemanticViewSelector;
-import de.validas.spedit.ui.model.NaturalLangEditorPlugin;
+import org.xixum.nlx.dictionary.IDictionaryAccess;
+import org.xixum.nlx.view.fxviews.views.ISemanticViewSelector;
+import org.xixum.nlx.view.fxviews.views.SemanticViewSelector;
+import org.xixum.nlx.model.ui.model.NaturalLangEditorPlugin;
 
 /**
  * @author Felix Schaller
@@ -69,7 +69,7 @@ public class NaturalLangEditor extends XtextEditor implements ISelectionProvider
 	/**
 	 * Editor Extension Class to handle Natural language in Editor
 	 */
-	//public static final String INFO_ANNOTATION_TYPE = "de.validas.spedit.ui.NaturalLang.Annotation";
+	//public static final String INFO_ANNOTATION_TYPE = "org.xixum.nlx.model.ui.NaturalLang.Annotation";
 
 	protected List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
 

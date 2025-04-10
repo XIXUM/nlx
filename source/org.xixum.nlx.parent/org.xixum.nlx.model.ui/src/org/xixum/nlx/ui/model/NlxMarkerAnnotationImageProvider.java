@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.validas.spedit.ui.model;
+package org.xixum.nlx.model.ui.model;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.jface.resource.StringConverter;
@@ -45,7 +45,7 @@ public class NlxMarkerAnnotationImageProvider extends XtextMarkerAnnotationImage
 	 *	symbolicIcon
 	 *	icon
 	 *	quickFixIcon
-	 *	annotationImageProvider = de.validas.spedit.ui.model.NlxMarkerAnnotationImageProvider
+	 *	annotationImageProvider = org.xixum.nlx.model.ui.model.NlxMarkerAnnotationImageProvider
 	 *	textStylePreferenceKey
 	 *	textStylePreferenceValue
 	 *		if (AnnotationPreference.STYLE_BOX.equals(s)

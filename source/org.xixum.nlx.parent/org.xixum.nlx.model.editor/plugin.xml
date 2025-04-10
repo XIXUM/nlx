@@ -13,9 +13,9 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="de.validas.spedit.naturalLang.presentation.NaturalLangModelWizardID"
+            id="org.xixum.nlx.model.naturalLang.presentation.NaturalLangModelWizardID"
             name="%_UI_NaturalLangModelWizard_label"
-            class="de.validas.spedit.naturalLang.presentation.NaturalLangModelWizard"
+            class="org.xixum.nlx.model.naturalLang.presentation.NaturalLangModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/NaturalLangModelFile.gif">
          <description>%_UI_NaturalLangModelWizard_description</description>
@@ -26,12 +26,12 @@
    <extension point="org.eclipse.ui.editors">
       <!-- @generated NaturalLang -->
       <editor
-            id="de.validas.spedit.naturalLang.presentation.NaturalLangEditorID"
+            id="org.xixum.nlx.model.naturalLang.presentation.NaturalLangEditorID"
             name="%_UI_NaturalLangEditor_label"
             icon="icons/full/obj16/NaturalLangModelFile.gif"
             extensions="nlx"
-            class="de.validas.spedit.naturalLang.presentation.NaturalLangEditor"
-            contributorClass="de.validas.spedit.naturalLang.presentation.NaturalLangActionBarContributor">
+            class="org.xixum.nlx.model.naturalLang.presentation.NaturalLangEditor"
+            contributorClass="org.xixum.nlx.model.naturalLang.presentation.NaturalLangActionBarContributor">
       </editor>
    </extension>
 

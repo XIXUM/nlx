@@ -1,6 +1,6 @@
 /**
  * Editor Extension Class
- * (c) Validas AG 2019
+ * (c) XIXUM ORG 2025
  * Author: Schaller
  */
 package org.xixum.nlx.model.ui.editor;

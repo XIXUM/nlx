@@ -23,7 +23,7 @@ import org.osgi.framework.BundleContext;
 public class IeditActivator extends AbstractUIPlugin {
 
 	public static final String PLUGIN_ID = "org.xixum.nlx.model.ui";
-	public static final String DE_VALIDAS_SPEDIT_NATURALLANG = "org.xixum.nlx.naturalLang";
+	public static final String ORG_XIXUM_NLX_NATURALLANG = "org.xixum.nlx.naturalLang";
 	
 	private static final Logger logger = Logger.getLogger(IeditActivator.class);
 	
@@ -73,14 +73,14 @@ public class IeditActivator extends AbstractUIPlugin {
 	}
 	
 	protected com.google.inject.Module getRuntimeModule(String grammar) {
-		if (DE_VALIDAS_SPEDIT_NATURALLANG.equals(grammar)) {
+		if (ORG_XIXUM_NLX_NATURALLANG.equals(grammar)) {
 			return new NaturalLangRuntimeModule();
 		}
 		throw new IllegalArgumentException(grammar);
 	}
 	
 	protected com.google.inject.Module getUiModule(String grammar) {
-		if (DE_VALIDAS_SPEDIT_NATURALLANG.equals(grammar)) {
+		if (ORG_XIXUM_NLX_NATURALLANG.equals(grammar)) {
 			return new NaturalLangUiModule(this);
 		}
 		throw new IllegalArgumentException(grammar);

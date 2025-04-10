@@ -1,6 +1,6 @@
-package de.validas.spedit.ui.constants
+package org.xixum.nlx.model.ui.constants
 
-import de.validas.spedit.ui.util.PluginUtils
+import org.xixum.nlx.model.ui.util.PluginUtils
 
 abstract class AbstractConstantClass {
 	

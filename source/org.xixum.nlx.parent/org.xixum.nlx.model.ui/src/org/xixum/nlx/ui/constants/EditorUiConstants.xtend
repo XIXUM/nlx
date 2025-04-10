@@ -1,14 +1,14 @@
-package de.validas.spedit.ui.constants
+package org.xixum.nlx.model.ui.constants
 
 class EditorUiConstants extends AbstractConstantClass {
 	
-	public static val INFO_ANNOTATION_TYPE 						= getString("INFO_ANNOTATION_TYPE")						// de.validas.spedit.ui.NaturalLang.Annotation
+	public static val INFO_ANNOTATION_TYPE 						= getString("INFO_ANNOTATION_TYPE")						// org.xixum.nlx.model.ui.NaturalLang.Annotation
 
 	public static val _UI_EDITOR_SAVEAS_OVERWRITE_TITLE 		= getString("_UI_EDITOR_SAVEAS_OVERWRITE_TITLE")   		// Save As
 	public static val _UI_Editor_saveAs_overwrite_message 		= getString("_UI_Editor_saveAs_overwrite_message")		// {0} already exists.\nDo you want to replace it?
 	public static val _UI_ENCODING 								= getString("_UI_ENCODING") 							// = "UTF-8"
 
-	public static val _NLX_INFO_ANNOTATION_TYPE 				= getString("_NLX_INFO_ANNOTATION_TYPE")				// de.validas.spedit.ui.NaturalLang.Annotation
+	public static val _NLX_INFO_ANNOTATION_TYPE 				= getString("_NLX_INFO_ANNOTATION_TYPE")				// org.xixum.nlx.model.ui.NaturalLang.Annotation
 	public static val _NLX_CAP_IMAGE_URL						= getString("_NLX_CAP_IMAGE_URL")						// obj16/quickfix_warning_obj.gif
     public static val _NLX_TRAIN_IMAGE_URL						= getString("_NLX_TRAIN_IMAGE_URL")						// nature_overlay3.png
     public static val _NLX_DATA_KEY								= getString("_NLX_DATA_KEY")							// DATA_KEY
