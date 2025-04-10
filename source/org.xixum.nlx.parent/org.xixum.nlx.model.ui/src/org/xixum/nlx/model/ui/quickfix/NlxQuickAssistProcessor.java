@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.xixum.nlx.ui.quickfix;
+package de.validas.spedit.ui.quickfix;
 
 import static java.util.Arrays.asList;
 
